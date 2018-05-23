@@ -986,8 +986,9 @@ GameObject:
   - component: {fileID: 1106886893}
   - component: {fileID: 1106886895}
   - component: {fileID: 1106886894}
+  - component: {fileID: 1106886896}
   m_Layer: 0
-  m_Name: AnimalCostBer (1)
+  m_Name: AnimalCostBer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,6 +1045,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106886892}
+--- !u!114 &1106886896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1106886892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dccd827945a743469df031201fcc693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultCost: 100
+  CostPoint: 0
 --- !u!1 &1133080859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1488,7 @@ GameObject:
   - component: {fileID: 1773874733}
   - component: {fileID: 1773874732}
   - component: {fileID: 1773874731}
+  - component: {fileID: 1773874734}
   m_Layer: 0
   m_Name: AnimalBar
   m_TagString: Untagged
@@ -1574,6 +1589,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1773874729}
+--- !u!114 &1773874734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773874729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dce528e4e3814a4ebb9564f6f00980b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1846759278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,7 +1709,7 @@ GameObject:
   - component: {fileID: 1849512032}
   - component: {fileID: 1849512031}
   m_Layer: 0
-  m_Name: WeaponCostBer
+  m_Name: WeaponCostBerFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1751,8 +1777,9 @@ GameObject:
   - component: {fileID: 1886417245}
   - component: {fileID: 1886417247}
   - component: {fileID: 1886417246}
+  - component: {fileID: 1886417248}
   m_Layer: 0
-  m_Name: WeaponCostBer (1)
+  m_Name: WeaponCostBer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,6 +1836,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886417244}
+--- !u!114 &1886417248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886417244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dccd827945a743469df031201fcc693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultCost: 100
+  CostPoint: 0
 --- !u!1 &2083528995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +1971,7 @@ GameObject:
   - component: {fileID: 2083976801}
   - component: {fileID: 2083976800}
   m_Layer: 0
-  m_Name: AnimalCostBer
+  m_Name: AnimalCostBerFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
