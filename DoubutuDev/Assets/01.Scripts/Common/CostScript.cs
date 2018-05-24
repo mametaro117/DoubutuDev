@@ -26,11 +26,26 @@ public class CostScript : MonoBehaviour {
         CostFixed();
     }
 
+    //  コストを消費する
+    public void ConsumeCost(float cost)
+    {
+        cost = cost * 100;
+        //  消費コストが現在のコストより小さければ
+        if (cost < CostPoint)
+        {
+            CostPoint -= cost;
+            CostFixed();
+        }
+        else
+        {
+            Debug.LogWarning("コストが足りないよ");
+        }
+    }
 
 
     //  値をコストバーに反映
-    public void CostFixed()
+    void CostFixed()
     {
-        rect.sizeDelta = new Vector2(CostPoint / MaxCost * 500, rect.sizeDelta.y);
+        rect.sizeDelta = new Vector2(CostPoint / MaxCost * MaxCost, rect.sizeDelta.y);
     }
 }
