@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AnimalState : MonoBehaviour {
 
+    private int StateNum = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,9 @@ public class AnimalState : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void CheckState()
+    {
+
+    }
 }
