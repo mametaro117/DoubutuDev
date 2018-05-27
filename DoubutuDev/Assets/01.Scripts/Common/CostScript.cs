@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CostScript : MonoBehaviour {
 
     //  コストの最大値
     private const float MaxCost = 500;
     [SerializeField]
-    private float DefaultCost = 100;
+    private Text txt;
     [SerializeField]
+    private float DefaultCost = 100;
+    
     private float CostPoint;
 
     private RectTransform rect;
@@ -46,6 +49,7 @@ public class CostScript : MonoBehaviour {
     //  値をコストバーに反映
     void CostFixed()
     {
+        txt.text = (CostPoint / 100).ToString("F0");
         rect.sizeDelta = new Vector2(CostPoint / MaxCost * MaxCost, rect.sizeDelta.y);
     }
 }
