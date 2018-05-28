@@ -7,6 +7,8 @@ public class AnimalButtonScript : MonoBehaviour {
 
     [SerializeField]
     private CostScript costScript;
+    [SerializeField]
+    private SpawnManager Manager;
     private Button btn;
 
     [SerializeField]
@@ -16,27 +18,23 @@ public class AnimalButtonScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         btn = GetComponent<Button>();
-        Test();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        //if (Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    Test();
-
-        //}
-	}
-
-    void Test()
-    {
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(TapAnimalButton);
     }
 
+    // Update is called once per frame
+    void Update () {
+
+	}
+
+
+    void AddCostEvent()
+    {
+
+    }
     void TapAnimalButton()
     {
-        costScript.ConsumeCost(cost);
+        
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour {
 
-    private static GameObject[] AllAnimals;
+    private static List<GameObject> AnimalList = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour {
 
     public static void AddAnimals(GameObject obj)
     {
-        //AllAnimals[] = obj;
+        AnimalList.Add(obj);
+        Debug.Log(AnimalList.Count);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalState : MonoBehaviour {
+public class Animalstatus : MonoBehaviour {
 
     private int StateNum = 0;
     [SerializeField]
@@ -19,6 +19,7 @@ public class AnimalState : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckState();
+        Move();
     }
 
     void CheckState()
@@ -27,7 +28,7 @@ public class AnimalState : MonoBehaviour {
         {
             Debug.Log("ChechState");
             NowStateNum = StateNum;
-            switch (StateNum)
+            switch (NowStateNum)
             {
                 case 0:
                     animator.SetInteger("State", 0);
@@ -43,24 +44,39 @@ public class AnimalState : MonoBehaviour {
                     break;
             }
         }
-
-        if (NowStateNum == 1)
-        {
-            //  ローカル変数の宣言
-            Vector3 v;
-            v = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
-            transform.position = v;
-        }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void Move()
+    {
+        switch (NowStateNum)
+        {
+            case 1:
+                Vector3 v;
+                v = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
+                transform.position = v;
+                break;
+            case 0:
+            case 2:
+            default:
+                break;
+        }
+
+        //if (NowStateNum == 1)
+        //{
+        //    //  ローカル変数の宣言
+        //    Vector3 v;
+        //    v = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
+        //    transform.position = v;
+        //}
+    }
+
+        void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit");
 
         if (collision.tag == "Enemy")
         {
             StateNum = 2;
-            //collision.GetComponent<>();
         }
         else
         {
@@ -75,9 +91,8 @@ public class AnimalState : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
         StateNum = 1;
         Debug.Log("コルーチン２");
-        yield return new WaitForSeconds(5.0f);
-        
+        yield return new WaitForSeconds(2.0f);        
         Debug.Log("コルーチン３");
-        yield return null;
+        yield break;
     }    
 }
