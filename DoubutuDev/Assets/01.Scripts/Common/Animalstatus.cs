@@ -12,7 +12,7 @@ public class Animalstatus : MonoBehaviour {
     // Use this for initialization
     void Start () {
         animator = GetComponent<Animator>();
-        Debug.Log("Start");
+        //Debug.Log("Start");
         StartCoroutine(Depoly());
 	}
 	
@@ -26,7 +26,7 @@ public class Animalstatus : MonoBehaviour {
     {
         if(NowStateNum != StateNum)
         {
-            Debug.Log("ChechState");
+            //Debug.Log("ChechState");
             NowStateNum = StateNum;
             switch (NowStateNum)
             {
@@ -70,7 +70,7 @@ public class Animalstatus : MonoBehaviour {
         //}
     }
 
-        void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit");
 
@@ -87,12 +87,12 @@ public class Animalstatus : MonoBehaviour {
 
     IEnumerator Depoly()
     {
-        Debug.Log("コルーチン１");
+        //Debug.Log("コルーチン１");
         yield return new WaitForSeconds(2.0f);
         StateNum = 1;
-        Debug.Log("コルーチン２");
+        //Debug.Log("コルーチン２");
         yield return new WaitForSeconds(2.0f);        
-        Debug.Log("コルーチン３");
+        //Debug.Log("コルーチン３");
         yield break;
     }    
 }

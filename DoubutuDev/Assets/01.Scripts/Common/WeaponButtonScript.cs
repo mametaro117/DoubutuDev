@@ -7,6 +7,7 @@ public class WeaponButtonScript : MonoBehaviour {
 
     [SerializeField]
     private CostScript costScript;
+
     private Button btn;
 
     [SerializeField]
@@ -17,24 +18,16 @@ public class WeaponButtonScript : MonoBehaviour {
     void Start()
     {
         btn = GetComponent<Button>();
-        Test();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void Test()
-    {
-        btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(TapWeaponButton);
     }
 
     void TapWeaponButton()
     {
-        costScript.ConsumeCost(cost);
+        costScript.SetWeaponCost(cost);
     }
 
+    public float GetCost()
+    {
+        return cost;
+    }
 }

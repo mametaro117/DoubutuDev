@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 274010214}
   - component: {fileID: 274010213}
   m_Layer: 0
-  m_Name: Text
+  m_Name: WeaponText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d54a24f3dd774349bbd0ea6a5882692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costScript: {fileID: 1886417248}
+  costScript: {fileID: 633445034}
   cost: 1
 --- !u!1 &482129995
 GameObject:
@@ -669,6 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633445033}
   - component: {fileID: 633445032}
+  - component: {fileID: 633445034}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -700,6 +701,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633445034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 633445031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dccd827945a743469df031201fcc693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimalCostTxt: {fileID: 1741220152}
+  WeaponCostText: {fileID: 274010213}
+  DefaultAnimalCost: 100
+  DefaultWeaponCost: 100
+  Animalrect: {fileID: 1106886893}
+  Weaponrect: {fileID: 1886417245}
 --- !u!1 &769607507
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,6 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 156401514}
+  costScript: {fileID: 633445034}
   prefab: {fileID: 1715072720401090, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
 --- !u!114 &899007559
 MonoBehaviour:
@@ -1085,8 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dce528e4e3814a4ebb9564f6f00980b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costScript: {fileID: 1106886896}
-  Manager: {fileID: 0}
+  costScript: {fileID: 633445034}
   cost: 3
 --- !u!1 &1006060583
 GameObject:
@@ -1416,7 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d54a24f3dd774349bbd0ea6a5882692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costScript: {fileID: 1886417248}
+  costScript: {fileID: 633445034}
   cost: 1
 --- !u!1 &1106886892
 GameObject:
@@ -1428,7 +1446,6 @@ GameObject:
   - component: {fileID: 1106886893}
   - component: {fileID: 1106886895}
   - component: {fileID: 1106886894}
-  - component: {fileID: 1106886896}
   m_Layer: 0
   m_Name: AnimalCostBer
   m_TagString: Untagged
@@ -1487,19 +1504,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1106886892}
---- !u!114 &1106886896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1106886892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dccd827945a743469df031201fcc693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txt: {fileID: 1741220152}
-  DefaultCost: 100
 --- !u!1 &1237217161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,7 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d54a24f3dd774349bbd0ea6a5882692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costScript: {fileID: 1886417248}
+  costScript: {fileID: 633445034}
   cost: 1
 --- !u!1 &1741220150
 GameObject:
@@ -1929,7 +1933,7 @@ GameObject:
   - component: {fileID: 1741220153}
   - component: {fileID: 1741220152}
   m_Layer: 0
-  m_Name: Text
+  m_Name: AnimalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2202,8 +2206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dce528e4e3814a4ebb9564f6f00980b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costScript: {fileID: 1106886896}
-  Manager: {fileID: 0}
+  costScript: {fileID: 633445034}
   cost: 1
 --- !u!114 &1773874735
 MonoBehaviour:
@@ -2465,7 +2468,6 @@ GameObject:
   - component: {fileID: 1886417245}
   - component: {fileID: 1886417247}
   - component: {fileID: 1886417246}
-  - component: {fileID: 1886417248}
   m_Layer: 0
   m_Name: WeaponCostBer
   m_TagString: Untagged
@@ -2524,19 +2526,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886417244}
---- !u!114 &1886417248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1886417244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dccd827945a743469df031201fcc693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txt: {fileID: 274010213}
-  DefaultCost: 100
 --- !u!1 &2083528995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,8 +2662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dce528e4e3814a4ebb9564f6f00980b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costScript: {fileID: 1106886896}
-  Manager: {fileID: 0}
+  costScript: {fileID: 633445034}
   cost: 2.5
 --- !u!1 &2083976798
 GameObject:

@@ -5,12 +5,10 @@ using UnityEngine.EventSystems;
 
 public class SpawnManager : MonoBehaviour {
 
-
-    public delegate float SpawnDelegate();
-    public SpawnDelegate spawnDelegate;
-
     [SerializeField]
     private Camera _camera;
+    [SerializeField]
+    private CostScript costScript;
 
     [SerializeField]
     private GameObject prefab;
@@ -27,11 +25,27 @@ public class SpawnManager : MonoBehaviour {
 
     public void ClickGround()
     {
-        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        pos.z = 0;
-        GameObject obj = Instantiate(prefab, new Vector3(pos.x, pos.y, pos.z), prefab.transform.rotation);
-        //obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        Debug.Log(pos);
-    }
+        if (costScript.IsSetCostValue())
+        {
+            if (costScript.IsCreate())
+            {
+                costScript.ConsumeAnimalCost();
+                costScript.ConsumeWeaponCost();
 
+                var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                pos.z = 0;
+                GameObject obj = Instantiate(prefab, new Vector3(pos.x, pos.y, pos.z), prefab.transform.rotation);
+                //obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                Debug.Log(pos);
+            }
+            else
+            {
+                Debug.Log("コストが足りない");
+            }
+        }
+        else
+        {
+            Debug.Log("選んでないよ");
+        }        
+    }
 }
