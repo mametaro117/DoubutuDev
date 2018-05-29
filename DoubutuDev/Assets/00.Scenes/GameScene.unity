@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 152931105}
   - component: {fileID: 152931107}
   m_Layer: 0
-  m_Name: kakashi
+  m_Name: Kakashi
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &156401510
 GameObject:
@@ -298,48 +298,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &160670012
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4487783607802238, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 75bcadf394e20934ab6617b95308003e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &197745330
 Prefab:
   m_ObjectHideFlags: 0
