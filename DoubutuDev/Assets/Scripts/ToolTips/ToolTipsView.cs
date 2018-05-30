@@ -5,8 +5,9 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 public class ToolTipsView : MonoBehaviour
 {
-    ToolTips tt;
+    [HideInInspector]
     public GameObject obj;
+
     private int Speed;
     private int Cost;
     private string Tokusei;
@@ -21,16 +22,16 @@ public class ToolTipsView : MonoBehaviour
     }
     private void Update()
     {
-     
-
         if (Input.GetMouseButtonDown(0))
         {
+
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             hit = Physics2D.Raycast(pos, new Vector3(0, 0, 1), 100);
-            Debug.Log(Speed);
-            Debug.Log(Cost);
-            Debug.Log(Tokusei);
-            Debug.Log(hit.collider);
+            Debug.Log("動物:" + hit.collider);
+            Debug.Log("速度:" + Speed);
+            Debug.Log("コスト:" + Cost);
+            Debug.Log("特性:" + Tokusei);
+            
         }
     }
     

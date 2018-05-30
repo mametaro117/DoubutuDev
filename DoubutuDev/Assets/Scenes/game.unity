@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb40a3d4d347614b8c31cc085ec85fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tokusei: 
+  tokusei: "\u5C0F\u578B"
   speed: 2
   cost: 2
 --- !u!1 &427155227
@@ -689,7 +689,6 @@ GameObject:
   - component: {fileID: 510797289}
   - component: {fileID: 510797288}
   - component: {fileID: 510797293}
-  - component: {fileID: 510797294}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -781,17 +780,6 @@ MonoBehaviour:
   m_EventMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &510797294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 510797287}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a80f85a9aac16aa4f9dbe0c9125c648e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &533486075
 GameObject:
   m_ObjectHideFlags: 0
