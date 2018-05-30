@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Buki_Three : MonoBehaviour
+public class Animal : MonoBehaviour
 {
     private Vector3 offset;
     private GameObject _hitObject;
@@ -49,7 +49,7 @@ public class Buki_Three : MonoBehaviour
     /// <param name="col"></param>
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("Weapon_Box"))
+        if (col.gameObject.name.Equals("Animal_Box"))
         {
             wea = true;
             _hitObject = col.gameObject;

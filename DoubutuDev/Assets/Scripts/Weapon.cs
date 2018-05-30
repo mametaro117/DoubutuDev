@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animal_Four : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     private Vector3 offset;
-    private Vector2 tmp;
-    private Vector2 _orgPosition = Vector2.zero;
     private GameObject _hitObject;
-    private bool ani = false;
+    private Vector2 _orgPosition = Vector2.zero;
+    private Vector2 tmp;
+    private bool wea = false;
     public void OnMouseDown()
     {
         float x = Input.mousePosition.x;
@@ -25,39 +25,43 @@ public class Animal_Four : MonoBehaviour
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
         transform.position = currentPosition;
     }
-    //マウスでDropしたときの処理
+
     public void OnMouseUp()
     {
-        //aniがtrueのときpositionを更新
-        if (ani == true)
+        if (wea == true)
         {
             var hitPos = _hitObject.transform.position;
             hitPos.z = 0;
             transform.position = hitPos;
         }
-        else //aniがfalseの時位置を戻す(コライダーに入る前)
+        else
         {
             transform.position = _orgPosition;
         }
-        //aniがfalseの時位置を戻す(コライダーから出たとき)
-        if (ani == false)
+        if (wea == false)
         {
             transform.position = tmp;
         }
     }
-    //コライダーに入ったときaniをtrueにする
+    /// <summary>
+    /// 当たり判定エリアに入ったら呼び出される
+    /// </summary>
+    /// <param name="col"></param>
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("Animal_Box"))
+        if (col.gameObject.name.Equals("Weapon_Box"))
         {
-            ani = true;
+            wea = true;
             _hitObject = col.gameObject;
         }
     }
-    //コライダーから出たときaniをfalseにする
+    /// <summary>
+    /// 当たり判定エリアから外に出たときに呼び出される
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnTriggerExit2D(Collider2D collision)
     {
-        ani = false;
+        wea = false;
         _hitObject = null;
     }
     void Start()
