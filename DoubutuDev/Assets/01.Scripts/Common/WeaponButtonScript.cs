@@ -23,7 +23,7 @@ public class WeaponButtonScript : MonoBehaviour {
 
     void TapWeaponButton()
     {
-        costScript.SetWeaponCost(cost);
+        costScript.SetWeaponObj(gameObject);
     }
 
     public float GetCost()

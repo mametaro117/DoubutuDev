@@ -22,7 +22,7 @@ public class AnimalButtonScript : MonoBehaviour {
 
     void TapAnimalButton()
     {
-        costScript.SetAnimalCost(cost);
+        costScript.SetAnimalObj(gameObject); 
         costScript.DeleteWeaponCost();
     }
 

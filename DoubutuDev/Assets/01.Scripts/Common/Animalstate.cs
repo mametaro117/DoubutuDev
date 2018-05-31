@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Animalstate : MonoBehaviour {
 
-
-    //-----------------------
     private int StateNum = 0;
     [SerializeField]
     private int NowStateNum = 0;
     private Animator animator;
-    //-----------------------
 
 
     void Start () {
         animator = GetComponent<Animator>();
         //Debug.Log("Start");
         StartCoroutine(Depoly());
+        //  マネージャーへこのオブジェクトを追加
+        BattleManager.Instance.AddFieldUnit(gameObject);
 	}
 	
 	// Update is called once per frame
@@ -65,17 +64,22 @@ public class Animalstate : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Hit");
 
-        if (collision.tag == "Enemy")
+    bool isAttack = false;
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (!isAttack)
         {
-            StateNum = 2;
-        }
-        else
-        {
-            StateNum = 1;
+            Debug.Log("Attack");
+            isAttack = true;
+            if (collision.tag == "Enemy")
+            {
+                StateNum = 2;
+                StartCoroutine(AttackFreeze());
+                BattleManager.Instance.Attack(gameObject, collision.gameObject);
+            }
         }
     }
 
@@ -86,5 +90,13 @@ public class Animalstate : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
         StateNum = 1;
         yield break;
-    }    
+    }
+
+    IEnumerator AttackFreeze()
+    {
+        yield return new WaitForSeconds(1);
+        isAttack = false;
+        StateNum = 1;
+        yield break;
+    }
 }
