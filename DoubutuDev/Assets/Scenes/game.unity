@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 434556401}
   m_Layer: 0
   m_Name: Animal_Cat3
-  m_TagString: Player
+  m_TagString: rabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,6 +676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 387158953}
+  Speed: 0
+  Cost: 0
+  Tokusei: 
 --- !u!1 &510797287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1183,7 @@ GameObject:
   - component: {fileID: 1341526836}
   m_Layer: 0
   m_Name: Animal_Cat2
-  m_TagString: Player
+  m_TagString: elephant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1307,6 +1310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 387158953}
+  Speed: 0
+  Cost: 0
+  Tokusei: 
 --- !u!1 &1377985679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,7 +1402,7 @@ GameObject:
   - component: {fileID: 1569668230}
   m_Layer: 0
   m_Name: Animal_Cat4
-  m_TagString: Player
+  m_TagString: dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1523,6 +1529,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 387158953}
+  Speed: 0
+  Cost: 0
+  Tokusei: 
 --- !u!1 &1696234187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1677,7 @@ GameObject:
   - component: {fileID: 1918083319}
   m_Layer: 0
   m_Name: Animal_Cat1
-  m_TagString: Player
+  m_TagString: bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1795,6 +1804,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 387158953}
+  Speed: 0
+  Cost: 0
+  Tokusei: 
 --- !u!1 &1995820213
 GameObject:
   m_ObjectHideFlags: 0
