@@ -9,6 +9,7 @@ public class Animal : MonoBehaviour
     private Vector2 _orgPosition = Vector2.zero;
     private Vector2 tmp;
     private bool wea = false;
+    //マウスをクリックしたときの処理
     public void OnMouseDown()
     {
         float x = Input.mousePosition.x;
@@ -17,6 +18,7 @@ public class Animal : MonoBehaviour
         offset = transform.position - Camera.main.ScreenToWorldPoint
             (new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
     }
+    //マウスをドラッグしたときの処理
     public void OnMouseDrag()
     {
         float x = Input.mousePosition.x;
@@ -25,7 +27,7 @@ public class Animal : MonoBehaviour
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
         transform.position = currentPosition;
     }
-
+    //マウスを離したときの処理
     public void OnMouseUp()
     {
         if (wea == true)
@@ -43,10 +45,6 @@ public class Animal : MonoBehaviour
             transform.position = tmp;
         }
     }
-    /// <summary>
-    /// 当たり判定エリアに入ったら呼び出される
-    /// </summary>
-    /// <param name="col"></param>
     public void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.name.Equals("Animal_Box"))
@@ -55,10 +53,6 @@ public class Animal : MonoBehaviour
             _hitObject = col.gameObject;
         }
     }
-    /// <summary>
-    /// 当たり判定エリアから外に出たときに呼び出される
-    /// </summary>
-    /// <param name="collision"></param>
     public void OnTriggerExit2D(Collider2D collision)
     {
         wea = false;
