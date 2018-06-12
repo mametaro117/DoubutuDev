@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 87efaf20c96bd46b2a6e7bf4d4d3fd57
-timeCreated: 1528763968
-licenseType: Free
+timeCreated: 1528790668
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: Head
@@ -147,9 +147,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 306
-        y: 541
+        y: 543
         width: 55
-        height: 55
+        height: 53
       alignment: 9
       pivot: {x: 0.49999997, y: 0.49999997}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: Ankle
       rect:
         serializedVersion: 2
-        x: 158
-        y: 91
-        width: 48
-        height: 49
+        x: 159
+        y: 94
+        width: 45
+        height: 44
       alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
