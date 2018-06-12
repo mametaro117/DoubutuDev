@@ -73,9 +73,9 @@ public class Animalstate : MonoBehaviour {
         if (!isAttack)
         {
             Debug.Log("Attack");
-            isAttack = true;
-            if (collision.tag == "Enemy")
+			if (collision.tag == "Enemy" || collision.tag == "TowerEnemy")
             {
+				isAttack = true;
                 StateNum = 2;
                 StartCoroutine(AttackFreeze());
                 BattleManager.Instance.Attack(gameObject, collision.gameObject);
