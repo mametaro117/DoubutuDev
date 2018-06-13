@@ -362,12 +362,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 152931103}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.88, y: 0.22, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1325912, y: 0.60852116, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1550233113}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &156401510
 GameObject:
@@ -547,12 +547,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 262300954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.247409, y: 0.8885212, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1550233113}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274010211
 GameObject:
@@ -638,6 +638,7 @@ GameObject:
   - component: {fileID: 285190192}
   - component: {fileID: 285190194}
   - component: {fileID: 285190193}
+  - component: {fileID: 285190195}
   m_Layer: 0
   m_Name: CostImage
   m_TagString: Untagged
@@ -697,6 +698,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 285190191}
+--- !u!114 &285190195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285190191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &374765235
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +914,7 @@ GameObject:
   - component: {fileID: 512410444}
   - component: {fileID: 512410446}
   - component: {fileID: 512410445}
+  - component: {fileID: 512410447}
   m_Layer: 0
   m_Name: CostImage
   m_TagString: Untagged
@@ -961,6 +974,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 512410443}
+--- !u!114 &512410447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512410443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &633445031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,12 +1205,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 776868817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.5, y: 0.5, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.7525911, y: 0.8885212, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1550233113}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &776868821
 MonoBehaviour:
@@ -2253,6 +2277,7 @@ GameObject:
   - component: {fileID: 1281566770}
   - component: {fileID: 1281566772}
   - component: {fileID: 1281566771}
+  - component: {fileID: 1281566773}
   m_Layer: 0
   m_Name: CostImage
   m_TagString: Untagged
@@ -2312,6 +2337,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281566769}
+--- !u!114 &1281566773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281566769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384958481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,6 +2358,7 @@ GameObject:
   - component: {fileID: 1384958482}
   - component: {fileID: 1384958484}
   - component: {fileID: 1384958483}
+  - component: {fileID: 1384958485}
   m_Layer: 0
   m_Name: CostImage
   m_TagString: Untagged
@@ -2381,6 +2418,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1384958481}
+--- !u!114 &1384958485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1384958481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1425347993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,6 +2693,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 1
+--- !u!1 &1550233112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1550233113}
+  m_Layer: 0
+  m_Name: Units
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1550233113
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550233112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7474089, y: -0.38852116, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 152931109}
+  - {fileID: 776868820}
+  - {fileID: 262300957}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1660741341
 GameObject:
   m_ObjectHideFlags: 0
@@ -3256,6 +3335,7 @@ GameObject:
   - component: {fileID: 1855464485}
   - component: {fileID: 1855464487}
   - component: {fileID: 1855464486}
+  - component: {fileID: 1855464488}
   m_Layer: 0
   m_Name: CostImage
   m_TagString: Untagged
@@ -3315,6 +3395,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855464484}
+--- !u!114 &1855464488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855464484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1886417244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,6 +3628,7 @@ GameObject:
   - component: {fileID: 2069333386}
   - component: {fileID: 2069333388}
   - component: {fileID: 2069333387}
+  - component: {fileID: 2069333389}
   m_Layer: 0
   m_Name: CostImage
   m_TagString: Untagged
@@ -3596,6 +3688,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069333385}
+--- !u!114 &2069333389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2069333385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2070052828
 GameObject:
   m_ObjectHideFlags: 0
@@ -3797,7 +3900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
-  cost: 2.5
+  cost: 3
 --- !u!1 &2083976798
 GameObject:
   m_ObjectHideFlags: 0
