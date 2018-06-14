@@ -46,9 +46,9 @@ public class BattleManager : MonoBehaviour {
 
 
     void Start () {
-        Debug.Log(AnimalList[0].Name);
-        Debug.Log(AnimalList[0].HitPoint);
-        Debug.Log(AnimalList[0].IsFlying);
+        //Debug.Log(AnimalList[0].Name);
+        //Debug.Log(AnimalList[0].HitPoint);
+        //Debug.Log(AnimalList[0].IsFlying);
     }
 	
 	// Update is called once per frame

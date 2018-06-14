@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 152931109}
   - component: {fileID: 152931108}
   - component: {fileID: 152931105}
+  - component: {fileID: 152931106}
   - component: {fileID: 152931107}
   - component: {fileID: 152931104}
   m_Layer: 0
@@ -303,6 +304,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.6
+--- !u!114 &152931106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152931103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &152931107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,7 +732,7 @@ GameObject:
   - component: {fileID: 374765238}
   - component: {fileID: 374765237}
   m_Layer: 0
-  m_Name: PlayerTower
+  m_Name: PlayerTowerMater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +803,7 @@ GameObject:
   - component: {fileID: 437134851}
   - component: {fileID: 437134854}
   m_Layer: 0
-  m_Name: WeaponIcon
+  m_Name: WeaponIcon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,6 +916,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 1
+  WeaponButtons:
+  - {fileID: 1102565133}
+  - {fileID: 1534746112}
 --- !u!1 &512410443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1141,7 @@ GameObject:
   - component: {fileID: 776868818}
   - component: {fileID: 776868822}
   - component: {fileID: 776868821}
+  - component: {fileID: 776868823}
   m_Layer: 0
   m_Name: Tower_Enemy
   m_TagString: TowerEnemy
@@ -1239,6 +1255,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerBer: {fileID: 5701432}
+--- !u!114 &776868823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776868817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &838778150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1277,7 @@ GameObject:
   - component: {fileID: 838778153}
   - component: {fileID: 838778152}
   m_Layer: 0
-  m_Name: EnemyTower
+  m_Name: EnemyTowerMater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1524,7 +1551,7 @@ GameObject:
   - component: {fileID: 964211651}
   - component: {fileID: 964211655}
   m_Layer: 0
-  m_Name: AnimalIcon
+  m_Name: AnimalIcon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1637,6 +1664,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 3
+  AnimalButtons:
+  - {fileID: 1773874729}
+  - {fileID: 2083528995}
+  WeaponButtons:
+  - {fileID: 1102565133}
+  - {fileID: 1534746112}
+  - {fileID: 437134849}
 --- !u!1 &1006060583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,7 +1889,7 @@ GameObject:
   - component: {fileID: 1102565135}
   - component: {fileID: 1102565138}
   m_Layer: 0
-  m_Name: WeaponIcon
+  m_Name: WeaponIcon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1968,6 +2002,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 1
+  WeaponButtons:
+  - {fileID: 1534746112}
+  - {fileID: 437134849}
 --- !u!1 &1106886892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2617,7 @@ GameObject:
   - component: {fileID: 1534746114}
   - component: {fileID: 1534746117}
   m_Layer: 0
-  m_Name: WeaponIcon
+  m_Name: WeaponIcon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2693,6 +2730,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 1
+  WeaponButtons:
+  - {fileID: 1102565133}
+  - {fileID: 437134849}
 --- !u!1 &1660741341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,7 +2982,7 @@ GameObject:
   - component: {fileID: 1773874731}
   - component: {fileID: 1773874734}
   m_Layer: 0
-  m_Name: AnimalIcon
+  m_Name: AnimalIcon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2990,7 +3030,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3055,6 +3095,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 1
+  AnimalButtons:
+  - {fileID: 964211649}
+  - {fileID: 2083528995}
+  WeaponButtons:
+  - {fileID: 1102565133}
+  - {fileID: 1534746112}
+  - {fileID: 437134849}
 --- !u!1 &1846759278
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,7 +3804,7 @@ GameObject:
   - component: {fileID: 2083528997}
   - component: {fileID: 2083529001}
   m_Layer: 0
-  m_Name: AnimalIcon
+  m_Name: AnimalIcon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3870,6 +3917,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costScript: {fileID: 633445034}
   cost: 3
+  AnimalButtons:
+  - {fileID: 1773874729}
+  - {fileID: 964211649}
+  WeaponButtons:
+  - {fileID: 1102565133}
+  - {fileID: 1534746112}
+  - {fileID: 437134849}
 --- !u!1 &2083976798
 GameObject:
   m_ObjectHideFlags: 0
