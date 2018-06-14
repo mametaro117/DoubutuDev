@@ -19,7 +19,6 @@ public class TowerMater : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float parsent = GetComponent<Totalstatus> ().HitPoint / DefaultTowerHP;
 		TowerBer.GetComponent<RectTransform> ().sizeDelta = new Vector2 (value * GetComponent<Totalstatus> ().HitPoint, TowerBer.GetComponent<RectTransform> ().sizeDelta.y);
 	}
 }

@@ -10,7 +10,7 @@ public class CostScript : MonoBehaviour {
     private const float MaxWeaponCost = 500;
     //  コスト表示のText
     [SerializeField]
-    private Text AnimalCostTxt,WeaponCostText;
+    private GameObject AnimalCostTxt,WeaponCostText;
     //  初期値
     [SerializeField]
     private float DefaultAnimalCost = 100;
@@ -103,8 +103,8 @@ public class CostScript : MonoBehaviour {
     // 値をコストバーに反映
     void CostFixed()
     {
-        AnimalCostTxt.text = Mathf.Floor(AnimalCostPoint / 100).ToString("F0");
-        WeaponCostText.text = Mathf.Floor(WeaponCostPoint / 100).ToString("F0");
+        AnimalCostTxt.GetComponent<Text>().text = Mathf.Floor(AnimalCostPoint / 100).ToString("F0");
+        WeaponCostText.GetComponent<Text>().text = Mathf.Floor(WeaponCostPoint / 100).ToString("F0");
         AnimalRect.sizeDelta = new Vector2(AnimalCostPoint / MaxAnimalCost * MaxAnimalCost, AnimalRect.sizeDelta.y);
         WeaponRect.sizeDelta = new Vector2(WeaponCostPoint / MaxWeaponCost * MaxWeaponCost, WeaponRect.sizeDelta.y);
     }

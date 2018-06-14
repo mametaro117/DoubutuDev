@@ -28,7 +28,6 @@ public class BattleManager : MonoBehaviour {
 
     #endregion Singleton
 
-
     [SerializeField]
     private List<UnitDictionary> AnimalList = new List<UnitDictionary>();
 
@@ -47,8 +46,10 @@ public class BattleManager : MonoBehaviour {
 
 
     void Start () {
-		
-	}
+        Debug.Log(AnimalList[0].Name);
+        Debug.Log(AnimalList[0].HitPoint);
+        Debug.Log(AnimalList[0].IsFlying);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,21 +59,32 @@ public class BattleManager : MonoBehaviour {
     public void AddFieldUnit(GameObject obj)
     {
         OnFieldUnitsList.Add(obj);
+        Debug.Log(obj.name);
     }
 
     void DeathUnit(GameObject obj)
     {
         OnFieldUnitsList.Remove(obj);
+        StartCoroutine(DelayDestry(obj));
     }
     
     public void Attack(GameObject attacker, GameObject deffender)
     {
+        //  攻撃される側のHPを、攻撃側アタック分減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= attacker.GetComponent<Totalstatus>().Attack;
+        //  減らした後のHPを表示
         Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
+        //  HPが「0」以下になったときは削除
         if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
         {
             DeathUnit(deffender);
-            Destroy(deffender);
         }
+    }
+
+    IEnumerator DelayDestry(GameObject deleteObj)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(deleteObj);
+        yield break;
     }
 }

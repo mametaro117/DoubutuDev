@@ -10,7 +10,6 @@ public class DisplayCost : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		obj = transform.parent.gameObject;
-		Debug.Log (obj.transform.name);
 		ApplayCost ();
 	}
 	
