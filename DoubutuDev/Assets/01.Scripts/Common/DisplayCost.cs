@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class DisplayCost : MonoBehaviour {
 
-	private GameObject obj;
+	private GameObject ParentObj;
 
 	// Use this for initialization
 	void Start () {
-		obj = transform.parent.gameObject;
+		ParentObj = transform.parent.gameObject;
 		ApplayCost ();
 	}
 	
@@ -19,14 +19,16 @@ public class DisplayCost : MonoBehaviour {
 	}
 
 	void ApplayCost(){
-		if (obj.GetComponent<WeaponButtonScript>() != null)
+		if (ParentObj.GetComponent<WeaponButtonScript>() != null)
 		{
-			float costnum = obj.GetComponent<WeaponButtonScript>().GetCost();
+            //  武器だったらWeaponButtonScriptを参照
+			float costnum = ParentObj.GetComponent<WeaponButtonScript>().GetCost();
 			transform.GetChild (0).GetComponent<Text> ().text = costnum.ToString ();
 		}
-		else if(obj.GetComponent<AnimalButtonScript>() != null)
+		else if(ParentObj.GetComponent<AnimalButtonScript>() != null)
 		{
-			float costnum = obj.GetComponent<AnimalButtonScript> ().GetCost ();
+            //  動物だったらAnimalButtonScriptを参照
+            float costnum = ParentObj.GetComponent<AnimalButtonScript> ().GetCost ();
 			transform.GetChild (0).GetComponent<Text> ().text = costnum.ToString ();
 		}
 	}

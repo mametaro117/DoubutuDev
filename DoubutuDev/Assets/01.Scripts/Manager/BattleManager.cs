@@ -72,6 +72,8 @@ public class BattleManager : MonoBehaviour {
     {
         //  攻撃される側のHPを、攻撃側アタック分減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= attacker.GetComponent<Totalstatus>().Attack;
+        //  ゲージの割合変化
+        deffender.GetComponent<Totalstatus>().ApplayBer();
         //  減らした後のHPを表示
         Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
         //  HPが「0」以下になったときは削除
