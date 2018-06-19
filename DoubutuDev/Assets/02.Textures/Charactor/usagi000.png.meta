@@ -1,17 +1,18 @@
 fileFormatVersion: 2
 guid: e80fa02187bddea47b33f8dd7ca43bc3
-timeCreated: 1529325745
+timeCreated: 1529368036
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: usagi000_0
-    21300002: usagi000_1
-    21300004: usagi000_2
-    21300006: usagi000_3
-    21300008: usagi000_4
-    21300010: usagi000_5
-    21300012: usagi000_6
-    21300014: usagi000_7
+    21300000: usagi000_R_arm
+    21300002: usagi000_L_arm
+    21300004: usagi000_head
+    21300006: usagi000_body
+    21300008: usagi000_ribbon
+    21300010: usagi000_R_leg
+    21300012: usagi000_L_leg
+    21300014: usagi000_cloth
+    21300016: usagi000_8
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -94,13 +95,104 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: usagi000_6
+      name: usagi000_R_arm
       rect:
         serializedVersion: 2
-        x: 87
-        y: 114
-        width: 211
-        height: 435
+        x: 12
+        y: 320
+        width: 48
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_L_arm
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 320
+        width: 40
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_head
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 191
+        width: 157
+        height: 257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_body
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 155
+        width: 87
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_ribbon
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 121
+        width: 72
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_R_leg
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 10
+        width: 59
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_L_leg
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 8
+        width: 52
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: usagi000_cloth
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 4
+        width: 160
+        height: 115
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

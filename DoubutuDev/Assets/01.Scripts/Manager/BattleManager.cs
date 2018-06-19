@@ -30,6 +30,8 @@ public class BattleManager : MonoBehaviour {
 
     [SerializeField]
     private List<UnitDictionary> AnimalList = new List<UnitDictionary>();
+    [SerializeField]
+    private List<UnitDictionary> WeaponList = new List<UnitDictionary>();
 
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
 
