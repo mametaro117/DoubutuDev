@@ -227,7 +227,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.30147058, g: 0.7976673, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.06963669, g: 0.26043433, b: 0.33823532, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4F1A\u8A71\u30D1\u30FC\u30C8"
+  m_Text: STORY
 --- !u!222 &174767210
 CanvasRenderer:
   m_ObjectHideFlags: 0

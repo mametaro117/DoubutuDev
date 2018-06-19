@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: e80fa02187bddea47b33f8dd7ca43bc3
-timeCreated: 1529044652
-licenseType: Pro
+timeCreated: 1529325745
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: usagi000_0
@@ -94,84 +94,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: usagi000_0
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 1399
-        width: 153
-        height: 341
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: usagi000_1
-      rect:
-        serializedVersion: 2
-        x: 523
-        y: 1402
-        width: 147
-        height: 364
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: usagi000_2
-      rect:
-        serializedVersion: 2
-        x: 961
-        y: 727
-        width: 589
-        height: 964
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: usagi000_3
-      rect:
-        serializedVersion: 2
-        x: 1782
-        y: 1508
-        width: 265
-        height: 239
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: usagi000_4
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 726
-        width: 331
-        height: 502
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: usagi000_5
-      rect:
-        serializedVersion: 2
-        x: 1692
-        y: 840
-        width: 602
-        height: 433
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: usagi000_6
       rect:
         serializedVersion: 2
@@ -180,20 +102,7 @@ TextureImporter:
         width: 211
         height: 435
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: usagi000_7
-      rect:
-        serializedVersion: 2
-        x: 622
-        y: 104
-        width: 193
-        height: 432
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
