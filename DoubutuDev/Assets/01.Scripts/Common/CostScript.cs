@@ -86,6 +86,9 @@ public class CostScript : MonoBehaviour {
             return false; 
     }
 
+    /// <summary>
+    /// コストが足りているか
+    /// </summary>
     public bool IsCreate()
     {
         if (AnimalCostPoint >= AnimalCost * 100 && WeaponCostPoint >= WeaponCost * 100)
@@ -94,7 +97,9 @@ public class CostScript : MonoBehaviour {
             return false;
     }
 
-    //  値をコストバーに反映
+    /// <summary>
+    /// 値をコストバーに反映
+    /// </summary>
     void CostFixed()
     {
         AnimalCostTxt.text = Mathf.Floor(AnimalCostPoint / 100).ToString("F0");

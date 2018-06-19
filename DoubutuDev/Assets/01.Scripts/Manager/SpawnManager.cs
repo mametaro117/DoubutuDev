@@ -35,7 +35,10 @@ public class SpawnManager : MonoBehaviour {
                 var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 0;
                 GameObject obj = Instantiate(prefab, new Vector3(pos.x, pos.y, pos.z), prefab.transform.rotation);
-                //obj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+                obj.AddComponent<Totalstatus>();
+                obj.GetComponent<Totalstatus>().SetStatus(10, 3, 1, false);
+
                 Debug.Log(pos);
             }
             else

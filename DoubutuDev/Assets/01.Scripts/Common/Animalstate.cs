@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animalstatus : MonoBehaviour {
+public class Animalstate : MonoBehaviour {
 
+
+    //-----------------------
     private int StateNum = 0;
     [SerializeField]
     private int NowStateNum = 0;
     private Animator animator;
+    //-----------------------
 
-    // Use this for initialization
+
     void Start () {
         animator = GetComponent<Animator>();
         //Debug.Log("Start");
@@ -60,14 +63,6 @@ public class Animalstatus : MonoBehaviour {
             default:
                 break;
         }
-
-        //if (NowStateNum == 1)
-        //{
-        //    //  ローカル変数の宣言
-        //    Vector3 v;
-        //    v = new Vector3(transform.position.x - 0.01f, transform.position.y, transform.position.z);
-        //    transform.position = v;
-        //}
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -87,12 +82,9 @@ public class Animalstatus : MonoBehaviour {
 
     IEnumerator Depoly()
     {
-        //Debug.Log("コルーチン１");
+        yield return null;
         yield return new WaitForSeconds(2.0f);
         StateNum = 1;
-        //Debug.Log("コルーチン２");
-        yield return new WaitForSeconds(2.0f);        
-        //Debug.Log("コルーチン３");
         yield break;
     }    
 }

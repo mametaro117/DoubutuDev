@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212412399984152502}
   - component: {fileID: 95609835428530414}
   - component: {fileID: 58679086793473096}
-  - component: {fileID: 114264622585473482}
   - component: {fileID: 50204997927241998}
+  - component: {fileID: 114264622585473482}
   m_Layer: 0
   m_Name: Bird_Sprite
   m_TagString: Player
