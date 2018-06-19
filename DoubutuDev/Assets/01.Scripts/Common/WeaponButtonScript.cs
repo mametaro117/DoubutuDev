@@ -13,6 +13,9 @@ public class WeaponButtonScript : MonoBehaviour {
     [SerializeField]
     private float cost;
 
+    [SerializeField]
+    private GameObject[] WeaponButtons = new GameObject[2];
+
 
     // Use this for initialization
     void Start()
@@ -23,7 +26,17 @@ public class WeaponButtonScript : MonoBehaviour {
 
     void TapWeaponButton()
     {
-        costScript.SetWeaponCost(cost);
+        //  武器の選択
+        costScript.SetWeaponObj(gameObject);
+
+        //  押している状態にボタンを変更
+        GetComponent<Button>().interactable = false;
+        //  このボタン以外を選択解除する
+        for (int i = 0; i < WeaponButtons.Length; i++)
+        {
+            WeaponButtons[i].GetComponent<Button>().interactable = true;
+        }
+
     }
 
     public float GetCost()

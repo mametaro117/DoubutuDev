@@ -4,21 +4,92 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour {
 
-    private static List<GameObject> AnimalList = new List<GameObject>();
+    #region Singleton
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private static BattleManager instance;
+
+    public static BattleManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = (BattleManager)FindObjectOfType(typeof(BattleManager));
+
+                if (instance == null)
+                {
+                    Debug.LogError(typeof(BattleManager) + "is nothing");
+                }
+            }
+
+            return instance;
+        }
+    }
+
+    #endregion Singleton
+
+    [SerializeField]
+    private List<UnitDictionary> AnimalList = new List<UnitDictionary>();
+    [SerializeField]
+    private List<UnitDictionary> WeaponList = new List<UnitDictionary>();
+
+    private List<GameObject> OnFieldUnitsList = new List<GameObject>();
+
+    public void Awake()
+    {
+        if (this != Instance)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+
+    void Start () {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public static void AddAnimals(GameObject obj)
+    public void AddFieldUnit(GameObject obj)
     {
-        AnimalList.Add(obj);
-        Debug.Log(AnimalList.Count);
+        OnFieldUnitsList.Add(obj);
+        Debug.Log(obj.name);
+    }
+
+    void DeathUnit(GameObject obj)
+    {
+        OnFieldUnitsList.Remove(obj);
+        StartCoroutine(DelayDestry(obj));
+    }
+    
+    public void Attack(GameObject attacker, GameObject deffender)
+    {
+        //  攻撃される側のHPを、攻撃側アタック分減らす
+        deffender.GetComponent<Totalstatus>().HitPoint -= attacker.GetComponent<Totalstatus>().Attack;
+        //  ゲージの割合変化
+        if (deffender.tag == "Enemy")
+        {
+            deffender.GetComponent<Totalstatus>().ApplayBer();
+        }
+        //  減らした後のHPを表示
+        Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
+        //  HPが「0」以下になったときは削除
+        if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
+        {
+            DeathUnit(deffender);
+        }
+    }
+
+    IEnumerator DelayDestry(GameObject deleteObj)
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(deleteObj);
+        yield break;
     }
 }

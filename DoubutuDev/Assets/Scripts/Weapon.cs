@@ -11,16 +11,12 @@ public class Weapon : MonoBehaviour
     private bool wea = false;
     public void OnMouseDown()
     {
-        float x = Input.mousePosition.x;
-        float y = Input.mousePosition.y;
         _orgPosition = transform.position;
         offset = transform.position - Camera.main.ScreenToWorldPoint
             (new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z));
     }
     public void OnMouseDrag()
     {
-        float x = Input.mousePosition.x;
-        float y = Input.mousePosition.y;
         Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + offset;
         transform.position = currentPosition;
