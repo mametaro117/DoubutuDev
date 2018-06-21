@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - weapon1
-  - bird
   - elephant
   - rabbit
-  - dog
+  - owl
+  - penguin
+  - secret
   layers:
   - Default
   - TransparentFX
