@@ -53,7 +53,7 @@ public class CostScript : MonoBehaviour {
     {
         WeaponObj = weapon;
     }
-    //  動物のコストが変化したら武器のコストを消費関数が実行できないように負の値にへ
+    //  動物のコストが変化したら武器のコストを消費関数が実行できないように
     public void DeleteWeaponCost()
     {
         WeaponObj = null;
@@ -98,6 +98,12 @@ public class CostScript : MonoBehaviour {
             return true;
         else
             return false;
+    }
+
+    //  どの動物を選んでいるか
+    public int GetSelectNum()
+    {
+        return AnimalObj.GetComponent<AnimalButtonScript>().GetSelectNum();
     }
 
     // 値をコストバーに反映

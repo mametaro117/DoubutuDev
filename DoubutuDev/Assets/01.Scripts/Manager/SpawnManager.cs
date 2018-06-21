@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour {
     private CostScript costScript;
 
     [SerializeField]
-    private GameObject prefab;
+    private GameObject ColObj;
 
     [SerializeField]
     private GameObject[] units = new GameObject[3];
@@ -41,10 +41,12 @@ public class SpawnManager : MonoBehaviour {
                 var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 0;
                 //  インスタンス生成
-                GameObject obj = Instantiate(prefab, new Vector3(pos.x, pos.y, pos.z), prefab.transform.rotation);
-                //  生成したobjにステータスをset
-                obj.GetComponent<Totalstatus>().SetStatus(10, 3, 1, false);
-                Debug.Log(pos);
+                GameObject obj = Instantiate(units[costScript.GetSelectNum()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNum()].transform.rotation);
+
+                GameObject col = Instantiate(ColObj, new Vector3(obj.transform.position.x, obj.transform.position.y, 0), Quaternion.identity, obj.transform);
+                //  生成したobjにステータスを設定
+                //obj.GetComponent<Totalstatus>().SetStatus(10, 3, 1, false);
+                //Debug.Log(pos);
             }
             else
             {
@@ -53,7 +55,7 @@ public class SpawnManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("選んでないよ");
+            Debug.Log("ボタン選んでないよ");
         }        
     }
 
