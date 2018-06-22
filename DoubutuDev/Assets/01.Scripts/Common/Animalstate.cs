@@ -7,6 +7,8 @@ public class Animalstate : MonoBehaviour {
     private int StateNum = 0;
     [SerializeField]
     private int NowStateNum = 0;
+    [SerializeField]
+    private bool isEnemy;
     private Animator animator;
 
 

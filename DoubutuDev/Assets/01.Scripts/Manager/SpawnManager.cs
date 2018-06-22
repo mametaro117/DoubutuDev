@@ -23,7 +23,10 @@ public class SpawnManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            BattleManager.i++;
+        }
 	}
 
     public void ClickGround()
@@ -43,24 +46,22 @@ public class SpawnManager : MonoBehaviour {
                 //  インスタンス生成
                 GameObject obj = Instantiate(units[costScript.GetSelectNum()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNum()].transform.rotation);
 
-                GameObject col = Instantiate(ColObj, new Vector3(obj.transform.position.x, obj.transform.position.y, 0), Quaternion.identity, obj.transform);
+                GameObject col = Instantiate(ColObj, new Vector3(obj.transform.position.x, obj.transform.position.y, 0), Quaternion.identity);
                 //  生成したobjにステータスを設定
                 //obj.GetComponent<Totalstatus>().SetStatus(10, 3, 1, false);
                 //Debug.Log(pos);
             }
             else
-            {
                 Debug.Log("コストが足りない");
-            }
         }
         else
-        {
-            Debug.Log("ボタン選んでないよ");
-        }        
+            Debug.Log("ボタン選んでないよ");        
     }
 
     public void DragGround()
     {
 
     }
+
+    
 }

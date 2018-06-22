@@ -2,6 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.SerializableAttribute]
+public class AnimalList
+{
+    public List<UnitDictionary> List = new List<UnitDictionary>();
+
+    public AnimalList(List<UnitDictionary> list)
+    {
+        List = list;
+    }
+}
+
+
+
 public class BattleManager : MonoBehaviour {
 
     #region Singleton
@@ -28,12 +41,22 @@ public class BattleManager : MonoBehaviour {
 
     #endregion Singleton
 
+
+    public enum WeaponType
+    {
+        Sword, Shield, Arrow
+    };
+
     [SerializeField]
-    private List<UnitDictionary> AnimalList = new List<UnitDictionary>();
-    [SerializeField]
-    private List<UnitDictionary> WeaponList = new List<UnitDictionary>();
+    private WeaponType weaponType;
 
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
+
+    //Inspectorに表示される
+    [SerializeField]
+    private List<AnimalList> _animalListList = new List<AnimalList>();
+
+
 
     public void Awake()
     {
@@ -53,7 +76,7 @@ public class BattleManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        Debug.Log(i);
 	}
 
     public void AddFieldUnit(GameObject obj)
