@@ -41,7 +41,6 @@ public class BattleManager : MonoBehaviour {
 
     #endregion Singleton
 
-
     public enum WeaponType
     {
         Sword, Shield, Arrow
@@ -76,7 +75,7 @@ public class BattleManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(i);
+
 	}
 
     public void AddFieldUnit(GameObject obj)

@@ -23,10 +23,7 @@ public class SpawnManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            BattleManager.i++;
-        }
+
 	}
 
     public void ClickGround()
