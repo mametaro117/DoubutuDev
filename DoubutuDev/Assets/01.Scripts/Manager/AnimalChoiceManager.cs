@@ -20,6 +20,13 @@ public class AnimalChoiceManager : MonoBehaviour {
 		
 	}
 
+    public void EraseToolTip()
+    {
+        GameObject Manager = GameObject.Find("ToolTipsManager");
+        ToolTipsManager TT_Manager = Manager.GetComponent<ToolTipsManager>();
+        TT_Manager.EraseToolTips();
+    }
+
     public void SelectColumnClick(GameObject obj)
     {
         Debug.Log("SelectListタップ！");
@@ -30,9 +37,6 @@ public class AnimalChoiceManager : MonoBehaviour {
     {
         Debug.Log("AnimalListタップ！");
         Debug.Log(obj.name);
-        //ここに詳細パネル表示を埋め込む
-        //entry point
-
     }
 
     public void AnimalDrag(GameObject ChildObj)
@@ -100,7 +104,7 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void BackHome(GameObject obj)
     {
-        foreach(Transform child in obj.transform)
+        foreach (Transform child in obj.transform)
         {
             //Debug.Log(child.name);
             int strlength = child.name.Length;

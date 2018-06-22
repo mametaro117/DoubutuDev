@@ -17,7 +17,8 @@ public class ToolTipsManager : MonoBehaviour
     private GameObject Animal_Obj_Penguin;
     [SerializeField]
     private Transform parent;
-   
+    private GameObject ToolTip;
+
     //ゾウさんのTips
     private string name_Ele = "名前:ゾウ";
     private string tokusei_Ele = "特性:巨大";
@@ -34,6 +35,10 @@ public class ToolTipsManager : MonoBehaviour
     private string name_Pen = "名前:ぺんぎん";
     private string tokusei_Pen = "特性:小型";
     private string speed_Pen = "スピード:3";
+    //未実装
+    private string name_Sec = "名前:";
+    private string tokusei_Sec = "特性:";
+    private string speed_Sec = "スピード:";
 
     private Vector3 pos;
     private RaycastHit2D hit;
@@ -44,49 +49,76 @@ public class ToolTipsManager : MonoBehaviour
 
     void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            hit = Physics2D.Raycast(pos, new Vector3(0, 0, 1), 100);
-            if (hit.collider.tag == "rabbit"){ Debug.Log("aaaaa"); } 
-            //ToolTips_Animal();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        hit = Physics2D.Raycast(pos, new Vector3(0, 0, 1), 100);
+
+    //        ToolTips_Animal();
+    //    }
+    //    if (Input.GetMouseButtonUp(0))
+    //    {
             
-        }
+    //    }
 	}
 
-    private void ToolTips_Animal()
+    //ツールチップを消す
+    public void EraseToolTips()
     {
-        GameObject obj = Instantiate(ToolPrefabs, parent);
-        if (hit.transform.gameObject.name == "Animal_Obj_Rabbit")
+        //消す
+        Destroy(ToolTip);
+        //値をnullに戻す
+        ToolTip = null;
+        //Debug.Log("<color=red>Erase</color>");
+    }
+
+    public void ToolTips_Animal(GameObject obj)
+    {
+        //ツールチップの位置を指定する
+        int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
+        Vector2 pos = obj.transform.position;
+        GameObject canvas = GameObject.Find("Canvas");
+        //ツールチップが表示されていない時は、色々指定する
+        if (ToolTip == null)
         {
-        obj.transform.GetChild(0).GetComponent<Text>().text = name_Rab;
-        obj.transform.GetChild(1).GetComponent<Text>().text = tokusei_Rab;
-        obj.transform.GetChild(2).GetComponent<Text>().text = speed_Rab;
-        Debug.Log("この動物は「うさぎ」です");
+            ToolTip = Instantiate(ToolPrefabs, pos, Quaternion.identity);
+            ToolTip.transform.SetParent(canvas.transform);
+            var RectTransform = ToolTip.GetComponent<RectTransform>();
+            RectTransform.localScale = new Vector3(1, 1, 1);
         }
-        if (gameObject.name == "Column2")
+        else
         {
-        obj.transform.GetChild(0).GetComponent<Text>().text = name_Owl;
-        obj.transform.GetChild(1).GetComponent<Text>().text = tokusei_Owl;
-        obj.transform.GetChild(2).GetComponent<Text>().text = speed_Owl;
-        Debug.Log("この動物は「ふくろう」です");
+            ToolTip.transform.position = pos;
         }
-        if (gameObject.name == "Column3")
+        
+        //ToolTipのテキストを変更する
+        switch (objnum)
         {
-        obj.transform.GetChild(0).GetComponent<Text>().text = name_Ele;
-        obj.transform.GetChild(1).GetComponent<Text>().text = tokusei_Ele;
-        obj.transform.GetChild(2).GetComponent<Text>().text = speed_Ele;
-        Debug.Log("この動物は「ぞう」です");
-        }
-        if (gameObject.name == "Column4")
-        {
-        obj.transform.GetChild(0).GetComponent<Text>().text = name_Pen;
-        obj.transform.GetChild(1).GetComponent<Text>().text = tokusei_Pen;
-        obj.transform.GetChild(2).GetComponent<Text>().text = speed_Pen;
-        Debug.Log("この動物は「ペンギン」です");
+            case 1:
+                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Rab;
+                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Rab;
+                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Rab;
+                break;
+            case 2:
+                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Owl;
+                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Owl;
+                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Owl;
+                break;
+            case 3:
+                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Ele;
+                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Ele;
+                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Ele;
+                break;
+            case 4:
+                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Pen;
+                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Pen;
+                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Pen;
+                break;
+            default:
+                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Sec;
+                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Sec;
+                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Sec;
+                break;
         }
     }
 }
