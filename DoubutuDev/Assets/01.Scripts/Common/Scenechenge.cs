@@ -19,7 +19,21 @@ public class Scenechenge : MonoBehaviour {
     {
         Debug.Log("TAP");
         if (!isPlay)
-            StartCoroutine(ChengeSceneCol(scenenum));
+        {
+            if(scenenum == 3)
+            {
+                AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
+                if(Manager.AnimalSetCheck())
+                {
+                    //SelectAnimalListを渡す
+                    StartCoroutine(ChengeSceneCol(scenenum));
+                }
+            }
+            else
+            {
+                StartCoroutine(ChengeSceneCol(scenenum));
+            }
+        }
     }
 
     IEnumerator ChengeSceneCol(int scenenum)
