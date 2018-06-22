@@ -67,7 +67,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                             obj.transform.SetParent(Parent.transform);
                             SelectList1Active = true;
                             SelectAnimalList[i - 1] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            Debug.Log(SelectAnimalList[i - 1]);
+                            //Debug.Log(SelectAnimalList[i - 1]);
                             Debug.Log("1枠に挿入");
                             break;
                         case 2:
@@ -102,10 +102,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     {
         foreach(Transform child in obj.transform)
         {
-            Debug.Log(child.name);
+            //Debug.Log(child.name);
             int strlength = child.name.Length;
             int BoxNum = int.Parse(child.name.Substring(strlength - 1));
-            Debug.Log(BoxNum);
+            //Debug.Log(BoxNum);
             switch(BoxNum)
             {
                 case 1:
