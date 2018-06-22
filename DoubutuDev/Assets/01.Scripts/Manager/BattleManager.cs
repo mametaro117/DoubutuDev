@@ -46,16 +46,11 @@ public class BattleManager : MonoBehaviour {
         Sword, Shield, Arrow
     };
 
-    [SerializeField]
-    private WeaponType weaponType;
-
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
 
     //Inspectorに表示される
     [SerializeField]
     private List<AnimalList> _animalListList = new List<AnimalList>();
-
-
 
     public void Awake()
     {
@@ -64,20 +59,13 @@ public class BattleManager : MonoBehaviour {
             Destroy(this.gameObject);
             return;
         }
-
         DontDestroyOnLoad(this.gameObject);
     }
-
 
     void Start () {
 
     }
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
     public void AddFieldUnit(GameObject obj)
     {
         OnFieldUnitsList.Add(obj);
@@ -106,6 +94,18 @@ public class BattleManager : MonoBehaviour {
         {
             DeathUnit(deffender);
         }
+    }
+
+    //  ダメージの倍率チェック
+    public float TypeCheck(GameObject attacker, GameObject deffender)
+    {
+        float num;
+        if (attacker.GetComponent<Totalstatus>().IsSky == true && deffender.GetComponent<Totalstatus>().IsSky == false)
+        {
+            num = 1.5f;
+            return num;
+        }
+        return 1f;
     }
 
     IEnumerator DelayDestry(GameObject deleteObj)
