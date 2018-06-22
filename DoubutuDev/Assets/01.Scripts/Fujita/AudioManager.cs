@@ -8,9 +8,18 @@ public class AudioManager : MonoBehaviour {
     AudioClip[]SeList = new AudioClip[5];
 
     AudioSource audioSource;
+
+    [SerializeField]
+    AudioClip BgmLoopAudioClip;
+
+    AudioSource loopAudioSours;
+    
     
 	void Start () {
         audioSource = GetComponent<AudioSource>();
+
+        loopAudioSours.clip = BgmLoopAudioClip;
+        loopAudioSours.loop = true;
 	}
 
     Vector3 vec3;
@@ -39,5 +48,25 @@ public class AudioManager : MonoBehaviour {
         {
             PlaySe(1);
         }
+    }
+
+    public void PlayBgm()
+    {
+        if(loopAudioSours == null)
+        {
+            return;
+        }
+    }
+    public void StopBgm()
+    {
+        if (loopAudioSours == null)
+        {
+            return;
+        }
+    }
+
+    public void Volume()
+    {
+       // if()
     }
 }
