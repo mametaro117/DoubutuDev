@@ -8,7 +8,13 @@ public class AnimalChoiceManager : MonoBehaviour {
     bool SelectList1Active;
     bool SelectList2Active;
     bool SelectList3Active;
-    int[] SelectAnimalList = new int[3];
+    // [動物id, 武器id1, 武器id2, 武器id3]
+    int[,] SelectAnimalList = new int[3,4];
+    enum ChoiceState
+    {
+        Animal,
+        equip,
+    }
 
     // Use this for initialization
     void Start () {
@@ -70,22 +76,22 @@ public class AnimalChoiceManager : MonoBehaviour {
                         case 1:
                             obj.transform.SetParent(Parent.transform);
                             SelectList1Active = true;
-                            SelectAnimalList[i - 1] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            //Debug.Log(SelectAnimalList[i - 1]);
+                            SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                            //Debug.Log(SelectAnimalList[i - 1, 0]);
                             Debug.Log("1枠に挿入");
                             break;
                         case 2:
                             obj.transform.SetParent(Parent.transform);
                             SelectList2Active = true;
-                            SelectAnimalList[i - 1] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            Debug.Log(SelectAnimalList[i - 1]);
+                            SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                            Debug.Log(SelectAnimalList[i - 1, 0]);
                             Debug.Log("2枠に挿入");
                             break;
                         case 3:
                             obj.transform.SetParent(Parent.transform);
                             SelectList3Active = true;
-                            SelectAnimalList[i - 1] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            Debug.Log(SelectAnimalList[i - 1]);
+                            SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                            Debug.Log(SelectAnimalList[i - 1, 0]);
                             Debug.Log("3枠に挿入");
                             break;
                         default:
