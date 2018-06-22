@@ -43,10 +43,6 @@ public class ToolTipsManager : MonoBehaviour
     private Vector3 pos;
     private RaycastHit2D hit;
 
-    private void Start()
-    {
-    }
-
     void Update ()
     {
     //    if (Input.GetMouseButtonDown(0))
