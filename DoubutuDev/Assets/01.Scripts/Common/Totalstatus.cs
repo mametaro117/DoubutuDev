@@ -5,10 +5,18 @@ using UnityEngine;
 public class Totalstatus : MonoBehaviour {
 
     //  ステータス
-    public int HitPoint;
+    public float HitPoint;
     public int Attack;
     public int Size;
     public bool IsSky;
+
+    public enum WeaponType
+    {
+        Sword, Shield, Arrow
+    };
+
+    public WeaponType weaponType = WeaponType.Sword;
+
 
     private float MaxHP;
     private GameObject BerObj;
@@ -22,7 +30,7 @@ public class Totalstatus : MonoBehaviour {
             BerObj = transform.GetChild(0).GetChild(0).gameObject;        
     }
 
-    public void SetStatus(int HP,int ATK, int size, bool issky)
+    public void SetStatus(float HP,int ATK, int size, bool issky)
     {
         HitPoint = HP;
         Attack = ATK;

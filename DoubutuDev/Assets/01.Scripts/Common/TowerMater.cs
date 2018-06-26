@@ -7,14 +7,14 @@ public class TowerMater : MonoBehaviour {
 	[SerializeField]
 	private GameObject TowerBer;
 
-	private int DefaultTowerHP;
+	private float DefaultTowerHP;
 
 	private float value;
 
 	// Use this for initialization
 	void Start () {
 		DefaultTowerHP = GetComponent<Totalstatus> ().HitPoint;
-		value = 500 / DefaultTowerHP;
+		value = 750 / DefaultTowerHP;
 	}
 	
 	// Update is called once per frame

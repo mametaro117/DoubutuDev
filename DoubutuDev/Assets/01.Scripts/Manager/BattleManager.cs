@@ -14,7 +14,6 @@ public class AnimalList
 }
 
 
-
 public class BattleManager : MonoBehaviour {
 
     #region Singleton
@@ -40,11 +39,6 @@ public class BattleManager : MonoBehaviour {
     }
 
     #endregion Singleton
-
-    public enum WeaponType
-    {
-        Sword, Shield, Arrow
-    };
 
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
 
@@ -80,8 +74,12 @@ public class BattleManager : MonoBehaviour {
     
     public void Attack(GameObject attacker, GameObject deffender)
     {
-        //  攻撃される側のHPを、攻撃側アタック分減らす
-        deffender.GetComponent<Totalstatus>().HitPoint -= attacker.GetComponent<Totalstatus>().Attack;
+        //  ダメージの計算
+        float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
+        //  攻撃される側のHPを減らす
+        deffender.GetComponent<Totalstatus>().HitPoint -= damage;
+        //  ダメージの表示
+        DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ゲージの割合変化
         if (deffender.tag == "Enemy")
         {
@@ -99,13 +97,46 @@ public class BattleManager : MonoBehaviour {
     //  ダメージの倍率チェック
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {
-        float num;
-        if (attacker.GetComponent<Totalstatus>().IsSky == true && deffender.GetComponent<Totalstatus>().IsSky == false)
+        float num = 1;
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
         {
             num = 1.5f;
+            Debug.Log("効果抜群！");
             return num;
         }
-        return 1f;
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow)
+        {
+            num = 0.5f;
+            Debug.Log("効果いまひとつ…");
+            return num;
+        }
+
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow)
+        {
+            num = 1.5f;
+            Debug.Log("効果抜群！");
+            return num;
+        }
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword)
+        {
+            num = 0.5f;
+            Debug.Log("効果いまひとつ…");
+            return num;
+        }
+
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword)
+        {
+            num = 1.5f;
+            Debug.Log("効果抜群！");
+            return num;
+        }
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
+        {
+            num = 0.5f;
+            Debug.Log("効果いまひとつ…");
+            return num;
+        }
+        return num;
     }
 
     IEnumerator DelayDestry(GameObject deleteObj)
