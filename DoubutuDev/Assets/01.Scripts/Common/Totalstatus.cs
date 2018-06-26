@@ -43,7 +43,6 @@ public class Totalstatus : MonoBehaviour {
     {
         float parcent = HitPoint / MaxHP;
         parcent = Mathf.Max(0, parcent);
-        Debug.Log("割合：" + parcent);
         BerObj.transform.localScale = new Vector3(parcent, BerObj.transform.localScale.y, BerObj.transform.localScale.z);
     }
 }

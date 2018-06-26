@@ -1026,6 +1026,7 @@ MonoBehaviour:
   Attack: 5
   Size: 0
   IsSky: 0
+  weaponType: 0
 --- !u!114 &114909311652091244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NowStateNum: 0
+  isEnemy: 0
 --- !u!114 &114995904235618014
 MonoBehaviour:
   m_ObjectHideFlags: 1

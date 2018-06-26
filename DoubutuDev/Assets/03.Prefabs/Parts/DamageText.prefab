@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4510968534316168}
   - component: {fileID: 23501730640721564}
-  - component: {fileID: 102288596023717338}
   - component: {fileID: 50056785354015906}
+  - component: {fileID: 102514833931880954}
   m_Layer: 0
   m_Name: DamageText
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: af783a4dc7118da428fa97b54a1e5dfa, type: 3}
+  - {fileID: 2100000, guid: bf882ea178a999648a63680a4a04ac5d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,18 +94,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!102 &102288596023717338
+--- !u!102 &102514833931880954
 TextMesh:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1853937615045822}
-  m_Text: '0
-
-'
+  m_Text: 0
   m_OffsetZ: 0
-  m_CharacterSize: 0.15
+  m_CharacterSize: 0.3
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -113,7 +111,7 @@ TextMesh:
   m_FontSize: 0
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: af783a4dc7118da428fa97b54a1e5dfa, type: 3}
+  m_Font: {fileID: 12800000, guid: bf882ea178a999648a63680a4a04ac5d, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
