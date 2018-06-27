@@ -11,9 +11,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     int[] SelectAnimalList = new int[3];
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        EffectManager.Instance_Effect.SingleTest();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,15 +31,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     {
         Debug.Log("AnimalListタップ！");
         Debug.Log(obj.name);
-        //ここに詳細パネル表示を埋め込む
-        //entry point
-
     }
 
     public void AnimalDrag(GameObject ChildObj)
     {
-        //Parentのオブジェクトを取得しても意味は無いけどメモ程度に残す
-        GameObject ParentObj = ChildObj.transform.parent.gameObject;
         Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         ChildObj.transform.position = TapPos;
     }
@@ -137,5 +133,4 @@ public class AnimalChoiceManager : MonoBehaviour {
         }
         return false;
     }
-
 }
