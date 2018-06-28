@@ -13,7 +13,7 @@ public class AnimalChoiceManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        EffectManager.Instance_Effect.SingleTest();
+        //EffectManager.Instance_Effect.PlayEffect_Magic(new Vector2(2, 2));
     }
 	
 	// Update is called once per frame

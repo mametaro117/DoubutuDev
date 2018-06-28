@@ -51,3 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e68c9d7479ac9714396220ddbb33babd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Effect_Dia: {fileID: 100000, guid: aa3fed151f536ee49b583c6a3ac4a2e1, type: 2}
+  Effect_Heart: {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 2}
+  Effect_Star: {fileID: 100006, guid: 8fc06027b01064e4f885fd8dd2929310, type: 2}
+  Effect_Spark: {fileID: 1995403933065894, guid: 4961a16ba01e09547be3e1c9d16d5ad0,
+    type: 2}
+  Effect_Light: {fileID: 100004, guid: 757df604761b8ef42831192c70ee1099, type: 2}
+  Effect_Smoke: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 2}
+  Effect_Firework: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f,
+    type: 2}
+  Effect_Hit: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 2}
+  Effect_Magic: {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 2}
