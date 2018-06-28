@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: e80fa02187bddea47b33f8dd7ca43bc3
-timeCreated: 1529368036
+guid: b0e9acfd524688c439aeac0a9cb6b1ef
+timeCreated: 1530209725
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: usagi000_R_arm
-    21300002: usagi000_L_arm
-    21300004: usagi000_head
-    21300006: usagi000_body
-    21300008: usagi000_ribbon
-    21300010: usagi000_R_leg
-    21300012: usagi000_L_leg
-    21300014: usagi000_cloth
-    21300016: usagi000_8
+    21300000: zou00_barabara_0
+    21300002: zou00_barabara_1
+    21300004: zou00_barabara_2
+    21300006: zou00_barabara_3
+    21300008: zou00_barabara_4
+    21300010: zou00_barabara_5
+    21300012: zou00_barabara_6
+    21300014: zou00_barabara_7
+    21300016: zou00_barabara_8
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -103,106 +103,119 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: usagi000_R_arm
+      name: zou00_barabara_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 320
-        width: 48
-        height: 93
+        x: 141
+        y: 716
+        width: 129
+        height: 158
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_L_arm
+      name: zou00_barabara_1
       rect:
         serializedVersion: 2
-        x: 72
-        y: 320
-        width: 40
-        height: 96
+        x: 408
+        y: 718
+        width: 144
+        height: 158
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_head
+      name: zou00_barabara_2
       rect:
         serializedVersion: 2
-        x: 132
-        y: 191
-        width: 157
-        height: 257
+        x: 85
+        y: 522
+        width: 175
+        height: 86
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_body
+      name: zou00_barabara_3
       rect:
         serializedVersion: 2
-        x: 14
-        y: 155
-        width: 87
-        height: 133
+        x: 402
+        y: 520
+        width: 170
+        height: 152
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_ribbon
+      name: zou00_barabara_4
       rect:
         serializedVersion: 2
-        x: 177
-        y: 121
-        width: 72
-        height: 64
+        x: 117
+        y: 298
+        width: 98
+        height: 105
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_R_leg
+      name: zou00_barabara_5
       rect:
         serializedVersion: 2
-        x: 1
-        y: 10
-        width: 59
-        height: 115
+        x: 320
+        y: 299
+        width: 80
+        height: 110
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_L_leg
+      name: zou00_barabara_6
       rect:
         serializedVersion: 2
-        x: 65
-        y: 8
-        width: 52
-        height: 117
+        x: 477
+        y: 274
+        width: 124
+        height: 187
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: usagi000_cloth
+      name: zou00_barabara_7
       rect:
         serializedVersion: 2
-        x: 131
-        y: 4
-        width: 160
-        height: 115
+        x: 120
+        y: 98
+        width: 70
+        height: 108
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zou00_barabara_8
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 99
+        width: 67
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

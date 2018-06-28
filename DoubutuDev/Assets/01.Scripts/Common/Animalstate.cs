@@ -75,13 +75,12 @@ public class Animalstate : MonoBehaviour {
         }
     }
 
-
     bool isAttack = false;
 
     void OnTriggerStay2D(Collider2D collision)
     {
         //  当たった対象が敵もしくはタワーなら攻撃
-        if (collision.tag == "Enemy" || collision.tag == "TowerEnemy")
+        if (collision.tag == "Enemy" || collision.tag == "EnemyTower")
         {
             if (!isAttack)
             {

@@ -7,7 +7,7 @@ public class Totalstatus : MonoBehaviour {
     //  ステータス
     public float HitPoint;
     public int Attack;
-    public int Size;
+    public float Speed;
     public bool IsSky;
 
     public enum WeaponType
@@ -24,17 +24,17 @@ public class Totalstatus : MonoBehaviour {
     void Start()
     {
         MaxHP = HitPoint;
-        Debug.Log(gameObject.name +"のHP: " + MaxHP);
+        Debug.Log(gameObject.name +" HP: " + MaxHP);
         //  HPバーオブジェクトがあったら
         if(transform.childCount != 0)
             BerObj = transform.GetChild(0).GetChild(0).gameObject;        
     }
 
-    public void SetStatus(float HP,int ATK, int size, bool issky)
+    public void SetStatus(float HP,int ATK, float SPD, bool issky)
     {
         HitPoint = HP;
         Attack = ATK;
-        Size = size;
+        Speed = SPD;
         IsSky = issky;
     }
     

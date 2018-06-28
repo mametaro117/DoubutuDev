@@ -8,6 +8,9 @@ public class CostScript : MonoBehaviour {
     //  コストの最大値
     private const float MaxAnimalCost = 500;
     private const float MaxWeaponCost = 500;
+    //  コストバーの最大幅取得
+    private Vector2 BarRect;
+
     //  コスト表示のText
     [SerializeField]
     private GameObject AnimalCostTxt,WeaponCostText;
@@ -28,6 +31,8 @@ public class CostScript : MonoBehaviour {
 
 
     void Start () {
+        //  バーのサイズ設定
+        BarRect = AnimalrectObj.GetComponent<RectTransform>().sizeDelta;
         //  コストの初期化
         AnimalCostPoint = DefaultAnimalCost;
         WeaponCostPoint = DefaultWeaponCost;
@@ -111,7 +116,7 @@ public class CostScript : MonoBehaviour {
     {
         AnimalCostTxt.GetComponent<Text>().text = Mathf.Floor(AnimalCostPoint / 100).ToString("F0");
         WeaponCostText.GetComponent<Text>().text = Mathf.Floor(WeaponCostPoint / 100).ToString("F0");
-        AnimalRect.sizeDelta = new Vector2(AnimalCostPoint / MaxAnimalCost * MaxAnimalCost, AnimalRect.sizeDelta.y);
-        WeaponRect.sizeDelta = new Vector2(WeaponCostPoint / MaxWeaponCost * MaxWeaponCost, WeaponRect.sizeDelta.y);
+        AnimalRect.sizeDelta = new Vector2(BarRect.x * (AnimalCostPoint / MaxAnimalCost), AnimalRect.sizeDelta.y);
+        WeaponRect.sizeDelta = new Vector2(BarRect.x * (WeaponCostPoint / MaxWeaponCost), WeaponRect.sizeDelta.y);
     }
 }

@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114747774654871692}
   m_Layer: 0
   m_Name: Bird_Sprite
-  m_TagString: Player
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoint: 5
   Attack: 1
-  Size: 1
+  Speed: 0
   IsSky: 0
   weaponType: 0
 --- !u!114 &114799610327510582
