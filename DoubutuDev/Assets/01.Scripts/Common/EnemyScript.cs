@@ -11,13 +11,18 @@ public class EnemyScript : MonoBehaviour {
     [SerializeField]
     private LayerMask TargetLayer;
 
+    [SerializeField]
+    private GameObject EnemyObject;
+
+    [SerializeField]
+    private List<GameObject> EnemyObjects = new List<GameObject>();
+
 	void Start () {
         StartCoroutine(Depoly());
     }
 
     // Update is called once per frame
     void Update () {
-        Debug.Log("うぉおおおおおお");
         Move();
         if (isReady)
         {
@@ -25,40 +30,24 @@ public class EnemyScript : MonoBehaviour {
         }
     }
 
-    void FixedUpdate()
-    {
-        raycastHit = Physics2D.BoxCast(
-            transform.position,
-            size: transform.GetChild(1).GetComponent<BoxCollider2D>().size,
-            angle: 0f,
-            direction: Vector2.right,
-            distance: 2,
-            layerMask: TargetLayer
-            );
-        IsGround = raycastHit;
-    }
-
     bool isAttack = false;
 
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
-        if (collision.transform.tag == "Animal"|| collision.transform.tag == "AnimalTower")
-        {
-            if (!isAttack)
-            {
-                state = State.Attack;
-                Debug.Log("Attack");
-                isAttack = true;
-                StartCoroutine(AttackFreeze());
-                BattleManager.Instance.Attack(gameObject, collision.gameObject);
-            }
-        }
+        if (collision.tag == "Animal" || collision.tag == "AnimalTower")
+            EnemyObjects.Add(collision.gameObject);
+        StartCoroutine(AttackFreeze());
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        EnemyObject = null;
+        //EnemyObjects.RemoveRange(collision.gameObject);
     }
 
     void Move()
     {
-        if(!IsGround)
+        if(EnemyObject == null && isReady)
             transform.position += new Vector3(0.5f * Time.deltaTime, 0, 0);
     }
 
@@ -68,18 +57,22 @@ public class EnemyScript : MonoBehaviour {
     IEnumerator Depoly()
     {
         //  配置直後の待ち時間
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         isReady = true;
         yield break;
     }
     //  攻撃硬直
     IEnumerator AttackFreeze()
     {
-        //  硬直時間の設定
-        yield return new WaitForSeconds(1);
-        //  攻撃状態を解除
-        isAttack = false;
+        while(EnemyObject != null && !isAttack)
+        {
+            BattleManager.Instance.Attack(gameObject, EnemyObject);
+            Debug.Log("Attack");
+            yield return new WaitForSeconds(1f);
+            //  攻撃状態を解除
+            isAttack = false;
+        }        
+        
         yield break;
     }
-
 }

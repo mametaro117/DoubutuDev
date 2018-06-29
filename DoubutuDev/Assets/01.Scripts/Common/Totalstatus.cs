@@ -27,7 +27,7 @@ public class Totalstatus : MonoBehaviour {
     void Start()
     {
         MaxHP = HitPoint;
-        Debug.Log(gameObject.name +" HP: " + MaxHP);
+        //Debug.Log(gameObject.name +" HP: " + MaxHP);
         //  HPバーオブジェクトがあったら
         if(isunit)
             BerObj = transform.GetChild(0).GetChild(0).gameObject;        

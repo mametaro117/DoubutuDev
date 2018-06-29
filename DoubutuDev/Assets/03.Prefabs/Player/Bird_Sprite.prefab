@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feee277c5fea1744cb4c2b19f16f467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoint: 5
+  HitPoint: 10
   Attack: 1
   Speed: 0
   IsSky: 0
