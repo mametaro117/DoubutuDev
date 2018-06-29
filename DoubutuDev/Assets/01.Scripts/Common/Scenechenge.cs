@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scenechenge : MonoBehaviour {
+
+    [SerializeField]
+    private Text text;
 
     private bool isPlay = false;
     
@@ -27,7 +31,7 @@ public class Scenechenge : MonoBehaviour {
                 {
                     //SelectAnimalListを渡す
                     //StartCoroutine(ChengeSceneCol(scenenum));
-                    GameObject.Find("AnimalList").SetActive(false);
+                    Change_Screen();
                 }
             }
             else
@@ -45,5 +49,11 @@ public class Scenechenge : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         isPlay = false;
         yield break;
+    }
+
+    private void Change_Screen()
+    {
+        GameObject.Find("AnimalList").SetActive(false);
+        text.text = "ぶきせんたく";
     }
 }
