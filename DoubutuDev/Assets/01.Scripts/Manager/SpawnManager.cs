@@ -42,10 +42,8 @@ public class SpawnManager : MonoBehaviour {
                 pos.z = 0;
                 //  インスタンス生成
                 GameObject obj = Instantiate(prefab, new Vector3(pos.x, pos.y, pos.z), prefab.transform.rotation);
-                //  生成したobjにステータスをアタッチ
-                obj.AddComponent<Totalstatus>();
+                //  生成したobjにステータスをset
                 obj.GetComponent<Totalstatus>().SetStatus(10, 3, 1, false);
-
                 Debug.Log(pos);
             }
             else

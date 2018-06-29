@@ -26,7 +26,8 @@ public class Scenechenge : MonoBehaviour {
                 if(Manager.AnimalSetCheck())
                 {
                     //SelectAnimalListを渡す
-                    StartCoroutine(ChengeSceneCol(scenenum));
+                    //StartCoroutine(ChengeSceneCol(scenenum));
+                    GameObject.Find("AnimalList").SetActive(false);
                 }
             }
             else

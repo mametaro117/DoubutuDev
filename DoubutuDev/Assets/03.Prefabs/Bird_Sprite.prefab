@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 50204997927241998}
   - component: {fileID: 114264622585473482}
   - component: {fileID: 114799610327510582}
+  - component: {fileID: 114747774654871692}
   m_Layer: 0
   m_Name: Bird_Sprite
   m_TagString: Player
@@ -198,6 +199,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NowStateNum: 0
+--- !u!114 &114747774654871692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1715072720401090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feee277c5fea1744cb4c2b19f16f467b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitPoint: 5
+  Attack: 1
+  Size: 1
+  IsSky: 0
 --- !u!114 &114799610327510582
 MonoBehaviour:
   m_ObjectHideFlags: 1

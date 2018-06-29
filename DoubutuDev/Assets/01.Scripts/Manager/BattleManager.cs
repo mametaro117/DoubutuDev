@@ -30,6 +30,8 @@ public class BattleManager : MonoBehaviour {
 
     [SerializeField]
     private List<UnitDictionary> AnimalList = new List<UnitDictionary>();
+    [SerializeField]
+    private List<UnitDictionary> WeaponList = new List<UnitDictionary>();
 
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
 
@@ -46,9 +48,7 @@ public class BattleManager : MonoBehaviour {
 
 
     void Start () {
-        //Debug.Log(AnimalList[0].Name);
-        //Debug.Log(AnimalList[0].HitPoint);
-        //Debug.Log(AnimalList[0].IsFlying);
+
     }
 	
 	// Update is called once per frame
