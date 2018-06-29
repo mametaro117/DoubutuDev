@@ -80,6 +80,10 @@ public class AnimalChoiceManager : MonoBehaviour {
                     switch(i)
                     {
                         case 1:
+<<<<<<< HEAD
+=======
+                            Debug.Log("<color=red>" + SelectList1Active + "</color>");
+>>>>>>> origin/iwasaki
                             if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
@@ -155,11 +159,19 @@ public class AnimalChoiceManager : MonoBehaviour {
                     break;
                 case 2:
                     SelectList2Active = false;
+<<<<<<< HEAD
                     Debug.Log("List2_false");
                     break;
                 case 3:
                     SelectList3Active = false;
                     Debug.Log("List3_false");
+=======
+                    Debug.Log("List1_false");
+                    break;
+                case 3:
+                    SelectList3Active = false;
+                    Debug.Log("List1_false");
+>>>>>>> origin/iwasaki
                     break;
                 default:
                     Debug.Log("（´・ω・｀）");
