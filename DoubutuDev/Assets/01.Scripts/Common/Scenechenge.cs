@@ -7,8 +7,6 @@ public class Scenechenge : MonoBehaviour {
 
     [SerializeField]
     private Text text;
-    [SerializeField]
-    private GameObject Obj;
 
     private bool isPlay = false;
     
@@ -53,20 +51,28 @@ public class Scenechenge : MonoBehaviour {
         yield break;
     }
 
+    public void Select_Weapon()
+    {
+
+    }
+
     private void Change_Screen()
     {
         // Weapon_ListにWeapon_Listを格納
         GameObject Weapon_List = GameObject.Find("Weapon_List");
+        GameObject Check_Button = GameObject.Find("Tap_Weapon");
         // transformのCanvas版
         var RectTransform = Weapon_List.GetComponent<RectTransform>();
+        var RectTransform_ = Check_Button.GetComponent<RectTransform>();
         // ResetPosにx(0),y(150)のVector2の値を代入
         Vector2 ResetPos = new Vector2(0, -150);
+        Vector2 NextPos = new Vector2(0, 125);
         // RectTransformにResetPosの値を入れる
         RectTransform.anchoredPosition = ResetPos;
+        RectTransform_.anchoredPosition = NextPos;
         // GameObject(AnimalList)を見つけて非表示にする
         GameObject.Find("AnimalList").SetActive(false);
         // textを"ぶきせんたく"に書き換える
         text.text = "ぶきせんたく";
-
     }
 }
