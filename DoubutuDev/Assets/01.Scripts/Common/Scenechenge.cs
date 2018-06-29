@@ -7,11 +7,13 @@ public class Scenechenge : MonoBehaviour {
 
     [SerializeField]
     private Text text;
+    [SerializeField]
+    private GameObject Obj;
 
     private bool isPlay = false;
     
-	void Start () {
-		
+	void Start ()
+    {
 	}
 	
 	// Update is called once per frame
@@ -53,7 +55,18 @@ public class Scenechenge : MonoBehaviour {
 
     private void Change_Screen()
     {
+        // Weapon_ListにWeapon_Listを格納
+        GameObject Weapon_List = GameObject.Find("Weapon_List");
+        // transformのCanvas版
+        var RectTransform = Weapon_List.GetComponent<RectTransform>();
+        // ResetPosにx(0),y(150)のVector2の値を代入
+        Vector2 ResetPos = new Vector2(0, -150);
+        // RectTransformにResetPosの値を入れる
+        RectTransform.anchoredPosition = ResetPos;
+        // GameObject(AnimalList)を見つけて非表示にする
         GameObject.Find("AnimalList").SetActive(false);
+        // textを"ぶきせんたく"に書き換える
         text.text = "ぶきせんたく";
+
     }
 }

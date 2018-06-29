@@ -21,9 +21,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,14 +40,14 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void SelectColumnClick(GameObject obj)
     {
-        Debug.Log("SelectListタップ！");
-        Debug.Log(obj.name);
+        //Debug.Log("SelectListタップ！");
+        //Debug.Log(obj.name);
     }
 
     public void AnimalColumnClick(GameObject obj)
     {
-        Debug.Log("AnimalListタップ！");
-        Debug.Log(obj.name);
+        //Debug.Log("AnimalListタップ！");
+        //Debug.Log(obj.name);
     }
 
     public void AnimalDrag(GameObject ChildObj)
@@ -79,7 +80,8 @@ public class AnimalChoiceManager : MonoBehaviour {
                     switch(i)
                     {
                         case 1:
-                            if(!SelectList1Active)
+                            Debug.Log("<color=red>" + SelectList1Active + "</color>");
+                            if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
                                 SelectList1Active = true;
@@ -88,9 +90,13 @@ public class AnimalChoiceManager : MonoBehaviour {
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("1枠に挿入");
                             }
+                            else if(SelectList1Active)
+                            {
+                                Debug.Log("オムライス");
+                            }
                             break;
                         case 2:
-                            if(!SelectList2Active)
+                            if(!SelectList2Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
                                 SelectList2Active = true;
@@ -101,7 +107,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                             }
                             break;
                         case 3:
-                            if(!SelectList3Active)
+                            if(!SelectList3Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
                                 SelectList3Active = true;
@@ -131,25 +137,28 @@ public class AnimalChoiceManager : MonoBehaviour {
         {
             AnimalListsActive[int.Parse(child.name.Substring(child.name.Length - 1)) - 1] = false;
             //Debug.Log(child.name);
-            int strlength = child.name.Length;
-            int BoxNum = int.Parse(child.name.Substring(strlength - 1));
-            //Debug.Log(BoxNum);
+            int strlength = obj.name.Length;
+            int BoxNum = int.Parse(obj.name.Substring(strlength - 1));
+            Debug.Log("<color=red>" + BoxNum + "</color>");
             switch(BoxNum)
             {
                 case 1:
                     SelectList1Active = false;
+                    Debug.Log("List1_false");
                     break;
                 case 2:
                     SelectList2Active = false;
+                    Debug.Log("List1_false");
                     break;
                 case 3:
                     SelectList3Active = false;
+                    Debug.Log("List1_false");
                     break;
                 default:
                     Debug.Log("（´・ω・｀）");
                     break;
             }
-            GameObject Box = GameObject.Find("Canvas/AnimalList/Column" + BoxNum + "");
+            GameObject Box = GameObject.Find("Canvas/AnimalList/Column" + int.Parse(child.name.Substring(child.name.Length - 1)) + "");
             child.transform.SetParent(Box.transform);
             var RectTransform = child.GetComponent<RectTransform>();
             Vector2 ResetPos = new Vector2();
@@ -165,5 +174,4 @@ public class AnimalChoiceManager : MonoBehaviour {
         }
         return false;
     }
-
 }
