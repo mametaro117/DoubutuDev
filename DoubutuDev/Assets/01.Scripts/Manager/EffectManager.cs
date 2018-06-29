@@ -52,9 +52,22 @@ public class EffectManager : MonoBehaviour {
     [SerializeField]
     private GameObject Effect_Magic;
 
+    //やる事を関数でまとめた
+    private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification)
+    {
+        PlayEffect.transform.position = EffectPos;
+        PlayEffect.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
+        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
+        var main = particlesystem.main;
+        Destroy(PlayEffect, main.duration);
+    }
+
+    //実行する時はコレ↓
+    //EffectManager.Instance_Effect.PlayEffect(0, new Vector2(0, 0), 1.0f);
+
     /// <summary>
     /// エフェクトナンバーを指定する方
-    /// 引数:(エフェクトナンバー,ポジション)
+    /// 引数:(エフェクトナンバー,ポジション,拡大率)
     /// 0:Diamond
     /// 1:Heart
     /// 2:Star
@@ -66,7 +79,7 @@ public class EffectManager : MonoBehaviour {
     /// 8:Magic
     /// </summary>
     /// <param name="Effect"></param>
-    public void PlayEffect(int EffectNum, Vector2 EffectPos)
+    public void PlayEffect(int EffectNum, Vector2 EffectPos, float Magnification)
     {
         GameObject PlayEffect = null;
         switch(EffectNum)
@@ -102,11 +115,10 @@ public class EffectManager : MonoBehaviour {
                 PlayEffect = Instantiate(Effect_Dia) as GameObject;
                 break;
         }
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos, Magnification);
     }
+
+    /**//*
 
     /// <summary>
     /// それぞれ関数がある方
@@ -116,10 +128,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Dia(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Dia) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -130,10 +139,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Heart(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Heart) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -144,10 +150,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Star(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Star) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -158,10 +161,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Spark(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Spark) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -172,10 +172,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Light(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Light) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -186,10 +183,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Smoke(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Smoke) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -200,10 +194,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Firework(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Firework) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -214,10 +205,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Hit(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Hit) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
 
     /// <summary>
@@ -228,11 +216,10 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect_Magic(Vector2 EffectPos)
     {
         GameObject PlayEffect = Instantiate(Effect_Magic) as GameObject;
-        PlayEffect.transform.position = EffectPos;
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        EffectProcess(PlayEffect, EffectPos);
     }
+
+    //*/
 
     // Use this for initialization
     void Start () {
