@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-    public RaycastHit2D raycastHit { get; private set; }
+    public RaycastHit2D raycastHit;
     private enum State { Idle = 0, Walk, Attack };
     State state = State.Idle;
     private bool IsGround = false;
@@ -17,10 +17,7 @@ public class EnemyScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (raycastHit.collider == null)
-        {
-            Debug.Log("無いよ");
-        }
+        Debug.Log("うぉおおおおおお");
         Move();
         if (isReady)
         {
@@ -32,7 +29,7 @@ public class EnemyScript : MonoBehaviour {
     {
         raycastHit = Physics2D.BoxCast(
             transform.position,
-            size: transform.GetChild(0).GetComponent<BoxCollider2D>().size,
+            size: transform.GetChild(1).GetComponent<BoxCollider2D>().size,
             angle: 0f,
             direction: Vector2.right,
             distance: 2,
@@ -45,6 +42,7 @@ public class EnemyScript : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if (collision.transform.tag == "Animal"|| collision.transform.tag == "AnimalTower")
         {
             if (!isAttack)
@@ -55,7 +53,6 @@ public class EnemyScript : MonoBehaviour {
                 StartCoroutine(AttackFreeze());
                 BattleManager.Instance.Attack(gameObject, collision.gameObject);
             }
-
         }
     }
 

@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114995904235618014}
   - component: {fileID: 114963461082087900}
   - component: {fileID: 114648026325368066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rabbit 1
   m_TagString: Animal
   m_Icon: {fileID: 0}
@@ -1026,6 +1026,7 @@ MonoBehaviour:
   Attack: 5
   Speed: 0
   IsSky: 0
+  isunit: 1
   weaponType: 0
 --- !u!114 &114909311652091244
 MonoBehaviour:

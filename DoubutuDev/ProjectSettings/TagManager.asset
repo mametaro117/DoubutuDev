@@ -12,6 +12,7 @@ TagManager:
   - dog
   - Animal
   - EnemyTower
+  - AnimalTower
   layers:
   - Default
   - TransparentFX

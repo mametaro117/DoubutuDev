@@ -81,7 +81,7 @@ public class BattleManager : MonoBehaviour {
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ゲージの割合変化
-        if (deffender.tag == "Enemy")
+        if (deffender.tag == "Enemy" || deffender.tag == "Animal")
         {
             deffender.GetComponent<Totalstatus>().ApplayBer();
         }
