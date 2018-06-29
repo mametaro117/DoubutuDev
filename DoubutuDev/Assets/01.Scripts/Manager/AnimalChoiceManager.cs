@@ -8,6 +8,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     bool SelectList1Active;
     bool SelectList2Active;
     bool SelectList3Active;
+
+    //動物が追加になったら増やしてね
+    bool[] AnimalListsActive = new bool[10];
+
     // [動物id, 武器id1, 武器id2, 武器id3]
     int[,] SelectAnimalList = new int[3,4];
     enum ChoiceState
@@ -47,10 +51,11 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void AnimalDrag(GameObject ChildObj)
     {
-        //Parentのオブジェクトを取得しても意味は無いけどメモ程度に残す
-        GameObject ParentObj = ChildObj.transform.parent.gameObject;
-        Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        ChildObj.transform.position = TapPos;
+        if(!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
+        {
+            Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            ChildObj.transform.position = TapPos;
+        }
     }
 
     public void EndDrag(GameObject obj)
@@ -74,25 +79,37 @@ public class AnimalChoiceManager : MonoBehaviour {
                     switch(i)
                     {
                         case 1:
-                            obj.transform.SetParent(Parent.transform);
-                            SelectList1Active = true;
-                            SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            //Debug.Log(SelectAnimalList[i - 1, 0]);
-                            Debug.Log("1枠に挿入");
+                            if(!SelectList1Active)
+                            {
+                                obj.transform.SetParent(Parent.transform);
+                                SelectList1Active = true;
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
+                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                Debug.Log("1枠に挿入");
+                            }
                             break;
                         case 2:
-                            obj.transform.SetParent(Parent.transform);
-                            SelectList2Active = true;
-                            SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            Debug.Log(SelectAnimalList[i - 1, 0]);
-                            Debug.Log("2枠に挿入");
+                            if(!SelectList2Active)
+                            {
+                                obj.transform.SetParent(Parent.transform);
+                                SelectList2Active = true;
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
+                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                Debug.Log("2枠に挿入");
+                            }
                             break;
                         case 3:
-                            obj.transform.SetParent(Parent.transform);
-                            SelectList3Active = true;
-                            SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                            Debug.Log(SelectAnimalList[i - 1, 0]);
-                            Debug.Log("3枠に挿入");
+                            if(!SelectList3Active)
+                            {
+                                obj.transform.SetParent(Parent.transform);
+                                SelectList3Active = true;
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
+                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                Debug.Log("3枠に挿入");
+                            }
                             break;
                         default:
                             Debug.Log("何枠やねん");
@@ -112,6 +129,7 @@ public class AnimalChoiceManager : MonoBehaviour {
     {
         foreach (Transform child in obj.transform)
         {
+            AnimalListsActive[int.Parse(child.name.Substring(child.name.Length - 1)) - 1] = false;
             //Debug.Log(child.name);
             int strlength = child.name.Length;
             int BoxNum = int.Parse(child.name.Substring(strlength - 1));

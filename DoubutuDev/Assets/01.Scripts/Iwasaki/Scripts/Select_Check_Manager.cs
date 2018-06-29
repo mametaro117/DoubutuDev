@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalDataManager : MonoBehaviour {
+public class Select_Check_Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
