@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,6 @@ public class Totalstatus : MonoBehaviour {
 
     public WeaponType weaponType = WeaponType.Sword;
 
-
     private float MaxHP;
     private GameObject BerObj;
 
@@ -32,6 +32,7 @@ public class Totalstatus : MonoBehaviour {
         if(isunit)
             BerObj = transform.GetChild(0).GetChild(0).gameObject;        
     }
+
 
     public void SetStatus(float HP,int ATK, float SPD, bool issky)
     {

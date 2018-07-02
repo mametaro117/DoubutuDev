@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,16 +16,6 @@ public class SpawnManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject[] units = new GameObject[3];
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
     public void ClickGround()
     {
