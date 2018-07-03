@@ -5,6 +5,17 @@ using UnityEngine.EventSystems;
 
 public class Weapon_Choice_Manager : MonoBehaviour
 {
+    [SerializeField]
+    Sprite Weapon1_Sword;
+    [SerializeField]
+    Sprite Weapon2_Axe;
+    [SerializeField]
+    Sprite Weapon3_Shield;
+    [SerializeField]
+    Sprite Weapon4_Arrow;
+
+
+
     bool SelectListWeapon1Active;
     bool SelectListWeapon2Active;
     bool SelectListWeapon3Active;

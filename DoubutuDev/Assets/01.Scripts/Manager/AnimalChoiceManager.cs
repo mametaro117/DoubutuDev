@@ -79,8 +79,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                     //枠の子孫とする
                     switch(i)
                     {
-                        case 1:
-                            Debug.Log("<color=red>" + SelectList1Active + "</color>");
+                        case 1:                            
                             if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
@@ -105,6 +104,10 @@ public class AnimalChoiceManager : MonoBehaviour {
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("2枠に挿入");
                             }
+                            else if (SelectList2Active)
+                            {
+                                Debug.Log("からあげ");
+                            }
                             break;
                         case 3:
                             if(!SelectList3Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
@@ -115,6 +118,10 @@ public class AnimalChoiceManager : MonoBehaviour {
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("3枠に挿入");
+                            }
+                            else if (SelectList3Active)
+                            {
+                                Debug.Log("カレーライス");
                             }
                             break;
                         default:
@@ -148,11 +155,11 @@ public class AnimalChoiceManager : MonoBehaviour {
                     break;
                 case 2:
                     SelectList2Active = false;
-                    Debug.Log("List1_false");
+                    Debug.Log("List2_false");
                     break;
                 case 3:
                     SelectList3Active = false;
-                    Debug.Log("List1_false");
+                    Debug.Log("List3_false");
                     break;
                 default:
                     Debug.Log("（´・ω・｀）");
