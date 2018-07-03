@@ -108,7 +108,9 @@ public class CostScript : MonoBehaviour {
     //  どの動物を選んでいるか
     public int GetSelectNum()
     {
-        return AnimalObj.GetComponent<AnimalButtonScript>().GetSelectNum();
+        int unitNum;
+        unitNum = AnimalObj.GetComponent<AnimalButtonScript>().GetSelectNum() * 3 + WeaponObj.GetComponent<WeaponButtonScript>().GetSelectNum();
+        return unitNum;
     }
 
     // 値をコストバーに反映

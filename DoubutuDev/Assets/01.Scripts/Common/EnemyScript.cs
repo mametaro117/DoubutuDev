@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-    public RaycastHit2D raycastHit;
-    private enum State { Idle = 0, Walk, Attack };
-    State state = State.Idle;
+    //private enum State { Idle = 0, Walk, Attack };
+    //State state = State.Idle;
     private bool IsGround = false;
     [SerializeField]
     private LayerMask TargetLayer;
@@ -17,20 +16,48 @@ public class EnemyScript : MonoBehaviour {
     [SerializeField]
     private List<GameObject> EnemyObjects = new List<GameObject>();
 
-	void Start () {
+    bool isReady = false;
+    bool isAttack = false;
+
+
+    void Start () {
+        //  出撃時の硬直
         StartCoroutine(Depoly());
     }
 
     // Update is called once per frame
     void Update () {
         Move();
-        if (isReady)
+    }
+
+    void Move()
+    {
+        if (EnemyObject == null && isReady)
+            transform.position += new Vector3(0.5f * Time.deltaTime, 0, 0);
+    }
+
+    //  EnemyObjectが倒されたら
+    public void ResetEnemyObject()
+    {
+        if(EnemyObjects.Count != 0)
         {
-            state = State.Walk;
+            //  一番近い敵を標的に再設定
+            GameObject nearestEnemy = null;
+            float minDis = 100000;
+            foreach (GameObject enemy in EnemyObjects)
+            {
+                float dis = Vector3.Distance(transform.position, enemy.transform.position);
+                if (dis < minDis)
+                {
+                    minDis = dis;
+                    nearestEnemy = enemy;
+                }
+            }
+            EnemyObject = nearestEnemy;
+            EnemyObjects.Remove(nearestEnemy);
         }
     }
 
-    bool isAttack = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,18 +65,25 @@ public class EnemyScript : MonoBehaviour {
         if (collision.tag == "Animal" || collision.tag == "AnimalTower")
         {
             //  要素が含まれていなかったら追加
-            if (!EnemyObjects.Contains(collision.gameObject))
+            if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
             {
                 EnemyObjects.Add(collision.gameObject);
+                //  攻撃対象している対象がいなかったらセット
+                if(EnemyObject == null)
+                {
+                    EnemyObject = EnemyObjects[0];
+                    EnemyObjects.RemoveAt(0);
+                }
             }
+            StartCoroutine(AttackAnimal());
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(EnemyObjects.Count != 0)
+        if (collision.tag == "Animal" || collision.tag == "AnimalTower")
         {
-            StartCoroutine(AttackFreeze());
+            StartCoroutine(AttackAnimal());
         }
     }
 
@@ -58,15 +92,7 @@ public class EnemyScript : MonoBehaviour {
         EnemyObjects.Remove(collision.gameObject);
     }
 
-
-    //  移動
-    void Move()
-    {
-        if(EnemyObject == null && isReady)
-            transform.position += new Vector3(0.5f * Time.deltaTime, 0, 0);
-    }
-
-    bool isReady = false;
+    //----------コルーチン----------
 
     //  動物を配置したときに呼ぶ関数
     IEnumerator Depoly()
@@ -77,12 +103,13 @@ public class EnemyScript : MonoBehaviour {
         yield break;
     }
     //  攻撃硬直
-    IEnumerator AttackFreeze()
+    IEnumerator AttackAnimal()
     {
-        while(EnemyObjects.Count != 0 && !isAttack)
+        //Debug.Log("AttackAnimal");
+        while(EnemyObject != null && !isAttack && isReady)
         {
             isAttack = true;
-            BattleManager.Instance.Attack(gameObject, EnemyObjects[0]);
+            BattleManager.Instance.Attack(gameObject, EnemyObject);
             Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
             //  攻撃状態を解除

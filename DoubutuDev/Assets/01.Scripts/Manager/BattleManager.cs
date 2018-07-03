@@ -91,7 +91,10 @@ public class BattleManager : MonoBehaviour {
         //  HPが「0」以下になったときは削除
         if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
         {
-            attacker.GetComponent<>
+            if(deffender.tag == "Animal")
+            {
+                attacker.GetComponent<EnemyScript>().ResetEnemyObject();
+            }
             DeathUnit(deffender);
         }
     }

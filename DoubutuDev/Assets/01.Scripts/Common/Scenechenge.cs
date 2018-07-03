@@ -17,7 +17,7 @@ public class Scenechenge : MonoBehaviour {
 
     public void ChengeScene(int scenenum)
     {
-        Debug.Log("TAP");
+        Debug.Log("シーン遷移");
         if (!isPlay)
             StartCoroutine(ChengeSceneCol(scenenum));
     }

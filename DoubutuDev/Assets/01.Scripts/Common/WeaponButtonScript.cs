@@ -14,6 +14,9 @@ public class WeaponButtonScript : MonoBehaviour {
     private float cost;
 
     [SerializeField]
+    private int SelectNum;
+
+    [SerializeField]
     private GameObject[] WeaponButtons = new GameObject[2];
 
 
@@ -42,5 +45,10 @@ public class WeaponButtonScript : MonoBehaviour {
     public float GetCost()
     {
         return cost;
+    }
+
+    public int GetSelectNum()
+    {
+        return SelectNum;
     }
 }

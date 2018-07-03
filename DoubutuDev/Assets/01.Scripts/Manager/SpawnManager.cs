@@ -6,16 +6,18 @@ using UnityEngine.EventSystems;
 
 public class SpawnManager : MonoBehaviour {
 
-    [SerializeField]
-    private Camera _camera;
+    private Camera camera;
+
     [SerializeField]
     private CostScript costScript;
 
     [SerializeField]
-    private GameObject ColObj;
-
-    [SerializeField]
     private GameObject[] units = new GameObject[3];
+
+    void Start()
+    {
+        camera = Camera.main;
+    }
 
     public void ClickGround()
     {
@@ -33,11 +35,6 @@ public class SpawnManager : MonoBehaviour {
                 pos.z = 0;
                 //  インスタンス生成
                 GameObject obj = Instantiate(units[costScript.GetSelectNum()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNum()].transform.rotation);
-
-                GameObject col = Instantiate(ColObj, new Vector3(obj.transform.position.x, obj.transform.position.y, 0), Quaternion.identity);
-                //  生成したobjにステータスを設定
-                //obj.GetComponent<Totalstatus>().SetStatus(10, 3, 1, false);
-                //Debug.Log(pos);
             }
             else
                 Debug.Log("コストが足りない");
