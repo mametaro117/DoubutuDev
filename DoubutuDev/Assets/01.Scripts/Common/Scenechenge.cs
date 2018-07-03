@@ -3,22 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Scenechenge : MonoBehaviour {
-
+public class Scenechenge : MonoBehaviour
+{
     [SerializeField]
     private Text text;
 
     private bool isPlay = false;
-    
-	void Start ()
-    {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void ChengeScene(int scenenum)
     {
@@ -56,21 +46,38 @@ public class Scenechenge : MonoBehaviour {
     {
         int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
         Debug.Log(objnum);
+        Equip_Change();
+    }
+    public void Click_Back_Bottun()
+    {
+
     }
 
     private void Change_Screen()
     {
-        // Weapon_ListにWeapon_Listを格納
         GameObject Weapon_List = GameObject.Find("Weapon_List");
-        // transformのCanvas版
         var RectTransform = Weapon_List.GetComponent<RectTransform>();
-        // ResetPosにx(0),y(150)のVector2の値を代入
         Vector2 ResetPos = new Vector2(0, -150);
-        // RectTransformにResetPosの値を入れる
         RectTransform.anchoredPosition = ResetPos;
-        // GameObject(AnimalList)を見つけて非表示にする
         GameObject.Find("AnimalList").SetActive(false);
-        // textを"ぶきせんたく"に書き換える
         text.text = "ぶきせんたく";
+    }
+
+    private void Equip_Change()
+    {
+        //武器リスト
+        GameObject Weapon_Box = GameObject.Find("Weapon_Box");
+        var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
+        Vector2 ResetPos_1 = new Vector2(-420, -50);
+        RectTransform_1.anchoredPosition = ResetPos_1;
+
+        //戻るボタン
+        GameObject Back_Button = GameObject.Find("Back_Button");
+        var RectTransform_2 = Back_Button.GetComponent<RectTransform>();
+        Vector2 ResetPos_2 = new Vector2(-500, 280);
+        RectTransform_2.anchoredPosition = ResetPos_2;
+
+
+        GameObject.Find("Text").GetComponent<CanvasGroup>().alpha = 0;
     }
 }
