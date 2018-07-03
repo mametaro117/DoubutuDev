@@ -79,8 +79,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                     //枠の子孫とする
                     switch(i)
                     {
-                        case 1:
-                            Debug.Log("<color=red>" + SelectList1Active + "</color>");
+                        case 1:                            
                             if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
@@ -178,10 +177,6 @@ public class AnimalChoiceManager : MonoBehaviour {
     {
         if(SelectList1Active && SelectList2Active && SelectList3Active)
         {
-            for(int i = 0; i < 3; i++)
-            {
-                Debug.Log(SelectAnimalList[i, 0]);
-            }
             return true;
         }
         return false;
