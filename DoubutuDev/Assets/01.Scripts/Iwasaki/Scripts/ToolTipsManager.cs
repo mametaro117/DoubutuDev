@@ -43,20 +43,7 @@ public class ToolTipsManager : MonoBehaviour
     private Vector3 pos;
     private RaycastHit2D hit;
 
-    void Update ()
-    {
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //        hit = Physics2D.Raycast(pos, new Vector3(0, 0, 1), 100);
 
-    //        ToolTips_Animal();
-    //    }
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-            
-    //    }
-	}
 
     //ツールチップを消す
     public void EraseToolTips()
