@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821515478343496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3985162, y: 0.37373137, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4722941466825362}
@@ -281,7 +281,7 @@ MonoBehaviour:
   Attack: 1
   Speed: 0
   IsSky: 0
-  isunit: 1
+  isUnit: 1
   weaponType: 1
 --- !u!212 &212124128042774106
 SpriteRenderer:

@@ -12,7 +12,7 @@ public class Totalstatus : MonoBehaviour {
     public bool IsSky;
 
     [SerializeField]
-    private bool isunit = false;
+    private bool isUnit = false;
 
     public enum WeaponType
     {
@@ -29,7 +29,7 @@ public class Totalstatus : MonoBehaviour {
         MaxHP = HitPoint;
         //Debug.Log(gameObject.name +" HP: " + MaxHP);
         //  HPバーオブジェクトがあったら
-        if(isunit)
+        if(isUnit)
             BerObj = transform.GetChild(0).GetChild(0).gameObject;        
     }
 

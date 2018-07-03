@@ -35,10 +35,6 @@ public class FadeManager : MonoBehaviour
 
     #endregion Singleton
 
-    /// <summary>
-    /// デバッグモード .
-    /// </summary>
-    public bool DebugMode = true;
     /// <summary>フェード中の透明度</summary>
     private float fadeAlpha = 0;
     /// <summary>フェード中かどうか</summary>
@@ -93,7 +89,7 @@ public class FadeManager : MonoBehaviour
         while (time <= interval)
         {
             this.fadeAlpha = Mathf.Lerp(0f, 1f, time / interval);
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return 0;
         }
 
@@ -105,7 +101,7 @@ public class FadeManager : MonoBehaviour
         while (time <= interval)
         {
             this.fadeAlpha = Mathf.Lerp(1f, 0f, time / interval);
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return 0;
         }
 
