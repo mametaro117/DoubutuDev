@@ -34,17 +34,32 @@ public class EnemyScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //  どうぶつ又はどうぶつタワーだったら
         if (collision.tag == "Animal" || collision.tag == "AnimalTower")
-            EnemyObjects.Add(collision.gameObject);
-        StartCoroutine(AttackFreeze());
+        {
+            //  要素が含まれていなかったら追加
+            if (!EnemyObjects.Contains(collision.gameObject))
+            {
+                EnemyObjects.Add(collision.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(EnemyObjects.Count != 0)
+        {
+            StartCoroutine(AttackFreeze());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        EnemyObject = null;
-        //EnemyObjects.RemoveRange(collision.gameObject);
+        EnemyObjects.Remove(collision.gameObject);
     }
 
+
+    //  移動
     void Move()
     {
         if(EnemyObject == null && isReady)
@@ -64,15 +79,15 @@ public class EnemyScript : MonoBehaviour {
     //  攻撃硬直
     IEnumerator AttackFreeze()
     {
-        while(EnemyObject != null && !isAttack)
+        while(EnemyObjects.Count != 0 && !isAttack)
         {
-            BattleManager.Instance.Attack(gameObject, EnemyObject);
+            isAttack = true;
+            BattleManager.Instance.Attack(gameObject, EnemyObjects[0]);
             Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
             //  攻撃状態を解除
             isAttack = false;
         }        
-        
         yield break;
     }
 }

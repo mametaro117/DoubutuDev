@@ -66,6 +66,7 @@ public class BattleManager : MonoBehaviour {
         Debug.Log(obj.name);
     }
 
+    //  ユニットの破棄、タワーだった場合の処理などを書く予定
     void DeathUnit(GameObject obj)
     {
         OnFieldUnitsList.Remove(obj);
@@ -90,6 +91,7 @@ public class BattleManager : MonoBehaviour {
         //  HPが「0」以下になったときは削除
         if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
         {
+            attacker.GetComponent<>
             DeathUnit(deffender);
         }
     }
