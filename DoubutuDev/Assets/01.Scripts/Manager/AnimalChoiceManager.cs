@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AnimalChoiceManager : MonoBehaviour {
 
@@ -13,7 +14,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     bool[] AnimalListsActive = new bool[10];
 
     // [動物id, 武器id1, 武器id2, 武器id3]
-    int[,] SelectAnimalList = new int[3,4];
+    public int[,] SelectAnimalList = new int[3,4];
+
+    public GameObject[] Animals = new GameObject[3];
+
     enum ChoiceState
     {
         Animal,
@@ -88,6 +92,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("1枠に挿入");
+                                Animals[i - 1] = obj;
                             }
                             else if(SelectList1Active)
                             {
@@ -103,6 +108,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("2枠に挿入");
+                                Animals[i - 1] = obj;
                             }
                             else if (SelectList2Active)
                             {
@@ -118,6 +124,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("3枠に挿入");
+                                Animals[i - 1] = obj;
                             }
                             else if (SelectList3Active)
                             {
