@@ -69,7 +69,15 @@ public class Scenechenge : MonoBehaviour
     {
         int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
         Debug.Log(objnum);
+<<<<<<< HEAD
         Equip_Change(objnum);
+=======
+        Equip_Change();
+    }
+    public void Click_Back_Bottun()
+    {
+
+>>>>>>> origin/Hirokawa
     }
 
     GameObject _animal = null;
@@ -95,6 +103,7 @@ public class Scenechenge : MonoBehaviour
 
     private void Change_Screen()
     {
+<<<<<<< HEAD
         AnimalColumnMove();
         GameObject Weapon_List = GameObject.Find("Weapon_List");
         var RectTransform = Weapon_List.GetComponent<RectTransform>();
@@ -177,10 +186,45 @@ public class Scenechenge : MonoBehaviour
         GameObject Weapon_Box = GameObject.Find("Weapon_Box");
         var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
         RectTransform_1.anchoredPosition3D = WeaponBox_OriginalPos;
+=======
+<<<<<<< HEAD
+        //動物の枠を切り替え
+        AnimalColumnMove();
+        // Weapon_ListにWeapon_Listを格納
+=======
+>>>>>>> origin/iwasaki
+        GameObject Weapon_List = GameObject.Find("Weapon_List");
+        var RectTransform = Weapon_List.GetComponent<RectTransform>();
+<<<<<<< HEAD
+        // ResetPosにx(0),y(-135)のVector2の値を代入
+        Vector2 ResetPos = new Vector2(0, -70);
+        // RectTransformにResetPosの値を入れる
+=======
+        Vector2 ResetPos = new Vector2(0, -150);
+>>>>>>> origin/iwasaki
+        RectTransform.anchoredPosition = ResetPos;
+        GameObject.Find("AnimalList").SetActive(false);
+<<<<<<< HEAD
+        GameObject.Find("SelectList").SetActive(false);
+        // textを"ぶきせんたく"に書き換える
+=======
+>>>>>>> origin/iwasaki
+        text.text = "ぶきせんたく";
+    }
+
+    private void Equip_Change()
+    {
+        //武器リスト
+        GameObject Weapon_Box = GameObject.Find("Weapon_Box");
+        var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
+        Vector2 ResetPos_1 = new Vector2(-420, -50);
+        RectTransform_1.anchoredPosition = ResetPos_1;
+>>>>>>> origin/Hirokawa
 
         //戻るボタン
         GameObject Back_Button = GameObject.Find("Back_Button");
         var RectTransform_2 = Back_Button.GetComponent<RectTransform>();
+<<<<<<< HEAD
         RectTransform_2.anchoredPosition3D = BackButton_OriginalPos;
 
         //決定ボタン・次へボタン
@@ -206,5 +250,12 @@ public class Scenechenge : MonoBehaviour
         GameObject.Find("Canvas/Text").GetComponent<CanvasGroup>().alpha = 1;
 
 
+=======
+        Vector2 ResetPos_2 = new Vector2(-500, 280);
+        RectTransform_2.anchoredPosition = ResetPos_2;
+
+
+        GameObject.Find("Text").GetComponent<CanvasGroup>().alpha = 0;
+>>>>>>> origin/Hirokawa
     }
 }
