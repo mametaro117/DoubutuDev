@@ -14,7 +14,7 @@ public class AnimalChoiceManager : MonoBehaviour {
     bool[] AnimalListsActive = new bool[10];
 
     // [動物id, 武器id1, 武器id2, 武器id3]
-    public int[,] SelectAnimalList = new int[3,4];
+    public int[,] SelectAnimalList = { { 99, 0, 1, 2 },{ 99, 0, 1, 2 },{ 99, 0, 1, 2 } };
 
     public GameObject[] Animals = new GameObject[3];
 
