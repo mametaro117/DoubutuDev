@@ -8,6 +8,11 @@ public class ToolTipsManager : MonoBehaviour
     [SerializeField]
     private GameObject ToolPrefabs;
     [SerializeField]
+<<<<<<< HEAD
+=======
+    private GameObject AttentionToolTips;
+    [SerializeField]
+>>>>>>> Hirokawa
     private GameObject Animal_Obj_Rabbit;
     [SerializeField]
     private GameObject Animal_Obj_Owl;
@@ -43,6 +48,7 @@ public class ToolTipsManager : MonoBehaviour
     private Vector3 pos;
     private RaycastHit2D hit;
 
+<<<<<<< HEAD
     void Update ()
     {
     //    if (Input.GetMouseButtonDown(0))
@@ -57,6 +63,9 @@ public class ToolTipsManager : MonoBehaviour
             
     //    }
 	}
+=======
+
+>>>>>>> Hirokawa
 
     //ツールチップを消す
     public void EraseToolTips()
@@ -117,4 +126,34 @@ public class ToolTipsManager : MonoBehaviour
                 break;
         }
     }
+<<<<<<< HEAD
+=======
+
+    float _alpha;
+
+    public void Show_AttentionToolTips()
+    {
+        ToolTip = Instantiate(AttentionToolTips) as GameObject;
+        Debug.Log(ToolTip);
+        GameObject _Canvas = GameObject.Find("Canvas");
+        AttentionToolTips.transform.SetParent(_Canvas.transform);
+        CanvasGroup _CanvasGroup = AttentionToolTips.GetComponent<CanvasGroup>();
+        _alpha = _CanvasGroup.alpha;
+        _alpha = 1;
+        FadeOut_AttentionToolTips();
+    }
+
+    private void FadeOut_AttentionToolTips()
+    {
+        float _Time = 0;
+        while(_alpha > 0)
+        {
+            _Time += Time.deltaTime;
+            if(_Time >= 1)
+            {
+                _alpha -= Time.deltaTime;
+            }
+        }
+    }
+>>>>>>> Hirokawa
 }
