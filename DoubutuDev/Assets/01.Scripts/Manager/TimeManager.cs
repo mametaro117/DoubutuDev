@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour {
     [SerializeField]
     private float Timelimit;
     [SerializeField]
-    private GameObject ReadyImage, GoImage;
+    private GameObject ReadyImage, GoImage, ClearImage, FailImage;
 
     private bool isReady = false;
     private bool isFinish = false;
@@ -40,6 +40,16 @@ public class TimeManager : MonoBehaviour {
             Mathf.Max(0, Timelimit);
         }
     }
+
+    public void GameFinish()
+    {
+        
+    }
+
+
+
+
+    
     
     //  開始時のカウントダウン処理
     IEnumerator ReadyGo()
