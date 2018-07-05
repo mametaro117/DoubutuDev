@@ -12,8 +12,10 @@ public class AnimalButtonScript : MonoBehaviour {
 
     [SerializeField]
     private float cost;
+
     [SerializeField]
     private int SelectNum;
+
 
     [SerializeField]
     private GameObject[] AnimalButtons = new GameObject[2];

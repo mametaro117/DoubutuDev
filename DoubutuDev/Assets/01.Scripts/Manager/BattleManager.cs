@@ -70,7 +70,18 @@ public class BattleManager : MonoBehaviour {
     void DeathUnit(GameObject obj)
     {
         OnFieldUnitsList.Remove(obj);
-        StartCoroutine(DelayDestry(obj));
+        if (obj.tag == "Animal" || obj.tag == "Enemy")
+        {
+            StartCoroutine(DelayDestry(obj));
+        }
+        else if (obj.tag == "EnemTower")
+        {
+
+        }
+        else if (obj.tag == "AnimalTower")
+        {
+
+        }
     }
     
     public void Attack(GameObject attacker, GameObject deffender)

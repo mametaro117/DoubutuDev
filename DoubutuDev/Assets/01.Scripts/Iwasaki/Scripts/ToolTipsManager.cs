@@ -8,11 +8,8 @@ public class ToolTipsManager : MonoBehaviour
     [SerializeField]
     private GameObject ToolPrefabs;
     [SerializeField]
-<<<<<<< HEAD
-=======
     private GameObject AttentionToolTips;
     [SerializeField]
->>>>>>> Hirokawa
     private GameObject Animal_Obj_Rabbit;
     [SerializeField]
     private GameObject Animal_Obj_Owl;
@@ -48,24 +45,7 @@ public class ToolTipsManager : MonoBehaviour
     private Vector3 pos;
     private RaycastHit2D hit;
 
-<<<<<<< HEAD
-    void Update ()
-    {
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //        hit = Physics2D.Raycast(pos, new Vector3(0, 0, 1), 100);
 
-    //        ToolTips_Animal();
-    //    }
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-            
-    //    }
-	}
-=======
-
->>>>>>> Hirokawa
 
     //ツールチップを消す
     public void EraseToolTips()
@@ -126,8 +106,6 @@ public class ToolTipsManager : MonoBehaviour
                 break;
         }
     }
-<<<<<<< HEAD
-=======
 
     float _alpha;
 
@@ -155,5 +133,4 @@ public class ToolTipsManager : MonoBehaviour
             }
         }
     }
->>>>>>> Hirokawa
 }

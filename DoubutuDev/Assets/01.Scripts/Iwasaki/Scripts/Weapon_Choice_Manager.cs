@@ -5,13 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Weapon_Choice_Manager : MonoBehaviour
 {
-<<<<<<< HEAD
-    bool SelectListWeapon1Active;
-    bool SelectListWeapon2Active;
-    bool SelectListWeapon3Active;
-
-    int[,] SelectWeaponList = new int[3, 4];
-=======
     [SerializeField]
     Sprite Weapon1_Sword;
     [SerializeField]
@@ -23,7 +16,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
 
     int[,] SelectWeaponList = { { 99, 0, 3, 2 }, { 99, 0, 3, 2 }, { 99, 0, 3, 2 } };
     Sprite[] All_WeaponList;
->>>>>>> Hirokawa
 
     enum ChoiceState
     {
@@ -36,19 +28,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
         ToolTipsManager TTM = Manager.GetComponent<ToolTipsManager>();
         TTM.EraseToolTips();
     }
-<<<<<<< HEAD
-    public void SelectColumnClick(GameObject obj)
-    {
-        Debug.Log("SelectListタップ");
-        Debug.Log(obj.name);
-    }
-    public void WeaponColumnClick(GameObject obj)
-    {
-        Debug.Log("WeaponlListタップ！");
-        Debug.Log(obj.name);
-    }
-=======
->>>>>>> Hirokawa
 
     public void WeaponDrag(GameObject Childobj)
     {
@@ -73,28 +52,16 @@ public class Weapon_Choice_Manager : MonoBehaviour
                 {
                     case 1:
                         obj.transform.SetParent(Parent.transform);
-<<<<<<< HEAD
-                        SelectListWeapon1Active = true;
-=======
->>>>>>> Hirokawa
                         SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
                         Debug.Log("1枠に挿入");
                         break;
                     case 2:
                         obj.transform.SetParent(Parent.transform);
-<<<<<<< HEAD
-                        SelectListWeapon2Active = true;
-=======
->>>>>>> Hirokawa
                         SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
                         Debug.Log("2枠に挿入");
                         break;
                     case 3:
                         obj.transform.SetParent(Parent.transform);
-<<<<<<< HEAD
-                        SelectListWeapon3Active = true;
-=======
->>>>>>> Hirokawa
                         SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
                         Debug.Log("3枠に挿入");
                         break;
@@ -117,24 +84,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
             int strlength = child.name.Length;
             int BoxNum = int.Parse(child.name.Substring(strlength - 1));
 
-<<<<<<< HEAD
-            switch (BoxNum)
-            {
-                case 1:
-                    SelectListWeapon1Active = false;
-                    break;
-                case 2:
-                    SelectListWeapon2Active = false;
-                    break;
-                case 3:
-                    SelectListWeapon3Active = false;
-                    break;
-                default:
-                    Debug.Log("（´・ω・｀）");
-                    break;
-            }
-=======
->>>>>>> Hirokawa
             GameObject Box = GameObject.Find("Canvas/Weaponlist/Column" + BoxNum + "");
             child.transform.SetParent(Box.transform);
             var RectTransform = child.GetComponent<RectTransform>();
@@ -142,17 +91,5 @@ public class Weapon_Choice_Manager : MonoBehaviour
             RectTransform.anchoredPosition = ResetPos;
         }
     }
-<<<<<<< HEAD
-
-    public bool WeaponsetCheck()
-    {
-        if (SelectListWeapon1Active && SelectListWeapon2Active && SelectListWeapon3Active)
-        {
-            return true;
-        }
-        return false;
-    }
-=======
->>>>>>> Hirokawa
 }
 

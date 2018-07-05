@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Scenechenge : MonoBehaviour
 {
@@ -17,58 +18,59 @@ public class Scenechenge : MonoBehaviour
 
     public void ChengeScene(int scenenum)
     {
-<<<<<<< HEAD
-        Debug.Log("シーン遷移");
-        if (!isPlay)
-            StartCoroutine(ChengeSceneCol(scenenum));
-=======
-        AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
-        if (!isPlay && Manager.AnimalSetCheck())
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            if(scenenum == 3 && WindowChange)
+            AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
+            if (!isPlay && Manager.AnimalSetCheck())
             {
-                WindowChange = false;
-                AnimalAndWeaponList = Manager.SelectAnimalList;
-                //SelectAnimalListを渡す
-                for (int i = 0; i < 3; i++)
+                if (scenenum == 3 && WindowChange)
                 {
-                    AnimalList[i] = Manager.SelectAnimalList[i, 0];
-                    Animals[i] = Manager.Animals[i];
-                    AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
-                    //Debug.Log(Animals[i]);
+                    WindowChange = false;
+                    AnimalAndWeaponList = Manager.SelectAnimalList;
+                    //SelectAnimalListを渡す
+                    for (int i = 0; i < 3; i++)
+                    {
+                        AnimalList[i] = Manager.SelectAnimalList[i, 0];
+                        Animals[i] = Manager.Animals[i];
+                        AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
+                        //Debug.Log(Animals[i]);
+                    }
+                    //StartCoroutine(ChengeSceneCol(scenenum));
+                    Change_Screen();
                 }
-                //StartCoroutine(ChengeSceneCol(scenenum));
-                Change_Screen();
+                else if (scenenum == 3 && !WindowChange)
+                {
+                    ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
+                    _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
+
+                    //動物Id
+                    //0:うさぎ
+                    //1:ふくろう
+                    //2:ぞう
+                    //3:ぺんぎん(未実装)
+
+                    //武器Id
+                    //0:剣
+                    //1:斧(未実装)
+                    //2;盾
+                    //3:弓
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Debug.Log("No.1_" + _ChoiceParamator.SelectParamator[i, 0] + "," + _ChoiceParamator.SelectParamator[i, 1] + "," + _ChoiceParamator.SelectParamator[i, 2] + "," + _ChoiceParamator.SelectParamator[i, 3]);
+                    }
+                    StartCoroutine(ChengeSceneCol(scenenum));
+                }
             }
-            else if(scenenum == 3 && !WindowChange)
+            else
             {
-                ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
-                _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
-                
-                //動物Id
-                //0:うさぎ
-                //1:ふくろう
-                //2:ぞう
-                //3:ぺんぎん(未実装)
-
-                //武器Id
-                //0:剣
-                //1:斧(未実装)
-                //2;盾
-                //3:弓
-
-                for (int i = 0; i < 3; i++)
-                {
-                    Debug.Log("No.1_" + _ChoiceParamator.SelectParamator[i, 0] + "," + _ChoiceParamator.SelectParamator[i, 1] + "," + _ChoiceParamator.SelectParamator[i, 2] + "," + _ChoiceParamator.SelectParamator[i, 3]);
-                }
-                StartCoroutine(ChengeSceneCol(scenenum));
+                Debug.Log("どうぶつがセットされてません");
             }
         }
         else
         {
-            Debug.Log("どうぶつがセットされてません");
+            StartCoroutine(ChengeSceneCol(scenenum));
         }
->>>>>>> Hirokawa
     }
 
     IEnumerator ChengeSceneCol(int scenenum)
@@ -96,7 +98,7 @@ public class Scenechenge : MonoBehaviour
     private void AnimalColumnMove()
     {
         //動物アイコンを持ってくる
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             parent = GameObject.Find("Animal_Icon" + (i + 1));
             _animal = Instantiate(Animals[i]);
@@ -131,7 +133,7 @@ public class Scenechenge : MonoBehaviour
     //武器選択のウィンドウを出す
     private void Equip_Change(int BoxNum)
     {
-        if(!Equip_Changing)
+        if (!Equip_Changing)
         {
             Equip_Changing = true;
             Debug.Log("Change_" + Equip_Changing);

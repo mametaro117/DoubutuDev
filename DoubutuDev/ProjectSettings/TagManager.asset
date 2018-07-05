@@ -4,20 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - elephant
-  - rabbit
-<<<<<<< HEAD
-  - dog
   - Animal
-  - EnemyTower
-  - AnimalTower
-  - Param
-=======
-  - owl
-  - penguin
+  - Enemy
   - secret
->>>>>>> Hirokawa
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -27,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - Animal
+  - 
   - 
   - 
   - 

@@ -106,7 +106,7 @@ public class CostScript : MonoBehaviour {
     }
 
     //  どの動物を選んでいるか
-    public int GetSelectNum()
+    public int GetSelectNumber()
     {
         int unitNum;
         unitNum = AnimalObj.GetComponent<AnimalButtonScript>().GetSelectNum() * 3 + WeaponObj.GetComponent<WeaponButtonScript>().GetSelectNum();
