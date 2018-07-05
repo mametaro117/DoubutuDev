@@ -14,7 +14,7 @@ public class AnimalChoiceManager : MonoBehaviour {
     bool[] AnimalListsActive = new bool[10];
 
     // [動物id, 武器id1, 武器id2, 武器id3]
-    public int[,] SelectAnimalList = { { 99, 0, 1, 2 },{ 99, 0, 1, 2 },{ 99, 0, 1, 2 } };
+    public int[,] SelectAnimalList = { { 99, 0, 3, 2 },{ 99, 0, 3, 2 },{ 99, 0, 3, 2 } };
 
     public GameObject[] Animals = new GameObject[3];
 
@@ -88,7 +88,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                             {
                                 obj.transform.SetParent(Parent.transform);
                                 SelectList1Active = true;
-                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("1枠に挿入");
@@ -104,7 +104,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                             {
                                 obj.transform.SetParent(Parent.transform);
                                 SelectList2Active = true;
-                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("2枠に挿入");
@@ -120,7 +120,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                             {
                                 obj.transform.SetParent(Parent.transform);
                                 SelectList3Active = true;
-                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("3枠に挿入");
@@ -186,6 +186,12 @@ public class AnimalChoiceManager : MonoBehaviour {
         {
             return true;
         }
-        return false;
+        else
+        {
+            //あてんしょん
+            //ToolTipsManager _Tool = GameObject.Find("ToolTipsManager").GetComponent<ToolTipsManager>();
+            //_Tool.Show_AttentionToolTips();
+            return false;
+        }
     }
 }

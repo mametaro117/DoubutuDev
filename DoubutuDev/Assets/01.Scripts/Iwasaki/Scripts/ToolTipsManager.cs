@@ -8,6 +8,8 @@ public class ToolTipsManager : MonoBehaviour
     [SerializeField]
     private GameObject ToolPrefabs;
     [SerializeField]
+    private GameObject AttentionToolTips;
+    [SerializeField]
     private GameObject Animal_Obj_Rabbit;
     [SerializeField]
     private GameObject Animal_Obj_Owl;
@@ -102,6 +104,33 @@ public class ToolTipsManager : MonoBehaviour
                 ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Sec;
                 ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Sec;
                 break;
+        }
+    }
+
+    float _alpha;
+
+    public void Show_AttentionToolTips()
+    {
+        ToolTip = Instantiate(AttentionToolTips) as GameObject;
+        Debug.Log(ToolTip);
+        GameObject _Canvas = GameObject.Find("Canvas");
+        AttentionToolTips.transform.SetParent(_Canvas.transform);
+        CanvasGroup _CanvasGroup = AttentionToolTips.GetComponent<CanvasGroup>();
+        _alpha = _CanvasGroup.alpha;
+        _alpha = 1;
+        FadeOut_AttentionToolTips();
+    }
+
+    private void FadeOut_AttentionToolTips()
+    {
+        float _Time = 0;
+        while(_alpha > 0)
+        {
+            _Time += Time.deltaTime;
+            if(_Time >= 1)
+            {
+                _alpha -= Time.deltaTime;
+            }
         }
     }
 }

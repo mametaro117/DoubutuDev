@@ -14,7 +14,7 @@ public class Weapon_Choice_Manager : MonoBehaviour
     [SerializeField]
     Sprite Weapon4_Arrow;
 
-    int[,] SelectWeaponList = { { 99, 0, 1, 2 }, { 99, 0, 1, 2 }, { 99, 0, 1, 2 } };
+    int[,] SelectWeaponList = { { 99, 0, 3, 2 }, { 99, 0, 3, 2 }, { 99, 0, 3, 2 } };
     Sprite[] All_WeaponList;
 
     enum ChoiceState
