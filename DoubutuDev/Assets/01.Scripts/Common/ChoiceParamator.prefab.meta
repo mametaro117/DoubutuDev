@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 686f48371c734c546bcb93f89c6cb293
 timeCreated: 1530786451
 licenseType: Pro
 NativeFormatImporter:
   mainObjectFileID: 100100000
+=======
+guid: 9c85e06c7b878e941b87794e2b2fd54f
+timeCreated: 1530786648
+licenseType: Free
+NativeFormatImporter:
+  mainObjectFileID: -1
+>>>>>>> Hirokawa
   userData: 
   assetBundleName: 
   assetBundleVariant: 

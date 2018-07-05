@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+<<<<<<< HEAD
+=======
+using UnityEngine.UI;
+>>>>>>> Hirokawa
 
 public class AnimalChoiceManager : MonoBehaviour
 {
@@ -14,7 +18,14 @@ public class AnimalChoiceManager : MonoBehaviour
     bool[] AnimalListsActive = new bool[10];
 
     // [動物id, 武器id1, 武器id2, 武器id3]
+<<<<<<< HEAD
     int[,] SelectAnimalList = new int[3, 4];
+=======
+    public int[,] SelectAnimalList = { { 99, 0, 3, 2 },{ 99, 0, 3, 2 },{ 99, 0, 3, 2 } };
+
+    public GameObject[] Animals = new GameObject[3];
+
+>>>>>>> Hirokawa
     enum ChoiceState
     {
         Animal,
@@ -22,6 +33,7 @@ public class AnimalChoiceManager : MonoBehaviour
     }
 
     // Use this for initialization
+<<<<<<< HEAD
     void Start()
     {
 
@@ -32,6 +44,24 @@ public class AnimalChoiceManager : MonoBehaviour
     {
 
     }
+
+    public void EraseToolTip()
+    {
+        GameObject Manager = GameObject.Find("ToolTipsManager");
+        ToolTipsManager TT_Manager = Manager.GetComponent<ToolTipsManager>();
+        TT_Manager.EraseToolTips();
+    }
+=======
+    void Start ()
+    {
+
+    }
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+>>>>>>> Hirokawa
 
     public void EraseToolTip()
     {
@@ -54,7 +84,11 @@ public class AnimalChoiceManager : MonoBehaviour
 
     public void AnimalDrag(GameObject ChildObj)
     {
+<<<<<<< HEAD
         if (!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
+=======
+        if(!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
+>>>>>>> Hirokawa
         {
             Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             ChildObj.transform.position = TapPos;
@@ -74,6 +108,7 @@ public class AnimalChoiceManager : MonoBehaviour
             //Debug.Log(UiPos);
             float Diff_x = TapPos.x - UiPos.x;
             float Diff_y = TapPos.y - UiPos.y;
+<<<<<<< HEAD
             if (-1f <= Diff_x && Diff_x <= 1f)
             {
                 if (-1f <= Diff_y && Diff_y <= 1f)
@@ -93,11 +128,33 @@ public class AnimalChoiceManager : MonoBehaviour
                                 Debug.Log("1枠に挿入");
                             }
                             else if (SelectList1Active)
+=======
+            if(-1f <= Diff_x && Diff_x <= 1f)
+            {
+                if(-1f <= Diff_y && Diff_y <= 1f)
+                {
+                    //枠の子孫とする
+                    switch(i)
+                    {
+                        case 1:                            
+                            if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
+                            {
+                                obj.transform.SetParent(Parent.transform);
+                                SelectList1Active = true;
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
+                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                Debug.Log("1枠に挿入");
+                                Animals[i - 1] = obj;
+                            }
+                            else if(SelectList1Active)
+>>>>>>> Hirokawa
                             {
                                 Debug.Log("オムライス");
                             }
                             break;
                         case 2:
+<<<<<<< HEAD
                             if (!SelectList2Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
                                 obj.transform.SetParent(Parent.transform);
@@ -117,6 +174,37 @@ public class AnimalChoiceManager : MonoBehaviour
                                 AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 //Debug.Log(SelectAnimalList[i - 1, 0]);
                                 Debug.Log("3枠に挿入");
+=======
+                            if(!SelectList2Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
+                            {
+                                obj.transform.SetParent(Parent.transform);
+                                SelectList2Active = true;
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
+                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                Debug.Log("2枠に挿入");
+                                Animals[i - 1] = obj;
+                            }
+                            else if (SelectList2Active)
+                            {
+                                Debug.Log("からあげ");
+                            }
+                            break;
+                        case 3:
+                            if(!SelectList3Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
+                            {
+                                obj.transform.SetParent(Parent.transform);
+                                SelectList3Active = true;
+                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
+                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                Debug.Log("3枠に挿入");
+                                Animals[i - 1] = obj;
+                            }
+                            else if (SelectList3Active)
+                            {
+                                Debug.Log("カレーライス");
+>>>>>>> Hirokawa
                             }
                             break;
                         default:
@@ -142,7 +230,11 @@ public class AnimalChoiceManager : MonoBehaviour
             int strlength = obj.name.Length;
             int BoxNum = int.Parse(obj.name.Substring(strlength - 1));
             Debug.Log("<color=red>" + BoxNum + "</color>");
+<<<<<<< HEAD
             switch (BoxNum)
+=======
+            switch(BoxNum)
+>>>>>>> Hirokawa
             {
                 case 1:
                     SelectList1Active = false;
@@ -150,11 +242,19 @@ public class AnimalChoiceManager : MonoBehaviour
                     break;
                 case 2:
                     SelectList2Active = false;
+<<<<<<< HEAD
                     Debug.Log("List1_false");
                     break;
                 case 3:
                     SelectList3Active = false;
                     Debug.Log("List1_false");
+=======
+                    Debug.Log("List2_false");
+                    break;
+                case 3:
+                    SelectList3Active = false;
+                    Debug.Log("List3_false");
+>>>>>>> Hirokawa
                     break;
                 default:
                     Debug.Log("（´・ω・｀）");
@@ -170,10 +270,24 @@ public class AnimalChoiceManager : MonoBehaviour
 
     public bool AnimalSetCheck()
     {
+<<<<<<< HEAD
         if (SelectList1Active && SelectList2Active && SelectList3Active)
         {
             return true;
         }
         return false;
+=======
+        if(SelectList1Active && SelectList2Active && SelectList3Active)
+        {
+            return true;
+        }
+        else
+        {
+            //あてんしょん
+            //ToolTipsManager _Tool = GameObject.Find("ToolTipsManager").GetComponent<ToolTipsManager>();
+            //_Tool.Show_AttentionToolTips();
+            return false;
+        }
+>>>>>>> Hirokawa
     }
 }

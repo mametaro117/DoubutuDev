@@ -5,15 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - weapon1
-  - bird
   - elephant
   - rabbit
+<<<<<<< HEAD
   - dog
   - Animal
   - EnemyTower
   - AnimalTower
   - Param
+=======
+  - owl
+  - penguin
+  - secret
+>>>>>>> Hirokawa
   layers:
   - Default
   - TransparentFX
