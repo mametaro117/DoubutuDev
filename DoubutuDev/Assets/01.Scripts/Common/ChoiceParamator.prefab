@@ -48,10 +48,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1455447211089400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 778e66f7a9fd6c2469dfa94fc3d3bb0f, type: 3}
-=======
-  m_Script: {fileID: 11500000, guid: 4ccd50160a2027643bd1d3c00a5308b6, type: 3}
->>>>>>> Hirokawa
   m_Name: 
   m_EditorClassIdentifier: 
