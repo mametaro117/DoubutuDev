@@ -215,7 +215,7 @@ MonoBehaviour:
   Attack: 1
   Speed: 0
   IsSky: 0
-  isunit: 1
+  isUnit: 1
   weaponType: 0
 --- !u!114 &114799610327510582
 MonoBehaviour:

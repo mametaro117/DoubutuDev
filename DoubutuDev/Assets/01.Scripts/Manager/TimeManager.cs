@@ -41,15 +41,17 @@ public class TimeManager : MonoBehaviour {
         }
     }
 
-    public void GameFinish()
+    public void GameClear()
     {
-        
+        Debug.Log("Gameclear!!");
+        StartCoroutine(MissionClear());
     }
 
-
-
-
-    
+    public void GameFaild()
+    {
+        Debug.Log("GameFaild!!");
+        StartCoroutine(MissionFaild());
+    }    
     
     //  開始時のカウントダウン処理
     IEnumerator ReadyGo()
@@ -68,4 +70,34 @@ public class TimeManager : MonoBehaviour {
         isReady = true;
         yield break;
     }
+
+    IEnumerator MissionClear()
+    {
+        Time.timeScale = 0;
+        ClearImage.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        yield return new WaitForSecondsRealtime(2.0f);
+        Destroy(gameObject);
+        FadeManager.Instance.LoadScene(0, 2f);
+        yield break;
+    }
+
+    IEnumerator MissionFaild()
+    {
+        Time.timeScale = 0;
+        FailImage.SetActive(true);
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        yield return new WaitForSecondsRealtime(2.0f);
+        Destroy(gameObject);
+        FadeManager.Instance.LoadScene(0, 2f);
+        yield break;
+    }
+
+    public bool GetIsReady()
+    {
+        return isReady;
+    }
+
 }

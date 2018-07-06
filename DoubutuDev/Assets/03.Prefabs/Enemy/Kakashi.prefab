@@ -161,8 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoint: 10
   Attack: 0
-  Size: 0
+  Speed: 0
   IsSky: 0
+  isUnit: 1
   weaponType: 0
 --- !u!114 &114377493898293942
 MonoBehaviour:

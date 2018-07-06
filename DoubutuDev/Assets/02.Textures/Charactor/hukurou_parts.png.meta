@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 35655732f1b57f849832f1086b0b9eb0
-timeCreated: 1530832068
-licenseType: Free
+timeCreated: 1530840094
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: hukurou_parts_R_Wing00
@@ -105,7 +105,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 79
-        y: 351
+        y: 352
         width: 87
         height: 49
       alignment: 9
@@ -143,7 +143,7 @@ TextureImporter:
       name: hukurou_parts_R_Wing01
       rect:
         serializedVersion: 2
-        x: 66
+        x: 65
         y: 204
         width: 104
         height: 51
@@ -156,8 +156,8 @@ TextureImporter:
       name: hukurou_parts_body
       rect:
         serializedVersion: 2
-        x: 262
-        y: 152
+        x: 261
+        y: 151
         width: 123
         height: 124
       alignment: 9

@@ -235,10 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c09a36ea08bb494fb7412e440ff787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 256
   EnemyObject: {fileID: 0}
+  EnemyObjects: []
 --- !u!114 &114499406530402808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,7 +252,7 @@ MonoBehaviour:
   Attack: 1
   Speed: 0
   IsSky: 0
-  isunit: 1
+  isUnit: 1
   weaponType: 2
 --- !u!114 &114765613045808046
 MonoBehaviour:

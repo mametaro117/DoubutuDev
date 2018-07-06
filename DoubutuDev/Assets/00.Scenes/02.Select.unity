@@ -2965,6 +2965,8 @@ MonoBehaviour:
   Animal_Obj_Elephant: {fileID: 175712106}
   Animal_Obj_Penguin: {fileID: 682461232}
   parent: {fileID: 0}
+  _Canvas: {fileID: 1719361988}
+  ShowAttentionActive: 0
 --- !u!1 &1264757833
 GameObject:
   m_ObjectHideFlags: 0

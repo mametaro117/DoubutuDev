@@ -1,18 +1,18 @@
 fileFormatVersion: 2
 guid: b0e9acfd524688c439aeac0a9cb6b1ef
-timeCreated: 1530209725
-licenseType: Free
+timeCreated: 1530843632
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: zou00_barabara_0
-    21300002: zou00_barabara_1
-    21300004: zou00_barabara_2
-    21300006: zou00_barabara_3
-    21300008: zou00_barabara_4
-    21300010: zou00_barabara_5
-    21300012: zou00_barabara_6
-    21300014: zou00_barabara_7
-    21300016: zou00_barabara_8
+    21300000: zou_parts_R_ear
+    21300002: zou_parts_L_ear
+    21300004: zou_parts_hana
+    21300006: zou_parts_head
+    21300008: zou_parts_R_hand
+    21300010: zou_parts_L_hand
+    21300012: zou_parts_body
+    21300014: zou_parts_R_leg
+    21300016: zou_parts_L_leg
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zou00_barabara_0
+      name: zou_parts_R_ear
       rect:
         serializedVersion: 2
         x: 141
@@ -111,12 +111,12 @@ TextureImporter:
         width: 129
         height: 158
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_1
+      name: zou_parts_L_ear
       rect:
         serializedVersion: 2
         x: 408
@@ -124,12 +124,12 @@ TextureImporter:
         width: 144
         height: 158
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_2
+      name: zou_parts_hana
       rect:
         serializedVersion: 2
         x: 85
@@ -137,25 +137,25 @@ TextureImporter:
         width: 175
         height: 86
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_3
+      name: zou_parts_head
       rect:
         serializedVersion: 2
-        x: 402
-        y: 520
+        x: 397
+        y: 522
         width: 170
         height: 152
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_4
+      name: zou_parts_R_hand
       rect:
         serializedVersion: 2
         x: 117
@@ -163,25 +163,25 @@ TextureImporter:
         width: 98
         height: 105
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_5
+      name: zou_parts_L_hand
       rect:
         serializedVersion: 2
         x: 320
-        y: 299
+        y: 295
         width: 80
         height: 110
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_6
+      name: zou_parts_body
       rect:
         serializedVersion: 2
         x: 477
@@ -189,12 +189,12 @@ TextureImporter:
         width: 124
         height: 187
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_7
+      name: zou_parts_R_leg
       rect:
         serializedVersion: 2
         x: 120
@@ -202,12 +202,12 @@ TextureImporter:
         width: 70
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_barabara_8
+      name: zou_parts_L_leg
       rect:
         serializedVersion: 2
         x: 332
@@ -215,7 +215,7 @@ TextureImporter:
         width: 67
         height: 116
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

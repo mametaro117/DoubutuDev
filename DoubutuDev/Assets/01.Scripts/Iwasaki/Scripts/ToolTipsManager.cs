@@ -19,7 +19,10 @@ public class ToolTipsManager : MonoBehaviour
     private GameObject Animal_Obj_Penguin;
     [SerializeField]
     private Transform parent;
-    private GameObject ToolTip;
+    [SerializeField]
+    GameObject _Canvas;
+    private GameObject ToolTip = null;
+    private GameObject AttentionToolTip = null;
 
     //ゾウさんのTips
     private string name_Ele = "名前:ゾウ";
@@ -108,29 +111,50 @@ public class ToolTipsManager : MonoBehaviour
     }
 
     float _alpha;
+    CanvasGroup _CanvasGroup;
+    public bool ShowAttentionActive;
 
+    //アテンションツールチップを表示する
     public void Show_AttentionToolTips()
     {
-        ToolTip = Instantiate(AttentionToolTips) as GameObject;
-        Debug.Log(ToolTip);
-        GameObject _Canvas = GameObject.Find("Canvas");
-        AttentionToolTips.transform.SetParent(_Canvas.transform);
-        CanvasGroup _CanvasGroup = AttentionToolTips.GetComponent<CanvasGroup>();
-        _alpha = _CanvasGroup.alpha;
-        _alpha = 1;
-        FadeOut_AttentionToolTips();
+        if(!ShowAttentionActive)
+        {
+            ShowAttentionActive = true;
+            AttentionToolTip = Instantiate(AttentionToolTips) as GameObject;
+            AttentionToolTip.transform.SetParent(_Canvas.transform);
+            _CanvasGroup = AttentionToolTip.GetComponent<CanvasGroup>();
+            RectTransform _AttentionRect = AttentionToolTip.GetComponent<RectTransform>();
+            _AttentionRect.localScale = new Vector3(1, 1, 1);
+            _AttentionRect.anchoredPosition3D = new Vector3(0, 0, 0);
+            //テキストいじるならココ
+            //ToolTip.transform.GetChild(0).GetComponent<Text>().text = "Text";
+            _alpha = 1;
+            _CanvasGroup.alpha = _alpha;
+            //コルーチン便利かよ!!!!!
+            StartCoroutine(FadeOut_AttentionToolTips());
+        }
+        else
+        {
+            Debug.Log("表示中");
+        }
     }
 
-    private void FadeOut_AttentionToolTips()
+    IEnumerator FadeOut_AttentionToolTips()
     {
         float _Time = 0;
-        while(_alpha > 0)
+        while (_alpha > 0)
         {
             _Time += Time.deltaTime;
-            if(_Time >= 1)
+            if (_Time >= 1)
             {
                 _alpha -= Time.deltaTime;
             }
+            _CanvasGroup.alpha = _alpha;
+            yield return null;
         }
+        ShowAttentionActive = false;
+        Destroy(AttentionToolTip);
+        AttentionToolTip = null;
     }
+
 }

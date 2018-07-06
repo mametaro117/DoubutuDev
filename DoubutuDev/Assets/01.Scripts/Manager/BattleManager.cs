@@ -46,6 +46,8 @@ public class BattleManager : MonoBehaviour {
     [SerializeField]
     private List<AnimalList> _animalListList = new List<AnimalList>();
 
+    private TimeManager timeManager;
+
     public void Awake()
     {
         if (this != Instance)
@@ -54,12 +56,12 @@ public class BattleManager : MonoBehaviour {
             return;
         }
         DontDestroyOnLoad(this.gameObject);
+        timeManager = GetComponent<TimeManager>();
     }
 
     void Start () {
-
     }
-	
+
     public void AddFieldUnit(GameObject obj)
     {
         OnFieldUnitsList.Add(obj);
@@ -74,13 +76,13 @@ public class BattleManager : MonoBehaviour {
         {
             StartCoroutine(DelayDestry(obj));
         }
-        else if (obj.tag == "EnemTower")
+        else if (obj.tag == "EnemyTower")
         {
-
+            timeManager.GameClear();
         }
         else if (obj.tag == "AnimalTower")
         {
-
+            timeManager.GameFaild();
         }
     }
     

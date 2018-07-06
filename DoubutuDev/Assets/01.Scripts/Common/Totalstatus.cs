@@ -30,7 +30,7 @@ public class Totalstatus : MonoBehaviour {
         //Debug.Log(gameObject.name +" HP: " + MaxHP);
         //  HPバーオブジェクトがあったら
         if(isUnit)
-            BerObj = transform.GetChild(0).GetChild(0).gameObject;        
+            BerObj = transform.GetChild(0).GetChild(0).gameObject;
     }
 
 

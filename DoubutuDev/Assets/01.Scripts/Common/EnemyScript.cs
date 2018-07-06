@@ -6,8 +6,6 @@ public class EnemyScript : MonoBehaviour {
 
     //private enum State { Idle = 0, Walk, Attack };
     //State state = State.Idle;
-    [SerializeField]
-    private LayerMask TargetLayer;
 
     [SerializeField]
     private GameObject EnemyObject;

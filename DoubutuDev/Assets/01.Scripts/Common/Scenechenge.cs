@@ -18,6 +18,7 @@ public class Scenechenge : MonoBehaviour
 
     public void ChengeScene(int scenenum)
     {
+        AudioManager.Instance.PlaySe(0);
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
@@ -42,7 +43,7 @@ public class Scenechenge : MonoBehaviour
                 {
                     ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
                     _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
-
+                    AudioManager.Instance.PlayBGM(1);
                     //動物Id
                     //0:うさぎ
                     //1:ふくろう
@@ -54,11 +55,12 @@ public class Scenechenge : MonoBehaviour
                     //1:斧(未実装)
                     //2;盾
                     //3:弓
-
+                    /*
                     for (int i = 0; i < 3; i++)
                     {
                         Debug.Log("No.1_" + _ChoiceParamator.SelectParamator[i, 0] + "," + _ChoiceParamator.SelectParamator[i, 1] + "," + _ChoiceParamator.SelectParamator[i, 2] + "," + _ChoiceParamator.SelectParamator[i, 3]);
                     }
+                    */
                     StartCoroutine(ChengeSceneCol(scenenum));
                 }
             }
@@ -135,6 +137,7 @@ public class Scenechenge : MonoBehaviour
     {
         if (!Equip_Changing)
         {
+            AudioManager.Instance.PlaySe(0);
             Equip_Changing = true;
             Debug.Log("Change_" + Equip_Changing);
 
@@ -188,6 +191,7 @@ public class Scenechenge : MonoBehaviour
     //武器選択のウィンドウを隠す
     public void Click_Back_Button()
     {
+        AudioManager.Instance.PlaySe(0);
         Equip_Changing = false;
         Debug.Log("Change_" + Equip_Changing);
 

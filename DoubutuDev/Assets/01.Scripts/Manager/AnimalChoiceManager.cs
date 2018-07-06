@@ -54,10 +54,17 @@ public class AnimalChoiceManager : MonoBehaviour {
         //Debug.Log(obj.name);
     }
 
+    bool StartDrag = true;
+
     public void AnimalDrag(GameObject ChildObj)
     {
         if(!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
         {
+            if(StartDrag)
+            {
+                AudioManager.Instance.PlaySe(1);
+                StartDrag = false;
+            }
             Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             ChildObj.transform.position = TapPos;
         }
@@ -65,6 +72,7 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void EndDrag(GameObject obj)
     {
+        StartDrag = true;
         GameObject Parent;
         Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //Debug.Log(TapPos);
@@ -80,8 +88,9 @@ public class AnimalChoiceManager : MonoBehaviour {
             {
                 if(-1f <= Diff_y && Diff_y <= 1f)
                 {
+                    AudioManager.Instance.PlaySe(2);
                     //枠の子孫とする
-                    switch(i)
+                    switch (i)
                     {
                         case 1:                            
                             if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
@@ -188,9 +197,8 @@ public class AnimalChoiceManager : MonoBehaviour {
         }
         else
         {
-            //あてんしょん
-            //ToolTipsManager _Tool = GameObject.Find("ToolTipsManager").GetComponent<ToolTipsManager>();
-            //_Tool.Show_AttentionToolTips();
+            ToolTipsManager _Tool = GameObject.Find("ToolTipsManager").GetComponent<ToolTipsManager>();
+            _Tool.Show_AttentionToolTips();
             return false;
         }
     }
