@@ -73,13 +73,11 @@ public class ToolTipsManager : MonoBehaviour
             ToolTip.transform.SetParent(canvas.transform);
             var RectTransform = ToolTip.GetComponent<RectTransform>();
             RectTransform.localScale = new Vector3(1, 1, 1);
-            
         }
         else
         {
             ToolTip.transform.position = pos;
         }
-        
         //ToolTipのテキストを変更する
         switch (objnum)
         {
@@ -157,5 +155,4 @@ public class ToolTipsManager : MonoBehaviour
         Destroy(AttentionToolTip);
         AttentionToolTip = null;
     }
-
 }
