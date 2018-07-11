@@ -25,24 +25,24 @@ public class ToolTipsManager : MonoBehaviour
     private GameObject AttentionToolTip = null;
 
     //ゾウさんのTips
-    private string name_Ele = "名前:ゾウ";
-    private string tokusei_Ele = "特性:巨大";
-    private string speed_Ele = "スピード:10";
+    private string name_Ele = "なまえ:ゾウ";
+    private string tokusei_Ele = "とくせい:きょだい";
+    private string speed_Ele = "スピード:5";
     //フクロウのTips
-    private string name_Owl = "名前:フクロウ";
-    private string tokusei_Owl = "特性:飛ぶ";
+    private string name_Owl = "なまえ:フクロウ";
+    private string tokusei_Owl = "とくせい:とぶ";
     private string speed_Owl = "スピード:5";
     //うさぎさんのTips
-    private string name_Rab = "名前:うさぎ";
-    private string tokusei_Rab = "特性:小型";
-    private string speed_Rab = "スピード:3";
+    private string name_Rab = "なまえ:うさぎ";
+    private string tokusei_Rab = "とくせい:こがた";
+    private string speed_Rab = "スピード:10";
     //ぺんぎんのTips
-    private string name_Pen = "名前:ぺんぎん";
-    private string tokusei_Pen = "特性:小型";
+    private string name_Pen = "なまえ:ぺんぎん";
+    private string tokusei_Pen = "とくせい:こがた";
     private string speed_Pen = "スピード:3";
     //未実装
-    private string name_Sec = "名前:";
-    private string tokusei_Sec = "特性:";
+    private string name_Sec = "なまえ:";
+    private string tokusei_Sec = "とくせい:";
     private string speed_Sec = "スピード:";
 
     private Vector3 pos;
@@ -73,6 +73,7 @@ public class ToolTipsManager : MonoBehaviour
             ToolTip.transform.SetParent(canvas.transform);
             var RectTransform = ToolTip.GetComponent<RectTransform>();
             RectTransform.localScale = new Vector3(1, 1, 1);
+            
         }
         else
         {
