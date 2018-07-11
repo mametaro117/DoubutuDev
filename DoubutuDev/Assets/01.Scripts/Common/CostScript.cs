@@ -8,9 +8,12 @@ public class CostScript : MonoBehaviour {
     //  コストの最大値
     private const float MaxAnimalCost = 500;
     private const float MaxWeaponCost = 500;
+    //  コストバーの最大幅取得
+    private Vector2 BarRect;
+
     //  コスト表示のText
     [SerializeField]
-    private Text AnimalCostTxt,WeaponCostText;
+    private GameObject AnimalCostTxt,WeaponCostText;
     //  初期値
     [SerializeField]
     private float DefaultAnimalCost = 100;
@@ -21,15 +24,21 @@ public class CostScript : MonoBehaviour {
     private float WeaponCostPoint;
     //  幅を変更するための参照
     [SerializeField]
-    private RectTransform Animalrect, Weaponrect;
-
-    private float AnimalCost = -1, WeaponCost = -1;
+    private GameObject AnimalrectObj, WeaponrectObj;
+    private RectTransform AnimalRect, WeaponRect;
+    //  選択状態のオブジェクト参照用
+    private GameObject AnimalObj = null, WeaponObj = null;
 
 
     void Start () {
+        //  バーのサイズ設定
+        BarRect = AnimalrectObj.GetComponent<RectTransform>().sizeDelta;
         //  コストの初期化
         AnimalCostPoint = DefaultAnimalCost;
         WeaponCostPoint = DefaultWeaponCost;
+        //  warning回避用にGameObjectからGetComponent
+        AnimalRect = AnimalrectObj.GetComponent<RectTransform>();
+        WeaponRect = WeaponrectObj.GetComponent<RectTransform>();
     }
 	
 	void Update () {
@@ -40,25 +49,25 @@ public class CostScript : MonoBehaviour {
     }
 
     //  消費するコストの決定 動物
-    public void SetAnimalCost(float num)
+    public void SetAnimalObj(GameObject animal)
     {
-        AnimalCost = num;
+        AnimalObj = animal;
     }
     //  消費するコストの決定 武器
-    public void SetWeaponCost(float num)
+    public void SetWeaponObj(GameObject weapon)
     {
-        WeaponCost = num;
+        WeaponObj = weapon;
     }
-    //  動物のコストが変化したら武器のコストを消費関数が実行できないように負の値にへ
+    //  動物のコストが変化したら武器のコストを消費関数が実行できないように
     public void DeleteWeaponCost()
     {
-        WeaponCost = -1;
+        WeaponObj = null;
     }
 
     //  動物コストを消費する
     public void ConsumeAnimalCost()
     {
-        float cost = AnimalCost * 100;
+        float cost = AnimalObj.GetComponent<AnimalButtonScript>().GetCost() * 100;
         //  消費コストが現在のコストより小さければ
         if (cost < AnimalCostPoint)
             AnimalCostPoint -= cost;
@@ -69,7 +78,7 @@ public class CostScript : MonoBehaviour {
     //  武器コストを消費する
     public void ConsumeWeaponCost()
     {
-        float cost = WeaponCost * 100;
+        float cost = WeaponObj.GetComponent<WeaponButtonScript>().GetCost() * 100;
         //  消費コストが現在のコストより小さければ
         if (cost < WeaponCostPoint)
             WeaponCostPoint -= cost;
@@ -80,31 +89,36 @@ public class CostScript : MonoBehaviour {
     //  コストの値がセットされているか
     public bool IsSetCostValue()
     {
-        if (AnimalCost >= 1 && WeaponCost >= 1)
+        if (AnimalObj != null && WeaponObj != null)
             return true;
         else
             return false; 
     }
 
-    /// <summary>
-    /// コストが足りているか
-    /// </summary>
+    //  コストが足りているか
     public bool IsCreate()
     {
-        if (AnimalCostPoint >= AnimalCost * 100 && WeaponCostPoint >= WeaponCost * 100)
+        if (AnimalCostPoint >= AnimalObj.GetComponent<AnimalButtonScript>().GetCost() * 100 && 
+            WeaponCostPoint >= WeaponObj.GetComponent<WeaponButtonScript>().GetCost() * 100)
             return true;
         else
             return false;
     }
 
-    /// <summary>
-    /// 値をコストバーに反映
-    /// </summary>
+    //  どの動物を選んでいるか
+    public int GetSelectNumber()
+    {
+        int unitNum;
+        unitNum = AnimalObj.GetComponent<AnimalButtonScript>().GetSelectNum() * 3 + WeaponObj.GetComponent<WeaponButtonScript>().GetSelectNum();
+        return unitNum;
+    }
+
+    // 値をコストバーに反映
     void CostFixed()
     {
-        AnimalCostTxt.text = Mathf.Floor(AnimalCostPoint / 100).ToString("F0");
-        WeaponCostText.text = Mathf.Floor(WeaponCostPoint / 100).ToString("F0");
-        Animalrect.sizeDelta = new Vector2(AnimalCostPoint / MaxAnimalCost * MaxAnimalCost, Animalrect.sizeDelta.y);
-        Weaponrect.sizeDelta = new Vector2(WeaponCostPoint / MaxWeaponCost * MaxWeaponCost, Weaponrect.sizeDelta.y);
+        AnimalCostTxt.GetComponent<Text>().text = Mathf.Floor(AnimalCostPoint / 100).ToString("F0");
+        WeaponCostText.GetComponent<Text>().text = Mathf.Floor(WeaponCostPoint / 100).ToString("F0");
+        AnimalRect.sizeDelta = new Vector2(BarRect.x * (AnimalCostPoint / MaxAnimalCost), AnimalRect.sizeDelta.y);
+        WeaponRect.sizeDelta = new Vector2(BarRect.x * (WeaponCostPoint / MaxWeaponCost), WeaponRect.sizeDelta.y);
     }
 }
