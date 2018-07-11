@@ -19,6 +19,7 @@ public class Scenechenge : MonoBehaviour
     public void ChengeScene(int scenenum)
     {
         AudioManager.Instance.PlaySe(0);
+        AudioManager.Instance.FadeBgm();
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();

@@ -70,6 +70,15 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(SeList[SEnum], vol);
     }
 
+    
+    public void FadeBgm(float vol = 1.0f)
+    {
+        if(vol == 0)
+        {
+            FadeBgm();
+        }
+    }
+
     //void OnCollisionEnter2D(Collision2D collision)
     //{
     //    if (collision.transform.tag == "Enemy")
