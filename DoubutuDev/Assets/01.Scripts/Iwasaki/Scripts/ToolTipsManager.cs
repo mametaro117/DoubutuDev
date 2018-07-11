@@ -25,25 +25,25 @@ public class ToolTipsManager : MonoBehaviour
     private GameObject AttentionToolTip = null;
 
     //ゾウさんのTips
-    private string name_Ele = "なまえ:ゾウ";
+    private string name_Ele = "なまえ:ぞう";
     private string tokusei_Ele = "とくせい:きょだい";
     private string speed_Ele = "スピード:5";
     //フクロウのTips
-    private string name_Owl = "なまえ:フクロウ";
+    private string name_Owl = "なまえ:ふくろう";
     private string tokusei_Owl = "とくせい:とぶ";
-    private string speed_Owl = "スピード:5";
+    private string speed_Owl = "すぴーど:5";
     //うさぎさんのTips
     private string name_Rab = "なまえ:うさぎ";
     private string tokusei_Rab = "とくせい:こがた";
-    private string speed_Rab = "スピード:10";
+    private string speed_Rab = "すぴーど:10";
     //ぺんぎんのTips
     private string name_Pen = "なまえ:ぺんぎん";
     private string tokusei_Pen = "とくせい:こがた";
-    private string speed_Pen = "スピード:3";
+    private string speed_Pen = "すぴーど:3";
     //未実装
     private string name_Sec = "なまえ:";
     private string tokusei_Sec = "とくせい:";
-    private string speed_Sec = "スピード:";
+    private string speed_Sec = "すぴーど:";
 
     private Vector3 pos;
     private RaycastHit2D hit;
