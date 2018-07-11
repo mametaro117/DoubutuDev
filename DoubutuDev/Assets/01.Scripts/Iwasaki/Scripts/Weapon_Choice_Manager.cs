@@ -40,38 +40,37 @@ public class Weapon_Choice_Manager : MonoBehaviour
     {
         GameObject Parent;
         Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        for (int i = 1; i < 4; i++)
+        Parent = obj.transform.root.gameObject;
+        Vector2 UiPos = Parent.transform.position;
+        float Diff_x = TapPos.x - UiPos.x;
+        float Diff_y = TapPos.y - UiPos.y;
+        /*
+        if (-1f <= Diff_y && Diff_y <= 1f)
         {
-            Parent = GameObject.Find("Canvas/SelectList_Weapon/" + i + "");
-            Vector2 UiPos = Parent.transform.position;
-            float Diff_x = TapPos.x - UiPos.x;
-            float Diff_y = TapPos.y - UiPos.y;
-            if (-1f <= Diff_y && Diff_y <= 1f)
+            switch (i)
             {
-                switch (i)
-                {
-                    case 1:
-                        obj.transform.SetParent(Parent.transform);
-                        SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                        Debug.Log("1枠に挿入");
-                        break;
-                    case 2:
-                        obj.transform.SetParent(Parent.transform);
-                        SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                        Debug.Log("2枠に挿入");
-                        break;
-                    case 3:
-                        obj.transform.SetParent(Parent.transform);
-                        SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
-                        Debug.Log("3枠に挿入");
-                        break;
-                    default:
-                        Debug.Log("何枠やねん");
-                        break;
-                }
-            break;
+                case 1:
+                    obj.transform.SetParent(Parent.transform);
+                    SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                    Debug.Log("1枠に挿入");
+                    break;
+                case 2:
+                    obj.transform.SetParent(Parent.transform);
+                    SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                    Debug.Log("2枠に挿入");
+                    break;
+                case 3:
+                    obj.transform.SetParent(Parent.transform);
+                    SelectWeaponList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1));
+                    Debug.Log("3枠に挿入");
+                    break;
+                default:
+                    Debug.Log("何枠やねん");
+                    break;
             }
+        break;
         }
+        */
         var RectTransform = obj.GetComponent<RectTransform>();
         Vector2 ResetPos = new Vector2();
         RectTransform.anchoredPosition = ResetPos;
