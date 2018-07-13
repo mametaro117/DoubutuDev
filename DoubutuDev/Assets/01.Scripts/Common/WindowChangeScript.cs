@@ -24,9 +24,7 @@ public class WindowChangeScript : MonoBehaviour
                 AnimalList[i] = Manager.SelectAnimalList[i, 0];
                 Animals[i] = Manager.Animals[i];
                 AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
-                //Debug.Log(Animals[i]);
             }
-            //StartCoroutine(ChengeSceneCol(scenenum));
             Change_Screen();
         }
     }
@@ -34,7 +32,7 @@ public class WindowChangeScript : MonoBehaviour
     public void Select_Weapon(GameObject obj)
     {
         int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
-        Debug.Log(objnum);
+        //Debug.Log(objnum);
         Equip_Change(objnum);
     }
 
@@ -97,6 +95,8 @@ public class WindowChangeScript : MonoBehaviour
 
             ActiveBoxNum = BoxNum;
 
+            
+
             //武器リスト
             GameObject Weapon_Box = GameObject.Find("Weapon_Box");
             var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
@@ -139,7 +139,7 @@ public class WindowChangeScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("NotChange");
+            //Debug.Log("NotChange");
         }
     }
 
@@ -183,6 +183,7 @@ public class WindowChangeScript : MonoBehaviour
         GameObject.Find("Canvas/Text").GetComponent<CanvasGroup>().alpha = 1;
     }
 
+    //パラメーターあげます
     public void PassParamator()
     {
         ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();

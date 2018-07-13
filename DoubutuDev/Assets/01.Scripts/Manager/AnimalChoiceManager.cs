@@ -31,9 +31,10 @@ public class AnimalChoiceManager : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        
+    }
 
     public void EraseToolTip()
     {
