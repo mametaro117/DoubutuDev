@@ -54,7 +54,7 @@ public class EnemySpawnManager : MonoBehaviour {
         for(int i = 0; i < 5; i++)
         {
             LanePowers[i] = 0;  //  初期化
-            hit = Physics2D.BoxCastAll(SpawnPositions[i].position, new Vector2(1, 2), 0f, Vector2.right, 10f);
+            hit = Physics2D.BoxCastAll(SpawnPositions[i].position, new Vector2(1, 1.6875f), 0f, Vector2.right, 10f);
             Debug.Log("BoxCast:" + hit.Length);
             for (int k = 0; hit.Length > k; k++)
             {

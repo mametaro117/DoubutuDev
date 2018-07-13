@@ -107,4 +107,12 @@ public class FadeManager : MonoBehaviour
 
         this.isFading = false;
     }
+
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Debug.Log("2秒たったよ");
+        yield break;
+
+    }
 }
