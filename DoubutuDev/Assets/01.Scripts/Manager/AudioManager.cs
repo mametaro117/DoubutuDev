@@ -54,6 +54,13 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         PlayBGM(0);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            StartCoroutine(FadeBgm(sceneNum, interval));
+        }
+    }
 
     public void PlayBGM(int BGM_num)
     {
@@ -70,12 +77,25 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(SeList[SEnum], vol);
     }
 
-    
-    public void FadeBgm(float vol = 1.0f)
+
+    public IEnumerator FadeBgm(int sceneNum, float interval)
     {
-        if(vol == 0)
+        //だんだん小さく
+        float time = 0;
+        while (time <= interval)
         {
-            FadeBgm();
+            Mathf.Lerp(0f, 1f, time / interval);
+            time += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+
+        //だんだん大きく
+        time = 0;
+        while (time <= interval)
+        {
+            Mathf.Lerp(0f, 1f, time / interval);
+            time += Time.unscaledDeltaTime;
+            yield return 0;
         }
     }
 
