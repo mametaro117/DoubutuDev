@@ -13,39 +13,30 @@ public class Ultimate_Skill : MonoBehaviour
        WeaponNum = (int)totalstatus.weaponType;
     }
 
-    void UltimateSkill()
+    void UltimateSkill(GameObject obj)
     {
-        switch (WeaponNum = 0)  //近距離
+        switch (WeaponNum)
         {
-            case 1:             // ペンギンの近距離
+            case 0:     //Sword
+                if (obj)   //ぞう
+                {
+
+                }
                 break;
-            case 2:             // うさぎの近距離
-                break;          
-            case 3:             // ぞうの近距離
-                break;  
-            default:            // ふくろうの近距離
+            case 1:     //Shield
+                if (obj)
+                {
+
+                }
                 break;
-        }
-        switch (WeaponNum = 1)  //盾
-        {
-            case 1:             // ぺんぎんの盾
+            case 2:     //Arrow
+                if (obj)
+                {
+
+                }
                 break;
-            case 2:             // うさぎの盾
-                break;
-            case 3:             // ぞうの盾
-                break;
-            default:            // ふくろうの盾
-                break;
-        }
-        switch (WeaponNum = 2)  //遠距離
-        {
-            case 1:             // ぺんぎんの遠距離
-                break;
-            case 2:             // うさぎの遠距離
-                break;
-            case 3:             // ぞうの遠距離
-                break;
-            default:            // ふくろうの遠距離
+            default:
+
                 break;
         }
     }
