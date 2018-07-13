@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System;
 
 public class Weapon_Choice_Manager : MonoBehaviour
 {
@@ -13,8 +15,66 @@ public class Weapon_Choice_Manager : MonoBehaviour
     Sprite Weapon3_Shield;
     [SerializeField]
     Sprite Weapon4_Arrow;
-    
-    bool[] WeaponListsActive = new bool[10];
+
+    public bool[] WeaponListsActive = new bool[10];
+    public int[] _ActiveBoxWeaponBefore = new int[3];
+    public int[] _ActiveBoxWeaponAfter = new int[3];
+
+    public void AlreadySelected()
+    {
+        WindowChangeScript _Window = GameObject.Find("ClickManager").GetComponent<WindowChangeScript>();
+        WeaponListsActive = new bool[10];
+        /*
+        //_ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore;
+        //_ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore;Clone()
+        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponBefore, 0);
+        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponAfter, 0);
+        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponBefore, 3);
+        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponAfter, 3);
+        */
+        //やっぱCloneだね
+        _ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore.Clone() as int[];
+        _ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore.Clone() as int[];
+        for (int i = 0; i < 3; i++)
+        {
+            int Weapon_Num = _Window.ActiveBoxWeaponBefore[i];
+            Debug.Log(Weapon_Num);
+            WeaponListsActive[Weapon_Num] = true;
+            Debug.Log(transform.GetChild(Weapon_Num + 1));
+            transform.GetChild(Weapon_Num + 1).GetChild(0).SetSiblingIndex(1);
+        }
+    }
+
+    public void CancelMove()
+    {
+        for(int i = 1; i < 4; i++)
+        {
+            switch (_ActiveBoxWeaponBefore[i - 1])
+            {
+                case 0:
+                    _sprite = Weapon1_Sword;
+                    break;
+                case 1:
+                    _sprite = Weapon2_Axe;
+                    break;
+                case 2:
+                    _sprite = Weapon3_Shield;
+                    break;
+                case 3:
+                    _sprite = Weapon4_Arrow;
+                    break;
+                default:
+                    break;
+            }
+            Debug.Log(_sprite);
+            Debug.Log(_ActiveBoxWeaponBefore[i - 1]);
+            Parent.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = _sprite;
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            transform.GetChild(_ActiveBoxWeaponAfter[i] + 1).GetChild(0).SetSiblingIndex(1);
+        }
+    }
 
     public void EraseToolTip()
     {
@@ -23,22 +83,77 @@ public class Weapon_Choice_Manager : MonoBehaviour
         TTM.EraseToolTips();
     }
 
+    bool StartDrag = true;
+
     public void WeaponDrag(GameObject Childobj)
     {
-        GameObject ParentObj = Childobj.transform.parent.gameObject;
-        Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Childobj.transform.position = TapPos;
+        if(!WeaponListsActive[int.Parse(Childobj.name.Substring(Childobj.name.Length - 1)) - 1])
+        {
+            if (StartDrag)
+            {
+                AudioManager.Instance.PlaySe(1);
+                StartDrag = false;
+            }
+            Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Childobj.transform.position = TapPos;
+        }
     }
+
+    public GameObject Parent;
+    int BeforeObjNum;
+    int AfterObjNum;
+    Sprite _sprite = null;
 
     public void EndDrag(GameObject obj)
     {
-        GameObject Parent;
+        StartDrag = true;
         Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Parent = obj.transform.root.gameObject;
-        Vector2 UiPos = Parent.transform.position;
-        float Diff_x = TapPos.x - UiPos.x;
-        float Diff_y = TapPos.y - UiPos.y;
-        
+        for(int i = 1; i < 4; i++)
+        {
+            string str = "SelectColumn" + i;
+            GameObject Target = Parent.transform.GetChild(i).gameObject;
+            Vector2 UiPos = Target.transform.position;
+            float Diff_x = TapPos.x - UiPos.x;
+            float Diff_y = TapPos.y - UiPos.y;
+            AfterObjNum = -1;
+            if (-0.6f <= Diff_x && Diff_x <= 0.6f)
+            {
+                if (-0.6f <= Diff_y && Diff_y <= 0.6f)
+                {
+                    AudioManager.Instance.PlaySe(2);
+                    BeforeObjNum = _ActiveBoxWeaponBefore[i - 1];
+                    AfterObjNum = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                    _ActiveBoxWeaponAfter[i - 1] = AfterObjNum;
+                    Debug.Log("<color=red>" + _ActiveBoxWeaponBefore[i - 1] + ", " + _ActiveBoxWeaponAfter[i - 1] + "</color>");
+                    WeaponListsActive[BeforeObjNum] = false;
+                    WeaponListsActive[AfterObjNum] = true;
+                    //アイコンの灰色転換
+                    transform.GetChild(BeforeObjNum + 1).GetChild(0).SetSiblingIndex(1);
+                    transform.GetChild(AfterObjNum + 1).GetChild(0).SetSiblingIndex(1);
+                    //Boxのアイコン切り替え
+                    switch (AfterObjNum)
+                    {
+                        case 0:
+                            _sprite = Weapon1_Sword;
+                            break;
+                        case 1:
+                            _sprite = Weapon2_Axe;
+                            break;
+                        case 2:
+                            _sprite = Weapon3_Shield;
+                            break;
+                        case 3:
+                            _sprite = Weapon4_Arrow;
+                            break;
+                        default:
+                            break;
+                    }
+                    Parent.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = _sprite;
+                    break;
+                }
+            }
+        }
+        Debug.Log("枠検索終了");
         var RectTransform = obj.GetComponent<RectTransform>();
         Vector2 ResetPos = new Vector2();
         RectTransform.anchoredPosition = ResetPos;

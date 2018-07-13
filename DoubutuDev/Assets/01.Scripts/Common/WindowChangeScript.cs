@@ -7,9 +7,12 @@ public class WindowChangeScript : MonoBehaviour
 {
     [SerializeField]
     private Text text;
+    [SerializeField]
+    private GameObject WeaponListPrefab;
     int[] AnimalList = new int[3];
     GameObject[] Animals = new GameObject[3];
-    int[,] AnimalAndWeaponList = new int[3, 4]; // [[0, 1, 2, 3],[0, 1, 2, 3],[0, 1, 2, 3]]
+    //↓この中に入ってますよっと
+    int[,] AnimalAndWeaponList = new int[3, 4];
 
     public void AnimalChoice_End()
     {
@@ -24,6 +27,7 @@ public class WindowChangeScript : MonoBehaviour
                 AnimalList[i] = Manager.SelectAnimalList[i, 0];
                 Animals[i] = Manager.Animals[i];
                 AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
+                //**/Debug.Log("No." + (i + 1) + "_" + AnimalAndWeaponList[i, 0] + "," + AnimalAndWeaponList[i, 1] + "," + AnimalAndWeaponList[i, 2] + "," + AnimalAndWeaponList[i, 3]);
             }
             Change_Screen();
         }
@@ -32,7 +36,7 @@ public class WindowChangeScript : MonoBehaviour
     public void Select_Weapon(GameObject obj)
     {
         int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
-        //Debug.Log(objnum);
+        //**/Debug.Log(objnum);
         Equip_Change(objnum);
     }
 
@@ -83,6 +87,8 @@ public class WindowChangeScript : MonoBehaviour
     Vector3 ActiveBox_OriginalPos;
     Vector3 TooBox_OriginalPos;
     int ActiveBoxNum;
+    public int[] ActiveBoxWeaponBefore = new int[3];
+    string WeaponBoxPrefabName = "_Weapon_Box";
 
     //武器選択のウィンドウを出す
     private void Equip_Change(int BoxNum)
@@ -91,16 +97,37 @@ public class WindowChangeScript : MonoBehaviour
         {
             AudioManager.Instance.PlaySe(0);
             Equip_Changing = true;
-            Debug.Log("Change_" + Equip_Changing);
+            Debug.Log("Change");
 
+            //Box内武器を予め選択状態にする為の準備
             ActiveBoxNum = BoxNum;
+            string str = "";
+            for(int i = 0; i < 3; i++)
+            {
+                ActiveBoxWeaponBefore[i] = AnimalAndWeaponList[ActiveBoxNum - 1, i + 1];
+                str = str + ActiveBoxWeaponBefore[i] + ", ";
+            }
+            //**/Debug.Log(str);
 
-            
+            /*
 
             //武器リスト
             GameObject Weapon_Box = GameObject.Find("Weapon_Box");
             var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
             WeaponBox_OriginalPos = RectTransform_1.anchoredPosition3D;
+            Vector2 ResetPos_1 = new Vector3(-420, -50, 0);
+            RectTransform_1.anchoredPosition3D = ResetPos_1;
+
+            //*/
+
+            GameObject _Canvas = GameObject.Find("Canvas");
+
+            //武器リスト(Prefabから持ってくる)
+            GameObject Weapon_Box = Instantiate(WeaponListPrefab) as GameObject;
+            Weapon_Box.name = WeaponBoxPrefabName;
+            Weapon_Box.transform.SetParent(_Canvas.transform);
+            var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
+            RectTransform_1.localScale = new Vector3(1, 1, 1);
             Vector2 ResetPos_1 = new Vector3(-420, -50, 0);
             RectTransform_1.anchoredPosition3D = ResetPos_1;
 
@@ -127,6 +154,7 @@ public class WindowChangeScript : MonoBehaviour
             ActiveBox.transform.SetParent(Weapon_Box.transform);
             _RectTransform.anchoredPosition3D = new Vector3(300, 0, 0);
             ActiveBox.transform.SetSiblingIndex(0);
+            Weapon_Box.GetComponent<Weapon_Choice_Manager>().Parent = ActiveBox;
 
             //余ったWeaponListを隠す
             GameObject TooBox = GameObject.Find("Weapon_List");
@@ -136,10 +164,14 @@ public class WindowChangeScript : MonoBehaviour
 
             //"ぶきせんたく"のテキストを非表示
             GameObject.Find("Canvas/Text").GetComponent<CanvasGroup>().alpha = 0;
+
+            //武器リストを選択済みにする処理を渡す
+            Weapon_Choice_Manager _Manager = Weapon_Box.GetComponent<Weapon_Choice_Manager>();
+            _Manager.AlreadySelected();
         }
         else
         {
-            //Debug.Log("NotChange");
+            Debug.Log("NotChange");
         }
     }
 
@@ -148,12 +180,38 @@ public class WindowChangeScript : MonoBehaviour
     {
         AudioManager.Instance.PlaySe(0);
         Equip_Changing = false;
-        Debug.Log("Change_" + Equip_Changing);
+        Debug.Log("Change");
+        GameObject Weapon_Box = GameObject.Find(WeaponBoxPrefabName);
+        Weapon_Choice_Manager _Manager = Weapon_Box.GetComponent<Weapon_Choice_Manager>();
+
+        if (Change)
+        {
+            Debug.Log("変更は保存されます");
+            //リストの更新
+            for(int i = 1; i < 4; i++)
+            {
+                AnimalAndWeaponList[ActiveBoxNum - 1, i] = _Manager._ActiveBoxWeaponAfter[i - 1];
+                Debug.Log(AnimalAndWeaponList[ActiveBoxNum - 1, i]);
+            }
+        }
+        else
+        {
+            Debug.Log("変更は保存されません");
+            //表示を戻す
+            _Manager.CancelMove();
+        }
+
+        /*
 
         //武器リスト
         GameObject Weapon_Box = GameObject.Find("Weapon_Box");
         var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
         RectTransform_1.anchoredPosition3D = WeaponBox_OriginalPos;
+
+        //*/
+
+        //武器リスト(Prefab版)
+        Destroy(Weapon_Box);
 
         //戻るボタン
         GameObject Back_Button = GameObject.Find("Back_Button");
@@ -179,6 +237,11 @@ public class WindowChangeScript : MonoBehaviour
         RectTransform _RectTransform = ActiveBox.GetComponent<RectTransform>();
         ActiveBox.transform.SetParent(TooBox.transform);
         _RectTransform.anchoredPosition3D = ActiveBox_OriginalPos;
+        //何故か非表示になってたので
+        if(!ActiveBox.GetComponent<Image>().enabled)
+        {
+            ActiveBox.GetComponent<Image>().enabled = true;
+        }
 
         GameObject.Find("Canvas/Text").GetComponent<CanvasGroup>().alpha = 1;
     }
@@ -188,6 +251,17 @@ public class WindowChangeScript : MonoBehaviour
     {
         ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
         _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
+        string str;
+        for(int i1 = 0; i1 < 3; i1++)
+        {
+            str = "";
+            for(int i2 = 0; i2 < 4; i2++)
+            {
+                str = str + AnimalAndWeaponList[i1, i2];
+            }
+            Debug.Log(str);
+        }
+
         AudioManager.Instance.PlayBGM(1);
         //動物Id
         //0:うさぎ
