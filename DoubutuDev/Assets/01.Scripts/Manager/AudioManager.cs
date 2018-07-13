@@ -58,7 +58,12 @@ public class AudioManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(FadeBgm(sceneNum, interval));
+            StartCoroutine(DownBGM(2));
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartCoroutine(UpBGM(2));
         }
     }
 
@@ -78,7 +83,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public IEnumerator FadeBgm(int sceneNum, float interval)
+    public IEnumerator FadeBgm(float interval)
     {
         //だんだん小さく
         float time = 0;
@@ -97,6 +102,33 @@ public class AudioManager : MonoBehaviour
             time += Time.unscaledDeltaTime;
             yield return 0;
         }
+    }
+
+    IEnumerator DownBGM(float interval)
+    {
+        float time = 0;
+        AudioSource audioSource = GetComponent<AudioSource>();
+        while (time <= interval)
+        {
+            audioSource.volume = Mathf.Lerp(1f, 0f, time / interval);
+            time += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+        yield break;
+    }
+
+    IEnumerator UpBGM(float interval)
+    {
+        float time = 0;
+        AudioSource audioSource = GetComponent<AudioSource>();
+
+        while (time <= interval)
+        {
+            audioSource.volume = Mathf.Lerp(0f, 1f, time / interval);
+            time += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+        yield break;
     }
 
     //void OnCollisionEnter2D(Collision2D collision)

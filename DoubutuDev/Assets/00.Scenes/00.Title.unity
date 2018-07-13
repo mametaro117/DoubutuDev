@@ -207,13 +207,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMList:
-  - {fileID: 8300000, guid: fe3cab0e83052574386cb98a4f1ec8f9, type: 3}
-  - {fileID: 8300000, guid: b68ac5031ea676e4b895c89134e1b76e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   SeList:
-  - {fileID: 8300000, guid: ca5bcd798ad00524381d544b80b09d37, type: 3}
-  - {fileID: 8300000, guid: bf52245f2941a944bb710088cab5692e, type: 3}
-  - {fileID: 8300000, guid: 97079d2f9a8ac894fae1403276684acd, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!4 &95453217
@@ -237,7 +237,8 @@ AudioSource:
   m_GameObject: {fileID: 95453215}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c5f7344cc6a5cc14bbb4cdbabf724083,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.05
