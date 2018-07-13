@@ -25,27 +25,28 @@ public class ToolTipsManager : MonoBehaviour
     private GameObject AttentionToolTip = null;
 
     //ゾウさんのTips
-    private string name_Ele = "なまえ:ぞう";
+    private string name_Ele = "ぞう";
     private string tokusei_Ele = "とくせい:きょだい";
     private string speed_Ele = "スピード:5";
     //フクロウのTips
-    private string name_Owl = "なまえ:ふくろう";
-    private string tokusei_Owl = "とくせい:とぶ";
+    private string name_Owl = "ふくろう";
+    private string tokusei_Owl = "とくせい:こがた";
     private string speed_Owl = "すぴーど:5";
     //うさぎさんのTips
-    private string name_Rab = "なまえ:うさぎ";
+    private string name_Rab = "うさぎ";
     private string tokusei_Rab = "とくせい:こがた";
     private string speed_Rab = "すぴーど:10";
     //ぺんぎんのTips
-    private string name_Pen = "なまえ:ぺんぎん";
+    private string name_Pen = "ぺんぎん";
     private string tokusei_Pen = "とくせい:こがた";
     private string speed_Pen = "すぴーど:3";
     //未実装
-    private string name_Sec = "なまえ:";
+    private string name_Sec = "";
     private string tokusei_Sec = "とくせい:";
     private string speed_Sec = "すぴーど:";
 
     private Vector3 pos;
+    private Vector2 pos_;
     private RaycastHit2D hit;
 
 
@@ -64,12 +65,13 @@ public class ToolTipsManager : MonoBehaviour
     {
         //ツールチップの位置を指定する
         int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
-        Vector2 pos = obj.transform.position;
+        pos_.x = obj.transform.position.x + 0;
+        pos_.y = obj.transform.position.y + -0.85f;
         GameObject canvas = GameObject.Find("Canvas");
         //ツールチップが表示されていない時は、色々指定する
         if (ToolTip == null)
         {
-            ToolTip = Instantiate(ToolPrefabs, pos, Quaternion.identity);
+            ToolTip = Instantiate(ToolPrefabs, pos_, Quaternion.identity);
             ToolTip.transform.SetParent(canvas.transform);
             var RectTransform = ToolTip.GetComponent<RectTransform>();
             RectTransform.localScale = new Vector3(1, 1, 1);
