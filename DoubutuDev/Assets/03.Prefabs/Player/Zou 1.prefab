@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4828154510147332}
   - component: {fileID: 114141201241322490}
   m_Layer: 0
-  m_Name: Zou_bone
+  m_Name: Zou 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
