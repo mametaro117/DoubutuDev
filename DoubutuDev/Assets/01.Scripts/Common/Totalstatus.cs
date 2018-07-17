@@ -49,4 +49,10 @@ public class Totalstatus : MonoBehaviour {
         parcent = Mathf.Max(0, parcent);
         BerObj.transform.localScale = new Vector3(parcent, BerObj.transform.localScale.y, BerObj.transform.localScale.z);
     }
+
+    //Castのデバッグ用
+    public void _CastTest()
+    {
+        Debug.Log("<color=red>Cast成功</color>");
+    }
 }
