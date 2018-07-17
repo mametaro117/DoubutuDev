@@ -41,9 +41,6 @@ public class DamageText : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Start () {
-		
-	}	
 
     public void DiplayText(Vector3 pos, float damage)
     {

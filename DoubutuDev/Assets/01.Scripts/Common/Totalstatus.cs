@@ -7,9 +7,17 @@ public class Totalstatus : MonoBehaviour {
 
     //  ステータス
     public float HitPoint;
+    public float MaxHP { get; private set; }
     public int Attack;
     public float Speed;
     public bool IsSky;
+
+    public bool isStun;
+    public bool isKnockback;
+
+    private GameObject HPberObj;
+    private GameObject SkillBerObj;
+
 
     [SerializeField]
     private bool isUnit = false;
@@ -21,16 +29,17 @@ public class Totalstatus : MonoBehaviour {
 
     public WeaponType weaponType = WeaponType.Sword;
 
-    public float MaxHP { get; private set; }
-    private GameObject BerObj;
 
     void Start()
     {
         MaxHP = HitPoint;
         //Debug.Log(gameObject.name +" HP: " + MaxHP);
         //  HPバーオブジェクトがあったら
-        if(isUnit)
-            BerObj = transform.GetChild(0).GetChild(0).gameObject;
+        if(tag == "Animal" || tag == "Enemy")
+        {
+            HPberObj = transform.GetChild(0).GetChild(0).gameObject;
+            SkillBerObj = transform.GetChild(0).GetChild(1).gameObject;
+        }            
     }
 
 
@@ -47,7 +56,7 @@ public class Totalstatus : MonoBehaviour {
     {
         float parcent = HitPoint / MaxHP;
         parcent = Mathf.Max(0, parcent);
-        BerObj.transform.localScale = new Vector3(parcent, BerObj.transform.localScale.y, BerObj.transform.localScale.z);
+        HPberObj.transform.localScale = new Vector3(parcent, HPberObj.transform.localScale.y, HPberObj.transform.localScale.z);
     }
 
     public void Heal(float HealPoint)

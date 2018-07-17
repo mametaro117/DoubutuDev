@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyScript : MonoBehaviour {
 
+    private Totalstatus totalstatus;
 
     [SerializeField]
     private GameObject EnemyObject;
@@ -16,15 +18,11 @@ public class EnemyScript : MonoBehaviour {
     bool isReady = false;
     bool isAttack = false;
 
-    bool isStun = false;
-    bool isKnockback = false;
-
-
-
     void Start () {
         //  出撃時の硬直
         StartCoroutine(Depoly());
         animator = GetComponent<Animator>();
+        totalstatus = GetComponent<Totalstatus>();
     }
 
     // Update is called once per frame
@@ -34,7 +32,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Move()
     {
-        if (EnemyObject == null && isReady && !isAttack && !isStun && !isKnockback)
+        if (EnemyObject == null && isReady && !isAttack && !totalstatus.isStun && !totalstatus.isKnockback)
         {
             transform.position += new Vector3(0.5f * Time.deltaTime, 0, 0);
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
@@ -81,7 +79,7 @@ public class EnemyScript : MonoBehaviour {
                     EnemyObjects.RemoveAt(0);
                 }
             }
-            if (!isStun)
+            if (!totalstatus.isStun)
             {
                 StartCoroutine(AttackAnimal());
             }
@@ -92,16 +90,15 @@ public class EnemyScript : MonoBehaviour {
     {
         if (collision.tag == "Animal" || collision.tag == "AnimalTower")
         {
-            if (!isStun)
-            {
-                StartCoroutine(AttackAnimal());
-            }
+            StartCoroutine(AttackAnimal());
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        EnemyObjects.Remove(collision.gameObject);
+        if (EnemyObject == collision.gameObject)
+            EnemyObject = null;
+        EnemyObjects.Remove(collision.gameObject);        
     }
 
 
@@ -110,10 +107,15 @@ public class EnemyScript : MonoBehaviour {
 
     }
 
+    public void KnockBackObj()
+    {
+        StartCoroutine(KnockBack());
+    }
 
-
-
-
+    public void StunObj()
+    {
+        StartCoroutine(Stun(1));
+    }
 
     //----------コルーチン----------
 
@@ -125,11 +127,31 @@ public class EnemyScript : MonoBehaviour {
         isReady = true;
         yield break;
     }
+
+    IEnumerator Stun(float stunTime)
+    {
+        totalstatus.isStun = true;
+        animator.SetTrigger("Idle");
+        yield return new WaitForSeconds(stunTime);
+        totalstatus.isStun = false;
+        yield break;
+    }
+
+    IEnumerator KnockBack()
+    {
+        totalstatus.isStun = true;
+        yield return null;
+        gameObject.transform.DOMove(transform.position + new Vector3(-1f,0,0), 1f);
+        yield return new WaitForSeconds(1f);
+        totalstatus.isStun = false;
+        yield break;
+    }
+
     //  攻撃硬直
     IEnumerator AttackAnimal()
     {
         //Debug.Log("AttackAnimal");
-        while(EnemyObject != null && !isAttack && isReady)
+        while(EnemyObject != null && !isAttack && isReady && !totalstatus.isStun)
         {
             isAttack = true;
             animator.SetTrigger("Attack");

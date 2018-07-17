@@ -59,9 +59,6 @@ public class BattleManager : MonoBehaviour {
         timeManager = GetComponent<TimeManager>();
     }
 
-    void Start () {
-    }
-
     public void AddFieldUnit(GameObject obj)
     {
         OnFieldUnitsList.Add(obj);

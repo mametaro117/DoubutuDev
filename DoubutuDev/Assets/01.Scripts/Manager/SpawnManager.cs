@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour {
     [SerializeField]
     private GameObject[] units = new GameObject[3];
 
-    void Start()
+    void Awake()
     {
         camera = Camera.main;
     }
