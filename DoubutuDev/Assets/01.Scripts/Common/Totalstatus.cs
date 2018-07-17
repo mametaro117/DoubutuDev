@@ -21,7 +21,7 @@ public class Totalstatus : MonoBehaviour {
 
     public WeaponType weaponType = WeaponType.Sword;
 
-    private float MaxHP;
+    public float MaxHP { get; private set; }
     private GameObject BerObj;
 
     void Start()
