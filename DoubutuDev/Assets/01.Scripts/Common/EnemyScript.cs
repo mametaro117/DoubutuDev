@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-    //private enum State { Idle = 0, Walk, Attack };
-    //State state = State.Idle;
 
     [SerializeField]
     private GameObject EnemyObject;
@@ -13,13 +11,20 @@ public class EnemyScript : MonoBehaviour {
     [SerializeField]
     private List<GameObject> EnemyObjects = new List<GameObject>();
 
+    private Animator animator;
+
     bool isReady = false;
     bool isAttack = false;
+
+    bool isStun = false;
+    bool isKnockback = false;
+
 
 
     void Start () {
         //  出撃時の硬直
         StartCoroutine(Depoly());
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,8 +34,12 @@ public class EnemyScript : MonoBehaviour {
 
     void Move()
     {
-        if (EnemyObject == null && isReady)
+        if (EnemyObject == null && isReady && !isAttack && !isStun && !isKnockback)
+        {
             transform.position += new Vector3(0.5f * Time.deltaTime, 0, 0);
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+                animator.SetTrigger("Walk");
+        }
     }
 
     //  EnemyObjectが倒されたら
@@ -72,7 +81,10 @@ public class EnemyScript : MonoBehaviour {
                     EnemyObjects.RemoveAt(0);
                 }
             }
-            StartCoroutine(AttackAnimal());
+            if (!isStun)
+            {
+                StartCoroutine(AttackAnimal());
+            }
         }
     }
 
@@ -80,7 +92,10 @@ public class EnemyScript : MonoBehaviour {
     {
         if (collision.tag == "Animal" || collision.tag == "AnimalTower")
         {
-            StartCoroutine(AttackAnimal());
+            if (!isStun)
+            {
+                StartCoroutine(AttackAnimal());
+            }
         }
     }
 
@@ -88,6 +103,17 @@ public class EnemyScript : MonoBehaviour {
     {
         EnemyObjects.Remove(collision.gameObject);
     }
+
+
+    public void Heal()
+    {
+
+    }
+
+
+
+
+
 
     //----------コルーチン----------
 
@@ -106,9 +132,12 @@ public class EnemyScript : MonoBehaviour {
         while(EnemyObject != null && !isAttack && isReady)
         {
             isAttack = true;
+            animator.SetTrigger("Attack");
+            animator.ResetTrigger("Walk");
             BattleManager.Instance.Attack(gameObject, EnemyObject);
             Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
+            animator.SetTrigger("Idle");
             //  攻撃状態を解除
             isAttack = false;
         }        

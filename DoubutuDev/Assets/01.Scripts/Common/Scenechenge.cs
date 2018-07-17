@@ -43,7 +43,7 @@ public class Scenechenge : MonoBehaviour
                 {
                     ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
                     _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
-                    AudioManager.Instance.PlayBGM(1);
+                    AudioManager.Instance.PlayBgm(1);
                     //動物Id
                     //0:うさぎ
                     //1:ふくろう

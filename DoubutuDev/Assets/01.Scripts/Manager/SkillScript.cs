@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class SkillScript : MonoBehaviour {
 
-    public enum SkillName
-    {
-        BaffSkill,
-        DebaffSkill,
-        AttackSkill,
-        ExSkill
-    };
-
-    public SkillName skillName;
+    public enum SkillTyepe { none, BaffSkill, DebaffSkill, AttackSkill, ExSkill };
+    public SkillTyepe skillType;
 
     void HealSkill(float HealValue) {
         Totalstatus totalstatus = GetComponent<Totalstatus>();
@@ -20,6 +13,9 @@ public class SkillScript : MonoBehaviour {
         Debug.Log(HealValue);
     }
 
-    //void 
+    void KnockBackSkill(float Distance)
+    {
+        
+    }
 
 }

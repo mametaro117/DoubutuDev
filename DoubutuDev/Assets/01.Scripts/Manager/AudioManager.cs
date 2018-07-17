@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
@@ -37,7 +38,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     AudioClip[] SeList = new AudioClip[5];
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
+
+    [SerializeField]
+    AudioMixer bgmMixer;
 
     void Awake()
     {
@@ -52,10 +56,9 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        PlayBGM(0);
+        PlayBgm(0);
     }
-
-    public void PlayBGM(int BGM_num)
+    public void PlayBgm(int BGM_num)
     {
         audioSource.clip = BGMList[BGM_num];
         audioSource.Play();
@@ -70,15 +73,39 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(SeList[SEnum], vol);
     }
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.transform.tag == "Enemy")
-    //    {
-    //        PlaySe(0, 0.2f);
-    //    }
-    //    if (collision.transform.tag == "Player")
-    //    {
-    //        PlaySe(1, 1);
-    //    }
-    //}
+    public void FadeOutBGM()
+    {
+        StartCoroutine(FadeOutBgm(1));
+    }
+
+    public void FadeInBGM()
+    {
+        StartCoroutine(FadeOutBgm(1));
+    }
+
+
+    IEnumerator FadeOutBgm(float interval)
+    {
+        //だんだん小さく
+        float time = 0;
+        while (time <= interval)
+        {
+            bgmMixer.SetFloat("BGM", Mathf.Lerp(0, -40, time / interval));
+            time += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+        yield break;
+    }
+    IEnumerator FadeInBgm(float interval)
+    {
+        //だんだん小さく
+        float time = 0;
+        while (time <= interval)
+        {
+            bgmMixer.SetFloat("BGM", Mathf.Lerp(-40, 0, time / interval));
+            time += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+        yield break;
+    }
 }
