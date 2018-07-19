@@ -19,9 +19,6 @@ public class Totalstatus : MonoBehaviour {
     private GameObject SkillBerObj;
 
 
-    [SerializeField]
-    private bool isUnit = false;
-
     public enum WeaponType
     {
         Sword, Shield, Arrow, Tower
@@ -38,7 +35,7 @@ public class Totalstatus : MonoBehaviour {
         if(tag == "Animal" || tag == "Enemy")
         {
             HPberObj = transform.GetChild(0).GetChild(0).gameObject;
-            SkillBerObj = transform.GetChild(0).GetChild(1).gameObject;
+            //SkillBerObj = transform.GetChild(1).GetChild(0).gameObject;
         }            
     }
 

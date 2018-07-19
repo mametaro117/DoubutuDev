@@ -262,7 +262,7 @@ public class WindowChangeScript : MonoBehaviour
             Debug.Log(str);
         }
 
-        AudioManager.Instance.PlayBGM(1);
+        AudioManager.Instance.PlayBgm(1);
         //動物Id
         //0:うさぎ
         //1:ふくろう
