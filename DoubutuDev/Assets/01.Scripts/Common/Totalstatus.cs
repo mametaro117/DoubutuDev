@@ -81,17 +81,18 @@ public class Totalstatus : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
+            Debug.Log("SP_UP");
             if (SkillPoint >= MaxSP)
             {
-                Debug.Log("Play");
                 if (tag == "Animal")
                 {
-                    Debug.Log("Play2");
                     if (GetComponent<AnimalScript>().SkillReady())
                     {
                         GetComponent<AnimalScript>().PlaySkill();
                         SkillPoint = 0;
-                    }                        
+                        ApplayBer();
+                        continue;
+                    }
                     else
                         continue;                    
                 }
@@ -101,13 +102,14 @@ public class Totalstatus : MonoBehaviour {
                     {
                         GetComponent<EnemyScript>().PlaySkill();
                         SkillPoint = 0;
+                        ApplayBer();
+                        continue;
                     }
                     else
                         continue;
                 }
             }
-            Debug.Log("SkillPointUp");
-            if(SkillPoint < MaxSP)
+            if(SkillPoint < MaxSP && !isStun)
                 SkillPoint += 0.1f;
             SkillPoint = Mathf.Min(SkillPoint, MaxSP);
             ApplayBer();

@@ -63,12 +63,12 @@ public class EnemyScript : MonoBehaviour {
                     return false;
             case Skill.Stun:
 
-                if (EnemyObject != null)
+                if (EnemyObject != null && EnemyObject.tag == "Animal")
                     return true;
                 else
                     return false;
             case Skill.KnockBack:
-                if (EnemyObject != null)
+                if (EnemyObject != null && EnemyObject.tag == "Animal")
                     return true;
                 else
                     return false;

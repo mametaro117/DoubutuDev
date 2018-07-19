@@ -47,7 +47,8 @@ public class AnimalScript : MonoBehaviour {
                 EnemyObject.GetComponent<EnemyScript>().StunObj();
                 break;
             case Skill.KnockBack:
-                EnemyObject.GetComponent<EnemyScript>().KnockBackObj();
+                if (SkillReady())
+                    EnemyObject.GetComponent<EnemyScript>().KnockBackObj();
                 for (int i = 0; i < EnemyObjects.Count; i++)
                 {
                     EnemyObjects[i].GetComponent<EnemyScript>().KnockBackObj();
@@ -66,14 +67,13 @@ public class AnimalScript : MonoBehaviour {
                     return true;
                 else
                     return false;
-            case Skill.Stun:
-                
-                if (EnemyObject != null)
+            case Skill.Stun:                
+                if (EnemyObject != null && EnemyObject.tag == "Enemy")
                     return true;
                 else
                     return false;
             case Skill.KnockBack:
-                if (EnemyObject != null)
+                if (EnemyObject != null && EnemyObject.tag == "Enemy")
                     return true;
                 else
                     return false;
