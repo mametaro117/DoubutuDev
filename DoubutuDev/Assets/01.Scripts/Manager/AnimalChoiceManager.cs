@@ -24,34 +24,11 @@ public class AnimalChoiceManager : MonoBehaviour {
         equip,
     }
 
-    // Use this for initialization
-    void Start ()
-    {
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void EraseToolTip()
     {
         GameObject Manager = GameObject.Find("ToolTipsManager");
         ToolTipsManager TT_Manager = Manager.GetComponent<ToolTipsManager>();
         TT_Manager.EraseToolTips();
-    }
-
-    public void SelectColumnClick(GameObject obj)
-    {
-        //Debug.Log("SelectListタップ！");
-        //Debug.Log(obj.name);
-    }
-
-    public void AnimalColumnClick(GameObject obj)
-    {
-        //Debug.Log("AnimalListタップ！");
-        //Debug.Log(obj.name);
     }
 
     bool StartDrag = true;

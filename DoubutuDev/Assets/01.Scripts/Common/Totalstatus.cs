@@ -64,4 +64,10 @@ public class Totalstatus : MonoBehaviour {
         HitPoint += Mathf.Min(MaxHP, HitPoint + HealPoint);
         ApplayBer();
     }
+
+    //Castのデバッグ用
+    public void _CastTest()
+    {
+        Debug.Log("<color=red>Cast成功</color>");
+    }
 }
