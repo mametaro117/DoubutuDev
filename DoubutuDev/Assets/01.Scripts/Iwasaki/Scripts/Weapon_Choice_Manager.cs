@@ -126,10 +126,10 @@ public class Weapon_Choice_Manager : MonoBehaviour
                     {
                         Debug.Log("BoxNum_" + i);
                         AudioManager.Instance.PlaySe(2);
-                        BeforeObjNum = _ActiveBoxWeaponBefore[i - 1];
+                        BeforeObjNum = _ActiveBoxWeaponAfter[i - 1];
                         AfterObjNum = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
                         _ActiveBoxWeaponAfter[i - 1] = AfterObjNum;
-                        Debug.Log("<color=red>" + _ActiveBoxWeaponBefore[i - 1] + ", " + _ActiveBoxWeaponAfter[i - 1] + "</color>");
+                        //Debug.Log("<color=red>" + _ActiveBoxWeaponBefore[i - 1] + ", " + _ActiveBoxWeaponAfter[i - 1] + "</color>");
                         WeaponListsActive[BeforeObjNum] = false;
                         WeaponListsActive[AfterObjNum] = true;
                         //アイコンの灰色転換
