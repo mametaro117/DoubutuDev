@@ -16,8 +16,10 @@ public class Weapon_Choice_Manager : MonoBehaviour
     [SerializeField]
     Sprite Weapon4_Arrow;
 
-    public bool[] WeaponListsActive = new bool[10];
-    public int[] _ActiveBoxWeaponBefore = new int[3];
+    [SerializeField]
+    private bool[] WeaponListsActive = new bool[10];
+    [SerializeField]
+    private int[] _ActiveBoxWeaponBefore = new int[3];
     public int[] _ActiveBoxWeaponAfter = new int[3];
 
     public void AlreadySelected()
@@ -108,48 +110,52 @@ public class Weapon_Choice_Manager : MonoBehaviour
     {
         StartDrag = true;
         Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        for(int i = 1; i < 4; i++)
+        if (!WeaponListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
         {
-            string str = "SelectColumn" + i;
-            GameObject Target = Parent.transform.GetChild(i).gameObject;
-            Vector2 UiPos = Target.transform.position;
-            float Diff_x = TapPos.x - UiPos.x;
-            float Diff_y = TapPos.y - UiPos.y;
-            AfterObjNum = -1;
-            if (-0.6f <= Diff_x && Diff_x <= 0.6f)
+            for (int i = 1; i < 4; i++)
             {
-                if (-0.6f <= Diff_y && Diff_y <= 0.6f)
+                string str = "SelectColumn" + i;
+                GameObject Target = Parent.transform.GetChild(i).gameObject;
+                Vector2 UiPos = Target.transform.position;
+                float Diff_x = TapPos.x - UiPos.x;
+                float Diff_y = TapPos.y - UiPos.y;
+                AfterObjNum = -1;
+                if (-0.6f <= Diff_x && Diff_x <= 0.6f)
                 {
-                    AudioManager.Instance.PlaySe(2);
-                    BeforeObjNum = _ActiveBoxWeaponBefore[i - 1];
-                    AfterObjNum = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
-                    _ActiveBoxWeaponAfter[i - 1] = AfterObjNum;
-                    Debug.Log("<color=red>" + _ActiveBoxWeaponBefore[i - 1] + ", " + _ActiveBoxWeaponAfter[i - 1] + "</color>");
-                    WeaponListsActive[BeforeObjNum] = false;
-                    WeaponListsActive[AfterObjNum] = true;
-                    //アイコンの灰色転換
-                    transform.GetChild(BeforeObjNum + 1).GetChild(0).SetSiblingIndex(1);
-                    transform.GetChild(AfterObjNum + 1).GetChild(0).SetSiblingIndex(1);
-                    //Boxのアイコン切り替え
-                    switch (AfterObjNum)
+                    if (-0.6f <= Diff_y && Diff_y <= 0.6f)
                     {
-                        case 0:
-                            _sprite = Weapon1_Sword;
-                            break;
-                        case 1:
-                            _sprite = Weapon2_Axe;
-                            break;
-                        case 2:
-                            _sprite = Weapon3_Shield;
-                            break;
-                        case 3:
-                            _sprite = Weapon4_Arrow;
-                            break;
-                        default:
-                            break;
+                        Debug.Log("BoxNum_" + i);
+                        AudioManager.Instance.PlaySe(2);
+                        BeforeObjNum = _ActiveBoxWeaponBefore[i - 1];
+                        AfterObjNum = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                        _ActiveBoxWeaponAfter[i - 1] = AfterObjNum;
+                        Debug.Log("<color=red>" + _ActiveBoxWeaponBefore[i - 1] + ", " + _ActiveBoxWeaponAfter[i - 1] + "</color>");
+                        WeaponListsActive[BeforeObjNum] = false;
+                        WeaponListsActive[AfterObjNum] = true;
+                        //アイコンの灰色転換
+                        transform.GetChild(BeforeObjNum + 1).GetChild(0).SetSiblingIndex(1);
+                        transform.GetChild(AfterObjNum + 1).GetChild(0).SetSiblingIndex(1);
+                        //Boxのアイコン切り替え
+                        switch (AfterObjNum)
+                        {
+                            case 0:
+                                _sprite = Weapon1_Sword;
+                                break;
+                            case 1:
+                                _sprite = Weapon2_Axe;
+                                break;
+                            case 2:
+                                _sprite = Weapon3_Shield;
+                                break;
+                            case 3:
+                                _sprite = Weapon4_Arrow;
+                                break;
+                            default:
+                                break;
+                        }
+                        Parent.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = _sprite;
+                        break;
                     }
-                    Parent.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = _sprite;
-                    break;
                 }
             }
         }
