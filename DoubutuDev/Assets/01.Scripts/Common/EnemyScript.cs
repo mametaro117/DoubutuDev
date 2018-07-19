@@ -52,6 +52,31 @@ public class EnemyScript : MonoBehaviour {
         }
     }
 
+    public bool SkillReady()
+    {
+        switch (skill)
+        {
+            case Skill.Heal:
+                if ((totalstatus.HitPoint / totalstatus.MaxHP) <= 0.7f)
+                    return true;
+                else
+                    return false;
+            case Skill.Stun:
+
+                if (EnemyObject != null)
+                    return true;
+                else
+                    return false;
+            case Skill.KnockBack:
+                if (EnemyObject != null)
+                    return true;
+                else
+                    return false;
+        }
+        return false;
+    }
+
+
     void Move()
     {
         if (EnemyObject == null && isReady && !isAttack && !totalstatus.isStun)
@@ -136,7 +161,7 @@ public class EnemyScript : MonoBehaviour {
 
     public void StunObj()
     {
-        StartCoroutine(Stun(2));
+        StartCoroutine(Stun(5));
     }
 
     //----------コルーチン----------
@@ -179,7 +204,7 @@ public class EnemyScript : MonoBehaviour {
             animator.SetTrigger("Attack");
             animator.ResetTrigger("Walk");
             BattleManager.Instance.Attack(gameObject, EnemyObject);
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
             animator.SetTrigger("Idle");
             //  攻撃状態を解除

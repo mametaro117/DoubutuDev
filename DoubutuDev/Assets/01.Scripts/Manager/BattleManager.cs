@@ -97,7 +97,7 @@ public class BattleManager : MonoBehaviour {
             deffender.GetComponent<Totalstatus>().ApplayBer();
         }
         //  減らした後のHPを表示
-        Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
+        //Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
         //  HPが「0」以下になったときは削除
         if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
         {

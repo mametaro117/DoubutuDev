@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c09a36ea08bb494fb7412e440ff787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill: 0
   EnemyObject: {fileID: 0}
   EnemyObjects: []
 --- !u!114 &114499406530402808
@@ -356,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoint: 30
-  SkillPoint: 5
+  SkillPoint: 2
   Attack: 3
   Speed: 0
   IsSky: 0

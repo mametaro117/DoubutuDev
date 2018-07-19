@@ -1428,6 +1428,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114605126114599292, guid: 8614bb50c9f84ea43b98ba55b63d7a88,
+        type: 2}
+      propertyPath: skill
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114187655437972074, guid: 8614bb50c9f84ea43b98ba55b63d7a88,
+        type: 2}
+      propertyPath: SkillPoint
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
   m_IsPrefabParent: 0

@@ -7,6 +7,10 @@ public class AnimalScript : MonoBehaviour {
 
     private Totalstatus totalstatus;
 
+    public enum Skill { Heal, Stun, KnockBack };
+    public Skill skill;
+
+
     [SerializeField]
     private GameObject EnemyObject;
 
@@ -30,6 +34,51 @@ public class AnimalScript : MonoBehaviour {
     void Update()
     {
         Move();
+    }
+
+    public void PlaySkill()
+    {
+        switch (skill)
+        {
+            case Skill.Heal:
+                Heal();
+                break;
+            case Skill.Stun:
+                EnemyObject.GetComponent<EnemyScript>().StunObj();
+                break;
+            case Skill.KnockBack:
+                EnemyObject.GetComponent<EnemyScript>().KnockBackObj();
+                for (int i = 0; i < EnemyObjects.Count; i++)
+                {
+                    EnemyObjects[i].GetComponent<EnemyScript>().KnockBackObj();
+                }
+                break;
+        }
+    }
+
+    //  スキルを発動するタイミングなのか
+    public bool SkillReady()
+    {
+        switch (skill)
+        {
+            case Skill.Heal:
+                if ((totalstatus.HitPoint / totalstatus.MaxHP) <= 0.7f )
+                    return true;
+                else
+                    return false;
+            case Skill.Stun:
+                
+                if (EnemyObject != null)
+                    return true;
+                else
+                    return false;
+            case Skill.KnockBack:
+                if (EnemyObject != null)
+                    return true;
+                else
+                    return false;
+        }
+        return false;
     }
 
     void Move()
@@ -106,7 +155,7 @@ public class AnimalScript : MonoBehaviour {
 
     public void Heal()
     {
-
+        totalstatus.Heal(totalstatus.MaxHP / 2);
     }
 
     public void KnockBackObj()

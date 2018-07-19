@@ -37,11 +37,10 @@ public class Totalstatus : MonoBehaviour {
             SPberObj = transform.GetChild(1).GetChild(0).gameObject;
             MaxSP = SkillPoint;
             SkillPoint = 0;
+            StartCoroutine(SkillPointUp());
             ApplayBer();
         }
     }
-
-
     public void SetStatus(float HP,int ATK, float SPD, bool issky)
     {
         HitPoint = HP;
@@ -67,7 +66,7 @@ public class Totalstatus : MonoBehaviour {
     //  回復スキル用
     public void Heal(float HealPoint)
     {
-        HitPoint += Mathf.Min(MaxHP, HitPoint + HealPoint);
+        HitPoint = Mathf.Min(MaxHP, HitPoint + HealPoint);
         ApplayBer();
     }
 
@@ -82,10 +81,36 @@ public class Totalstatus : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
+            if (SkillPoint >= MaxSP)
+            {
+                Debug.Log("Play");
+                if (tag == "Animal")
+                {
+                    Debug.Log("Play2");
+                    if (GetComponent<AnimalScript>().SkillReady())
+                    {
+                        GetComponent<AnimalScript>().PlaySkill();
+                        SkillPoint = 0;
+                    }                        
+                    else
+                        continue;                    
+                }
+                else if (tag == "Enemy")
+                {
+                    if (GetComponent<EnemyScript>().SkillReady())
+                    {
+                        GetComponent<EnemyScript>().PlaySkill();
+                        SkillPoint = 0;
+                    }
+                    else
+                        continue;
+                }
+            }
             Debug.Log("SkillPointUp");
             if(SkillPoint < MaxSP)
                 SkillPoint += 0.1f;
-            Mathf.Min(SkillPoint, MaxSP);
+            SkillPoint = Mathf.Min(SkillPoint, MaxSP);
+            ApplayBer();
         }
         yield break;
     }

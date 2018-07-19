@@ -880,6 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill: 2
   EnemyObject: {fileID: 0}
   EnemyObjects: []
 --- !u!114 &114234839974532808
