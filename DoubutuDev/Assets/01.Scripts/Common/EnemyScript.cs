@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Move()
     {
-        if (EnemyObject == null && isReady && !isAttack && !totalstatus.isStun && !totalstatus.isKnockback)
+        if (EnemyObject == null && isReady && !isAttack && !totalstatus.isStun)
         {
             transform.position += new Vector3(0.5f * Time.deltaTime, 0, 0);
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))

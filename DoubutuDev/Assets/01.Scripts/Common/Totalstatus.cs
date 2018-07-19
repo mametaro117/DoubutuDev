@@ -8,15 +8,16 @@ public class Totalstatus : MonoBehaviour {
     //  ステータス
     public float HitPoint;
     public float MaxHP { get; private set; }
+    public float SkillPoint;
+    public float MaxSP { get; private set; }
     public int Attack;
     public float Speed;
-    public bool IsSky;
 
+    public bool IsSky;
     public bool isStun;
-    public bool isKnockback;
 
     private GameObject HPberObj;
-    private GameObject SkillBerObj;
+    private GameObject SPberObj;
 
 
     public enum WeaponType
@@ -30,13 +31,15 @@ public class Totalstatus : MonoBehaviour {
     void Start()
     {
         MaxHP = HitPoint;
-        //Debug.Log(gameObject.name +" HP: " + MaxHP);
-        //  HPバーオブジェクトがあったら
+        //  どうぶつまたはエネミーだったらゲージを設定
         if(tag == "Animal" || tag == "Enemy")
         {
             HPberObj = transform.GetChild(0).GetChild(0).gameObject;
-            //SkillBerObj = transform.GetChild(1).GetChild(0).gameObject;
-        }            
+            SPberObj = transform.GetChild(1).GetChild(0).gameObject;
+            MaxSP = SkillPoint;
+            SkillPoint = 0;
+            ApplayBer();
+        }
     }
 
 
@@ -51,11 +54,18 @@ public class Totalstatus : MonoBehaviour {
     //  ゲージの割合表示
     public void ApplayBer()
     {
-        float parcent = HitPoint / MaxHP;
-        parcent = Mathf.Max(0, parcent);
-        HPberObj.transform.localScale = new Vector3(parcent, HPberObj.transform.localScale.y, HPberObj.transform.localScale.z);
+        //  割合計算
+        float HPparcent = HitPoint / MaxHP;
+        float SPparcent = SkillPoint / MaxSP;
+        //  0未満にしない
+        HPparcent = Mathf.Max(0, HPparcent);
+        SPparcent = Mathf.Max(0, SPparcent);
+        //  Pivotオブジェのスケールを割合に適用
+        HPberObj.transform.localScale = new Vector3(HPparcent, HPberObj.transform.localScale.y, HPberObj.transform.localScale.z);
+        SPberObj.transform.localScale = new Vector3(SPparcent, SPberObj.transform.localScale.y, SPberObj.transform.localScale.z);
     }
 
+    //  回復スキル用
     public void Heal(float HealPoint)
     {
         HitPoint += Mathf.Min(MaxHP, HitPoint + HealPoint);
