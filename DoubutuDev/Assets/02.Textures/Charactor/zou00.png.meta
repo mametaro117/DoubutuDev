@@ -1,9 +1,11 @@
 fileFormatVersion: 2
 guid: 91e6d0bb2bff9a2459a6530dc8949cb8
-timeCreated: 1530209679
-licenseType: Free
+timeCreated: 1531985969
+licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: zou00_face
+    21300002: zou00_all
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -34,7 +36,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -92,7 +94,33 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: zou00_face
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 205
+        width: 240
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zou00_all
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 362
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

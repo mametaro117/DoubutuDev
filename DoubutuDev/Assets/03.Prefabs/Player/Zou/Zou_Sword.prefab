@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 95996227625136768}
   - component: {fileID: 70250178653825938}
   - component: {fileID: 50292289414606544}
-  - component: {fileID: 114894428700036940}
+  - component: {fileID: 114091599061364652}
   - component: {fileID: 114741835593226878}
   m_Layer: 0
   m_Name: Zou_Sword
@@ -861,7 +861,7 @@ Animator:
   m_GameObject: {fileID: 1301893166087958}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6777608dce58d6418ef6d9e6b2ef422, type: 2}
+  m_Controller: {fileID: 9100000, guid: af188b57e25de7146bcfc2c1f52a13a5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -869,6 +869,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114091599061364652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301893166087958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyObject: {fileID: 0}
+  EnemyObjects: []
 --- !u!114 &114234839974532808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,19 +996,6 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4289519654013884}
   m_AttachedIK: {fileID: 0}
---- !u!114 &114894428700036940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1301893166087958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da46ec15a0f6f0342a51a12a8d120287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NowStateNum: 0
-  isEnemy: 0
 --- !u!114 &114946686207250988
 MonoBehaviour:
   m_ObjectHideFlags: 1

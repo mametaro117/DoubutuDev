@@ -10,14 +10,10 @@ public class WeaponButtonScript : MonoBehaviour {
 
     private Button btn;
 
-    [SerializeField]
-    private float cost;
+    public float cost;
+    public int SelectNum;
 
-    [SerializeField]
-    private int SelectNum;
-
-    [SerializeField]
-    private GameObject[] WeaponButtons = new GameObject[2];
+    public GameObject[] WeaponButtons = new GameObject[2];
 
 
     // Use this for initialization

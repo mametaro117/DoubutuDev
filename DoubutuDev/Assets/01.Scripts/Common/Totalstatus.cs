@@ -27,7 +27,6 @@ public class Totalstatus : MonoBehaviour {
 
     public WeaponType weaponType = WeaponType.Sword;
 
-
     void Start()
     {
         MaxHP = HitPoint;
@@ -76,5 +75,18 @@ public class Totalstatus : MonoBehaviour {
     public void _CastTest()
     {
         Debug.Log("<color=red>Cast成功</color>");
+    }
+
+    IEnumerator SkillPointUp()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Debug.Log("SkillPointUp");
+            if(SkillPoint < MaxSP)
+                SkillPoint += 0.1f;
+            Mathf.Min(SkillPoint, MaxSP);
+        }
+        yield break;
     }
 }

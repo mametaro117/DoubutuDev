@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 95231721532775310}
   - component: {fileID: 70223626730424570}
   - component: {fileID: 50592142289673636}
-  - component: {fileID: 114437004203451352}
+  - component: {fileID: 114605126114599292}
   - component: {fileID: 114187655437972074}
   m_Layer: 0
   m_Name: Zou_Arrow
@@ -861,7 +861,7 @@ Animator:
   m_GameObject: {fileID: 1583422546418630}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e6777608dce58d6418ef6d9e6b2ef422, type: 2}
+  m_Controller: {fileID: 9100000, guid: af188b57e25de7146bcfc2c1f52a13a5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -951,19 +951,6 @@ MonoBehaviour:
   IsSky: 0
   isStun: 0
   weaponType: 2
---- !u!114 &114437004203451352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1583422546418630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da46ec15a0f6f0342a51a12a8d120287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NowStateNum: 0
-  isEnemy: 0
 --- !u!114 &114490555977423666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -996,6 +983,19 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4650285975408156}
   m_AttachedIK: {fileID: 0}
+--- !u!114 &114605126114599292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583422546418630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyObject: {fileID: 0}
+  EnemyObjects: []
 --- !u!114 &114725668199209904
 MonoBehaviour:
   m_ObjectHideFlags: 1

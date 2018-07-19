@@ -129,13 +129,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4724630051556350}
+  - component: {fileID: 95199210408619496}
   - component: {fileID: 212467234139966174}
   - component: {fileID: 50316305315130162}
   - component: {fileID: 58949983964516424}
   - component: {fileID: 114254869894061840}
   - component: {fileID: 114765613045808046}
   - component: {fileID: 114499406530402808}
-  - component: {fileID: 95199210408619496}
   m_Layer: 0
   m_Name: Pengin_enemy
   m_TagString: Enemy
