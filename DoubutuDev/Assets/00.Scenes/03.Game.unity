@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feee277c5fea1744cb4c2b19f16f467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoint: 75
+  HitPoint: 7500
   SkillPoint: 0
   Attack: 0
   Speed: 0
@@ -1275,8 +1275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812656719ddf514418ce9c4a45f989ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 1759853749119096, guid: bd73f9a2223fbbf4ba0afccc68e40efa,
-    type: 2}
+  EnemyPrefab:
+  - {fileID: 1198001830514750, guid: b2f80d321ef83a242a2e592ed753454d, type: 2}
+  - {fileID: 1381137573222374, guid: 5613a72c31d841b43a4fbd706708993d, type: 2}
+  - {fileID: 1759853749119096, guid: 0e4bd2e3ca1068645b0ae5338f6a8dab, type: 2}
   SpawnPositions:
   - {fileID: 1622114210}
   - {fileID: 1682791029}

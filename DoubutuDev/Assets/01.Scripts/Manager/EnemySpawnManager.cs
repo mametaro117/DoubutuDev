@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawnManager : MonoBehaviour {
 
     [SerializeField]
-    private GameObject EnemyPrefab;
+    private GameObject[] EnemyPrefab = new GameObject[3];
 
     [SerializeField]
     private Transform[] SpawnPositions = new Transform[5];
@@ -77,7 +77,20 @@ public class EnemySpawnManager : MonoBehaviour {
         {
             SpawnPos = Random.Range(0, SpawnPositions.Length);
         }
-        Instantiate(EnemyPrefab, new Vector3(SpawnPositions[SpawnPos].position.x, SpawnPositions[SpawnPos].position.y, SpawnPositions[SpawnPos].position.z), SpawnPositions[SpawnPos].rotation);
+        int ran = Random.Range(0, 3);
+        Instantiate(EnemyPrefab[ran], new Vector3(SpawnPositions[SpawnPos].position.x, SpawnPositions[SpawnPos].position.y, SpawnPositions[SpawnPos].position.z), SpawnPositions[SpawnPos].rotation);
+        switch(ran)
+        {
+            case 0:
+                Debug.Log("剣");
+                break;
+            case 1:
+                Debug.Log("盾");
+                break;
+            case 2:
+                Debug.Log("弓");
+                break;
+        }
     }
 
     private int SetSpawnPos()
