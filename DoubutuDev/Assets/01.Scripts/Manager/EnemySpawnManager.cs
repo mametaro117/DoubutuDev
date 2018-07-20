@@ -15,9 +15,20 @@ public class EnemySpawnManager : MonoBehaviour {
 
     float stacktime;
 
+    private int EnemyPowers;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private int TekagenEnemyPowers = 5;
+
+    [SerializeField]
+    private float DeraySpawnTime = 0.5f;
+
+
+
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -31,11 +42,23 @@ public class EnemySpawnManager : MonoBehaviour {
         stacktime += Time.deltaTime;
         //Debug.Log(stacktime);
         //Debug.Log(GetComponent<TimeManager>().GetIsReady());
-        if (stacktime >= interval && GetComponent<TimeManager>().GetIsReady() == true)
+        if(EnemyPowers - TekagenEnemyPowers >= 1)
         {
-            stacktime = 0;
-            EnemyInstance();
+            if (stacktime >= interval + (EnemyPowers - TekagenEnemyPowers) * DeraySpawnTime && GetComponent<TimeManager>().GetIsReady() == true)
+            {
+                stacktime = 0;
+                EnemyInstance();
+            }
         }
+        else
+        {
+            if (stacktime >= interval && GetComponent<TimeManager>().GetIsReady() == true)
+            {
+                stacktime = 0;
+                EnemyInstance();
+            }
+        }
+        
     }
 
     [SerializeField]
@@ -218,6 +241,7 @@ public class EnemySpawnManager : MonoBehaviour {
             EnemyLanePowers[i] = 0;
             PlayerCharaFrontPos[i] = 10f;
             EnemyCharaFrontPos[i] = -10f;
+            EnemyPowers = 0;
 
             hit = Physics2D.BoxCastAll(SpawnPositions[i].position, new Vector2(1, 1.0875f), 0f, Vector2.right, 10f);
             //Debug.Log("BoxCast:" + hit.Length);
@@ -236,6 +260,7 @@ public class EnemySpawnManager : MonoBehaviour {
                 else if(hit[k].collider.tag == "Enemy")
                 {
                     EnemyLanePowers[i]++;
+                    EnemyPowers++;
                     if (hit[k].transform.position.x > EnemyCharaFrontPos[i])
                     {
                         EnemyCharaFrontPos[i] = hit[k].transform.position.x;
