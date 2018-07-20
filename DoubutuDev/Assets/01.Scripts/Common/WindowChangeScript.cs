@@ -12,7 +12,7 @@ public class WindowChangeScript : MonoBehaviour
     int[] AnimalList = new int[3];
     GameObject[] Animals = new GameObject[3];
     //↓この中に入ってますよっと
-    int[,] AnimalAndWeaponList = new int[3, 4];
+    public int[,] AnimalAndWeaponList = new int[3, 4];
 
     public void AnimalChoice_End()
     {
