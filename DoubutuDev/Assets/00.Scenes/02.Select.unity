@@ -1487,6 +1487,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1264757837}
+          m_MethodName: ShowAnimal
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 470071409}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -1948,6 +1959,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1264757838}
           m_MethodName: Select_Weapon
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 697037224}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1264757837}
+          m_MethodName: ShowAnimal
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 697037224}
@@ -2679,6 +2701,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1264757837}
+          m_MethodName: ShowAnimal
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1062998955}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -3098,6 +3131,10 @@ MonoBehaviour:
   Rabbit: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
   Hukurou: {fileID: 1898397526343348, guid: 08ca34ae967d295459c5613798809db9, type: 2}
   Zou: {fileID: 1583422546418630, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
+  SelectedAnimal: {fileID: 0}
+  AnimalNum: 0
+  Rabbit_Anim: {fileID: 0}
+  Zou_Anim: {fileID: 0}
 --- !u!114 &1264757838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3464,6 +3501,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1264757838}
         m_MethodName: Click_Back_Button
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1264757837}
+        m_MethodName: DestroyAnimal
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4734,6 +4782,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1719361992}
     m_Modifications:
+    - target: {fileID: 114344902037101808, guid: 4bd3e43c1eac2584093ac466f76435a0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224419073701731390, guid: 4bd3e43c1eac2584093ac466f76435a0,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -4853,6 +4906,31 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114344902037101808, guid: 4bd3e43c1eac2584093ac466f76435a0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114344902037101808, guid: 4bd3e43c1eac2584093ac466f76435a0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114344902037101808, guid: 4bd3e43c1eac2584093ac466f76435a0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1264757837}
+    - target: {fileID: 114344902037101808, guid: 4bd3e43c1eac2584093ac466f76435a0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: DestroyAnimal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114344902037101808, guid: 4bd3e43c1eac2584093ac466f76435a0,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bd3e43c1eac2584093ac466f76435a0, type: 2}
