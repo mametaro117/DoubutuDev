@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 70101635306929552}
   - component: {fileID: 50992122447757802}
   - component: {fileID: 114495236370916954}
-  - component: {fileID: 114522876018364638}
+  - component: {fileID: 114654869227886060}
   - component: {fileID: 114853177750918744}
   m_Layer: 8
   m_Name: Rabbit_Shield
@@ -1102,19 +1102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114522876018364638
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1636398734877778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da46ec15a0f6f0342a51a12a8d120287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NowStateNum: 0
-  isEnemy: 0
 --- !u!114 &114594684770275878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1147,6 +1134,20 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 114416700441401824}
+--- !u!114 &114654869227886060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636398734877778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: 1
+  EnemyObject: {fileID: 0}
+  EnemyObjects: []
 --- !u!114 &114853177750918744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1158,7 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feee277c5fea1744cb4c2b19f16f467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoint: 100
+  HitPoint: 130
   SkillPoint: 10
   Attack: 2
   Speed: 0

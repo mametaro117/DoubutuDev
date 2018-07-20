@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 70047177661758990}
   - component: {fileID: 50058222657480690}
   - component: {fileID: 114146686250956764}
-  - component: {fileID: 114542034539140172}
+  - component: {fileID: 114478238681857844}
   - component: {fileID: 114548083470392614}
   m_Layer: 8
   m_Name: Rabbit_Sword
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 114290510874123750}
---- !u!114 &114542034539140172
+--- !u!114 &114478238681857844
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1040,11 +1040,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1458457157907598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da46ec15a0f6f0342a51a12a8d120287, type: 3}
+  m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NowStateNum: 0
-  isEnemy: 0
+  skill: 1
+  EnemyObject: {fileID: 0}
+  EnemyObjects: []
 --- !u!114 &114548083470392614
 MonoBehaviour:
   m_ObjectHideFlags: 1

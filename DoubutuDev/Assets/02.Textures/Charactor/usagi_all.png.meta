@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 91e6d0bb2bff9a2459a6530dc8949cb8
-timeCreated: 1532052722
+guid: 42356730875cdc748ae1ef0c7263bcce
+timeCreated: 1532053091
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: zou00_face
-    21300002: zou00_all
+    21300000: usagi_all_0
+    21300002: usagi_all_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -84,40 +84,32 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zou00_face
+      name: usagi_all_0
       rect:
         serializedVersion: 2
-        x: 89
-        y: 214
-        width: 157
-        height: 168
+        x: 41
+        y: 288
+        width: 252
+        height: 233
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: zou00_all
+      name: usagi_all_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 362
-        height: 400
+        y: 2
+        width: 300
+        height: 688
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
