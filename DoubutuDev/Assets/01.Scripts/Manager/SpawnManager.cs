@@ -35,6 +35,7 @@ public class SpawnManager : MonoBehaviour {
                 pos.z = 0;
                 //  インスタンス生成
                 GameObject obj = Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
+                AudioManager.Instance.PlaySe((int)AudioManager.SelistName.AnimalSpawn);
             }
             else
                 Debug.Log("コストが足りない");

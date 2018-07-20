@@ -91,6 +91,8 @@ public class BattleManager : MonoBehaviour {
         deffender.GetComponent<Totalstatus>().HitPoint -= damage;
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
+        //  ヒット時のサウンド再生
+        AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
         //  ゲージの割合変化
         if (deffender.tag == "Enemy" || deffender.tag == "Animal")
         {
@@ -152,6 +154,20 @@ public class BattleManager : MonoBehaviour {
             return num;
         }
         return num;
+    }
+
+    //  鳴らす音の判定
+    private int HitSound(GameObject attacker, GameObject deffender)
+    {
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType != Totalstatus.WeaponType.Tower)
+            return (int)AudioManager.SelistName.Sword;
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType != Totalstatus.WeaponType.Tower)
+            return (int)AudioManager.SelistName.Shield;
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType != Totalstatus.WeaponType.Tower)
+            return (int)AudioManager.SelistName.Arrow;
+        if (deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Tower)
+            return (int)AudioManager.SelistName.KnockBack;
+        return 0;
     }
 
     IEnumerator DelayDestry(GameObject deleteObj)

@@ -31,6 +31,22 @@ public class AudioManager : MonoBehaviour
 
     #endregion Singleton
 
+    public  enum SelistName
+    {
+        ButtonTap1 = 0,
+        ButtonTap2,
+        ButtonTap3,
+        Sword,
+        Shield,
+        Arrow,
+        Heal,
+        KnockBack,
+        Stun,
+        AnimalSpawn,
+        EnemySpawn
+    };
+
+
 
     [SerializeField]
     AudioClip[] BGMList = new AudioClip[3];
