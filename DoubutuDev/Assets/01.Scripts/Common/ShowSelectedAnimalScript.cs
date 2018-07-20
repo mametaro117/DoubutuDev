@@ -22,6 +22,7 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     [SerializeField]
     private CharacterController Zou_Anim;
     private CharacterController _Animation;
+    private Animator _Animator;
 
     public void ShowAnimal(GameObject Box)
     {
@@ -68,6 +69,12 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
         if (SelectedAnimal.transform.Find("SkillBer").gameObject != null)
         {
             Destroy(SelectedAnimal.transform.Find("SkillBer").gameObject);
+        }
+        if (SelectedAnimal.GetComponent<Animator>() != null)
+        {
+            _Animator = SelectedAnimal.GetComponent<Animator>();
+            Debug.Log(_Animator);
+            //_Animator.SetInteger("State", 0);
         }
     }
 
