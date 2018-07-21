@@ -45,6 +45,10 @@ public class BattleManager : MonoBehaviour {
     //Inspectorに表示される
     [SerializeField]
     private List<AnimalList> _animalListList = new List<AnimalList>();
+    [SerializeField]
+    private DamageText.DamageTextColor _playerDamageFontColor = DamageText.DamageTextColor.Blue;
+    [SerializeField]
+    private DamageText.DamageTextColor _enemyDamageFontColor = DamageText.DamageTextColor.Red;
 
     private TimeManager timeManager;
 
@@ -96,15 +100,16 @@ public class BattleManager : MonoBehaviour {
         "<color = #00ff00>",
         "<color = #0000ff>",
     };
+    //テキスト・カラーを変更できるようにする
+  
 
-    public void Attack(GameObject attacker, GameObject deffender, DamageColor damageColor = DamageColor.Defalut)
+    public void Attack(GameObject attacker, GameObject deffender)
     {
         //  ダメージの計算
         float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= damage;
         //  ダメージの表示
-        DamageText.text = (int)ColorTable[damageColor + damage.ToString() + "/color"];
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
@@ -125,7 +130,49 @@ public class BattleManager : MonoBehaviour {
             DeathUnit(deffender);
         }
     }
-
+    /// <summary>
+    /// 攻撃カラーを有効にする
+    /// </summary>
+    /// <param name="attacker">攻撃側のゲームオブジェクト</param>
+    /// <param name="deffender">攻撃される側のゲームオブジェクト</param>
+    /// <param name="damageColor"></param>
+    public void AttackWithColor(GameObject attacker, GameObject deffender, DamageColor damageColor = DamageColor.Defalut)
+    {
+        //  ダメージの計算
+        float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
+        //  攻撃される側のHPを減らす
+        deffender.GetComponent<Totalstatus>().HitPoint -= damage;
+        //  ダメージの表示
+        if (deffender.tag == "Enemy")
+        {
+            //暫定で敵の攻撃を赤くしている
+            DamageText.Instance.DiplayText(deffender.transform.position, damage, _enemyDamageFontColor);
+        }
+        else
+        {
+            //
+            DamageText.Instance.DiplayText(deffender.transform.position, damage, _playerDamageFontColor);
+        }
+        
+        //  ヒット時のサウンド再生
+        AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
+        //  ゲージの割合変化
+        if (deffender.tag == "Enemy" || deffender.tag == "Animal")
+        {
+            deffender.GetComponent<Totalstatus>().ApplayBer();
+        }
+        //  減らした後のHPを表示
+        //Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
+        //  HPが「0」以下になったときは削除
+        if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
+        {
+            if (deffender.tag == "Animal")
+            {
+                attacker.GetComponent<EnemyScript>().ResetEnemyObject();
+            }
+            DeathUnit(deffender);
+        }
+    }
     //  ダメージの倍率チェック
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {

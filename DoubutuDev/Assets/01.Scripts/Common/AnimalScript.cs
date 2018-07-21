@@ -207,7 +207,7 @@ public class AnimalScript : MonoBehaviour {
             isAttack = true;
             animator.SetTrigger("Attack");
             animator.ResetTrigger("Walk");
-            BattleManager.Instance.Attack(gameObject, EnemyObject);
+            BattleManager.Instance.AttackWithColor(gameObject, EnemyObject);
             Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
             animator.SetTrigger("Idle");

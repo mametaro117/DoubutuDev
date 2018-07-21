@@ -88,7 +88,7 @@ public class Animalstate : MonoBehaviour {
                 isAttack = true;
                 StateNum = 2;
                 StartCoroutine(AttackFreeze());
-                BattleManager.Instance.Attack(gameObject, collision.gameObject);
+                BattleManager.Instance.AttackWithColor(gameObject, collision.gameObject);
             }
         }
     }
