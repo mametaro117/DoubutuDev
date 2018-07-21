@@ -82,14 +82,29 @@ public class BattleManager : MonoBehaviour {
             timeManager.GameFaild();
         }
     }
-    
-    public void Attack(GameObject attacker, GameObject deffender)
+    public enum DamageColor
+    {
+        Defalut = 0,
+        Red = 1,
+        Blue = 2,
+        Green = 3,
+    }
+    string[] ColorTable =
+    {
+        "<color = #000000>",
+        "<color = #ff0000>",
+        "<color = #00ff00>",
+        "<color = #0000ff>",
+    };
+
+    public void Attack(GameObject attacker, GameObject deffender, DamageColor damageColor = DamageColor.Defalut)
     {
         //  ダメージの計算
         float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= damage;
         //  ダメージの表示
+        DamageText.text = (int)ColorTable[damageColor + damage.ToString() + "/color"];
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
