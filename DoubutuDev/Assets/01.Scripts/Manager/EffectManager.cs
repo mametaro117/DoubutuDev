@@ -52,12 +52,27 @@ public class EffectManager : MonoBehaviour {
     [SerializeField]
     private GameObject Effect_Magic;
 
+    public static class EffectKind {
+        public const int Diamond = 0;
+        public const int Heart = 1;
+        public const int Star = 2;
+        public const int Spark = 3;
+        public const int Light = 4;
+        public const int Smoke = 5;
+        public const int FireWork = 6;
+        public const int Hit = 7;
+        public const int Magic = 8;
+    }
+    
+
+
     //やる事を関数でまとめた
     private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification)
     {
-        PlayEffect.transform.position = EffectPos;
-        PlayEffect.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
+        var gobj = Instantiate(PlayEffect) as GameObject;
+        gobj.transform.position = EffectPos;
+        gobj.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
+        ParticleSystem particlesystem = gobj.GetComponent<ParticleSystem>();
         var main = particlesystem.main;
         Destroy(PlayEffect, main.duration);
     }

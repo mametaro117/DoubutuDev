@@ -109,6 +109,7 @@ public class BattleManager : MonoBehaviour {
             }
             DeathUnit(deffender);
         }
+        EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Diamond, deffender.transform.localPosition, 1);
     }
 
     //  ダメージの倍率チェック
