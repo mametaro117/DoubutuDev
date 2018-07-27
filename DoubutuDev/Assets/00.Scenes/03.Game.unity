@@ -1206,6 +1206,7 @@ MonoBehaviour:
     - {fileID: 0}
   _playerDamageFontColor: 3
   _enemyDamageFontColor: 1
+  TypeCheckNum: 0
 --- !u!4 &633445033
 Transform:
   m_ObjectHideFlags: 0
