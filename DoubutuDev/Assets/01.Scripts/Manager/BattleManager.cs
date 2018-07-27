@@ -49,6 +49,9 @@ public class BattleManager : MonoBehaviour {
     private DamageText.DamageTextColor _playerDamageFontColor = DamageText.DamageTextColor.Blue;
     [SerializeField]
     private DamageText.DamageTextColor _enemyDamageFontColor = DamageText.DamageTextColor.Red;
+    
+    [HideInInspector]
+    public int TypeCheckNum; 
 
     private TimeManager timeManager;
 
@@ -101,7 +104,21 @@ public class BattleManager : MonoBehaviour {
         "<color = #0000ff>",
     };
     //テキスト・カラーを変更できるようにする
-  
+
+    public enum DamageType
+    {
+        Nomal = 0,
+        Weak,
+        Noteffect
+    };
+
+    Dictionary<int, float> TypeMagnification = new Dictionary<int, float>()
+    {
+        {0, 0f},
+        {1, 2f},
+        {2, 0.5f}
+    };
+
 
     public void Attack(GameObject attacker, GameObject deffender)
     {
@@ -110,7 +127,7 @@ public class BattleManager : MonoBehaviour {
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= damage;
         //  ダメージの表示
-        DamageText.Instance.DiplayText(deffender.transform.position, damage);
+        DamageText.Instance.DiplayText_Animal(deffender.transform.position, damage);
         //  ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
         //  ゲージの割合変化
@@ -140,19 +157,28 @@ public class BattleManager : MonoBehaviour {
     {
         //  ダメージの計算
         float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
+        TypeCheckNum = TypeCheckInt(attacker, deffender);
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= damage;
         //  ダメージの表示
         if (deffender.tag == "Enemy")
         {
             //暫定で敵の攻撃を赤くしている
-            DamageText.Instance.DiplayText(deffender.transform.position, damage, _enemyDamageFontColor);
+            DamageText.Instance.DiplayText_Enemy(deffender.transform.position, damage, _enemyDamageFontColor);
         }
-        else
+        else if (deffender.tag == "Animal")
         {
-            //
-            DamageText.Instance.DiplayText(deffender.transform.position, damage, _playerDamageFontColor);
+            DamageText.Instance.DiplayText_Animal(deffender.transform.position, damage, _playerDamageFontColor);
+
         }
+        //else if ()
+        //{
+
+        //}
+        //else
+        //{
+
+        //}
         
         //  ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
@@ -212,6 +238,51 @@ public class BattleManager : MonoBehaviour {
         if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
         {
             num = 0.5f;
+            Debug.Log("効果いまひとつ…");
+            return num;
+        }
+        return num;
+    }
+
+
+    public int TypeCheckInt(GameObject attacker, GameObject deffender)
+    {
+        int num = 0;
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
+        {
+            num = (int)DamageType.Weak;
+            Debug.Log("効果抜群！");
+            return num;
+        }
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow)
+        {
+            num = (int)DamageType.Noteffect;
+            Debug.Log("効果いまひとつ…");
+            return num;
+        }
+
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow)
+        {
+            num = (int)DamageType.Weak;
+            Debug.Log("効果抜群！");
+            return num;
+        }
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword)
+        {
+            num = (int)DamageType.Noteffect;
+            Debug.Log("効果いまひとつ…");
+            return num;
+        }
+
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword)
+        {
+            num = (int)DamageType.Weak;
+            Debug.Log("効果抜群！");
+            return num;
+        }
+        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
+        {
+            num = (int)DamageType.Noteffect;
             Debug.Log("効果いまひとつ…");
             return num;
         }

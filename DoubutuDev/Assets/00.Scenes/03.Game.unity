@@ -1204,6 +1204,8 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  _playerDamageFontColor: 3
+  _enemyDamageFontColor: 1
 --- !u!4 &633445033
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,6 +1249,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageObject: {fileID: 1853937615045822, guid: d7130e517c6c4d744b9ae96e64fa93e7,
     type: 2}
+  Fonts:
+  - {fileID: 12800000, guid: 66999ab3280813b4fbb3d1f61ffea912, type: 3}
+  - {fileID: 12800000, guid: 945c9ea0c82280941bdf43884131ae17, type: 3}
+  - {fileID: 12800000, guid: d5a284f1d520fb74b86eae53af8609f6, type: 3}
 --- !u!114 &633445036
 MonoBehaviour:
   m_ObjectHideFlags: 0

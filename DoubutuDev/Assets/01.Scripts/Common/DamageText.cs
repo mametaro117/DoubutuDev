@@ -8,6 +8,9 @@ public class DamageText : MonoBehaviour {
     [SerializeField]
     private GameObject DamageObject;
 
+    [SerializeField]
+    private Font[] Fonts = new Font[3];
+
     #region Singleton
 
     private static DamageText instance;
@@ -74,16 +77,63 @@ public class DamageText : MonoBehaviour {
 /// <param name="damage">ダメージの値</param>
 /// <param name="damageTextColor">ダメージカラー(デフォルトは黒)</param>
 
-    public void DiplayText(Vector3 pos, float damage, DamageTextColor damageTextColor = DamageTextColor.Defalut)
+        //動物
+    public void DiplayText_Animal(Vector3 pos, float damage, DamageTextColor damageTextColor = DamageTextColor.Defalut)
     {
         //  重なり順の変更
-        pos.z = -5;
+        pos.z = -9.7f;
         //  文字生成
         GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
         obj.GetComponent<TextMesh>().text = damage.ToString();
         obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
+        switch (BattleManager.Instance.TypeCheckNum)
+        {
+            case 0:
+                obj.GetComponent<TextMesh>().font = Fonts[1];
+                obj.GetComponent<TextMesh>().fontSize = 50;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(20, 80), Random.Range(100, 180)));
+                break;
+            case 1:
+                obj.GetComponent<TextMesh>().font = Fonts[1];
+                obj.GetComponent<TextMesh>().fontSize = 20;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(20, 80), Random.Range(100, 180)));
+                break;
+            case 2:
+                obj.GetComponent<TextMesh>().font = Fonts[1];
+                obj.GetComponent<TextMesh>().fontSize = 40;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(20, 80), Random.Range(100, 180)));
+                break;
+        }
+        StartCoroutine(DestryText(obj));
+    }
 
-        obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
+    public void DiplayText_Enemy(Vector3 pos, float damage, DamageTextColor damageTextColor = DamageTextColor.Defalut)
+    {
+        //  重なり順の変更
+        pos.z = -8;
+        //  文字生成
+        GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
+        obj.GetComponent<TextMesh>().text = damage.ToString();
+        obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
+        //
+        switch (BattleManager.Instance.TypeCheckNum)
+        {
+            case 0:
+                obj.GetComponent<TextMesh>().font = Fonts[1];
+                obj.GetComponent<TextMesh>().fontSize = 50;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-60, -100), Random.Range(100, 180)));
+                break;
+            case 1:
+                obj.GetComponent<TextMesh>().font = Fonts[1];
+                obj.GetComponent<TextMesh>().fontSize = 30;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-60, -100), Random.Range(100, 180)));
+                break;
+            case 2:
+                obj.GetComponent<TextMesh>().font = Fonts[1];
+                obj.GetComponent<TextMesh>().fontSize = 40;
+                obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-60, -100), Random.Range(100, 180)));
+                break;
+        }
         StartCoroutine(DestryText(obj));
     }
 
