@@ -35,15 +35,18 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void AnimalDrag(GameObject ChildObj)
     {
-        if(!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
+        if(GetComponent<WindowChangeScript>().WindowStationary)
         {
-            if(StartDrag)
+            if (!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
             {
-                AudioManager.Instance.PlaySe(1);
-                StartDrag = false;
+                if (StartDrag)
+                {
+                    AudioManager.Instance.PlaySe(1);
+                    StartDrag = false;
+                }
+                Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                ChildObj.transform.position = TapPos;
             }
-            Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            ChildObj.transform.position = TapPos;
         }
     }
 
@@ -56,7 +59,8 @@ public class AnimalChoiceManager : MonoBehaviour {
         //ドラッグし終わった時に別の枠内に入っていたら
         for (int i = 1; i < 4; i++)
         {
-            Parent = GameObject.Find("Canvas/SelectList/SelectColumn" + i + "");
+            Parent = GameObject.Find("SelectList/SelectColumn" + i + "");
+            Debug.Log(Parent);
             Vector2 UiPos = Parent.transform.position;
             //Debug.Log(UiPos);
             float Diff_x = TapPos.x - UiPos.x;
@@ -133,36 +137,39 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void BackHome(GameObject obj)
     {
-        foreach (Transform child in obj.transform)
+        if(GetComponent<WindowChangeScript>().WindowStationary)
         {
-            AnimalListsActive[int.Parse(child.name.Substring(child.name.Length - 1)) - 1] = false;
-            //Debug.Log(child.name);
-            int strlength = obj.name.Length;
-            int BoxNum = int.Parse(obj.name.Substring(strlength - 1));
-            Debug.Log("<color=red>" + BoxNum + "</color>");
-            switch(BoxNum)
+            foreach (Transform child in obj.transform)
             {
-                case 1:
-                    SelectList1Active = false;
-                    Debug.Log("List1_false");
-                    break;
-                case 2:
-                    SelectList2Active = false;
-                    Debug.Log("List2_false");
-                    break;
-                case 3:
-                    SelectList3Active = false;
-                    Debug.Log("List3_false");
-                    break;
-                default:
-                    Debug.Log("（´・ω・｀）");
-                    break;
+                AnimalListsActive[int.Parse(child.name.Substring(child.name.Length - 1)) - 1] = false;
+                //Debug.Log(child.name);
+                int strlength = obj.name.Length;
+                int BoxNum = int.Parse(obj.name.Substring(strlength - 1));
+                Debug.Log("<color=red>" + BoxNum + "</color>");
+                switch (BoxNum)
+                {
+                    case 1:
+                        SelectList1Active = false;
+                        Debug.Log("List1_false");
+                        break;
+                    case 2:
+                        SelectList2Active = false;
+                        Debug.Log("List2_false");
+                        break;
+                    case 3:
+                        SelectList3Active = false;
+                        Debug.Log("List3_false");
+                        break;
+                    default:
+                        Debug.Log("（´・ω・｀）");
+                        break;
+                }
+                GameObject Box = GameObject.Find("AnimalList/Column" + int.Parse(child.name.Substring(child.name.Length - 1)) + "");
+                child.transform.SetParent(Box.transform);
+                var RectTransform = child.GetComponent<RectTransform>();
+                Vector2 ResetPos = new Vector2();
+                RectTransform.anchoredPosition = ResetPos;
             }
-            GameObject Box = GameObject.Find("Canvas/AnimalList/Column" + int.Parse(child.name.Substring(child.name.Length - 1)) + "");
-            child.transform.SetParent(Box.transform);
-            var RectTransform = child.GetComponent<RectTransform>();
-            Vector2 ResetPos = new Vector2();
-            RectTransform.anchoredPosition = ResetPos;
         }
     }
 

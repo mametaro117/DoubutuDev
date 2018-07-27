@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class WindowChangeScript : MonoBehaviour
 {
+    //ウィンドウが止まっているかどうか
+    public bool WindowStationary = true;
     [SerializeField]
     private Text text;
     [SerializeField]
@@ -16,20 +18,23 @@ public class WindowChangeScript : MonoBehaviour
 
     public void AnimalChoice_End()
     {
-        AudioManager.Instance.PlaySe(0);
-        AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
-        if(Manager.AnimalSetCheck())
+        if(WindowStationary)
         {
-            AnimalAndWeaponList = Manager.SelectAnimalList;
-            //SelectAnimalListを渡す
-            for (int i = 0; i < 3; i++)
+            AudioManager.Instance.PlaySe(0);
+            AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
+            if (Manager.AnimalSetCheck())
             {
-                AnimalList[i] = Manager.SelectAnimalList[i, 0];
-                Animals[i] = Manager.Animals[i];
-                AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
-                //**/Debug.Log("No." + (i + 1) + "_" + AnimalAndWeaponList[i, 0] + "," + AnimalAndWeaponList[i, 1] + "," + AnimalAndWeaponList[i, 2] + "," + AnimalAndWeaponList[i, 3]);
+                AnimalAndWeaponList = Manager.SelectAnimalList;
+                //SelectAnimalListを渡す
+                for (int i = 0; i < 3; i++)
+                {
+                    AnimalList[i] = Manager.SelectAnimalList[i, 0];
+                    Animals[i] = Manager.Animals[i];
+                    AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
+                    //**/Debug.Log("No." + (i + 1) + "_" + AnimalAndWeaponList[i, 0] + "," + AnimalAndWeaponList[i, 1] + "," + AnimalAndWeaponList[i, 2] + "," + AnimalAndWeaponList[i, 3]);
+                }
+                Change_Screen();
             }
-            Change_Screen();
         }
     }
 
@@ -76,12 +81,31 @@ public class WindowChangeScript : MonoBehaviour
         Vector3 tmppos = Decide_RectTransform.anchoredPosition3D;
         Decide_RectTransform.anchoredPosition3D = Next_RectTransform.anchoredPosition3D;
         Next_RectTransform.anchoredPosition3D = tmppos;
-        GameObject.Find("SelectList").SetActive(false);
-        GameObject.Find("AnimalList").SetActive(false);
+        //GameObject.Find("SelectList").SetActive(false);
+        //GameObject.Find("AnimalList").SetActive(false);
+        StartCoroutine(WindowMove_AnimalBox());
         text.text = "ぶきせんたく";
     }
 
-    bool Equip_Changing = false;
+    private int time = 300;
+
+    //動物選択の枠を動かすコルーチン
+    IEnumerator WindowMove_AnimalBox()
+    {
+        Debug.Log("コルーチン開始");
+        WindowStationary = false;
+        while(time >= 0)
+        {
+            GameObject.Find("SelectList").transform.position -= new Vector3(0.1f, 0, 0);
+            GameObject.Find("AnimalList").transform.position -= new Vector3(0.1f, 0, 0);
+            time--;
+            yield return null;
+        }
+        Debug.Log("コルーチン終了");
+        WindowStationary = true;
+    }
+
+    public bool Equip_Changing = false;
     Vector3 WeaponBox_OriginalPos;
     Vector3 BackButton_OriginalPos;
     Vector3 ActiveBox_OriginalPos;
@@ -93,7 +117,7 @@ public class WindowChangeScript : MonoBehaviour
     //武器選択のウィンドウを出す
     private void Equip_Change(int BoxNum)
     {
-        if (!Equip_Changing)
+        if (!Equip_Changing && WindowStationary)
         {
             AudioManager.Instance.PlaySe(0);
             Equip_Changing = true;
@@ -249,20 +273,23 @@ public class WindowChangeScript : MonoBehaviour
     //パラメーターあげます
     public void PassParamator()
     {
-        ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
-        _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
-        string str;
-        for(int i1 = 0; i1 < 3; i1++)
+        if(WindowStationary)
         {
-            str = "";
-            for(int i2 = 0; i2 < 4; i2++)
+            ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
+            _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
+            string str;
+            for (int i1 = 0; i1 < 3; i1++)
             {
-                str = str + AnimalAndWeaponList[i1, i2];
+                str = "";
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    str = str + AnimalAndWeaponList[i1, i2];
+                }
+                Debug.Log(str);
             }
-            Debug.Log(str);
+            AudioManager.Instance.PlayBgm(1);
         }
-
-        AudioManager.Instance.PlayBgm(1);
+        
         //動物Id
         //0:うさぎ
         //1:ふくろう
