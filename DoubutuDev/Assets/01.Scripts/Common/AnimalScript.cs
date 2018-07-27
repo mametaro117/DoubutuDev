@@ -19,7 +19,9 @@ public class AnimalScript : MonoBehaviour {
 
     private Animator animator;
 
+    [SerializeField]
     bool isReady = false;
+    [SerializeField]
     bool isAttack = false;
 
     void Start()
@@ -123,7 +125,7 @@ public class AnimalScript : MonoBehaviour {
             if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
             {
                 EnemyObjects.Add(collision.gameObject);
-                //  攻撃対象している対象がいなかったらセット
+                //  攻撃している対象がいなかったらセット
                 if (EnemyObject == null)
                 {
                     EnemyObject = EnemyObjects[0];
@@ -139,6 +141,22 @@ public class AnimalScript : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //  どうぶつ又はどうぶつタワーだったら
+        if (collision.tag == "Enemy" || collision.tag == "EnemyTower")
+        {
+            //  要素が含まれていなかったら追加
+            if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
+            {
+                EnemyObjects.Add(collision.gameObject);
+                //  攻撃している対象がいなかったらセット
+                if (EnemyObject == null)
+                {
+                    EnemyObject = EnemyObjects[0];
+                    EnemyObjects.RemoveAt(0);
+                }
+            }
+        }
+
         if (collision.tag == "Enemy" || collision.tag == "EnemyTower")
         {
             StartCoroutine(AttackAnimal());

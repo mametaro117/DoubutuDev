@@ -18,7 +18,9 @@ public class EnemyScript : MonoBehaviour {
 
     private Animator animator;
 
+    [SerializeField]
     bool isReady = false;
+    [SerializeField]
     bool isAttack = false;
 
     void Start () {
@@ -87,7 +89,7 @@ public class EnemyScript : MonoBehaviour {
         }
     }
 
-    //  EnemyObjectが倒されたら
+    //  EnemyObjectが倒されたらバトルマネージャー呼ばれる
     public void ResetEnemyObject()
     {
         if(EnemyObjects.Count != 0)

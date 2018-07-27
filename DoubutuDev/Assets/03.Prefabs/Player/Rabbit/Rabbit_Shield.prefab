@@ -840,7 +840,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61787153299620402
@@ -1148,6 +1148,8 @@ MonoBehaviour:
   skill: 1
   EnemyObject: {fileID: 0}
   EnemyObjects: []
+  isReady: 0
+  isAttack: 0
 --- !u!114 &114853177750918744
 MonoBehaviour:
   m_ObjectHideFlags: 1

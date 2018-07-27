@@ -98,14 +98,16 @@ public class BattleManager : MonoBehaviour {
         {
             deffender.GetComponent<Totalstatus>().ApplayBer();
         }
-        //  減らした後のHPを表示
-        //Debug.Log(deffender.GetComponent<Totalstatus>().HitPoint);
         //  HPが「0」以下になったときは削除
         if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
         {
             if(deffender.tag == "Animal")
             {
                 attacker.GetComponent<EnemyScript>().ResetEnemyObject();
+            }
+            else if (deffender.tag == "Enemy")
+            {
+                attacker.GetComponent<AnimalScript>().ResetEnemyObject();
             }
             DeathUnit(deffender);
         }

@@ -345,6 +345,8 @@ MonoBehaviour:
   skill: 0
   EnemyObject: {fileID: 0}
   EnemyObjects: []
+  isReady: 0
+  isAttack: 0
 --- !u!114 &114414441202367266
 MonoBehaviour:
   m_ObjectHideFlags: 1
