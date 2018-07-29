@@ -14,7 +14,7 @@ public class AnimalChoiceManager : MonoBehaviour {
     bool[] AnimalListsActive = new bool[10];
 
     // [動物id, 武器id1, 武器id2, 武器id3]
-    public int[,] SelectAnimalList = { { 99, 0, 3, 2 },{ 99, 0, 3, 2 },{ 99, 0, 3, 2 } };
+    public int[,] SelectAnimalList = { { 99, 0, 1, 2 },{ 99, 0, 1, 2 },{ 99, 0, 1, 2 } };
 
     public GameObject[] Animals = new GameObject[3];
 
@@ -60,7 +60,7 @@ public class AnimalChoiceManager : MonoBehaviour {
         for (int i = 1; i < 4; i++)
         {
             Parent = GameObject.Find("SelectList/SelectColumn" + i + "");
-            Debug.Log(Parent);
+            //Debug.Log(Parent);
             Vector2 UiPos = Parent.transform.position;
             //Debug.Log(UiPos);
             float Diff_x = TapPos.x - UiPos.x;
@@ -145,7 +145,7 @@ public class AnimalChoiceManager : MonoBehaviour {
                 //Debug.Log(child.name);
                 int strlength = obj.name.Length;
                 int BoxNum = int.Parse(obj.name.Substring(strlength - 1));
-                Debug.Log("<color=red>" + BoxNum + "</color>");
+                //Debug.Log("<color=red>" + BoxNum + "</color>");
                 switch (BoxNum)
                 {
                     case 1:

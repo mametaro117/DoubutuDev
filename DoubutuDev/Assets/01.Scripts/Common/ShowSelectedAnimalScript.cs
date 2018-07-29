@@ -62,8 +62,10 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             {
                 S_Animalscript.enabled = !S_Animalscript.enabled;
             }
-            SelectedAnimal.transform.position = new Vector3(5, -1, 0);
-            SelectedAnimal.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            SelectedAnimal.transform.SetParent(GameObject.Find("WeaponSelectWindows2").transform);
+            RectTransform _rect = SelectedAnimal.AddComponent<RectTransform>();
+            _rect.anchoredPosition3D = new Vector3(300, -100, 0);
+            SelectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
             if (SelectedAnimal.transform.Find("HPBer").gameObject != null)
             {
                 Destroy(SelectedAnimal.transform.Find("HPBer").gameObject);
