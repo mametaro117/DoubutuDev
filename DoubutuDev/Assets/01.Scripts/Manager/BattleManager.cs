@@ -171,15 +171,6 @@ public class BattleManager : MonoBehaviour {
             DamageText.Instance.DiplayText_Animal(deffender.transform.position, damage, _playerDamageFontColor);
 
         }
-        //else if ()
-        //{
-
-        //}
-        //else
-        //{
-
-        //}
-        
         //  ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
         //  ゲージの割合変化
