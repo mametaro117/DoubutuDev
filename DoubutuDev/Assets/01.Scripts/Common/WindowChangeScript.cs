@@ -72,8 +72,8 @@ public class WindowChangeScript : MonoBehaviour
         StartCoroutine(WindowMove(-1));
     }
 
-    private int time = 90;
-    private float speed = 0.85f;
+    private int time;
+    private float speed;
     [SerializeField]
     private Vector3 pospos;
     [SerializeField]
@@ -83,7 +83,7 @@ public class WindowChangeScript : MonoBehaviour
     IEnumerator WindowMove(int MoveDirection, bool gameobjectsDestroy = false)
     {
         time = 90;
-        speed = 0.85f;
+        speed = 0.9f;
         Debug.Log("コルーチン開始");
         WindowStationary = false;
         while(time >= 0)
