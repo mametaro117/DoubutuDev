@@ -70,9 +70,10 @@ GameObject:
   - component: {fileID: 212715214712041040}
   - component: {fileID: 50430732319386122}
   - component: {fileID: 58488127810235726}
-  - component: {fileID: 114239046534999550}
   - component: {fileID: 114825963754465648}
   - component: {fileID: 114414441202367266}
+  - component: {fileID: 114229306818732704}
+  - component: {fileID: 58242041695520534}
   m_Layer: 0
   m_Name: Pengin_Shield
   m_TagString: Enemy
@@ -273,7 +274,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!58 &58242041695520534
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381137573222374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!58 &58488127810235726
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -331,7 +347,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114239046534999550
+--- !u!114 &114229306818732704
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -339,9 +355,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1381137573222374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c09a36ea08bb494fb7412e440ff787a, type: 3}
+  m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   skill: 0
   EnemyObject: {fileID: 0}
   EnemyObjects: []
@@ -361,7 +378,7 @@ MonoBehaviour:
   HitPoint: 50
   SkillPoint: 10
   Attack: 1
-  Speed: 0
+  Speed: 10
   IsSky: 0
   isStun: 0
   weaponType: 1

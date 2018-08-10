@@ -13,12 +13,12 @@ public class TowerMater : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DefaultTowerHP = GetComponent<Totalstatus> ().HitPoint;
+		DefaultTowerHP = GetComponent<Status> ().HitPoint;
 		value = 750 / DefaultTowerHP;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		TowerBer.GetComponent<RectTransform> ().sizeDelta = new Vector2 (value * GetComponent<Totalstatus> ().HitPoint, TowerBer.GetComponent<RectTransform> ().sizeDelta.y);
+		TowerBer.GetComponent<RectTransform> ().sizeDelta = new Vector2 (value * GetComponent<Status> ().HitPoint, TowerBer.GetComponent<RectTransform> ().sizeDelta.y);
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Totalstatus : MonoBehaviour {
+public class Status : MonoBehaviour {
 
     //  ステータス
     public float HitPoint;
@@ -41,7 +41,9 @@ public class Totalstatus : MonoBehaviour {
             ApplayBer();
         }
     }
-    public void SetStatus(float HP,int ATK, float SPD, bool issky)
+
+    //  
+    public void SetAllStatus(float HP,int ATK, float SPD, bool issky)
     {
         HitPoint = HP;
         Attack = ATK;
@@ -70,44 +72,22 @@ public class Totalstatus : MonoBehaviour {
         ApplayBer();
     }
 
-    //Castのデバッグ用
-    public void _CastTest()
-    {
-        Debug.Log("<color=red>Cast成功</color>");
-    }
-
     IEnumerator SkillPointUp()
     {
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            Debug.Log("SP_UP");
             if (SkillPoint >= MaxSP)
             {
-                if (tag == "Animal")
+                if (GetComponent<AnimalScript>().SkillReady())
                 {
-                    if (GetComponent<AnimalScript>().SkillReady())
-                    {
-                        GetComponent<AnimalScript>().PlaySkill();
-                        SkillPoint = 0;
-                        ApplayBer();
-                        continue;
-                    }
-                    else
-                        continue;                    
+                    GetComponent<AnimalScript>().PlaySkill();
+                    SkillPoint = 0;
+                    ApplayBer();
+                    continue;
                 }
-                else if (tag == "Enemy")
-                {
-                    if (GetComponent<EnemyScript>().SkillReady())
-                    {
-                        GetComponent<EnemyScript>().PlaySkill();
-                        SkillPoint = 0;
-                        ApplayBer();
-                        continue;
-                    }
-                    else
-                        continue;
-                }
+                else
+                    continue;                    
             }
             if(SkillPoint < MaxSP && !isStun)
                 SkillPoint += 0.1f;

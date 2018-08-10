@@ -1145,6 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   skill: 1
   EnemyObject: {fileID: 0}
   EnemyObjects: []
@@ -1164,7 +1165,7 @@ MonoBehaviour:
   HitPoint: 130
   SkillPoint: 10
   Attack: 2
-  Speed: 0
+  Speed: 5
   IsSky: 0
   isStun: 0
   weaponType: 1

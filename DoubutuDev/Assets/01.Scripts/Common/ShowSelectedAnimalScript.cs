@@ -15,7 +15,7 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     [SerializeField]
     private int AnimalNum;
     private Animalstate S_Animalstate;
-    private Totalstatus S_Totalstatus;
+    private Status S_Totalstatus;
     private AnimalScript S_Animalscript;
     [SerializeField]
     private GameObject Rabbit_Anim;
@@ -50,7 +50,7 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
         {
             S_Animalstate.enabled = !S_Animalstate.enabled;
         }
-        S_Totalstatus = SelectedAnimal.GetComponent<Totalstatus>();
+        S_Totalstatus = SelectedAnimal.GetComponent<Status>();
         if(S_Totalstatus != null)
         {
             S_Totalstatus.enabled = !S_Totalstatus.enabled;

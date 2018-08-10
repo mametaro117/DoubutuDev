@@ -86,9 +86,9 @@ public class BattleManager : MonoBehaviour {
     public void Attack(GameObject attacker, GameObject deffender)
     {
         //  ダメージの計算
-        float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
+        float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack * TypeCheck(attacker, deffender));
         //  攻撃される側のHPを減らす
-        deffender.GetComponent<Totalstatus>().HitPoint -= damage;
+        deffender.GetComponent<Status>().HitPoint -= damage;
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ヒット時のサウンド再生
@@ -96,19 +96,12 @@ public class BattleManager : MonoBehaviour {
         //  ゲージの割合変化
         if (deffender.tag == "Enemy" || deffender.tag == "Animal")
         {
-            deffender.GetComponent<Totalstatus>().ApplayBer();
+            deffender.GetComponent<Status>().ApplayBer();
         }
         //  HPが「0」以下になったときは削除
-        if (deffender.GetComponent<Totalstatus>().HitPoint <= 0)
+        if (deffender.GetComponent<Status>().HitPoint <= 0)
         {
-            if(deffender.tag == "Animal")
-            {
-                attacker.GetComponent<EnemyScript>().ResetEnemyObject();
-            }
-            else if (deffender.tag == "Enemy")
-            {
-                attacker.GetComponent<AnimalScript>().ResetEnemyObject();
-            }
+            attacker.GetComponent<AnimalScript>().ResetEnemyObject();
             DeathUnit(deffender);
         }
     }
@@ -117,39 +110,39 @@ public class BattleManager : MonoBehaviour {
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {
         float num = 1;
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
         {
             num = 1.5f;
             Debug.Log("効果抜群！");
             return num;
         }
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
         {
             num = 0.5f;
             Debug.Log("効果いまひとつ…");
             return num;
         }
 
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
         {
             num = 1.5f;
             Debug.Log("効果抜群！");
             return num;
         }
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
         {
             num = 0.5f;
             Debug.Log("効果いまひとつ…");
             return num;
         }
 
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
         {
             num = 1.5f;
             Debug.Log("効果抜群！");
             return num;
         }
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
         {
             num = 0.5f;
             Debug.Log("効果いまひとつ…");
@@ -161,13 +154,13 @@ public class BattleManager : MonoBehaviour {
     //  鳴らす音の判定
     private int HitSound(GameObject attacker, GameObject deffender)
     {
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Sword && deffender.GetComponent<Totalstatus>().weaponType != Totalstatus.WeaponType.Tower)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType != Status.WeaponType.Tower)
             return (int)AudioManager.SelistName.Sword;
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Shield && deffender.GetComponent<Totalstatus>().weaponType != Totalstatus.WeaponType.Tower)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield && deffender.GetComponent<Status>().weaponType != Status.WeaponType.Tower)
             return (int)AudioManager.SelistName.Shield;
-        if (attacker.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Arrow && deffender.GetComponent<Totalstatus>().weaponType != Totalstatus.WeaponType.Tower)
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow && deffender.GetComponent<Status>().weaponType != Status.WeaponType.Tower)
             return (int)AudioManager.SelistName.Arrow;
-        if (deffender.GetComponent<Totalstatus>().weaponType == Totalstatus.WeaponType.Tower)
+        if (deffender.GetComponent<Status>().weaponType == Status.WeaponType.Tower)
             return (int)AudioManager.SelistName.KnockBack;
         return 0;
     }
