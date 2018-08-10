@@ -23,6 +23,8 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     private CharacterController Zou_Anim;
     private CharacterController _Animation;
     private Animator _Animator;
+    [SerializeField]
+    private AnimatorStateInfo _anim;
 
     public void ShowAnimal(GameObject Box)
     {
@@ -78,7 +80,8 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             {
                 _Animator = SelectedAnimal.GetComponent<Animator>();
                 Debug.Log(_Animator);
-                _Animator.SetTrigger(1);
+                _Animator.SetTrigger("Attack");
+                _anim = _Animator.GetCurrentAnimatorStateInfo(0);
             }
         }
     }
@@ -87,5 +90,14 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     {
         Destroy(SelectedAnimal);
         SelectedAnimal = null;
+    }
+
+    //重い気がするけど許して(改善する気がする)
+    private void Update()
+    {
+        if(SelectedAnimal != null)
+        {
+            //_Animator.
+        }
     }
 }

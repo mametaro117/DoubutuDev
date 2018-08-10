@@ -82,8 +82,8 @@ public class WindowChangeScript : MonoBehaviour
     //動物選択の枠を動かすコルーチン
     IEnumerator WindowMove(int MoveDirection, bool gameobjectsDestroy = false)
     {
-        time = 90;
-        speed = 0.9f;
+        time = 60;
+        speed = 1f;
         Debug.Log("コルーチン開始");
         WindowStationary = false;
         while(time >= 0)

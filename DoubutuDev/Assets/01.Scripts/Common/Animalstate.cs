@@ -14,6 +14,7 @@ public class Animalstate : MonoBehaviour {
 
     void Start () {
         animator = GetComponent<Animator>();
+        //Debug.Log(animator);
         //Debug.Log("Start");
         StartCoroutine(Depoly());
         //  マネージャーへこのオブジェクトを追加
@@ -40,14 +41,17 @@ public class Animalstate : MonoBehaviour {
                 case 0:
                     //  待機ステート
                     animator.SetInteger("State", 0);
+                    Debug.Log("<color=red>aaa</color>");
                     break;
                 case 1:
                     //  歩行ステート
                     animator.SetInteger("State", 1);
+                    Debug.Log("<color=red>aaa</color>");
                     break;
                 case 2:
                     //  攻撃ステート
                     animator.SetInteger("State", 2);
+                    Debug.Log("<color=red>aaa</color>");
                     break;
                 default:
                     //  それ以外は待機状態に

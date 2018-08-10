@@ -81,7 +81,7 @@ public class Totalstatus : MonoBehaviour {
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            Debug.Log("SP_UP");
+            //Debug.Log("SP_UP");
             if (SkillPoint >= MaxSP)
             {
                 if (tag == "Animal")
