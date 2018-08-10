@@ -8,9 +8,6 @@ public class DamageText : MonoBehaviour {
     [SerializeField]
     private GameObject DamageObject;
 
-    [SerializeField]
-    private Font[] Fonts = new Font[3];
-
     #region Singleton
 
     private static DamageText instance;
@@ -86,20 +83,19 @@ public class DamageText : MonoBehaviour {
         GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
         obj.GetComponent<TextMesh>().text = damage.ToString();
         obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
+        //Debug.Log(BattleManager.Instance.TypeCheckNum);
         switch (BattleManager.Instance.TypeCheckNum)
-        {
+        {   
             case 0:
-                obj.GetComponent<TextMesh>().font = Fonts[1];
+                
                 obj.GetComponent<TextMesh>().fontSize = 25;
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(20, 80), Random.Range(100, 180)));
                 break;
             case 1:
-                obj.GetComponent<TextMesh>().font = Fonts[1];
                 obj.GetComponent<TextMesh>().fontSize = 50;
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(20, 80), Random.Range(100, 180)));
                 break;
             case 2:
-                obj.GetComponent<TextMesh>().font = Fonts[1];
                 obj.GetComponent<TextMesh>().fontSize = 30;
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(20, 80), Random.Range(100, 180)));
                 break;
@@ -115,21 +111,20 @@ public class DamageText : MonoBehaviour {
         GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
         obj.GetComponent<TextMesh>().text = damage.ToString();
         obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
-        //
         switch (BattleManager.Instance.TypeCheckNum)
         {
             case 0:
-                obj.GetComponent<TextMesh>().font = Fonts[1];
-                obj.GetComponent<TextMesh>().fontSize =25;
+
+                obj.GetComponent<TextMesh>().fontSize = 25;
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-60, -100), Random.Range(100, 180)));
                 break;
             case 1:
-                obj.GetComponent<TextMesh>().font = Fonts[1];
+
                 obj.GetComponent<TextMesh>().fontSize = 50;
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-60, -100), Random.Range(100, 180)));
                 break;
             case 2:
-                obj.GetComponent<TextMesh>().font = Fonts[1];
+
                 obj.GetComponent<TextMesh>().fontSize = 30;
                 obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-60, -100), Random.Range(100, 180)));
                 break;
