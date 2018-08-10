@@ -75,8 +75,7 @@ public class DamageText : MonoBehaviour {
     /// <param name="pos">表示座標</param>
     /// <param name="damage">ダメージの値</param>
     /// <param name="damageTextColor">ダメージカラー(デフォルトは黒)</param>
-
-    //動物
+    
 
     List<int> listNum = new List<int>();
     public Sprite[] numImage;
@@ -92,7 +91,13 @@ public class DamageText : MonoBehaviour {
         //Debug.Log(BattleManager.Instance.TypeCheckNum);
 
         GameObject.Find("DamageTextImage").GetComponent<Image>().sprite = numImage[listNum[0]];
+        
 
+        switch (BattleManager.Instance.TypeCheckNum)
+        {
+            case 0:
+                break;
+        }
 
       /*  switch (BattleManager.Instance.TypeCheckNum)
         {   
