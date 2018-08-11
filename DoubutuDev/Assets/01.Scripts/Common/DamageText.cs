@@ -78,7 +78,8 @@ public class DamageText : MonoBehaviour {
     
 
     List<int> listNum = new List<int>();
-    public Sprite[] numImage;
+    [SerializeField]
+    private Sprite[] numImage;
 
     public void DiplayText_Animal(Vector3 pos, float damage, DamageTextColor damageTextColor = DamageTextColor.Defalut)
     {
@@ -90,12 +91,26 @@ public class DamageText : MonoBehaviour {
         obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
         //Debug.Log(BattleManager.Instance.TypeCheckNum);
 
+
         GameObject.Find("DamageTextImage").GetComponent<Image>().sprite = numImage[listNum[0]];
-        
+        for (int i = 1; i < listNum.Count; i++)
+        {
+            RectTransform _damageTextImage = (RectTransform)Instantiate(GameObject.Find("DamageTextImage")).transform;
+            _damageTextImage.SetParent(this.transform, false);
+            _damageTextImage.localPosition = new Vector2(_damageTextImage.localPosition.x - _damageTextImage.sizeDelta.x * i, _damageTextImage.localPosition.y);
+            _damageTextImage.GetComponent<Image>().sprite = numImage[listNum[i]];
+        }
 
         switch (BattleManager.Instance.TypeCheckNum)
         {
             case 0:
+                Debug.Log("Player同じ武器の攻撃");
+                break;
+            case 1:
+                Debug.Log("Player自分が有利");
+                break;
+            case 2:
+                Debug.Log("Player相手が有利");
                 break;
         }
 
@@ -116,7 +131,6 @@ public class DamageText : MonoBehaviour {
         }*/
         StartCoroutine(DestryText(obj));
     }
-
     public void DiplayText_Enemy(Vector3 pos, float damage, DamageTextColor damageTextColor = DamageTextColor.Defalut)
     {
         //  重なり順の変更
@@ -125,6 +139,20 @@ public class DamageText : MonoBehaviour {
         GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
         obj.GetComponent<TextMesh>().text = damage.ToString();
         obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
+
+        switch (BattleManager.Instance.TypeCheckNum)
+        {
+            case 0:
+                Debug.Log("Enemy同じ武器の攻撃");
+                break;
+            case 1:
+                Debug.Log("Enemy相手が有利");
+                break;
+            case 2:
+                Debug.Log("Enemy自分が有利");
+                break;
+        }
+
         /*switch (BattleManager.Instance.TypeCheckNum)
         {
             case 0:
