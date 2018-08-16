@@ -140,7 +140,7 @@ public class DamageText : MonoBehaviour {
         obj.GetComponent<TextMesh>().text = damage.ToString();
         obj.GetComponent<TextMesh>().color = _damageTextColors[damageTextColor];
 
-        switch (BattleManager.Instance.TypeCheckNum)
+       /* switch (BattleManager.Instance.TypeCheckNum)
         {
             case 0:
                 Debug.Log("Enemy同じ武器の攻撃");
@@ -152,7 +152,7 @@ public class DamageText : MonoBehaviour {
                 Debug.Log("Enemy自分が有利");
                 break;
         }
-
+        */
         /*switch (BattleManager.Instance.TypeCheckNum)
         {
             case 0:
