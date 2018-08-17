@@ -271,7 +271,6 @@ public class EnemySpawnManager : MonoBehaviour {
                     {
                         PlayerCharaFrontPos[i] = hit[k].transform.position.x;
                     }
-                    //hit[k].transform.GetComponent<Totalstatus>()._CastTest();
                 }
                 else if(hit[k].collider.tag == "Enemy")
                 {
@@ -282,7 +281,6 @@ public class EnemySpawnManager : MonoBehaviour {
                         EnemyCharaFrontPos[i] = hit[k].transform.position.x;
                     }
                 }
-                //Debug.Log(SpawnPositions[i].position);
             }
         }
     }

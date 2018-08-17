@@ -18,6 +18,7 @@ public class ColliderChecker : MonoBehaviour {
             vec3.x = vec3.x * gameObject.transform.lossyScale.x;
             vec3.y = vec3.y * gameObject.transform.lossyScale.y;
             vec3.z = vec3.z * gameObject.transform.lossyScale.z;
+            
         }
     }
 
@@ -30,7 +31,7 @@ public class ColliderChecker : MonoBehaviour {
         }
         else if (GetComponent<BoxCollider2D>() != null)
         {
-            Gizmos.DrawCube(transform.position, vec3);
+            Gizmos.DrawCube((transform.position + new Vector3(GetComponent<BoxCollider2D>().offset.x * gameObject.transform.lossyScale.x, GetComponent<BoxCollider2D>().offset.y * gameObject.transform.lossyScale.y, 0)), vec3);
         }
     }
 }

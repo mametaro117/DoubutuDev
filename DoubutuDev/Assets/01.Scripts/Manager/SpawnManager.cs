@@ -6,9 +6,6 @@ using UnityEngine.EventSystems;
 
 public class SpawnManager : MonoBehaviour {
 
-    private Camera camera;
-
-    [SerializeField]
     private CostScript costScript;
 
     [SerializeField]
@@ -16,7 +13,7 @@ public class SpawnManager : MonoBehaviour {
 
     void Awake()
     {
-        camera = Camera.main;
+        costScript = GameObject.FindObjectOfType<CostScript>();
     }
 
     public void ClickGround()

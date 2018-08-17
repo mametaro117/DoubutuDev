@@ -54,9 +54,10 @@ GameObject:
   - component: {fileID: 212360078373421774}
   - component: {fileID: 50473609964403158}
   - component: {fileID: 58445560271904688}
-  - component: {fileID: 114766219938186388}
   - component: {fileID: 114811200847511796}
   - component: {fileID: 114587391514906804}
+  - component: {fileID: 114727617861140520}
+  - component: {fileID: 58264761346906390}
   m_Layer: 0
   m_Name: Pengin_Sword
   m_TagString: Enemy
@@ -273,7 +274,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!58 &58264761346906390
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198001830514750}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!58 &58445560271904688
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -345,11 +361,11 @@ MonoBehaviour:
   HitPoint: 30
   SkillPoint: 10
   Attack: 4
-  Speed: 0
+  Speed: 10
   IsSky: 0
   isStun: 0
   weaponType: 0
---- !u!114 &114766219938186388
+--- !u!114 &114727617861140520
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -357,12 +373,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1198001830514750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c09a36ea08bb494fb7412e440ff787a, type: 3}
+  m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   skill: 0
   EnemyObject: {fileID: 0}
   EnemyObjects: []
+  isReady: 0
+  isAttack: 0
 --- !u!114 &114811200847511796
 MonoBehaviour:
   m_ObjectHideFlags: 1

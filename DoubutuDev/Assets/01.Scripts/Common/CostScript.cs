@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class CostScript : MonoBehaviour {
 
     //  コストの最大値
-    private const float MaxAnimalCost = 500;
-    private const float MaxWeaponCost = 500;
+    [SerializeField]private const float MaxAnimalCost = 500;
+    [SerializeField]private const float MaxWeaponCost = 500;
     //  コストバーの最大幅取得
     private Vector2 BarRect;
 
