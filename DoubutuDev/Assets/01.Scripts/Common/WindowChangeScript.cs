@@ -84,7 +84,7 @@ public class WindowChangeScript : MonoBehaviour
     {
         time = 60;
         speed = 1f;
-        Debug.Log("コルーチン開始");
+        Debug.Log("移動開始");
         WindowStationary = false;
         while(time >= 0)
         {
@@ -95,7 +95,7 @@ public class WindowChangeScript : MonoBehaviour
             speed *= 0.9525f;
             yield return null;
         }
-        Debug.Log("コルーチン終了");
+        Debug.Log("移動終了");
         pospos = GameObject.Find("AnimalSelectWindows").transform.position;
         rectpospos = GameObject.Find("AnimalSelectWindows").GetComponent<RectTransform>().anchoredPosition3D;
         WindowStationary = true;

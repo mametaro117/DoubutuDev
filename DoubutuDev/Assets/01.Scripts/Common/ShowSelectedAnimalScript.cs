@@ -24,7 +24,8 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     private CharacterController _Animation;
     private Animator _Animator;
     [SerializeField]
-    private AnimatorStateInfo _anim;
+    private AnimatorStateInfo _animinfo;
+    Coroutine AnimRoop;
 
     public void ShowAnimal(GameObject Box)
     {
@@ -37,7 +38,6 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             {
                 case 0:
                     SelectedAnimal = Instantiate(Rabbit) as GameObject;
-                    //_Animation = 
                     break;
                 case 1:
                     SelectedAnimal = Instantiate(Hukurou) as GameObject;
@@ -46,7 +46,7 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
                     SelectedAnimal = Instantiate(Zou) as GameObject;
                     break;
                 default:
-                    Debug.Log("未実装アニマルを選んだね？");
+                    Debug.Log("なんだお前");
                     break;
             }
             S_Animalstate = SelectedAnimal.GetComponent<Animalstate>();
@@ -68,6 +68,7 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             RectTransform _rect = SelectedAnimal.AddComponent<RectTransform>();
             _rect.anchoredPosition3D = new Vector3(300, -100, 0);
             SelectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
+            Debug.Log(_rect.sizeDelta);
             if (SelectedAnimal.transform.Find("HPBer").gameObject != null)
             {
                 Destroy(SelectedAnimal.transform.Find("HPBer").gameObject);
@@ -81,7 +82,9 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
                 _Animator = SelectedAnimal.GetComponent<Animator>();
                 Debug.Log(_Animator);
                 _Animator.SetTrigger("Attack");
-                _anim = _Animator.GetCurrentAnimatorStateInfo(0);
+                _animinfo = _Animator.GetCurrentAnimatorStateInfo(0);
+                Debug.Log("<color=red>" + _animinfo.length + "</color>");
+                AnimRoop = StartCoroutine(Cor_Anim());
             }
         }
     }
@@ -90,14 +93,20 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     {
         Destroy(SelectedAnimal);
         SelectedAnimal = null;
+        StopCoroutine(AnimRoop);
     }
 
-    //重い気がするけど許して(改善する気がする)
-    private void Update()
+    //アニメーションうんたら
+    IEnumerator Cor_Anim()
     {
-        if(SelectedAnimal != null)
+        Debug.Log("Start");
+        while(true)
         {
-            //_Animator.
+            yield return new WaitForSeconds(1f);
+            _Animator.SetTrigger("Walk");
+            yield return new WaitForSeconds(Random.Range(3f, 5f));
+            _Animator.SetTrigger("Attack");
+            Debug.Log("<Color=green>RoopCor</color>");
         }
     }
 }
