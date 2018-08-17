@@ -9,10 +9,7 @@ public class Scenechenge : MonoBehaviour
     private bool isPlay = false;
     public void ChengeScene(int scenenum)
     {
-        if(GetComponent<WindowChangeScript>().WindowStationary)
-        {
-            StartCoroutine(ChengeSceneCol(scenenum));
-        }
+        StartCoroutine(ChengeSceneCol(scenenum));
     }
 
     IEnumerator ChengeSceneCol(int scenenum)
