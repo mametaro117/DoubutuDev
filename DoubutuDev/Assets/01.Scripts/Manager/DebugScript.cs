@@ -14,10 +14,7 @@ public class DebugScript : MonoBehaviour {
     [SerializeField] private float ElephantHP;
     [SerializeField] private float ElephantATK;
     [SerializeField] private float ElephantSPD;
-//    [SerializeField] private float PenguinHP;
-
-
-
+    //    [SerializeField] private float PenguinHP;
 
     // Use this for initialization
     void Start () {
