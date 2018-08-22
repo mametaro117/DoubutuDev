@@ -6,19 +6,23 @@ using UnityEngine.UI;
 public class CostScript : MonoBehaviour {
 
     //  コストの最大値
-    [SerializeField]private const float MaxAnimalCost = 500;
-    [SerializeField]private const float MaxWeaponCost = 500;
+    private const float MaxAnimalCost = 900;
+    private const float MaxWeaponCost = 900;
+
+    //  コスト初期値
+    private float DefaultAnimalCost = 300;
+    private float DefaultWeaponCost = 300;
+
+    //  1秒あたりのコスト上昇値
+    private float AddAnimalCost = 50;
+    private float AddWeaponCost = 50;
+
     //  コストバーの最大幅取得
     private Vector2 BarRect;
 
     //  コスト表示のText
     [SerializeField]
     private GameObject AnimalCostTxt,WeaponCostText;
-    //  初期値
-    [SerializeField]
-    private float DefaultAnimalCost = 100;
-    [SerializeField]
-    private float DefaultWeaponCost = 100;
     //  実際の値
     private float AnimalCostPoint;
     private float WeaponCostPoint;
@@ -43,8 +47,8 @@ public class CostScript : MonoBehaviour {
 	
 	void Update () {
         //  コストが最大じゃなかったら加算
-        if (AnimalCostPoint < MaxAnimalCost) AnimalCostPoint += Time.deltaTime * 25;
-        if (WeaponCostPoint < MaxWeaponCost) WeaponCostPoint += Time.deltaTime * 25;
+        if (AnimalCostPoint < MaxAnimalCost) AnimalCostPoint += Time.deltaTime * AddAnimalCost;
+        if (WeaponCostPoint < MaxWeaponCost) WeaponCostPoint += Time.deltaTime * AddWeaponCost;
         CostFixed();
     }
 
