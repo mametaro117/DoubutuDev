@@ -14,6 +14,8 @@ public class PinchZoom : MonoBehaviour {
     [SerializeField]
     private float _Debug2;
     [SerializeField]
+    private float _Debug3;
+    [SerializeField]
     private GameObject Text1;
     private Text _Text1;
     [SerializeField]
@@ -31,6 +33,9 @@ public class PinchZoom : MonoBehaviour {
     private GameObject Buttons;
     private bool ButtonsActive = true;
     private float TowerDistance;
+    [SerializeField]
+    private GameObject _BG;
+    private Vector3 __Pos;
 
     void Start()
     {
@@ -42,6 +47,7 @@ public class PinchZoom : MonoBehaviour {
         _Text3 = Text3.GetComponent<Text>();
         _Text3.text = "表示";
         TowerDistance = GameObject.Find("Player_Tower").transform.position.x;
+        __Pos = _BG.transform.position;
     }
 
     void Update () {
@@ -114,11 +120,34 @@ public class PinchZoom : MonoBehaviour {
             ScrollAmount = 0f;
             camera.transform.position = new Vector3(0, camera.transform.position.y, camera.transform.position.z);
         }
+
         _Debug1 = camera.orthographicSize;
         _Text1.text = _Debug1.ToString();
         _Debug2 = camera.transform.position.x;
         _Text2.text = _Debug2.ToString();
-	}
+
+        float _Scale = 20f / camera.orthographicSize;
+        _BG.GetComponent<RectTransform>().localScale = new Vector3(_Scale, _Scale, _Scale);
+
+        /*
+        Vector3 _BGPos = _BG.transform.position;
+        _BGPos.x = _Debug2 * 0.5f;
+        _BG.transform.position = _BGPos;
+        //*/
+        /*
+        Vector3 _BGPos = _BG.GetComponent<RectTransform>().anchoredPosition3D;
+        _BGPos.x = _Debug2 * -100;
+        _BG.GetComponent<RectTransform>().anchoredPosition3D = _BGPos;
+        //*/
+        /*
+        Vector3 _BGPos = _BG.transform.position;
+        _BGPos.x = _Debug2;
+        _BG.transform.localPosition = _BGPos;
+        //*/
+        _Debug3 = _BG.transform.position.x;
+
+        _BG.transform.position = __Pos;
+    }
 
     public void _DebugButton(int num)
     {
