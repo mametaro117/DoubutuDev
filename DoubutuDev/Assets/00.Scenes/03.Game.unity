@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feee277c5fea1744cb4c2b19f16f467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoint: 7500
+  HitPoint: 50
   SkillPoint: 0
   Attack: 0
   Speed: 0
@@ -1519,11 +1519,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 633445031}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d5d356013e708b4ab2b273262346157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Debug1: 0
+  _Debug2: 0
+  Text1: {fileID: 0}
+  Text2: {fileID: 0}
+  Text3: {fileID: 0}
+  Buttons: {fileID: 0}
 --- !u!1 &717061220
 GameObject:
   m_ObjectHideFlags: 0
