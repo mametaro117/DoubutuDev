@@ -44,8 +44,10 @@ public class AnimalScript : MonoBehaviour {
         {
             case Skill.Heal:
                 Heal();
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Heart, transform.position, 1);
                 break;
             case Skill.Stun:
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Star, EnemyObject.transform.position, 1);
                 EnemyObject.GetComponent<AnimalScript>().StunObj();
                 break;
             case Skill.KnockBack:
@@ -55,6 +57,7 @@ public class AnimalScript : MonoBehaviour {
                 {
                     EnemyObjects[i].GetComponent<AnimalScript>().KnockBackObj();
                 }
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.FireWork, EnemyObject.transform.position, 1);
                 break;
         }
     }

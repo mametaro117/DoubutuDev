@@ -90,7 +90,14 @@ public class BattleManager : MonoBehaviour {
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Status>().HitPoint -= damage;
         //  攻撃エフェクトを表示
-        EffectManager.Instance_Effect.PlayEffect_Smoke(deffender.transform.position);
+        
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
+            ;
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
+            ;
+        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
+            ;
+        EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, deffender.transform.position, 1);
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ヒット時のサウンド再生
@@ -165,6 +172,26 @@ public class BattleManager : MonoBehaviour {
         if (deffender.GetComponent<Status>().weaponType == Status.WeaponType.Tower)
             return (int)AudioManager.SelistName.KnockBack;
         return 0;
+    }
+
+    private void HitEffect(GameObject Attacker, GameObject Deffender) {
+        switch (Attacker.GetComponent<Status>().weaponType)
+        {
+            case Status.WeaponType.Sword:
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, transform.position, 1);
+                Debug.Log("剣");
+                break;
+
+            case Status.WeaponType.Shield:
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, transform.position, 1);
+                Debug.Log("盾");
+                break;
+
+            default:
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Hit, transform.position, 1);
+                Debug.Log("弓");
+                break;
+        }
     }
 
     IEnumerator DelayDestry(GameObject deleteObj)
