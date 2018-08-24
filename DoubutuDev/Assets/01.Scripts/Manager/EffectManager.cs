@@ -69,10 +69,11 @@ public class EffectManager : MonoBehaviour
 
 
     //やる事を関数でまとめた
-    private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification)
+    private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification, GameObject Target)
     {
         PlayEffect.transform.position = EffectPos;
         PlayEffect.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
+        PlayEffect.transform.SetParent(Target.transform);
         ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
         var main = particlesystem.main;
         if (PlayEffect != null)
@@ -96,7 +97,7 @@ public class EffectManager : MonoBehaviour
     /// 8:Magic
     /// </summary>
     /// <param name="Effect"></param>
-    public void PlayEffect(int EffectNum, Vector2 EffectPos, float Magnification)
+    public void PlayEffect(int EffectNum, Vector2 EffectPos, float Magnification, GameObject Target)
     {
         GameObject PlayEffect = null;
         switch (EffectNum)
@@ -132,6 +133,7 @@ public class EffectManager : MonoBehaviour
                 PlayEffect = Instantiate(Effect_Dia) as GameObject;
                 break;
         }
-        EffectProcess(PlayEffect, EffectPos, Magnification);
+        Debug.Log(EffectNum);
+        EffectProcess(PlayEffect, EffectPos, Magnification, Target);
     }
 }
