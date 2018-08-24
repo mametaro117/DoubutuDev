@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
-  skill: 0
+  skill: 1
   EnemyObject: {fileID: 0}
   EnemyObjects: []
   isReady: 0
