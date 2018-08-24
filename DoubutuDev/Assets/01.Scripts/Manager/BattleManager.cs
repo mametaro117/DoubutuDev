@@ -90,13 +90,6 @@ public class BattleManager : MonoBehaviour {
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Status>().HitPoint -= damage;
         //  攻撃エフェクトを表示
-        
-        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
-            ;
-        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
-            ;
-        if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
-            ;
         EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, deffender.transform.position, 1);
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
