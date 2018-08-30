@@ -1634,6 +1634,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0816e5460cf7f451fbed297968c72556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &544691927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 544691928}
+  - component: {fileID: 544691930}
+  - component: {fileID: 544691929}
+  m_Layer: 0
+  m_Name: SubWeaponCostBer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &544691928
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544691927}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99, y: 0.8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1849512030}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 371.24997, y: 0}
+  m_SizeDelta: {x: 750, y: 30}
+  m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &544691929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544691927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: f7b70b1f0c6bb024a803e1c646966214, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &544691930
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544691927}
 --- !u!1 &633445031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,10 +1774,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimalCostTxt: {fileID: 1741220150}
   WeaponCostText: {fileID: 274010211}
-  DefaultAnimalCost: 100
-  DefaultWeaponCost: 100
-  AnimalrectObj: {fileID: 1106886892}
-  WeaponrectObj: {fileID: 1886417244}
+  MainAnimalrectObj: {fileID: 1106886892}
+  MainWeaponrectObj: {fileID: 1886417244}
+  SubAnimalrectObj: {fileID: 781773103}
+  SubWeaponrectObj: {fileID: 544691927}
 --- !u!114 &633445035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,6 +2082,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &781773103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 781773104}
+  - component: {fileID: 781773106}
+  - component: {fileID: 781773105}
+  m_Layer: 0
+  m_Name: SubAnimalCostBer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &781773104
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781773103}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99, y: 0.8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2083976799}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -371.25003, y: 0}
+  m_SizeDelta: {x: 750, y: 30}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &781773105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781773103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: de96ec1cdb7577d4a8b9ca520a00412c, type: 3}
+  m_Type: 2
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &781773106
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781773103}
 --- !u!1 &838778150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,7 +2771,7 @@ RectTransform:
   m_Children:
   - {fileID: 274010212}
   m_Father: {fileID: 1849512030}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3080,7 +3216,7 @@ GameObject:
   - component: {fileID: 1106886895}
   - component: {fileID: 1106886894}
   m_Layer: 0
-  m_Name: AnimalCostBer
+  m_Name: MainAnimalCostBer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3097,7 +3233,7 @@ RectTransform:
   m_LocalScale: {x: 0.99, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 2083976799}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3536,7 +3672,7 @@ RectTransform:
   m_Children:
   - {fileID: 1741220151}
   m_Father: {fileID: 2083976799}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5612,6 +5748,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 544691928}
   - {fileID: 1886417245}
   - {fileID: 1006060584}
   m_Father: {fileID: 1705911585}
@@ -5815,7 +5952,7 @@ GameObject:
   - component: {fileID: 1886417247}
   - component: {fileID: 1886417246}
   m_Layer: 0
-  m_Name: WeaponCostBer
+  m_Name: MainWeaponCostBer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5832,7 +5969,7 @@ RectTransform:
   m_LocalScale: {x: 0.99, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 1849512030}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6515,6 +6652,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 781773104}
   - {fileID: 1106886893}
   - {fileID: 1247831502}
   m_Father: {fileID: 947309775}
