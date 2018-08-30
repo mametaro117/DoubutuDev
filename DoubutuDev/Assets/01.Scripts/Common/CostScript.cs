@@ -46,9 +46,12 @@ public class CostScript : MonoBehaviour {
     private float Diff_WeaponCost;
     float Cor_CostPoint_AnimalCost;
     float Cor_CostPoint_WeaponCost;
-    private int CorTime = 20;
+    private int CorTime = 10;
     private bool isCorRunning_AnimalCost = false;
     private bool isCorRunning_WeaponCost = false;
+    //ここのタイムは(処理の都合上)3の倍数にすること
+    private int _Time = 9;
+    private float ShakeSpeed = 0.8f;
 
     void Start () {
         //  バーのサイズ設定
@@ -166,7 +169,21 @@ public class CostScript : MonoBehaviour {
             Retention_AnimalCost = AnimalCostInt;
         }
 
-        MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (WeaponCostInt * 100 / MaxAnimalCost), MainWeaponRect.sizeDelta.y);
+        if (WeaponCostInt != Retention_WeaponCost)
+        {
+            if (isCorRunning_WeaponCost)
+            {
+                Debug.Log("WeaponCostコルーチンの内容を変更しました");
+                Time_WeaponCost = CorTime;
+                Diff_WeaponCost = (WeaponCostInt - Cor_CostPoint_WeaponCost) / Time_WeaponCost;
+                Debug.Log(Diff_WeaponCost);
+            }
+            else
+            {
+                StartCoroutine(Cor_WeaponCost(WeaponCostInt - Retention_WeaponCost, Retention_WeaponCost));
+            }
+            Retention_WeaponCost = WeaponCostInt;
+        }
 
         SubAnimalRect.sizeDelta = new Vector2(BarRect.x * (AnimalCostPoint / MaxAnimalCost), SubAnimalRect.sizeDelta.y);
         SubWeaponRect.sizeDelta = new Vector2(BarRect.x * (WeaponCostPoint / MaxWeaponCost), SubWeaponRect.sizeDelta.y);
@@ -174,17 +191,17 @@ public class CostScript : MonoBehaviour {
 
     //Mainのコストバーを変化させるコルーチン
     //for動物
+    //コストバーを指定コストまで持っていくコルーチン
     IEnumerator Cor_AnimalCost(int Change, int OriginAnimalCost)
     {
-        Debug.Log("StartCol_Animal");
+        Debug.Log("StartCol_AnimalCost");
         isCorRunning_AnimalCost = true;
         Time_AnimalCost = CorTime;
         Diff_AnimalCost = (float)Change / Time_AnimalCost;
         Cor_CostPoint_AnimalCost = OriginAnimalCost;
 
-        Debug.Log("------------------");
         //指定の所までもっていく
-        while(Time_AnimalCost > 0)
+        while(Time_AnimalCost >= 0)
         {
             Time_AnimalCost--;
             Cor_CostPoint_AnimalCost += Diff_AnimalCost;
@@ -192,9 +209,98 @@ public class CostScript : MonoBehaviour {
             MainAnimalRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_AnimalCost * 100 / MaxAnimalCost), MainAnimalRect.sizeDelta.y);
             yield return null;
         }
+        StartCoroutine(Cor_ShakeAnimalCost(Diff_AnimalCost));
         isCorRunning_AnimalCost = false;
-        Debug.Log("EndCol_Animal");
+        Debug.Log("EndCol_AnimalCost");
         yield break;
     }
+    //コストバーを振るコルーチン
+    IEnumerator Cor_ShakeAnimalCost(float speed)
+    {
+        Debug.Log("StartCol_AnimalShake");
+        int Time_ShakeAnimalCost = _Time;
+        int TotalTime = _Time;
+        while(Time_ShakeAnimalCost > 0)
+        {
+            Time_ShakeAnimalCost--;
+            // 1/3フレーム目までは通り過ぎさせる
+            if(Time_ShakeAnimalCost >= TotalTime / 3 * 2)
+            {
+                Cor_CostPoint_AnimalCost += speed * ShakeSpeed;
+                MainAnimalRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_AnimalCost * 100 / MaxAnimalCost), MainAnimalRect.sizeDelta.y);
+            }
+            // 1/3フレーム目から2/3フレーム目までは少し戻る(1.5倍速)
+            else if(Time_ShakeAnimalCost >= TotalTime / 3)
+            {
+                Cor_CostPoint_AnimalCost += speed * -1.5f * ShakeSpeed;
+                MainAnimalRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_AnimalCost * 100 / MaxAnimalCost), MainAnimalRect.sizeDelta.y);
+            }
+            // 2/3フレーム目からは元に戻る(0.5倍速)
+            else
+            {
+                Cor_CostPoint_AnimalCost += speed * 0.5f * ShakeSpeed;
+                MainAnimalRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_AnimalCost * 100 / MaxAnimalCost), MainAnimalRect.sizeDelta.y);
+            }
+            yield return null; 
+        }
+        Debug.Log("EndCol_AnimalShake");
+        yield break;
+    }
+
     //for武器
+    //コストバーを指定コストまで持っていくコルーチン
+    IEnumerator Cor_WeaponCost(int Change, int OriginWeaponCost)
+    {
+        Debug.Log("StartCol_WeaponCost");
+        isCorRunning_WeaponCost = true;
+        Time_WeaponCost = CorTime;
+        Diff_WeaponCost = (float)Change / Time_WeaponCost;
+        Cor_CostPoint_WeaponCost = OriginWeaponCost;
+
+        //指定の所までもっていく
+        while (Time_WeaponCost >= 0)
+        {
+            Time_WeaponCost--;
+            Cor_CostPoint_WeaponCost += Diff_WeaponCost;
+            //Debug.Log(Cor_CostPoint_WeaponCost);
+            MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_WeaponCost * 100 / MaxWeaponCost), MainWeaponRect.sizeDelta.y);
+            yield return null;
+        }
+        StartCoroutine(Cor_ShakeWeaponCost(Diff_WeaponCost));
+        isCorRunning_WeaponCost = false;
+        Debug.Log("EndCol_WeaponCost");
+        yield break;
+    }
+    //コストバーを振るコルーチン
+    IEnumerator Cor_ShakeWeaponCost(float speed)
+    {
+        Debug.Log("StartCol_WeaponShake");
+        int Time_ShakeWeaponCost = _Time;
+        int TotalTime = _Time;
+        while (Time_ShakeWeaponCost > 0)
+        {
+            Time_ShakeWeaponCost--;
+            // 1/3フレーム目までは通り過ぎさせる
+            if (Time_ShakeWeaponCost >= TotalTime / 3 * 2)
+            {
+                Cor_CostPoint_WeaponCost += speed * ShakeSpeed;
+                MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_WeaponCost * 100 / MaxWeaponCost), MainWeaponRect.sizeDelta.y);
+            }
+            // 1/3フレーム目から2/3フレーム目までは少し戻る(1.5倍速)
+            else if (Time_ShakeWeaponCost >= TotalTime / 3)
+            {
+                Cor_CostPoint_WeaponCost += speed * -1.5f * ShakeSpeed;
+                MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_WeaponCost * 100 / MaxWeaponCost), MainWeaponRect.sizeDelta.y);
+            }
+            // 2/3フレーム目からは元に戻る(0.5倍速)
+            else
+            {
+                Cor_CostPoint_WeaponCost += speed * 0.5f * ShakeSpeed;
+                MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_WeaponCost * 100 / MaxWeaponCost), MainWeaponRect.sizeDelta.y);
+            }
+            yield return null;
+        }
+        Debug.Log("EndCol_WeaponShake");
+        yield break;
+    }
 }
