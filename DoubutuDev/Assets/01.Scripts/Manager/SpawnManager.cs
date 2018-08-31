@@ -48,4 +48,10 @@ public class SpawnManager : MonoBehaviour {
     {
 
     }
+
+    //  選ばれた動物編成で配列にセット
+    public void SetAnimalPrefab()
+    {
+
+    }
 }

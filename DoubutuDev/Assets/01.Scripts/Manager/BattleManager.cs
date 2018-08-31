@@ -44,9 +44,11 @@ public class BattleManager : MonoBehaviour {
 
     //Inspectorに表示される
     [SerializeField]
-    private List<AnimalList> _animalListList = new List<AnimalList>();
+    private UnitTable _animalStatus;
 
     private TimeManager timeManager;
+    private ChoiceParamator choiceParamator;
+    private CostScript CostScript;
 
     public void Awake()
     {
@@ -57,6 +59,7 @@ public class BattleManager : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
         timeManager = GetComponent<TimeManager>();
+        choiceParamator = GameObject.FindObjectOfType<ChoiceParamator>();
     }
 
     public void AddFieldUnit(GameObject obj)
