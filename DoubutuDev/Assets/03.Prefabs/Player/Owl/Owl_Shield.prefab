@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 70759875149220424}
   - component: {fileID: 114412134302471528}
   - component: {fileID: 114182622449620296}
+  - component: {fileID: 210239546788468276}
   m_Layer: 0
   m_Name: Owl_Shield
   m_TagString: Animal
@@ -820,6 +821,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!210 &210239546788468276
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1185824479603828}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212151983892110422
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour {
     private CostScript costScript;
 
     [SerializeField]
-    private GameObject[] units = new GameObject[3];
+    private GameObject[] units = new GameObject[8];
 
     void Awake()
     {
@@ -50,8 +50,8 @@ public class SpawnManager : MonoBehaviour {
     }
 
     //  選ばれた動物編成で配列にセット
-    public void SetAnimalPrefab()
+    public void SetAnimalsPrefab(GameObject[] _animals)
     {
-
+        units = _animals;
     }
 }

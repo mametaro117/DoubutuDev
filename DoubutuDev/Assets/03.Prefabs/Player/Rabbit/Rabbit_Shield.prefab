@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 114495236370916954}
   - component: {fileID: 114654869227886060}
   - component: {fileID: 114853177750918744}
+  - component: {fileID: 210796296951760328}
   m_Layer: 8
   m_Name: Rabbit_Shield
   m_TagString: Animal
@@ -1217,6 +1218,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 114347454313425504}
+--- !u!210 &210796296951760328
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636398734877778}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212098676392435380
 SpriteRenderer:
   m_ObjectHideFlags: 1

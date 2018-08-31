@@ -35,7 +35,7 @@ MonoBehaviour:
       Power: 5
       MoveSpeed: 5
       AttackSpeed: 1
-    - Type: 0
+    - Type: 3
       Animal: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
       HP: 40
       Power: 5
@@ -64,24 +64,36 @@ MonoBehaviour:
       Power: 4
       MoveSpeed: 10
       AttackSpeed: 1
+    - Type: 3
+      Animal: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+      HP: 40
+      Power: 4
+      MoveSpeed: 10
+      AttackSpeed: 1
   - animalName: 2
     AnimalImage: {fileID: 21300000, guid: 91e6d0bb2bff9a2459a6530dc8949cb8, type: 3}
     AnimalCost: 0
     Skill: 2
     typeStatuses:
     - Type: 0
-      Animal: {fileID: 0}
+      Animal: {fileID: 1301893166087958, guid: 41571abb2c0107844ac45b24347336bb, type: 2}
       HP: 0
       Power: 0
       MoveSpeed: 0
       AttackSpeed: 0
     - Type: 1
-      Animal: {fileID: 0}
+      Animal: {fileID: 1355113178475062, guid: 923411eaa094a2a4b8e881f42bd396f4, type: 2}
       HP: 0
       Power: 0
       MoveSpeed: 0
       AttackSpeed: 0
     - Type: 2
+      Animal: {fileID: 1583422546418630, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+    - Type: 3
       Animal: {fileID: 0}
       HP: 0
       Power: 0

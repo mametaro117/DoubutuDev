@@ -1659,7 +1659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10000c02b78bb9e4693fe07eb58fa68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animalStatus: {fileID: 11400000, guid: 4a3c8d50898234a5390c8fd48bbc2ddc, type: 2}
+  unitTable: {fileID: 11400000, guid: 4a3c8d50898234a5390c8fd48bbc2ddc, type: 2}
 --- !u!4 &633445033
 Transform:
   m_ObjectHideFlags: 0

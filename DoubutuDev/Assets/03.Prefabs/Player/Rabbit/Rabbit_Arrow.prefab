@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 50750446698384016}
   - component: {fileID: 114912343984177316}
   - component: {fileID: 114892277964982280}
+  - component: {fileID: 210684298245277960}
   m_Layer: 8
   m_Name: Rabbit_Arrow
   m_TagString: Animal
@@ -1205,6 +1206,16 @@ MonoBehaviour:
     targetPosition: {x: -1.6588593, y: 0.58568776, z: 0}
     iterations: 10
     damping: 0.8
+--- !u!210 &210684298245277960
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944965641864552}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212041718451950190
 SpriteRenderer:
   m_ObjectHideFlags: 1

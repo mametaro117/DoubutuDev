@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 50292289414606544}
   - component: {fileID: 114091599061364652}
   - component: {fileID: 114741835593226878}
+  - component: {fileID: 210318043927293792}
   m_Layer: 0
   m_Name: Zou_Sword
   m_TagString: Animal
@@ -1032,6 +1033,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!210 &210318043927293792
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301893166087958}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212112515698095658
 SpriteRenderer:
   m_ObjectHideFlags: 1

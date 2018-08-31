@@ -35,7 +35,6 @@ public class WeaponButtonScript : MonoBehaviour {
         {
             WeaponButtons[i].GetComponent<Button>().interactable = true;
         }
-
     }
 
     public float GetCost()

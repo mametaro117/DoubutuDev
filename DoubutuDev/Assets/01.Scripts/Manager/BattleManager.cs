@@ -32,7 +32,7 @@ public class BattleManager : MonoBehaviour {
 
     //Inspectorに表示される
     [SerializeField]
-    private UnitTable _animalStatus;
+    private UnitTable unitTable;
 
     private TimeManager timeManager;
 
@@ -44,7 +44,9 @@ public class BattleManager : MonoBehaviour {
             return;
         }
         DontDestroyOnLoad(this.gameObject);
+        //  タイムをいじる用の参照
         timeManager = GetComponent<TimeManager>();
+        //  編成情報の反映
         GetComponent<AnimalButtonManager>().SetAnimalStatus();
     }
 

@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 70900422064376890}
   - component: {fileID: 114948886105567648}
   - component: {fileID: 114605020563128656}
+  - component: {fileID: 210465958133037104}
   m_Layer: 0
   m_Name: Owl_Sword
   m_TagString: Animal
@@ -820,6 +821,16 @@ MonoBehaviour:
   EnemyObjects: []
   isReady: 0
   isAttack: 0
+--- !u!210 &210465958133037104
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1734168873693030}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212202971840233620
 SpriteRenderer:
   m_ObjectHideFlags: 1

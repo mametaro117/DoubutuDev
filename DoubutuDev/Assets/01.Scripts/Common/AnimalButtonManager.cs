@@ -22,6 +22,8 @@ public class AnimalButtonManager : MonoBehaviour {
 		
 	}
 
+    GameObject[] animals = new GameObject[9];
+
     //  バトルマネージャーから呼ばれて動物セレクト画面の編成を反映
     public void SetAnimalStatus()
     {
@@ -36,8 +38,18 @@ public class AnimalButtonManager : MonoBehaviour {
             choiceParamator.SelectParamator[0, 0] = 0;
             choiceParamator.SelectParamator[1, 0] = 1;
             choiceParamator.SelectParamator[2, 0] = 2;
-
         }
+        //  出撃する動物たちのPrefabを設定
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                Debug.Log(i * 3 + j);
+                animals[i * 3 + j] = unitTable.AnimalTable[choiceParamator.SelectParamator[i, j]].typeStatuses[choiceParamator.SelectParamator[i, j + 1]].Animal;
+            }
+        }
+        GetComponent<SpawnManager>().SetAnimalsPrefab(animals);
+
         //  編成情報を動物ボタンに反映
         for (int i = 0; i < 3; i++)
         {

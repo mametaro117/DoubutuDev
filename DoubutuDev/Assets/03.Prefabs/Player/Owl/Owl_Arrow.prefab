@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 70807088350395160}
   - component: {fileID: 114151331034932624}
   - component: {fileID: 114110449505006346}
+  - component: {fileID: 210652913788578856}
   m_Layer: 0
   m_Name: Owl_Arrow
   m_TagString: Animal
@@ -820,6 +821,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!210 &210652913788578856
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865749117168150}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212015143060551922
 SpriteRenderer:
   m_ObjectHideFlags: 1

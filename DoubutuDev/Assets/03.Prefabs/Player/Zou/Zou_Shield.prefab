@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 50600242425059612}
   - component: {fileID: 114775971255207020}
   - component: {fileID: 114001206042718288}
+  - component: {fileID: 210671587937789040}
   m_Layer: 0
   m_Name: Zou_Shield
   m_TagString: Animal
@@ -1032,6 +1033,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4162413799289738}
   m_AttachedIK: {fileID: 0}
+--- !u!210 &210671587937789040
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355113178475062}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212003990034907564
 SpriteRenderer:
   m_ObjectHideFlags: 1
