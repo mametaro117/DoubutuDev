@@ -22,7 +22,7 @@ public class Status : MonoBehaviour {
 
     public enum WeaponType
     {
-        Sword, Shield, Arrow, Tower
+        Sword, Shield, Arrow, Axe, Gun, Tower
     };
 
     public WeaponType weaponType = WeaponType.Sword;

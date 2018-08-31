@@ -2,18 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.SerializableAttribute]
-public class AnimalList
-{
-    public List<UnitDictionary> List = new List<UnitDictionary>();
-
-    public AnimalList(List<UnitDictionary> list)
-    {
-        List = list;
-    }
-}
-
-
 public class BattleManager : MonoBehaviour {
 
     #region Singleton
@@ -47,8 +35,6 @@ public class BattleManager : MonoBehaviour {
     private UnitTable _animalStatus;
 
     private TimeManager timeManager;
-    private ChoiceParamator choiceParamator;
-    private CostScript CostScript;
 
     public void Awake()
     {
@@ -59,7 +45,7 @@ public class BattleManager : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
         timeManager = GetComponent<TimeManager>();
-        choiceParamator = GameObject.FindObjectOfType<ChoiceParamator>();
+        GetComponent<AnimalButtonManager>().SetAnimalStatus(_animalStatus);
     }
 
     public void AddFieldUnit(GameObject obj)

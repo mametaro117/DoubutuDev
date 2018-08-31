@@ -54,6 +54,11 @@ public class AnimalButtonScript : MonoBehaviour {
         return cost;
     }
 
+    public void SetCost(float costNum)
+    {
+        cost = costNum;
+    }
+
     public int GetSelectNum()
     {
         return SelectNum;
