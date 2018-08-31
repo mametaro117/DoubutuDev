@@ -45,7 +45,7 @@ public class BattleManager : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
         timeManager = GetComponent<TimeManager>();
-        GetComponent<AnimalButtonManager>().SetAnimalStatus(_animalStatus);
+        GetComponent<AnimalButtonManager>().SetAnimalStatus();
     }
 
     public void AddFieldUnit(GameObject obj)

@@ -31,8 +31,9 @@ public class AnimalButtonScript : MonoBehaviour {
     void TapAnimalButton()
     {
         //  動物の選択
-        costScript.SetAnimalObj(gameObject); 
-
+        costScript.SetAnimalObj(gameObject);
+        //  動物ボタンが押されたら武器の画像やコストを表示する
+        GameObject.FindObjectOfType<AnimalButtonManager>().ApplayWeaponButton(SelectNum);
         //  押している状態にボタンを変更
         GetComponent<Button>().interactable = false;
         //  このボタン以外を選択解除する
@@ -57,6 +58,7 @@ public class AnimalButtonScript : MonoBehaviour {
     public void SetCost(float costNum)
     {
         cost = costNum;
+        gameObject.transform.GetChild(1).GetComponent<DisplayCost>().ApplayCost();
     }
 
     public int GetSelectNum()

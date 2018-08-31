@@ -43,6 +43,12 @@ public class WeaponButtonScript : MonoBehaviour {
         return cost;
     }
 
+    public void SetCost(float costNum)
+    {
+        cost = costNum;
+        gameObject.transform.GetChild(1).GetComponent<DisplayCost>().ApplayCost();
+    }
+
     public int GetSelectNum()
     {
         return SelectNum;
