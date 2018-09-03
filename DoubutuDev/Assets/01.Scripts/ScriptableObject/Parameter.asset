@@ -57,7 +57,7 @@ MonoBehaviour:
       HP: 80
       Power: 3
       MoveSpeed: 10
-      AttackSpeed: 0
+      AttackSpeed: 1.5
     - Type: 2
       Animal: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
       HP: 40

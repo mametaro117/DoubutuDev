@@ -42,11 +42,9 @@ public class AnimalButtonManager : MonoBehaviour {
         //  出撃する動物たちのPrefabを設定
         for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 3; j++)
-            {
-                Debug.Log(i * 3 + j);
-                animals[i * 3 + j] = unitTable.AnimalTable[choiceParamator.SelectParamator[i, j]].typeStatuses[choiceParamator.SelectParamator[i, j + 1]].Animal;
-            }
+            animals[i*3] = unitTable.AnimalTable[choiceParamator.SelectParamator[i, 0]].typeStatuses[choiceParamator.SelectParamator[i, 1]].Animal;
+            animals[i*3+1] = unitTable.AnimalTable[choiceParamator.SelectParamator[i, 0]].typeStatuses[choiceParamator.SelectParamator[i, 2]].Animal;
+            animals[i*3+2] = unitTable.AnimalTable[choiceParamator.SelectParamator[i, 0]].typeStatuses[choiceParamator.SelectParamator[i, 3]].Animal;
         }
         GetComponent<SpawnManager>().SetAnimalsPrefab(animals);
 
