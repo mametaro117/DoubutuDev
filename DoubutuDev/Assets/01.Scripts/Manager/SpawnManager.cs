@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour {
                 var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 0;
                 //  インスタンス生成
-                GameObject obj = Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
+                Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
                 //  エフェクトの表示
                 EffectManager.Instance_Effect.PlayEffect_Magic(pos);
                 //  効果音再生

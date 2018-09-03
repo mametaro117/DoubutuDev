@@ -94,6 +94,5 @@ public class Status : MonoBehaviour {
             SkillPoint = Mathf.Min(SkillPoint, MaxSP);
             ApplayBer();
         }
-        yield break;
     }
 }
