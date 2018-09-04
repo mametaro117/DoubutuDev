@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class WindowChangeScript : MonoBehaviour
 {
+    //ウィンドウが止まっているかどうか
+    public bool WindowStationary = true;
     [SerializeField]
     private Text text;
     [SerializeField]
@@ -16,20 +18,23 @@ public class WindowChangeScript : MonoBehaviour
 
     public void AnimalChoice_End()
     {
-        AudioManager.Instance.PlaySe(0);
-        AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
-        if(Manager.AnimalSetCheck())
+        if(WindowStationary)
         {
-            AnimalAndWeaponList = Manager.SelectAnimalList;
-            //SelectAnimalListを渡す
-            for (int i = 0; i < 3; i++)
+            AudioManager.Instance.PlaySe(0);
+            AnimalChoiceManager Manager = GetComponent<AnimalChoiceManager>();
+            if (Manager.AnimalSetCheck())
             {
-                AnimalList[i] = Manager.SelectAnimalList[i, 0];
-                Animals[i] = Manager.Animals[i];
-                AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
-                //**/Debug.Log("No." + (i + 1) + "_" + AnimalAndWeaponList[i, 0] + "," + AnimalAndWeaponList[i, 1] + "," + AnimalAndWeaponList[i, 2] + "," + AnimalAndWeaponList[i, 3]);
+                AnimalAndWeaponList = Manager.SelectAnimalList;
+                //SelectAnimalListを渡す
+                for (int i = 0; i < 3; i++)
+                {
+                    AnimalList[i] = Manager.SelectAnimalList[i, 0];
+                    Animals[i] = Manager.Animals[i];
+                    AnimalAndWeaponList[i, 0] = int.Parse(Animals[i].name.Substring(Animals[i].name.Length - 1)) - 1;
+                    //**/Debug.Log("No." + (i + 1) + "_" + AnimalAndWeaponList[i, 0] + "," + AnimalAndWeaponList[i, 1] + "," + AnimalAndWeaponList[i, 2] + "," + AnimalAndWeaponList[i, 3]);
+                }
+                Change_Screen();
             }
-            Change_Screen();
         }
     }
 
@@ -52,8 +57,8 @@ public class WindowChangeScript : MonoBehaviour
         {
             parent = GameObject.Find("Animal_Icon" + (i + 1));
             _animal = Instantiate(Animals[i]);
-            Debug.Log(_animal);
-            Debug.Log(parent);
+            //Debug.Log(_animal);
+            //Debug.Log(parent);
             _animal.transform.SetParent(parent.transform);
             RectTransform _Rect = _animal.GetComponent<RectTransform>();
             _Rect.anchoredPosition3D = ResetPos;
@@ -64,40 +69,60 @@ public class WindowChangeScript : MonoBehaviour
     private void Change_Screen()
     {
         AnimalColumnMove();
-        GameObject Weapon_List = GameObject.Find("Weapon_List");
-        var RectTransform = Weapon_List.GetComponent<RectTransform>();
-        Vector2 ResetPos = new Vector2(0, -70);
-        RectTransform.anchoredPosition = ResetPos;
-        //決定ボタン・次へボタン
-        GameObject Start_Button = GameObject.Find("StartButton");
-        GameObject Doubutu_Decide_Button = GameObject.Find("Doubutu_DecideButton");
-        RectTransform Decide_RectTransform = Start_Button.GetComponent<RectTransform>();
-        RectTransform Next_RectTransform = Doubutu_Decide_Button.GetComponent<RectTransform>();
-        Vector3 tmppos = Decide_RectTransform.anchoredPosition3D;
-        Decide_RectTransform.anchoredPosition3D = Next_RectTransform.anchoredPosition3D;
-        Next_RectTransform.anchoredPosition3D = tmppos;
-        GameObject.Find("SelectList").SetActive(false);
-        GameObject.Find("AnimalList").SetActive(false);
-        text.text = "ぶきせんたく";
+        StartCoroutine(WindowMove(-1));
     }
 
-    bool Equip_Changing = false;
+    private int time;
+    private float speed;
+    [SerializeField]
+    private Vector3 pospos;
+    [SerializeField]
+    private Vector3 rectpospos;
+
+    //動物選択の枠を動かすコルーチン
+    IEnumerator WindowMove(int MoveDirection, bool gameobjectsDestroy = false)
+    {
+        time = 60;
+        speed = 1f;
+        Debug.Log("移動開始");
+        WindowStationary = false;
+        while(time >= 0)
+        {
+            GameObject.Find("AnimalSelectWindows").transform.position += new Vector3(speed * MoveDirection, 0, 0);
+            GameObject.Find("WeaponSelectWindows1").transform.position += new Vector3(speed * MoveDirection, 0, 0);
+            GameObject.Find("WeaponSelectWindows2").transform.position += new Vector3(speed * MoveDirection, 0, 0);
+            time--;
+            speed *= 0.9525f;
+            yield return null;
+        }
+        Debug.Log("移動終了");
+        pospos = GameObject.Find("AnimalSelectWindows").transform.position;
+        rectpospos = GameObject.Find("AnimalSelectWindows").GetComponent<RectTransform>().anchoredPosition3D;
+        WindowStationary = true;
+        if(gameobjectsDestroy)
+        {
+            Destroy(GameObject.Find("_Weapon_Box"));
+            GetComponent<ShowSelectedAnimalScript>().DestroyAnimal();
+        }
+    }
+
+    public bool Equip_Changing = false;
     Vector3 WeaponBox_OriginalPos;
     Vector3 BackButton_OriginalPos;
     Vector3 ActiveBox_OriginalPos;
     Vector3 TooBox_OriginalPos;
-    int ActiveBoxNum;
+    private int ActiveBoxNum;
     public int[] ActiveBoxWeaponBefore = new int[3];
     string WeaponBoxPrefabName = "_Weapon_Box";
 
     //武器選択のウィンドウを出す
     private void Equip_Change(int BoxNum)
     {
-        if (!Equip_Changing)
+        if (!Equip_Changing && WindowStationary)
         {
             AudioManager.Instance.PlaySe(0);
             Equip_Changing = true;
-            Debug.Log("Change");
+            //Debug.Log("Change");
 
             //Box内武器を予め選択状態にする為の準備
             ActiveBoxNum = BoxNum;
@@ -109,61 +134,18 @@ public class WindowChangeScript : MonoBehaviour
             }
             //**/Debug.Log(str);
 
-            /*
-
-            //武器リスト
-            GameObject Weapon_Box = GameObject.Find("Weapon_Box");
-            var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
-            WeaponBox_OriginalPos = RectTransform_1.anchoredPosition3D;
-            Vector2 ResetPos_1 = new Vector3(-420, -50, 0);
-            RectTransform_1.anchoredPosition3D = ResetPos_1;
-
-            //*/
-
             GameObject _Canvas = GameObject.Find("Canvas");
 
             //武器リスト(Prefabから持ってくる)
             GameObject Weapon_Box = Instantiate(WeaponListPrefab) as GameObject;
             Weapon_Box.name = WeaponBoxPrefabName;
-            Weapon_Box.transform.SetParent(_Canvas.transform);
+            Weapon_Box.transform.SetParent(GameObject.Find("WeaponSelectWindows2").transform);
             var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
             RectTransform_1.localScale = new Vector3(1, 1, 1);
-            Vector2 ResetPos_1 = new Vector3(-420, -50, 0);
+            Vector2 ResetPos_1 = new Vector3(-300, -150, 0);
             RectTransform_1.anchoredPosition3D = ResetPos_1;
 
-            //戻るボタン
-            GameObject Back_Button = GameObject.Find("Back_Button");
-            var RectTransform_2 = Back_Button.GetComponent<RectTransform>();
-            BackButton_OriginalPos = RectTransform_2.anchoredPosition3D;
-            Vector2 ResetPos_2 = new Vector3(130, -300, 0);
-            RectTransform_2.anchoredPosition3D = ResetPos_2;
-
-            //決定ボタン・次へボタン
-            GameObject Decide_Button = GameObject.Find("DecideButton");
-            GameObject Next_Button = GameObject.Find("StartButton");
-            RectTransform Decide_RectTransform = Decide_Button.GetComponent<RectTransform>();
-            RectTransform Next_RectTransform = Next_Button.GetComponent<RectTransform>();
-            Vector3 tmppos = Decide_RectTransform.anchoredPosition3D;
-            Decide_RectTransform.anchoredPosition3D = Next_RectTransform.anchoredPosition3D;
-            Next_RectTransform.anchoredPosition3D = tmppos;
-
-            //WeaponListから独立させる
-            GameObject ActiveBox = GameObject.Find("Select_Weapon_List" + BoxNum);
-            RectTransform _RectTransform = ActiveBox.GetComponent<RectTransform>();
-            ActiveBox_OriginalPos = _RectTransform.anchoredPosition3D;
-            ActiveBox.transform.SetParent(Weapon_Box.transform);
-            _RectTransform.anchoredPosition3D = new Vector3(300, 0, 0);
-            ActiveBox.transform.SetSiblingIndex(0);
-            Weapon_Box.GetComponent<Weapon_Choice_Manager>().Parent = ActiveBox;
-
-            //余ったWeaponListを隠す
-            GameObject TooBox = GameObject.Find("Weapon_List");
-            RectTransform Too_RectTransform = TooBox.GetComponent<RectTransform>();
-            TooBox_OriginalPos = Too_RectTransform.anchoredPosition3D;
-            Too_RectTransform.anchoredPosition3D = new Vector3(1000, 0, 0);
-
-            //"ぶきせんたく"のテキストを非表示
-            GameObject.Find("Canvas/Text").GetComponent<CanvasGroup>().alpha = 0;
+            StartCoroutine(WindowMove(-1));
 
             //武器リストを選択済みにする処理を渡す
             Weapon_Choice_Manager _Manager = Weapon_Box.GetComponent<Weapon_Choice_Manager>();
@@ -174,6 +156,9 @@ public class WindowChangeScript : MonoBehaviour
             Debug.Log("NotChange");
         }
     }
+
+    private GameObject Weapon_Box;
+    Sprite _sprite;
 
     //武器選択のウィンドウを隠す
     public void Click_Back_Button(bool Change)
@@ -187,11 +172,30 @@ public class WindowChangeScript : MonoBehaviour
         if (Change)
         {
             Debug.Log("変更は保存されます");
+            GameObject Parent = GameObject.Find("Weapon_List/Select_Weapon_List" + ActiveBoxNum + "");
             //リストの更新
-            for(int i = 1; i < 4; i++)
+            for (int i = 1; i < 4; i++)
             {
                 AnimalAndWeaponList[ActiveBoxNum - 1, i] = _Manager._ActiveBoxWeaponAfter[i - 1];
                 Debug.Log(AnimalAndWeaponList[ActiveBoxNum - 1, i]);
+                switch (AnimalAndWeaponList[ActiveBoxNum - 1, i])
+                {
+                    case 0:
+                        _sprite = Weapon_Box.GetComponent<Weapon_Choice_Manager>().Weapon1_Sword;
+                        break;
+                    case 1:
+                        _sprite = Weapon_Box.GetComponent<Weapon_Choice_Manager>().Weapon2_Shield;
+                        break;
+                    case 2:
+                        _sprite = Weapon_Box.GetComponent<Weapon_Choice_Manager>().Weapon3_Arrow;
+                        break;
+                    case 3:
+                        _sprite = Weapon_Box.GetComponent<Weapon_Choice_Manager>().Weapon4_Axe;
+                        break;
+                    default:
+                        break;
+                }
+                Parent.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = _sprite;
             }
         }
         else
@@ -201,68 +205,30 @@ public class WindowChangeScript : MonoBehaviour
             _Manager.CancelMove();
         }
 
-        /*
-
-        //武器リスト
-        GameObject Weapon_Box = GameObject.Find("Weapon_Box");
-        var RectTransform_1 = Weapon_Box.GetComponent<RectTransform>();
-        RectTransform_1.anchoredPosition3D = WeaponBox_OriginalPos;
-
-        //*/
-
-        //武器リスト(Prefab版)
-        Destroy(Weapon_Box);
-
-        //戻るボタン
-        GameObject Back_Button = GameObject.Find("Back_Button");
-        var RectTransform_2 = Back_Button.GetComponent<RectTransform>();
-        RectTransform_2.anchoredPosition3D = BackButton_OriginalPos;
-
-        //決定ボタン・次へボタン
-        GameObject Decide_Button = GameObject.Find("DecideButton");
-        GameObject Next_Button = GameObject.Find("StartButton");
-        RectTransform Decide_RectTransform = Decide_Button.GetComponent<RectTransform>();
-        RectTransform Next_RectTransform = Next_Button.GetComponent<RectTransform>();
-        Vector3 tmppos = Decide_RectTransform.anchoredPosition3D;
-        Decide_RectTransform.anchoredPosition3D = Next_RectTransform.anchoredPosition3D;
-        Next_RectTransform.anchoredPosition3D = tmppos;
-
-        //WeaponListを定位置に戻す
-        GameObject TooBox = GameObject.Find("Weapon_List");
-        RectTransform Too_RectTransform = TooBox.GetComponent<RectTransform>();
-        Too_RectTransform.anchoredPosition3D = TooBox_OriginalPos;
-
-        //WeaponListから独立させたBoxを戻す
-        GameObject ActiveBox = GameObject.Find("Select_Weapon_List" + ActiveBoxNum);
-        RectTransform _RectTransform = ActiveBox.GetComponent<RectTransform>();
-        ActiveBox.transform.SetParent(TooBox.transform);
-        _RectTransform.anchoredPosition3D = ActiveBox_OriginalPos;
-        //何故か非表示になってたので
-        if(!ActiveBox.GetComponent<Image>().enabled)
-        {
-            ActiveBox.GetComponent<Image>().enabled = true;
-        }
-
-        GameObject.Find("Canvas/Text").GetComponent<CanvasGroup>().alpha = 1;
+        StartCoroutine(WindowMove(1, true));
+        
     }
 
     //パラメーターあげます
     public void PassParamator()
     {
-        ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
-        _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
-        string str;
-        for(int i1 = 0; i1 < 3; i1++)
+        if(WindowStationary)
         {
-            str = "";
-            for(int i2 = 0; i2 < 4; i2++)
+            ChoiceParamator _ChoiceParamator = GameObject.Find("ChoiceParamator").GetComponent<ChoiceParamator>();
+            _ChoiceParamator.SelectParamator = AnimalAndWeaponList;
+            string str;
+            for (int i1 = 0; i1 < 3; i1++)
             {
-                str = str + AnimalAndWeaponList[i1, i2];
+                str = "";
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    str = str + AnimalAndWeaponList[i1, i2];
+                }
+                Debug.Log(str);
             }
-            Debug.Log(str);
+            AudioManager.Instance.PlayBgm(1);
         }
 
-        AudioManager.Instance.PlayBgm(1);
         //動物Id
         //0:うさぎ
         //1:ふくろう
@@ -271,9 +237,9 @@ public class WindowChangeScript : MonoBehaviour
 
         //武器Id
         //0:剣
-        //1:斧(未実装)
-        //2;盾
-        //3:弓
+        //1;盾
+        //2:弓
+        //3:斧(未実装)
         /*
         for (int i = 0; i < 3; i++)
         {

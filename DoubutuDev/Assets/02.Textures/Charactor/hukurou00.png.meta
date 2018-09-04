@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: a3f73e9b5dbd82c4d886561773b671fd
-timeCreated: 1531985751
+timeCreated: 1535685564
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hukurou00_0
-    21300002: hukurou00_1
+    21300000: hukurou00_face
+    21300002: hukurou00_all
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -88,20 +88,20 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hukurou00_0
+      name: hukurou00_face
       rect:
         serializedVersion: 2
-        x: 100
+        x: 115
         y: 130
-        width: 125
+        width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hukurou00_1
+      name: hukurou00_all
       rect:
         serializedVersion: 2
         x: 0
@@ -109,7 +109,7 @@ TextureImporter:
         width: 250
         height: 250
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

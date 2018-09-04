@@ -6,17 +6,14 @@ using UnityEngine.EventSystems;
 
 public class SpawnManager : MonoBehaviour {
 
-    private Camera camera;
-
-    [SerializeField]
     private CostScript costScript;
 
     [SerializeField]
-    private GameObject[] units = new GameObject[3];
+    private GameObject[] units = new GameObject[8];
 
     void Awake()
     {
-        camera = Camera.main;
+        costScript = GameObject.FindObjectOfType<CostScript>();
     }
 
     public void ClickGround()
@@ -34,7 +31,10 @@ public class SpawnManager : MonoBehaviour {
                 var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 0;
                 //  インスタンス生成
-                GameObject obj = Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
+                Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
+                //  エフェクトの表示
+                EffectManager.Instance_Effect.PlayEffect_Magic(pos);
+                //  効果音再生
                 AudioManager.Instance.PlaySe((int)AudioManager.SelistName.AnimalSpawn);
             }
             else
@@ -47,5 +47,11 @@ public class SpawnManager : MonoBehaviour {
     public void DragGround()
     {
 
+    }
+
+    //  選ばれた動物編成で配列にセット
+    public void SetAnimalsPrefab(GameObject[] _animals)
+    {
+        units = _animals;
     }
 }
