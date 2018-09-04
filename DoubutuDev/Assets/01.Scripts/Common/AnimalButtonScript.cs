@@ -7,25 +7,37 @@ public class AnimalButtonScript : MonoBehaviour {
 
     [SerializeField]
     private CostScript costScript;
-    
-    private Button btn;
-
     [SerializeField]
     private float cost;
-
     [SerializeField]
     private int SelectNum;
-
+    private Color disablecolor = new Color(0.5f,0.5f,0.5f,1);
 
     [SerializeField]
     private GameObject[] AnimalButtons = new GameObject[2];
     [SerializeField]
     private GameObject[] WeaponButtons = new GameObject[3];
+    private Button btn;
 
     // Use this for initialization
     void Start () {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(TapAnimalButton);
+    }
+
+    void Update()
+    {
+        Debug.Log(costScript.GetAnimalCost());
+        if (cost*100 <= costScript.GetAnimalCost())
+        {
+            Debug.Log("aaa");
+            GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            Debug.Log("bbb");
+            GetComponent<Image>().color = disablecolor;
+        }
     }
 
     void TapAnimalButton()
@@ -34,6 +46,8 @@ public class AnimalButtonScript : MonoBehaviour {
         costScript.SetAnimalObj(gameObject);
         //  動物ボタンが押されたら武器の画像やコストを表示する
         GameObject.FindObjectOfType<AnimalButtonManager>().ApplayWeaponButton(SelectNum);
+        //  選択状態を可視化するためにImageの表示
+        GameObject.FindObjectOfType<AnimalButtonManager>().SelectAnimal(transform.position);
         //  押している状態にボタンを変更
         GetComponent<Button>().interactable = false;
         //  このボタン以外を選択解除する

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 
 public class AnimalButtonManager : MonoBehaviour {
@@ -14,13 +15,12 @@ public class AnimalButtonManager : MonoBehaviour {
     private GameObject[] WeaponButtons = new GameObject[3];
     private ChoiceParamator choiceParamator;
 
+    [SerializeField]
+    private GameObject SelectFrame_ani, SelectFrame_wep;
+
     void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
+        ScaleAnimation();
+    }
 
     GameObject[] animals = new GameObject[9];
 
@@ -69,5 +69,40 @@ public class AnimalButtonManager : MonoBehaviour {
             WeaponButtons[i].GetComponent<WeaponButtonScript>().SetCost(unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, i + 1]].WeaponCost);
         }
 
+    }
+
+    public void SelectAnimal(Vector2 pos)
+    {
+        SelectFrame_ani.SetActive(true);
+        SelectFrame_wep.SetActive(false);
+        SelectFrame_ani.transform.position = pos;
+    }
+
+    public void SelectWeapon(Vector2 pos)
+    {
+        SelectFrame_wep.SetActive(true);
+        SelectFrame_wep.transform.position = pos;
+    }
+
+    //  拡大縮小のアニメーション
+    void ScaleAnimation()
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(
+            SelectFrame_ani.transform.DOScale(1.1f, 0.5f).SetEase(Ease.Linear)
+        );
+        seq.Append(
+            SelectFrame_ani.transform.DOScale(1.0f, 0.5f).SetEase(Ease.Linear)
+        );
+        seq.SetLoops(-1);
+
+        Sequence seq2 = DOTween.Sequence();
+        seq2.Append(
+            SelectFrame_wep.transform.DOScale(1.1f, 0.5f).SetEase(Ease.Linear)
+        );
+        seq2.Append(
+            SelectFrame_wep.transform.DOScale(1.0f, 0.5f).SetEase(Ease.Linear)
+        );
+        seq2.SetLoops(-1);
     }
 }

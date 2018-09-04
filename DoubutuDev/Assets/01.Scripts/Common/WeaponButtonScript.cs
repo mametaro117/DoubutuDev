@@ -22,12 +22,17 @@ public class WeaponButtonScript : MonoBehaviour {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(TapWeaponButton);
     }
+    void Update()
+    {
+        
+    }
 
     void TapWeaponButton()
     {
         //  武器の選択
         costScript.SetWeaponObj(gameObject);
-
+        //  選択状態を可視化するためにImageの表示
+        GameObject.FindObjectOfType<AnimalButtonManager>().SelectWeapon(transform.position);
         //  押している状態にボタンを変更
         GetComponent<Button>().interactable = false;
         //  このボタン以外を選択解除する
@@ -42,6 +47,7 @@ public class WeaponButtonScript : MonoBehaviour {
         return cost;
     }
 
+    //  外からコストを変更するため
     public void SetCost(float costNum)
     {
         cost = costNum;

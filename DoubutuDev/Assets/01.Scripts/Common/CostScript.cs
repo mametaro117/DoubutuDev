@@ -121,4 +121,13 @@ public class CostScript : MonoBehaviour {
         AnimalRect.sizeDelta = new Vector2(BarRect.x * (AnimalCostPoint / MaxAnimalCost), AnimalRect.sizeDelta.y);
         WeaponRect.sizeDelta = new Vector2(BarRect.x * (WeaponCostPoint / MaxWeaponCost), WeaponRect.sizeDelta.y);
     }
+
+    public float GetAnimalCost()
+    {
+        return AnimalCostPoint;
+    }
+    public float GetWeaponCost()
+    {
+        return WeaponCostPoint;
+    }
 }
