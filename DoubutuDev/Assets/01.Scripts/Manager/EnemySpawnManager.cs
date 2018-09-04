@@ -70,7 +70,7 @@ public class EnemySpawnManager : MonoBehaviour {
         int SpawnPos = SetSpawnPos();
         if(Random.Range(0, 100) <= kimagure)
         {
-            Debug.Log("気まぐれ");
+            //Debug.Log("気まぐれ");
             SpawnPos = Random.Range(0, SpawnPositions.Length);
         }
         if(SpawnPos == -1)
@@ -82,13 +82,13 @@ public class EnemySpawnManager : MonoBehaviour {
         switch(ran)
         {
             case 0:
-                Debug.Log("剣");
+                //Debug.Log("剣");
                 break;
             case 1:
-                Debug.Log("盾");
+                //Debug.Log("盾");
                 break;
             case 2:
-                Debug.Log("弓");
+                //Debug.Log("弓");
                 break;
         }
     }
@@ -230,7 +230,7 @@ public class EnemySpawnManager : MonoBehaviour {
             str = str + i + "_";
         }
         str = str + "同パワー数:" + PlayerRaneNum.Count;
-        Debug.Log(str);
+        //Debug.Log(str);
         //*/
 
         //複数ある場合はランダムで返す

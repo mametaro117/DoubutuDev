@@ -27,15 +27,12 @@ public class AnimalButtonScript : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(costScript.GetAnimalCost());
         if (cost*100 <= costScript.GetAnimalCost())
         {
-            Debug.Log("aaa");
             GetComponent<Image>().color = Color.white;
         }
         else
         {
-            Debug.Log("bbb");
             GetComponent<Image>().color = disablecolor;
         }
     }

@@ -72,7 +72,7 @@ MonoBehaviour:
       AttackSpeed: 1
   - animalName: 2
     AnimalImage: {fileID: 21300000, guid: 91e6d0bb2bff9a2459a6530dc8949cb8, type: 3}
-    AnimalCost: 0
+    AnimalCost: 2
     Skill: 2
     typeStatuses:
     - Type: 0
