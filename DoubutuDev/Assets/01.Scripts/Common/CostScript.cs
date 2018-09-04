@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CostScript : MonoBehaviour {
 
@@ -52,6 +53,13 @@ public class CostScript : MonoBehaviour {
     //ここのタイムは(処理の都合上)3の倍数にすること
     private int _Time = 9;
     private float ShakeSpeed = 0.8f;
+    [SerializeField]
+    private GameObject CostLines_Animal;
+    [SerializeField]
+    private GameObject CostLines_Weapon;
+    [SerializeField]
+    private Sprite CostBar;
+    private GameObject _CostLineOriginal;
 
     void Start () {
         //  バーのサイズ設定
@@ -70,6 +78,7 @@ public class CostScript : MonoBehaviour {
         //コストバー初期化
         MainAnimalRect.sizeDelta = new Vector2(BarRect.x * (AnimalCostPoint / MaxAnimalCost), MainAnimalRect.sizeDelta.y);
         MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (WeaponCostPoint / MaxAnimalCost), MainWeaponRect.sizeDelta.y);
+        MakeCostLines();
     }
 	
 	void Update () {
@@ -302,5 +311,42 @@ public class CostScript : MonoBehaviour {
         }
         Debug.Log("EndCol_WeaponShake");
         yield break;
+    }
+
+    //コストの目盛り線を作る
+    private void MakeCostLines()
+    {
+        var Lines_AnimalCost = new List<float>();
+        var Lines_WeaponCost = new List<float>();
+
+        float Animal_1Line = 
+            (float)Math.Round(BarRect.x / MaxAnimalCost * 100, 2, MidpointRounding.AwayFromZero);
+        float Weapon_1Line =
+            (float)Math.Round(BarRect.x / MaxWeaponCost * 100, 2, MidpointRounding.AwayFromZero);
+
+        int times_Animal = (int)Math.Round(MaxAnimalCost / 100 - 1);
+        int times_Weapon = (int)Math.Round(MaxWeaponCost / 100 - 1);
+
+        for(int i = 0; i < times_Animal; i++)
+        {
+            Lines_AnimalCost.Add(Animal_1Line * (i + 1));
+        }
+
+        for (int i = 0; i < times_Weapon; i++)
+        {
+            Lines_WeaponCost.Add(Weapon_1Line * (i + 1));
+        }
+
+        RectTransform Rect_Animal = CostLines_Animal.GetComponent<RectTransform>();
+        RectTransform Rect_Weapon = CostLines_Weapon.GetComponent<RectTransform>();
+
+        _CostLineOriginal = new GameObject();
+        _CostLineOriginal.AddComponent<Image>().sprite = CostBar;
+        RectTransform _CostLine_Rect = _CostLineOriginal.GetComponent<RectTransform>();
+        _CostLineOriginal.transform.SetParent(CostLines_Animal.transform);
+        _CostLine_Rect.sizeDelta = new Vector2(3, 30);
+        _CostLine_Rect.localScale = new Vector3(1, 1, 1);
+        _CostLine_Rect.localPosition = new Vector3(0, 0, 0);
+        Debug.Log(_CostLine_Rect.position);
     }
 }
