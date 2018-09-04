@@ -53,10 +53,13 @@ public class CostScript : MonoBehaviour {
     //ここのタイムは(処理の都合上)3の倍数にすること
     private int _Time = 9;
     private float ShakeSpeed = 0.8f;
+
+    //空のゲームオブジェクトをコストバーフレーム内に作って入れる
     [SerializeField]
     private GameObject CostLines_Animal;
     [SerializeField]
     private GameObject CostLines_Weapon;
+    //Assets\02.Textures\UI\Gage\AnimalFrame_Partition.png
     [SerializeField]
     private Sprite CostBar;
     private GameObject _CostLineOriginal;
@@ -232,10 +235,10 @@ public class CostScript : MonoBehaviour {
         while(Time_ShakeAnimalCost > 0)
         {
             Time_ShakeAnimalCost--;
-            // 1/3フレーム目までは通り過ぎさせる
-            if(Time_ShakeAnimalCost >= TotalTime / 3 * 2)
+            // 1/3フレーム目までは通り過ぎさせる(0.6倍速)
+            if (Time_ShakeAnimalCost >= TotalTime / 3 * 2)
             {
-                Cor_CostPoint_AnimalCost += speed * ShakeSpeed;
+                Cor_CostPoint_AnimalCost += speed * 0.6f * ShakeSpeed;
                 MainAnimalRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_AnimalCost * 100 / MaxAnimalCost), MainAnimalRect.sizeDelta.y);
             }
             // 1/3フレーム目から2/3フレーム目までは少し戻る(1.5倍速)
@@ -292,7 +295,7 @@ public class CostScript : MonoBehaviour {
             // 1/3フレーム目までは通り過ぎさせる
             if (Time_ShakeWeaponCost >= TotalTime / 3 * 2)
             {
-                Cor_CostPoint_WeaponCost += speed * ShakeSpeed;
+                Cor_CostPoint_WeaponCost += speed * 0.6f * ShakeSpeed;
                 MainWeaponRect.sizeDelta = new Vector2(BarRect.x * (Cor_CostPoint_WeaponCost * 100 / MaxWeaponCost), MainWeaponRect.sizeDelta.y);
             }
             // 1/3フレーム目から2/3フレーム目までは少し戻る(1.5倍速)
@@ -337,16 +340,32 @@ public class CostScript : MonoBehaviour {
             Lines_WeaponCost.Add(Weapon_1Line * (i + 1));
         }
 
-        RectTransform Rect_Animal = CostLines_Animal.GetComponent<RectTransform>();
-        RectTransform Rect_Weapon = CostLines_Weapon.GetComponent<RectTransform>();
-
         _CostLineOriginal = new GameObject();
         _CostLineOriginal.AddComponent<Image>().sprite = CostBar;
         RectTransform _CostLine_Rect = _CostLineOriginal.GetComponent<RectTransform>();
-        _CostLineOriginal.transform.SetParent(CostLines_Animal.transform);
         _CostLine_Rect.sizeDelta = new Vector2(3, 30);
-        _CostLine_Rect.localScale = new Vector3(1, 1, 1);
-        _CostLine_Rect.localPosition = new Vector3(0, 0, 0);
-        Debug.Log(_CostLine_Rect.position);
+        _CostLine_Rect.anchorMin = new Vector2(0, 0.5f);
+        _CostLine_Rect.anchorMax = new Vector2(0, 0.5f);
+
+        for(int i = 0; i < Lines_AnimalCost.Count; i++)
+        {
+            GameObject tgt = Instantiate(_CostLineOriginal) as GameObject;
+            RectTransform tgt_rect = tgt.GetComponent<RectTransform>();
+            tgt.transform.SetParent(CostLines_Animal.transform);
+            tgt_rect.localScale = new Vector3(1, 0.8f, 1);
+            tgt_rect.anchoredPosition3D = new Vector3(Lines_AnimalCost[i], 0, 0);
+        }
+
+        for (int i = 0; i < Lines_WeaponCost.Count; i++)
+        {
+            GameObject tgt = Instantiate(_CostLineOriginal) as GameObject;
+            RectTransform tgt_rect = tgt.GetComponent<RectTransform>();
+            tgt.transform.SetParent(CostLines_Weapon.transform);
+            tgt_rect.localScale = new Vector3(1, 0.8f, 1);
+            tgt_rect.anchoredPosition3D = new Vector3(Lines_WeaponCost[i], 0, 0);
+        }
+
+        //ラストの処理に必ず入れる
+        Destroy(_CostLineOriginal);
     }
 }
