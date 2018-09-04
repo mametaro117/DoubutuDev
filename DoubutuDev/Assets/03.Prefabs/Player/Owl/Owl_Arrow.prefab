@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 70807088350395160}
   - component: {fileID: 114151331034932624}
   - component: {fileID: 114110449505006346}
+  - component: {fileID: 210652913788578856}
   m_Layer: 0
   m_Name: Owl_Arrow
   m_TagString: Animal
@@ -629,7 +630,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61821947445658516
@@ -703,7 +704,7 @@ MonoBehaviour:
   HitPoint: 40
   SkillPoint: 15
   Attack: 5
-  Speed: 0
+  Speed: 10
   IsSky: 0
   isStun: 0
   weaponType: 2
@@ -734,9 +735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: 0
+  Speed: 0
+  skill: 1
   EnemyObject: {fileID: 0}
   EnemyObjects: []
+  isReady: 0
+  isAttack: 0
 --- !u!114 &114259309452202290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,6 +821,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!210 &210652913788578856
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865749117168150}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212015143060551922
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 50592142289673636}
   - component: {fileID: 114605126114599292}
   - component: {fileID: 114187655437972074}
+  - component: {fileID: 210984077680379256}
   m_Layer: 0
   m_Name: Zou_Arrow
   m_TagString: Animal
@@ -809,7 +810,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61499110666832384
@@ -947,7 +948,7 @@ MonoBehaviour:
   HitPoint: 50
   SkillPoint: 10
   Attack: 8
-  Speed: 0
+  Speed: 3
   IsSky: 0
   isStun: 0
   weaponType: 2
@@ -994,9 +995,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87563ea5499465419163b96534bceb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   skill: 2
   EnemyObject: {fileID: 0}
   EnemyObjects: []
+  isReady: 0
+  isAttack: 0
 --- !u!114 &114725668199209904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1029,6 +1033,16 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!210 &210984077680379256
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583422546418630}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212030170234040472
 SpriteRenderer:
   m_ObjectHideFlags: 1

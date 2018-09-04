@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c3e372dfb4d4f0c8e3d7d25e1a2d4f, type: 3}
+  m_Name: Parameter
+  m_EditorClassIdentifier: 
+  AnimalTable:
+  - animalName: 0
+    AnimalImage: {fileID: 21300000, guid: 42356730875cdc748ae1ef0c7263bcce, type: 3}
+    AnimalCost: 1
+    Skill: 1
+    typeStatuses:
+    - Type: 0
+      Animal: {fileID: 1458457157907598, guid: 425cafb4f3ce2294fab758d9d01dfd1b, type: 2}
+      HP: 60
+      Power: 5
+      MoveSpeed: 5
+      AttackSpeed: 1
+    - Type: 1
+      Animal: {fileID: 1636398734877778, guid: b4b66359b24735448b56c7f9eb0b1800, type: 2}
+      HP: 130
+      Power: 2
+      MoveSpeed: 5
+      AttackSpeed: 1
+    - Type: 2
+      Animal: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
+      HP: 40
+      Power: 5
+      MoveSpeed: 5
+      AttackSpeed: 1
+    - Type: 3
+      Animal: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
+      HP: 40
+      Power: 5
+      MoveSpeed: 5
+      AttackSpeed: 1
+  - animalName: 1
+    AnimalImage: {fileID: 21300000, guid: a3f73e9b5dbd82c4d886561773b671fd, type: 3}
+    AnimalCost: 1
+    Skill: 0
+    typeStatuses:
+    - Type: 0
+      Animal: {fileID: 1734168873693030, guid: 808044676f899034ebf50a38d347311f, type: 2}
+      HP: 60
+      Power: 5
+      MoveSpeed: 10
+      AttackSpeed: 1
+    - Type: 1
+      Animal: {fileID: 1185824479603828, guid: 5d14d1340f174d34d93b5972bea41c96, type: 2}
+      HP: 80
+      Power: 3
+      MoveSpeed: 10
+      AttackSpeed: 1.5
+    - Type: 2
+      Animal: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+      HP: 40
+      Power: 4
+      MoveSpeed: 10
+      AttackSpeed: 1
+    - Type: 3
+      Animal: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+      HP: 40
+      Power: 4
+      MoveSpeed: 10
+      AttackSpeed: 1
+  - animalName: 2
+    AnimalImage: {fileID: 21300000, guid: 91e6d0bb2bff9a2459a6530dc8949cb8, type: 3}
+    AnimalCost: 0
+    Skill: 2
+    typeStatuses:
+    - Type: 0
+      Animal: {fileID: 1301893166087958, guid: 41571abb2c0107844ac45b24347336bb, type: 2}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+    - Type: 1
+      Animal: {fileID: 1355113178475062, guid: 923411eaa094a2a4b8e881f42bd396f4, type: 2}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+    - Type: 2
+      Animal: {fileID: 1583422546418630, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+    - Type: 3
+      Animal: {fileID: 0}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+  - animalName: 3
+    AnimalImage: {fileID: 0}
+    AnimalCost: 1
+    Skill: 0
+    typeStatuses:
+    - Type: 0
+      Animal: {fileID: 0}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+    - Type: 1
+      Animal: {fileID: 0}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+    - Type: 2
+      Animal: {fileID: 0}
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
+  WeaponTable:
+  - WeaponName: Sword
+    Type: 0
+    WeaponImage: {fileID: 21300000, guid: bba243f7753705043be387896e991cb5, type: 3}
+    WeaponCost: 1
+  - WeaponName: Shield
+    Type: 1
+    WeaponImage: {fileID: 21300000, guid: 4b2813b77594e3f4bbe456474f9f9c0e, type: 3}
+    WeaponCost: 1
+  - WeaponName: Arrow
+    Type: 2
+    WeaponImage: {fileID: 21300000, guid: 6064ed9526080684fb37e0d7e0f0d386, type: 3}
+    WeaponCost: 2
+  - WeaponName: Axe
+    Type: 0
+    WeaponImage: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+    WeaponCost: 2

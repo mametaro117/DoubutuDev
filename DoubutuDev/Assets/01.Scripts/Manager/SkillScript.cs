@@ -8,7 +8,7 @@ public class SkillScript : MonoBehaviour {
     public SkillTyepe skillType;
 
     void HealSkill(float HealValue) {
-        Totalstatus totalstatus = GetComponent<Totalstatus>();
+        Status totalstatus = GetComponent<Status>();
         totalstatus.HitPoint = Mathf.Min(totalstatus.MaxHP, totalstatus.HitPoint + HealValue);
         Debug.Log(HealValue);
     }

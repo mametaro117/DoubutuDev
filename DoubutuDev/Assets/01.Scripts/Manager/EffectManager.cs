@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectManager : MonoBehaviour {
+public class EffectManager : MonoBehaviour
+{
 
     #region Singleton
 
@@ -52,6 +53,21 @@ public class EffectManager : MonoBehaviour {
     [SerializeField]
     private GameObject Effect_Magic;
 
+    public static class EffectKind
+    {
+        public const int Diamond = 0;
+        public const int Heart = 1;
+        public const int Star = 2;
+        public const int Spark = 3;
+        public const int Light = 4;
+        public const int Smoke = 5;
+        public const int FireWork = 6;
+        public const int Hit = 7;
+        public const int Magic = 8;
+    }
+
+
+
     //やる事を関数でまとめた
     private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification)
     {
@@ -59,7 +75,8 @@ public class EffectManager : MonoBehaviour {
         PlayEffect.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
         ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
         var main = particlesystem.main;
-        Destroy(PlayEffect, main.duration);
+        if (PlayEffect != null)
+            Destroy(PlayEffect, main.duration);
     }
 
     //実行する時はコレ↓
@@ -82,7 +99,7 @@ public class EffectManager : MonoBehaviour {
     public void PlayEffect(int EffectNum, Vector2 EffectPos, float Magnification)
     {
         GameObject PlayEffect = null;
-        switch(EffectNum)
+        switch (EffectNum)
         {
             case 0:
                 PlayEffect = Instantiate(Effect_Dia) as GameObject;
@@ -118,6 +135,26 @@ public class EffectManager : MonoBehaviour {
         EffectProcess(PlayEffect, EffectPos, Magnification);
     }
 
+    public void PlayEffect_Magic(Vector2 EffectPos)
+    {
+        GameObject PlayEffect = Instantiate(Effect_Magic) as GameObject;
+        EffectProcess(PlayEffect, EffectPos, 1);
+    }
+
+    public void PlayEffect_Smoke(Vector2 EffectPos)
+    {
+        GameObject PlayEffect = Instantiate(Effect_Smoke) as GameObject;
+        EffectProcess(PlayEffect, EffectPos, 1);
+    }
+
+
+    public void PlayEffect_Heart(Vector2 EffectPos)
+    {
+        GameObject PlayEffect = Instantiate(Effect_Heart) as GameObject;
+        EffectProcess(PlayEffect, EffectPos, 1);
+    }
+
+
     /**//*
 
     /// <summary>
@@ -131,16 +168,6 @@ public class EffectManager : MonoBehaviour {
         EffectProcess(PlayEffect, EffectPos);
     }
 
-    /// <summary>
-    /// それぞれ関数がある方
-    /// 引数:(ポジション)
-    /// </summary>
-    /// <param name="EffectPos"></param>
-    public void PlayEffect_Heart(Vector2 EffectPos)
-    {
-        GameObject PlayEffect = Instantiate(Effect_Heart) as GameObject;
-        EffectProcess(PlayEffect, EffectPos);
-    }
 
     /// <summary>
     /// それぞれ関数がある方
@@ -175,16 +202,6 @@ public class EffectManager : MonoBehaviour {
         EffectProcess(PlayEffect, EffectPos);
     }
 
-    /// <summary>
-    /// それぞれ関数がある方
-    /// 引数:(ポジション)
-    /// </summary>
-    /// <param name="EffectPos"></param>
-    public void PlayEffect_Smoke(Vector2 EffectPos)
-    {
-        GameObject PlayEffect = Instantiate(Effect_Smoke) as GameObject;
-        EffectProcess(PlayEffect, EffectPos);
-    }
 
     /// <summary>
     /// それぞれ関数がある方
@@ -208,27 +225,18 @@ public class EffectManager : MonoBehaviour {
         EffectProcess(PlayEffect, EffectPos);
     }
 
-    /// <summary>
-    /// それぞれ関数がある方
-    /// 引数:(ポジション)
-    /// </summary>
-    /// <param name="EffectPos"></param>
-    public void PlayEffect_Magic(Vector2 EffectPos)
-    {
-        GameObject PlayEffect = Instantiate(Effect_Magic) as GameObject;
-        EffectProcess(PlayEffect, EffectPos);
-    }
-
     //*/
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-    
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
 }

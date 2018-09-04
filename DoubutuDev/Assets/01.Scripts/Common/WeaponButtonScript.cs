@@ -35,12 +35,17 @@ public class WeaponButtonScript : MonoBehaviour {
         {
             WeaponButtons[i].GetComponent<Button>().interactable = true;
         }
-
     }
 
     public float GetCost()
     {
         return cost;
+    }
+
+    public void SetCost(float costNum)
+    {
+        cost = costNum;
+        gameObject.transform.GetChild(1).GetComponent<DisplayCost>().ApplayCost();
     }
 
     public int GetSelectNum()
