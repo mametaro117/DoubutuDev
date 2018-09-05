@@ -32,7 +32,7 @@ public class AnimalButtonManager : MonoBehaviour {
         //  編成情報がなかったら作成
         if (choiceParamator == null)
         {
-            Debug.Log("<color=red>"+ "入ってる"+ "</color>");
+            //Debug.Log("<color=red>"+ "入ってる"+ "</color>");
             gameObject.AddComponent<ChoiceParamator>();
             choiceParamator = GetComponent<ChoiceParamator>();
             choiceParamator.SelectParamator[0, 0] = 0;

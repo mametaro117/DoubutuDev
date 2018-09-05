@@ -8,15 +8,11 @@ public class AnimalScript : MonoBehaviour {
     private Status status;
     [SerializeField]private float Speed;
     private bool isEnemy = false;                   //  敵なのか
-
-
+    private Vector2 direction;                      //  進む向き
     public enum Skill { Heal, Stun, KnockBack };    //  スキルの種類宣言
     public Skill skill;                             //  Enumをインスペクター上でいじるため
-
-    [SerializeField]
-    private GameObject EnemyObject;
-    [SerializeField]
-    private List<GameObject> EnemyObjects = new List<GameObject>();
+    [SerializeField]private GameObject EnemyObject;
+    [SerializeField]private List<GameObject> EnemyObjects = new List<GameObject>();
     private GameObject FriendObject;
     private List<GameObject> FriendObjects = new List<GameObject>();
     [SerializeField]private bool isReady = false;   //  行動可能なのか
@@ -95,14 +91,24 @@ public class AnimalScript : MonoBehaviour {
         {
             //  前に進む処理
             if (!isEnemy)
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-Speed * Time.deltaTime, 0);
+                direction = new Vector2(-Speed * Time.deltaTime, 0);
             else
-                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Speed * Time.deltaTime, 0);
+                direction = new Vector2(Speed * Time.deltaTime, 0);
             if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
                 animator.SetTrigger("Walk");
         }
+        //  目の前に味方がいたら縦にずれる
+        if (FriendObject != null)
+        {
+            if (gameObject.transform.position.y >= FriendObject.transform.position.y)
+                direction += new Vector2(0, Time.deltaTime);
+            else if (gameObject.transform.position.y <= FriendObject.transform.position.y)
+                direction += new Vector2(0, -Time.deltaTime);
+        }
+        //  攻撃対象がいたら止まる
         if (EnemyObject != null)
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            direction = Vector2.zero;
+        gameObject.GetComponent<Rigidbody2D>().velocity = direction;
     }
 
     //  EnemyObjectが倒されたら
@@ -131,79 +137,91 @@ public class AnimalScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Enemy? = " + isEnemy + "\nName = " + gameObject.transform.name + "\n当たった対象 = " + collision.name);
         //  自分が敵かつ触れた対象が動物または動物タワーだったら
-        if (isEnemy && collision.tag == "Animal" || collision.tag == "AnimalTower")
+        if (isEnemy)
         {
-            Debug.Log("TriggerEnterヒット");
-            //  要素が含まれていなかったら追加
-            if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
+            if (collision.tag == "Animal" || collision.tag == "AnimalTower")
             {
-                EnemyObjects.Add(collision.gameObject);
-                //  攻撃している対象がいなかったらセット
-                if (EnemyObject == null)
+                Debug.Log("TriggerEnterヒット");
+                //  要素が含まれていなかったら追加
+                if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
                 {
-                    EnemyObject = EnemyObjects[0];
-                    EnemyObjects.RemoveAt(0);
+                    EnemyObjects.Add(collision.gameObject);
+                    //  攻撃している対象がいなかったらセット
+                    if (EnemyObject == null)
+                    {
+                        EnemyObject = EnemyObjects[0];
+                        EnemyObjects.RemoveAt(0);
+                    }
                 }
+                if (!status.isStun)
+                    StartCoroutine(AttackAnimal());
             }
-            //if (!status.isStun)
-            //    StartCoroutine(AttackAnimal());
         }
         //  自分が動物かつ触れた対象が敵または敵タワーだったら
-        if (!isEnemy && collision.tag == "Enemy" || collision.tag == "EnemyTower")
+        if (!isEnemy)
         {
-            //  要素が含まれていなかったら追加
-            if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
+            if (collision.tag == "Enemy" || collision.tag == "EnemyTower")
             {
-                EnemyObjects.Add(collision.gameObject);
-                //  攻撃している対象がいなかったらセット
-                if (EnemyObject == null)
+                //  要素が含まれていなかったら追加
+                if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
                 {
-                    EnemyObject = EnemyObjects[0];
-                    EnemyObjects.RemoveAt(0);
+                    EnemyObjects.Add(collision.gameObject);
+                    //  攻撃している対象がいなかったらセット
+                    if (EnemyObject == null)
+                    {
+                        EnemyObject = EnemyObjects[0];
+                        EnemyObjects.RemoveAt(0);
+                    }
                 }
+                if (!status.isStun)
+                    StartCoroutine(AttackAnimal());
             }
-            //if (!status.isStun)
-            //    StartCoroutine(AttackAnimal());
         }
     }
 
-    ////private void OnTriggerStay2D(Collider2D collision)
-    ////{
-    ////    if (isEnemy && collision.tag == "Animal" || collision.tag == "AnimalTower")
-    ////    {
-    ////        Debug.Log("TriggerStayヒット");
-    ////        //  どうぶつ又はどうぶつタワーだったら
-    ////        //  要素が含まれていなかったら追加
-    ////        if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
-    ////        {
-    ////            EnemyObjects.Add(collision.gameObject);
-    ////            //  攻撃している対象がいなかったらセット
-    ////            if (EnemyObject == null)
-    ////            {
-    ////                EnemyObject = EnemyObjects[0];
-    ////                EnemyObjects.RemoveAt(0);
-    ////            }
-    ////        }
-    ////        StartCoroutine(AttackAnimal());
-    ////    }
-    ////    if (!isEnemy && collision.tag == "Enemy" || collision.tag == "EnemyTower")
-    ////    {
-    ////        //  エネミー又はエネミータワーだったら
-    ////        //  要素が含まれていなかったら追加
-    ////        if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
-    ////        {
-    ////            EnemyObjects.Add(collision.gameObject);
-    ////            //  攻撃している対象がいなかったらセット
-    ////            if (EnemyObject == null)
-    ////            {
-    ////                EnemyObject = EnemyObjects[0];
-    ////                EnemyObjects.RemoveAt(0);
-    ////            }
-    ////        }
-    ////        StartCoroutine(AttackAnimal());
-    ////    }
-    ////}
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isEnemy)
+        {
+            if (collision.tag == "Animal" || collision.tag == "AnimalTower")
+            {
+                //  要素が含まれていなかったら追加
+                if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
+                {
+                    EnemyObjects.Add(collision.gameObject);
+                    //  攻撃している対象がいなかったらセット
+                    if (EnemyObject == null)
+                    {
+                        EnemyObject = EnemyObjects[0];
+                        EnemyObjects.RemoveAt(0);
+                    }
+                }
+                if (!status.isStun)
+                    StartCoroutine(AttackAnimal());
+            }
+        }
+        if (!isEnemy)
+        {
+            if (collision.tag == "Enemy" || collision.tag == "EnemyTower")
+            {
+                //  要素が含まれていなかったら追加
+                if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
+                {
+                    EnemyObjects.Add(collision.gameObject);
+                    //  攻撃している対象がいなかったらセット
+                    if (EnemyObject == null)
+                    {
+                        EnemyObject = EnemyObjects[0];
+                        EnemyObjects.RemoveAt(0);
+                    }
+                }
+                if (!status.isStun)
+                    StartCoroutine(AttackAnimal());
+            }
+        }
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -212,77 +230,81 @@ public class AnimalScript : MonoBehaviour {
         EnemyObjects.Remove(collision.gameObject);
     }
 
-    //  コリジョン型で味方を参照する
-    ////private void OnCollisionEnter2D(Collision2D collision)
-    ////{
-    ////    if (isEnemy && collision.transform.tag == "Enemy" || collision.transform.tag == "EnemyTower")
-    ////    {
-    ////        //  要素が含まれていなかったら追加
-    ////        if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
-    ////        {
-    ////            FriendObjects.Add(collision.gameObject);
-    ////            //  攻撃している対象がいなかったらセット
-    ////            if (FriendObject == null)
-    ////            {
-    ////                FriendObject = FriendObjects[0];
-    ////                FriendObjects.RemoveAt(0);
-    ////            }
-    ////        }
-    ////    }
-    ////    if (!isEnemy && collision.transform.tag == "Animal" || collision.transform.tag == "AnimalTower")
-    ////    {
-    ////        //  要素が含まれていなかったら追加
-    ////        if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
-    ////        {
-    ////            FriendObjects.Add(collision.gameObject);
-    ////            //  攻撃している対象がいなかったらセット
-    ////            if (FriendObject == null)
-    ////            {
-    ////                FriendObject = FriendObjects[0];
-    ////                FriendObjects.RemoveAt(0);
-    ////            }
-    ////        }
-    ////    }
-    ////}
+    //コリジョン型で味方を参照する
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isEnemy)
+        {
+            if (collision.transform.tag == "Enemy")
+            {
+                //要素が含まれていなかったら追加
+                if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
+                {
+                    FriendObjects.Add(collision.gameObject);
+                    if (FriendObject == null)
+                    {
+                        FriendObject = FriendObjects[0];
+                        FriendObjects.RemoveAt(0);
+                    }
+                }
+            }
+        }
+        if (!isEnemy)
+        {
+            if (collision.transform.tag == "Animal")
+            {
+                //要素が含まれていなかったら追加
+                if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
+                {
+                    FriendObjects.Add(collision.gameObject);
+                    if (FriendObject == null)
+                    {
+                        FriendObject = FriendObjects[0];
+                        FriendObjects.RemoveAt(0);
+                    }
+                }
+            }
+        }
+    }
 
-    ////private void OnCollisionStay2D(Collision2D collision)
-    ////{
-    ////    if (isEnemy && collision.transform.tag == "Enemy" || collision.transform.tag == "EnemyTower")
-    ////    {
-    ////        //  要素が含まれていなかったら追加
-    ////        if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
-    ////        {
-    ////            FriendObjects.Add(collision.gameObject);
-    ////            //  攻撃している対象がいなかったらセット
-    ////            if (FriendObject == null)
-    ////            {
-    ////                FriendObject = FriendObjects[0];
-    ////                FriendObjects.RemoveAt(0);
-    ////            }
-    ////        }
-    ////    }
-    ////    if (!isEnemy && collision.transform.tag == "Animal")
-    ////    {
-    ////        //  要素が含まれていなかったら追加
-    ////        if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
-    ////        {
-    ////            FriendObjects.Add(collision.gameObject);
-    ////            //  攻撃している対象がいなかったらセット
-    ////            if (FriendObject == null)
-    ////            {
-    ////                FriendObject = FriendObjects[0];
-    ////                FriendObjects.RemoveAt(0);
-    ////            }
-    ////        }
-    ////    }
-    ////}
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (isEnemy && collision.transform.tag == "Enemy")
+        {
+            //  要素が含まれていなかったら追加
+            if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
+            {
+                FriendObjects.Add(collision.gameObject);
+                //  攻撃している対象がいなかったらセット
+                if (FriendObject == null)
+                {
+                    FriendObject = FriendObjects[0];
+                    FriendObjects.RemoveAt(0);
+                }
+            }
+        }
+        if (!isEnemy && collision.transform.tag == "Animal")
+        {
+            //  要素が含まれていなかったら追加
+            if (!FriendObjects.Contains(collision.gameObject) && FriendObject != collision.gameObject)
+            {
+                FriendObjects.Add(collision.gameObject);
+                //  攻撃している対象がいなかったらセット
+                if (FriendObject == null)
+                {
+                    FriendObject = FriendObjects[0];
+                    FriendObjects.RemoveAt(0);
+                }
+            }
+        }
+    }
 
-    ////private void OnCollisionExit2D(Collision2D collision)
-    ////{
-    ////    if (FriendObject == collision.gameObject)
-    ////        FriendObject = null;
-    ////    FriendObjects.Remove(collision.gameObject);
-    ////}
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (FriendObject == collision.gameObject)
+            FriendObject = null;
+        FriendObjects.Remove(collision.gameObject);
+    }
 
     //  敵か動物側かを判定する
     private bool EnemyCheck()
