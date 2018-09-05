@@ -75,8 +75,8 @@ public class DamageText : MonoBehaviour {
     /// <param name="pos">表示座標</param>
     /// <param name="damage">ダメージの値</param>
     /// <param name="damageTextColor">ダメージカラー(デフォルトは黒)</param>
-    
-        
+
+    //0～9までのスプライト画像を格納するLIST型の配列
     [SerializeField]
     private Sprite[] sprite = new Sprite[10];
     SpriteRenderer sr;

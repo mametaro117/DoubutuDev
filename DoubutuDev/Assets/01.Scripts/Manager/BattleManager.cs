@@ -124,6 +124,7 @@ public class BattleManager : MonoBehaviour {
     {
         //  ダメージの計算
         float damage = Mathf.Ceil(attacker.GetComponent<Totalstatus>().Attack * TypeCheck(attacker, deffender));
+        Debug.Log(damage);
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Totalstatus>().HitPoint -= damage;
         //  ダメージの表示
