@@ -62,51 +62,54 @@ public class ToolTipsManager : MonoBehaviour
 
     public void ToolTips_Animal(GameObject obj)
     {
-        //ツールチップの位置を指定する
-        int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
-        Vector2 pos = obj.transform.position;
-        GameObject canvas = GameObject.Find("Canvas");
-        //ツールチップが表示されていない時は、色々指定する
-        if (ToolTip == null)
+        if(GameObject.Find("ClickManager").GetComponent<WindowChangeScript>().WindowStationary)
         {
-            ToolTip = Instantiate(ToolPrefabs, pos, Quaternion.identity);
-            ToolTip.transform.SetParent(canvas.transform);
-            var RectTransform = ToolTip.GetComponent<RectTransform>();
-            RectTransform.localScale = new Vector3(1, 1, 1);
-        }
-        else
-        {
-            ToolTip.transform.position = pos;
-        }
-        
-        //ToolTipのテキストを変更する
-        switch (objnum)
-        {
-            case 1:
-                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Rab;
-                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Rab;
-                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Rab;
-                break;
-            case 2:
-                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Owl;
-                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Owl;
-                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Owl;
-                break;
-            case 3:
-                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Ele;
-                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Ele;
-                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Ele;
-                break;
-            case 4:
-                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Pen;
-                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Pen;
-                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Pen;
-                break;
-            default:
-                ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Sec;
-                ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Sec;
-                ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Sec;
-                break;
+            //ツールチップの位置を指定する
+            int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));
+            Vector2 pos = obj.transform.position;
+            GameObject canvas = GameObject.Find("Canvas");
+            //ツールチップが表示されていない時は、色々指定する
+            if (ToolTip == null)
+            {
+                ToolTip = Instantiate(ToolPrefabs, pos, Quaternion.identity);
+                ToolTip.transform.SetParent(canvas.transform);
+                var RectTransform = ToolTip.GetComponent<RectTransform>();
+                RectTransform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                ToolTip.transform.position = pos;
+            }
+
+            //ToolTipのテキストを変更する
+            switch (objnum)
+            {
+                case 1:
+                    ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Rab;
+                    ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Rab;
+                    ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Rab;
+                    break;
+                case 2:
+                    ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Owl;
+                    ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Owl;
+                    ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Owl;
+                    break;
+                case 3:
+                    ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Ele;
+                    ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Ele;
+                    ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Ele;
+                    break;
+                case 4:
+                    ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Pen;
+                    ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Pen;
+                    ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Pen;
+                    break;
+                default:
+                    ToolTip.transform.GetChild(0).GetComponent<Text>().text = name_Sec;
+                    ToolTip.transform.GetChild(1).GetComponent<Text>().text = tokusei_Sec;
+                    ToolTip.transform.GetChild(2).GetComponent<Text>().text = speed_Sec;
+                    break;
+            }
         }
     }
 

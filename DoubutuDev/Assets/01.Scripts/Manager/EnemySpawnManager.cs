@@ -77,8 +77,10 @@ public class EnemySpawnManager : MonoBehaviour {
         {
             SpawnPos = Random.Range(0, SpawnPositions.Length);
         }
-        int ran = Random.Range(0, 3);
+        int ran = Random.Range(0, EnemyPrefab.Length);
         Instantiate(EnemyPrefab[ran], new Vector3(SpawnPositions[SpawnPos].position.x, SpawnPositions[SpawnPos].position.y, SpawnPositions[SpawnPos].position.z), SpawnPositions[SpawnPos].rotation);
+        /*
+        //デバッグ用
         switch(ran)
         {
             case 0:
@@ -91,6 +93,7 @@ public class EnemySpawnManager : MonoBehaviour {
                 //Debug.Log("弓");
                 break;
         }
+        //*/
     }
 
     private int SetSpawnPos()

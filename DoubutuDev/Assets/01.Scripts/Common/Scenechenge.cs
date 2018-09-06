@@ -9,7 +9,6 @@ public class Scenechenge : MonoBehaviour
     private bool isPlay = false;
     public void ChengeScene(int scenenum)
     {
-        Debug.Log("TAP");
         StartCoroutine(ChengeSceneCol(scenenum));
     }
 

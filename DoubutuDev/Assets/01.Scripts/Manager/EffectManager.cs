@@ -16,10 +16,12 @@ public class EffectManager : MonoBehaviour
         {
             if (instance_Effect == null)
             {
+                //Objectを検索
                 instance_Effect = (EffectManager)FindObjectOfType(typeof(EffectManager));
 
                 if (instance_Effect == null)
                 {
+                    //アタッチされているGameObjectが無いのでエラー
                     Debug.LogError(typeof(EffectManager) + "is nothing");
                 }
             }
@@ -31,6 +33,7 @@ public class EffectManager : MonoBehaviour
 
     public void Awake()
     {
+        //Destroyしない
         DontDestroyOnLoad(this.gameObject);
     }
 
