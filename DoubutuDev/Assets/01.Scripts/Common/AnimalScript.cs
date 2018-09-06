@@ -24,7 +24,6 @@ public class AnimalScript : MonoBehaviour {
     {
         status = GetComponent<Status>();
         isEnemy = EnemyCheck();
-        Speed = status.Speed;
     }
 
     void Start()
@@ -43,18 +42,27 @@ public class AnimalScript : MonoBehaviour {
         switch (skill)
         {
             case Skill.Heal:
+                //  回復スキル
                 Heal();
+                //  回復スキルのエフェクトの表示
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Heart, gameObject.transform.position, 1, gameObject);
                 break;
             case Skill.Stun:
+                //  攻撃中の敵にスタン
                 EnemyObject.GetComponent<AnimalScript>().StunObj();
+                //  スタンスキルのエフェクトの表示
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Star, EnemyObject.transform.position, 1, EnemyObject.gameObject);
                 break;
             case Skill.KnockBack:
+                //  範囲に入ってるオブジェクトに対してノックバック
                 if (SkillReady())
                     EnemyObject.GetComponent<AnimalScript>().KnockBackObj();
                 for (int i = 0; i < EnemyObjects.Count; i++)
                 {
                     EnemyObjects[i].GetComponent<AnimalScript>().KnockBackObj();
                 }
+                //  ノックバックスキルのエフェクト表示
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Spark, EnemyObject.transform.position, 1, EnemyObject.gameObject);
                 break;
         }
     }
@@ -86,6 +94,7 @@ public class AnimalScript : MonoBehaviour {
     //  移動系
     void Move()
     {
+        Speed = status.Speed;
         //  攻撃する対象がいない＆レディ状態が満たしていた＆攻撃中じゃなければ＆スタン中じゃなければ
         if (EnemyObject == null && isReady && !isAttack && !status.isStun)
         {

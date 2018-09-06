@@ -81,7 +81,7 @@ public class BattleManager : MonoBehaviour {
         //  攻撃される側のHPを減らす
         deffender.GetComponent<Status>().HitPoint -= damage;
         //  攻撃エフェクトを表示
-        EffectManager.Instance_Effect.PlayEffect_Smoke(deffender.transform.position);
+        EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke ,deffender.transform.position, 1, deffender);
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
         //  ヒット時のサウンド再生

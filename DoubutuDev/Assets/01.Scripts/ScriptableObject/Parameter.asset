@@ -21,7 +21,7 @@ MonoBehaviour:
       Animal: {fileID: 1458457157907598, guid: 425cafb4f3ce2294fab758d9d01dfd1b, type: 2}
       HP: 60
       Power: 5
-      MoveSpeed: 5
+      MoveSpeed: 10
       AttackSpeed: 1
     - Type: 1
       Animal: {fileID: 1636398734877778, guid: b4b66359b24735448b56c7f9eb0b1800, type: 2}
@@ -33,7 +33,7 @@ MonoBehaviour:
       Animal: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
       HP: 40
       Power: 5
-      MoveSpeed: 5
+      MoveSpeed: 10
       AttackSpeed: 1
     - Type: 3
       Animal: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}

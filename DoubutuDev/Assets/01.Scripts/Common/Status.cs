@@ -13,7 +13,6 @@ public class Status : MonoBehaviour {
     public int Attack;
     public float Speed;
 
-    public bool IsSky;
     public bool isStun;
 
     private GameObject HPberObj;
@@ -43,12 +42,11 @@ public class Status : MonoBehaviour {
     }
 
     //  
-    public void SetAllStatus(float HP,int ATK, float SPD, bool issky)
+    public void SetAllStatus(float HP,int ATK, float SPD)
     {
         HitPoint = HP;
         Attack = ATK;
         Speed = SPD;
-        IsSky = issky;
     }
     
     //  ゲージの割合表示

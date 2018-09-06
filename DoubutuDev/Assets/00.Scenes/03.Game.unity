@@ -519,7 +519,6 @@ MonoBehaviour:
   SkillPoint: 0
   Attack: 0
   Speed: 0
-  IsSky: 0
   isStun: 0
   weaponType: 5
 --- !u!114 &262300959
@@ -2212,7 +2211,6 @@ MonoBehaviour:
   SkillPoint: 0
   Attack: 0
   Speed: 0
-  IsSky: 0
   isStun: 0
   weaponType: 5
 --- !u!114 &776868822

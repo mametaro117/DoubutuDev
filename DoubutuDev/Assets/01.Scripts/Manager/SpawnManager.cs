@@ -31,17 +31,26 @@ public class SpawnManager : MonoBehaviour {
                 var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 pos.z = 0;
                 //  インスタンス生成
-                Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
+                var obj = Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
                 //  エフェクトの表示
-                EffectManager.Instance_Effect.PlayEffect_Magic(pos);
+                EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Magic, obj.transform.position, 1, obj);
                 //  効果音再生
                 AudioManager.Instance.PlaySe((int)AudioManager.SelistName.AnimalSpawn);
             }
             else
+            {
+                //  コストが足りない場合画面に表示
+
                 Debug.Log("コストが足りない");
+            }
         }
         else
-            Debug.Log("ボタン選んでないよ");        
+        {
+            //  ボタンを選んでないよを表示
+
+            Debug.Log("ボタン選んでないよ");
+        }
+            
     }
 
     public void DragGround()
