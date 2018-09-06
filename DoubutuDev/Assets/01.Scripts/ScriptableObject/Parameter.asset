@@ -100,7 +100,7 @@ MonoBehaviour:
       MoveSpeed: 0
       AttackSpeed: 0
   - animalName: 3
-    AnimalImage: {fileID: 0}
+    AnimalImage: {fileID: 21300000, guid: db4f7388586a16246894eab278b23e87, type: 3}
     AnimalCost: 1
     Skill: 0
     typeStatuses:
@@ -136,6 +136,10 @@ MonoBehaviour:
     WeaponImage: {fileID: 21300000, guid: 6064ed9526080684fb37e0d7e0f0d386, type: 3}
     WeaponCost: 2
   - WeaponName: Axe
-    Type: 0
-    WeaponImage: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
+    Type: 3
+    WeaponImage: {fileID: 21300000, guid: a9fbac812fe732a459506e4ee26088db, type: 3}
     WeaponCost: 2
+  - WeaponName: Gun
+    Type: 4
+    WeaponImage: {fileID: 21300000, guid: 83e3ecd2bd79a0e4e93078da123301dc, type: 3}
+    WeaponCost: 3
