@@ -136,5 +136,9 @@ public class EffectManager : MonoBehaviour
         Debug.Log(EffectNum);
         EffectProcess(PlayEffect, EffectPos, Magnification, Target);
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> fujita3
