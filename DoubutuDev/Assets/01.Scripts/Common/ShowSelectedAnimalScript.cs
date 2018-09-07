@@ -68,7 +68,11 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     {
         Destroy(SelectedAnimal);
         SelectedAnimal = null;
-        StopCoroutine(AnimRoop);
+        if(AnimRoop != null)
+        {
+            StopCoroutine(AnimRoop);
+            AnimRoop = null;
+        }
     }
 
     //アニメーションうんたら
