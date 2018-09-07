@@ -3692,7 +3692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowStationary: 1
   text: {fileID: 992523902}
-  WeaponListPrefab: {fileID: 1118307794312312, guid: 60fcb2d3f46bbda40a667e1d7e1dbc7d,
+  WeaponListPrefab: {fileID: 1102267742615480, guid: 60fcb2d3f46bbda40a667e1d7e1dbc7d,
     type: 2}
   pospos: {x: 0, y: 0, z: 0}
   rectpospos: {x: 0, y: 0, z: 0}
