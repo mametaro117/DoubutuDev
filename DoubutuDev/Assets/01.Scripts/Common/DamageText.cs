@@ -6,6 +6,8 @@ public class DamageText : MonoBehaviour {
 
     [SerializeField]
     private GameObject DamageObject;
+    [SerializeField]
+    private Sprite[] sprite = new Sprite[10];
 
     #region Singleton
 

@@ -99,6 +99,15 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
+    public float GetdamageNum(GameObject attacker, GameObject deffender)
+    {
+        //  ダメージの計算
+        float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack);
+        float finishdamage = damage * TypeCheck(attacker, deffender);
+        switch()
+        return damage;
+    }
+
     //  ダメージの倍率チェック
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {
