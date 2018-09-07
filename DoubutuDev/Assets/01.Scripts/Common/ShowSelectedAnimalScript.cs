@@ -5,25 +5,15 @@ using UnityEngine;
 public class ShowSelectedAnimalScript : MonoBehaviour {
 
     [SerializeField]
-    private GameObject Rabbit;
-    [SerializeField]
-    private GameObject Hukurou;
-    [SerializeField]
-    private GameObject Zou;
-    [SerializeField]
+    private GameObject[] Animals = new GameObject[5];
+
     private GameObject SelectedAnimal;
-    [SerializeField]
     private int AnimalNum;
     private Animalstate S_Animalstate;
     private Status S_Status;
     private AnimalScript S_Animalscript;
-    [SerializeField]
-    private GameObject Rabbit_Anim;
-    [SerializeField]
-    private CharacterController Zou_Anim;
     private CharacterController _Animation;
     private Animator _Animator;
-    [SerializeField]
     private AnimatorStateInfo _animinfo;
     Coroutine AnimRoop;
 
@@ -34,21 +24,7 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             int BoxNum = int.Parse(Box.name.Substring(Box.name.Length - 1));
             WindowChangeScript _Param = GetComponent<WindowChangeScript>();
             AnimalNum = _Param.AnimalAndWeaponList[BoxNum - 1, 0];
-            switch (AnimalNum)
-            {
-                case 0:
-                    SelectedAnimal = Instantiate(Rabbit) as GameObject;
-                    break;
-                case 1:
-                    SelectedAnimal = Instantiate(Hukurou) as GameObject;
-                    break;
-                case 2:
-                    SelectedAnimal = Instantiate(Zou) as GameObject;
-                    break;
-                default:
-                    Debug.Log("なんだお前");
-                    break;
-            }
+            SelectedAnimal = Instantiate(Animals[AnimalNum]) as GameObject;
             S_Animalstate = SelectedAnimal.GetComponent<Animalstate>();
             if (S_Animalstate != null)
             {
@@ -68,12 +44,11 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             RectTransform _rect = SelectedAnimal.AddComponent<RectTransform>();
             _rect.anchoredPosition3D = new Vector3(300, -100, 0);
             SelectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
-            Debug.Log(_rect.sizeDelta);
-            if (SelectedAnimal.transform.Find("HPBer").gameObject != null)
+            if (SelectedAnimal.transform.Find("HPBer") != null)
             {
                 Destroy(SelectedAnimal.transform.Find("HPBer").gameObject);
             }
-            if (SelectedAnimal.transform.Find("SkillBer").gameObject != null)
+            if (SelectedAnimal.transform.Find("SkillBer") != null)
             {
                 Destroy(SelectedAnimal.transform.Find("SkillBer").gameObject);
             }
@@ -93,7 +68,11 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
     {
         Destroy(SelectedAnimal);
         SelectedAnimal = null;
-        StopCoroutine(AnimRoop);
+        if(AnimRoop != null)
+        {
+            StopCoroutine(AnimRoop);
+            AnimRoop = null;
+        }
     }
 
     //アニメーションうんたら
