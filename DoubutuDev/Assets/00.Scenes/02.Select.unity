@@ -288,7 +288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4732724602596136, guid: 9c85e06c7b878e941b87794e2b2fd54f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c85e06c7b878e941b87794e2b2fd54f, type: 2}
@@ -3673,13 +3673,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee380e7c48352e44bace332053cd6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rabbit: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
-  Hukurou: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
-  Zou: {fileID: 1583422546418630, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
-  SelectedAnimal: {fileID: 0}
-  AnimalNum: 0
-  Rabbit_Anim: {fileID: 0}
-  Zou_Anim: {fileID: 0}
+  Animals:
+  - {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
+  - {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+  - {fileID: 1583422546418630, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
+  - {fileID: 1985539877693280, guid: b391e8f4e8131f4488a47109263cb68b, type: 2}
+  - {fileID: 0}
 --- !u!114 &1264757838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4894,7 +4893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1712319140
 GameObject:
