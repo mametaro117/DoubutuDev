@@ -407,14 +407,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1992137432875670}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9777384, w: 0.20982799}
+  m_LocalRotation: {x: -0.0033670245, y: 0.0007225828, z: 0.97773254, w: 0.20982662}
   m_LocalPosition: {x: 0.70000005, y: 0.30612355, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4009878815502072}
   m_Father: {fileID: 4423462043385844}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 155.77501}
+  m_LocalEulerAnglesHint: {x: -0.162, y: -0.36, z: 155.776}
 --- !u!4 &4302329829846840
 Transform:
   m_ObjectHideFlags: 1
@@ -605,8 +605,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879345493208588}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1306178, w: 0.99143285}
-  m_LocalPosition: {x: 0.7610314, y: 0.000000059604645, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13061745, w: 0.99143285}
+  m_LocalPosition: {x: 0.7610315, y: 0.000000049670493, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4770367162775728}
@@ -701,11 +701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feee277c5fea1744cb4c2b19f16f467b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoint: 40
-  SkillPoint: 15
+  HitPoint: 35
+  SkillPoint: 10
   Attack: 5
-  Speed: 10
-  IsSky: 0
+  Speed: 20
   isStun: 0
   weaponType: 2
 --- !u!114 &114150436285057862
@@ -785,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.7610315
+  m_Length: 0.7610317
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4963057246802562}
   m_AttachedIK: {fileID: 0}

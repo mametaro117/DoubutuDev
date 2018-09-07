@@ -1856,9 +1856,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyPrefab:
-  - {fileID: 1198001830514750, guid: b2f80d321ef83a242a2e592ed753454d, type: 2}
-  - {fileID: 1381137573222374, guid: 5613a72c31d841b43a4fbd706708993d, type: 2}
-  - {fileID: 1759853749119096, guid: 0e4bd2e3ca1068645b0ae5338f6a8dab, type: 2}
+  - {fileID: 1172969080770134, guid: 375d018398e5f2f479c3aa473e17f899, type: 2}
+  - {fileID: 1072875633810190, guid: bc17735b15327744bbc3d9e4fa4bb7ec, type: 2}
+  - {fileID: 1969520040841870, guid: 914bbc7f6ac5a7647b979ce9b3be8394, type: 2}
   SpawnPositions:
   - {fileID: 1622114210}
   - {fileID: 1682791029}
@@ -5549,7 +5549,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622114209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.39, y: 4, z: 0}
+  m_LocalPosition: {x: -6.39, y: 3.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1908952321}
@@ -5985,7 +5985,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1682791028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.39, y: 2.3125, z: 0}
+  m_LocalPosition: {x: -6.39, y: 1.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1908952321}

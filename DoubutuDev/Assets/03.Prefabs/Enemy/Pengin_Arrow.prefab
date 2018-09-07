@@ -359,10 +359,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitPoint: 20
-  SkillPoint: 10
+  SkillPoint: 20
   Attack: 2
   Speed: 10
-  IsSky: 0
   isStun: 0
   weaponType: 2
 --- !u!114 &114765613045808046
