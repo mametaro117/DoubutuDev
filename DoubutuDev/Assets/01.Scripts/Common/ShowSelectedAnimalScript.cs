@@ -44,12 +44,11 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             RectTransform _rect = SelectedAnimal.AddComponent<RectTransform>();
             _rect.anchoredPosition3D = new Vector3(300, -100, 0);
             SelectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
-            Debug.Log(SelectedAnimal.transform.Find("HPBer").gameObject);
-            if (SelectedAnimal.transform.Find("HPBer").gameObject != null)
+            if (SelectedAnimal.transform.Find("HPBer") != null)
             {
                 Destroy(SelectedAnimal.transform.Find("HPBer").gameObject);
             }
-            if (SelectedAnimal.transform.Find("SkillBer").gameObject != null)
+            if (SelectedAnimal.transform.Find("SkillBer") != null)
             {
                 Destroy(SelectedAnimal.transform.Find("SkillBer").gameObject);
             }
