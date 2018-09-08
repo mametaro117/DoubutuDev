@@ -102,15 +102,21 @@ public class BattleManager : MonoBehaviour {
     public float GetdamageNum(GameObject attacker, GameObject deffender)
     {
         //  ダメージの計算
-        float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack);
-        float finishdamage = damage * TypeCheck(attacker, deffender);
-        switch()
+        float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack * TypeCheck(attacker, deffender));
+        string damagenum = damage.ToString();
+        Debug.Log(damagenum.Length);
+        /*switch ()
+        {
+            case 0:
+                break;
+        }*/
         return damage;
     }
 
     //  ダメージの倍率チェック
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {
+        GetdamageNum(attacker, deffender);
         float num = 1;
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
         {
