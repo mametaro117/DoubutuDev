@@ -54,6 +54,7 @@ public class DamageText : MonoBehaviour {
 
         obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
         StartCoroutine(DestryText(obj));
+        BattleManager.Instance.GetdamageNum(attacker, deffender);
     }
 
     IEnumerator DestryText(GameObject destryObj)

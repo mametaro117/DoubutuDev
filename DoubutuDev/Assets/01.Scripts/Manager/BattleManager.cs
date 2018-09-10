@@ -101,9 +101,11 @@ public class BattleManager : MonoBehaviour {
 
     public float GetdamageNum(GameObject attacker, GameObject deffender)
     {
-        //  ダメージの計算
+        //  ダメージの値を取得（相性チェック済み）
         float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack * TypeCheck(attacker, deffender));
+        //　stringに変換
         string damagenum = damage.ToString();
+        //　
         Debug.Log(damagenum.Length);
         /*switch ()
         {
