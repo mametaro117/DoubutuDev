@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour {
 
@@ -29,13 +30,11 @@ public class BattleManager : MonoBehaviour {
     #endregion Singleton
 
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
-
     //Inspectorに表示される
     [SerializeField]
     private UnitTable unitTable;
 
     private TimeManager timeManager;
-
     public void Awake()
     {
         if (this != Instance)
@@ -84,6 +83,7 @@ public class BattleManager : MonoBehaviour {
         HitEffect(attacker, deffender);
         //  ダメージの表示
         DamageText.Instance.DiplayText(deffender.transform.position, damage);
+        DamageText.Instance.DiplayTextSprite(damage);
         //  ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
         //  ゲージの割合変化
@@ -99,63 +99,63 @@ public class BattleManager : MonoBehaviour {
         }
     }
 
-    public float GetdamageNum(GameObject attacker, GameObject deffender)
+    /*public float GetdamageNum(GameObject attacker, GameObject deffender)
     {
         //  ダメージの値を取得（相性チェック済み）
         float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack * TypeCheck(attacker, deffender));
         //　stringに変換
         string damagenum = damage.ToString();
-        //　
+        //　桁がいくつか見る
         Debug.Log(damagenum.Length);
+        //   数値と同じsprite画像に置き換える
         /*switch ()
         {
             case 0:
                 break;
-        }*/
+        }
         return damage;
-    }
+    }*/
 
     //  ダメージの倍率チェック
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {
-        GetdamageNum(attacker, deffender);
         float num = 1;
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
         {
             num = 1.5f;
-            Debug.Log("効果抜群！");
+            //Debug.Log("効果抜群！");
             return num;
         }
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
         {
             num = 0.5f;
-            Debug.Log("効果いまひとつ…");
+            //Debug.Log("効果いまひとつ…");
             return num;
         }
 
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
         {
             num = 1.5f;
-            Debug.Log("効果抜群！");
+            //Debug.Log("効果抜群！");
             return num;
         }
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
         {
             num = 0.5f;
-            Debug.Log("効果いまひとつ…");
+            //Debug.Log("効果いまひとつ…");
             return num;
         }
 
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
         {
             num = 1.5f;
-            Debug.Log("効果抜群！");
+            //Debug.Log("効果抜群！");
             return num;
         }
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Shield)
         {
             num = 0.5f;
-            Debug.Log("効果いまひとつ…");
+            //Debug.Log("効果いまひとつ…");
             return num;
         }
         return num;
@@ -181,17 +181,17 @@ public class BattleManager : MonoBehaviour {
         {
             case Status.WeaponType.Sword:
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, Deffender.transform.position, 1, Deffender);
-                Debug.Log("剣");
+                //Debug.Log("剣");
                 break;
 
             case Status.WeaponType.Shield:
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, Deffender.transform.position, 1, Deffender);
-                Debug.Log("盾");
+                //Debug.Log("盾");
                 break;
 
             default:
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Hit, Deffender.transform.position, 1, Deffender);
-                Debug.Log("弓");
+                //Debug.Log("弓");
                 break;
         }
     }

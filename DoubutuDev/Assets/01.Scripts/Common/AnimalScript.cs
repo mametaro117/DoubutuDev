@@ -146,13 +146,13 @@ public class AnimalScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Enemy? = " + isEnemy + "\nName = " + gameObject.transform.name + "\n当たった対象 = " + collision.name);
+        //Debug.Log("Enemy? = " + isEnemy + "\nName = " + gameObject.transform.name + "\n当たった対象 = " + collision.name);
         //  自分が敵かつ触れた対象が動物または動物タワーだったら
         if (isEnemy)
         {
             if (collision.tag == "Animal" || collision.tag == "AnimalTower")
             {
-                Debug.Log("TriggerEnterヒット");
+               // Debug.Log("TriggerEnterヒット");
                 //  要素が含まれていなかったら追加
                 if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
                 {
@@ -379,7 +379,7 @@ public class AnimalScript : MonoBehaviour {
             animator.SetTrigger("Attack");
             animator.ResetTrigger("Walk");
             BattleManager.Instance.Attack(gameObject, EnemyObject);
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
             animator.SetTrigger("Idle");
             //  攻撃状態を解除
