@@ -13,8 +13,8 @@ public class PinchZoom : MonoBehaviour {
     private float _Debug1;
     [SerializeField]
     private float _Debug2;
-    [SerializeField]
-    private float _Debug3;
+    //[SerializeField]
+    //private float _Debug3;
     [SerializeField]
     private GameObject Text1;
     private Text _Text1;
@@ -143,7 +143,6 @@ public class PinchZoom : MonoBehaviour {
         _BGPos.x = _Debug2;
         _BG.transform.localPosition = _BGPos;
         //*/
-        _Debug3 = _BG.transform.position.x;
 
         _BG.transform.position = __Pos;
     }

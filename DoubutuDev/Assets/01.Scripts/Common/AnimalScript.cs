@@ -146,7 +146,7 @@ public class AnimalScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Enemy? = " + isEnemy + "\nName = " + gameObject.transform.name + "\n当たった対象 = " + collision.name);
+        //Debug.Log("Enemy? = " + isEnemy + "\nName = " + gameObject.transform.name + "\n当たった対象 = " + collision.name);
         //  自分が敵かつ触れた対象が動物または動物タワーだったら
         if (isEnemy)
         {

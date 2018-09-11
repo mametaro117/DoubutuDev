@@ -18,6 +18,9 @@ public class AnimalButtonManager : MonoBehaviour {
     [SerializeField]
     private GameObject SelectFrame_ani, SelectFrame_wep;
 
+    [SerializeField]
+    private Sprite sprite;
+
     void Start () {
         ScaleAnimation();
     }
@@ -61,14 +64,37 @@ public class AnimalButtonManager : MonoBehaviour {
     //  押された動物ボタンによって武器のボタンの編成が変化
     public void ApplayWeaponButton(int SelectNum)
     {
-        for (int i = 0; i < 3; i++)
+        //  回転する
+        Sequence seq = DOTween.Sequence();
+        Sequence seq2 = DOTween.Sequence();
+        Sequence seq3 = DOTween.Sequence();
+        seq.Append(WeaponButtons[0].transform.DORotate(new Vector3(0, 90, 0), 0.25f).SetEase(Ease.Linear))
+        .OnComplete(() =>
         {
             //  画像の切り替え
-            WeaponButtons[i].transform.GetChild(0).GetComponent<Image>().sprite = unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, i + 1]].WeaponImage;
-            //  コストの反映
-            WeaponButtons[i].GetComponent<WeaponButtonScript>().SetCost(unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, i + 1]].WeaponCost);
-        }
-
+            WeaponButtons[0].transform.GetChild(0).GetComponent<Image>().sprite = unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, 1]].WeaponImage;
+            ////  コストの反映
+            WeaponButtons[0].GetComponent<WeaponButtonScript>().SetCost(unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, 1]].WeaponCost);
+            WeaponButtons[0].transform.DORotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.Linear);
+        });
+        seq2.Append(WeaponButtons[1].transform.DORotate(new Vector3(0, 90, 0), 0.25f).SetEase(Ease.Linear))
+        .OnComplete(() =>
+        {
+            //  画像の切り替え
+            WeaponButtons[1].transform.GetChild(0).GetComponent<Image>().sprite = unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, 2]].WeaponImage;
+            ////  コストの反映
+            WeaponButtons[1].GetComponent<WeaponButtonScript>().SetCost(unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, 2]].WeaponCost);
+            WeaponButtons[1].transform.DORotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.Linear);
+        });
+        seq3.Append(WeaponButtons[2].transform.DORotate(new Vector3(0, 90, 0), 0.25f).SetEase(Ease.Linear))
+        .OnComplete(() =>
+        {
+            //  画像の切り替え
+            WeaponButtons[2].transform.GetChild(0).GetComponent<Image>().sprite = unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, 3]].WeaponImage;
+            ////  コストの反映
+            WeaponButtons[2].GetComponent<WeaponButtonScript>().SetCost(unitTable.WeaponTable[choiceParamator.SelectParamator[SelectNum, 3]].WeaponCost);
+            WeaponButtons[2].transform.DORotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.Linear);
+        });
     }
 
     public void SelectAnimal(Vector2 pos)
