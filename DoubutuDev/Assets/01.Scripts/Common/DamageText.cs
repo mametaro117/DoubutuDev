@@ -46,18 +46,17 @@ public class DamageText : MonoBehaviour {
     }
 
 
-    public void DiplayText(Vector3 pos, float damage)
+    /*public void DiplayText(Vector3 pos, float damage)
     {
         //  重なり順の変更
         pos.z = -5;
         //  文字生成
         GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
         obj.GetComponent<TextMesh>().text = damage.ToString();
-
         obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
         StartCoroutine(DestryText(obj));
-    }
-    public void DiplayTextSprite(float damagenum)
+    }*/
+    public void DiplayTextSprite(Vector3 pos, float damagenum)
     {
         int damagenum_int = (int)_System.Math.Round(damagenum, 0);
         switch (damagenum_int)
@@ -105,17 +104,16 @@ public class DamageText : MonoBehaviour {
         }
     }
     // ダメージを表示させる関数
-    void DamageNumDisplay(int num)
+    void DamageNumDisplay(int num, Vector3 pos = new Vector3())
     {
         GameObject _damagetextobj = new GameObject("DamageTextObj");
-        _damagetextobj.transform.parent = GameObject.Find("UI_Canvas/DamageTextBox").transform;
-        _damagetextobj.AddComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
-        _damagetextobj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        //_damagetextobj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
-        _damagetextobj.AddComponent<Image>().sprite = sprites[num];
+        _damagetextobj = Instantiate(DamageObject, pos, transform.rotation);
+        _damagetextobj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
+        _damagetextobj.GetComponent<SpriteRenderer>().sprite = sprites[num];
+        //　一定時間で消すコルーチン開始
         StartCoroutine(DestryText(_damagetextobj));
     }
-
+    //　DamageTextを一定の時間で消すコルーチン
     IEnumerator DestryText(GameObject destryObj)
     {
         yield return new WaitForSeconds(0.7f);
