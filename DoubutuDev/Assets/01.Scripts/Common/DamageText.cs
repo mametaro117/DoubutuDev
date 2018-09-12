@@ -47,9 +47,9 @@ public class DamageText : MonoBehaviour {
 
 
     /*public void DiplayText(Vector3 pos, float damage)
-    {
-        //  重なり順の変更
-        pos.z = -5;
+    {//重なり順の変更
+        
+        /os.z = -5;
         //  文字生成
         GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
         obj.GetComponent<TextMesh>().text = damage.ToString();
@@ -62,49 +62,49 @@ public class DamageText : MonoBehaviour {
         switch (damagenum_int)
         {
             case 0:
-                DamageNumDisplay(0);
+                DamageNumDisplay(0, pos);
                 Debug.Log("0");
                 break;
             case 1:
-                DamageNumDisplay(1);
+                DamageNumDisplay(1, pos);
                 Debug.Log("1");
                 break;
             case 2:
-                DamageNumDisplay(2);
+                DamageNumDisplay(2, pos);
                 Debug.Log("2");
                 break;
             case 3:
-                DamageNumDisplay(3);
+                DamageNumDisplay(3, pos);
                 Debug.Log("3");
                 break;
             case 4:
-                DamageNumDisplay(4);
+                DamageNumDisplay(4, pos);
                 Debug.Log("4");
                 break;
             case 5:
-                DamageNumDisplay(5);
+                DamageNumDisplay(5, pos);
                 Debug.Log("5");
                 break;
             case 6:
-                DamageNumDisplay(6);
+                DamageNumDisplay(6, pos);
                 Debug.Log("6");
                 break;
             case 7:
-                DamageNumDisplay(7);
+                DamageNumDisplay(7, pos);
                 Debug.Log("7"); 
                 break;
             case 8:
-                DamageNumDisplay(8);
+                DamageNumDisplay(8, pos);
                 Debug.Log("8");
                 break;
             case 9:
-                DamageNumDisplay(9);
+                DamageNumDisplay(9, pos);
                 Debug.Log("9");
                 break;
         }
     }
     // ダメージを表示させる関数
-    void DamageNumDisplay(int num, Vector3 pos = new Vector3())
+    void DamageNumDisplay(int num, Vector3 pos)
     {
         GameObject _damagetextobj = new GameObject("DamageTextObj");
         _damagetextobj = Instantiate(DamageObject, pos, transform.rotation);

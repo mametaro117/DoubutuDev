@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d3f9716fc38984fa1ab909549dcd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageObject: {fileID: 1582419009068398, guid: 0cbf11f717f653f4fb5dded53d19846f,
+  DamageObject: {fileID: 1271038111307702, guid: 0cbf11f717f653f4fb5dded53d19846f,
     type: 2}
   sprites:
   - {fileID: 21300000, guid: 74da71e173b9a0f4f8a8c21270c36377, type: 3}
