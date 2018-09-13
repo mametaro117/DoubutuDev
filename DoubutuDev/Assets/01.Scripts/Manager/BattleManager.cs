@@ -92,15 +92,11 @@ public class BattleManager : MonoBehaviour
         {
             deffender.GetComponent<Status>().ApplayBer();
         }
-<<<<<<< HEAD
         if (deffender.tag == "AnimalTower" || deffender.tag == "EnemyTower")
         {
             deffender.GetComponent<TowerMater>().TowerDamaged();
         }
-        //  HPが「0」以下になったときは削除
-=======
         //HPが「0」以下になったときは削除
->>>>>>> origin/iwasaki4
         if (deffender.GetComponent<Status>().HitPoint <= 0)
         {
             attacker.GetComponent<AnimalScript>().ResetEnemyObject();

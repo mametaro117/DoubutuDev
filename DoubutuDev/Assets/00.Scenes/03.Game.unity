@@ -1827,6 +1827,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageObject: {fileID: 1853937615045822, guid: d7130e517c6c4d744b9ae96e64fa93e7,
     type: 2}
+  sprites:
+  - {fileID: 21300000, guid: 74da71e173b9a0f4f8a8c21270c36377, type: 3}
+  - {fileID: 21300000, guid: e3f3f15f43cf52243a5dbe3b3052834a, type: 3}
+  - {fileID: 21300000, guid: 2ab1e7feb14d9f640a3f616acaab5319, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &633445036
 MonoBehaviour:
   m_ObjectHideFlags: 0
