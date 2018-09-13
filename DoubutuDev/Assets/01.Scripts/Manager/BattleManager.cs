@@ -83,7 +83,6 @@ public class BattleManager : MonoBehaviour
         //攻撃エフェクトを表示
         HitEffect(attacker, deffender);
         //ダメージの表示
-        //DamageText.Instance.DiplayText(deffender.transform.position, damage);
         DamageText.Instance.DiplayTextSprite(deffender.transform.position, damage);
         //ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));

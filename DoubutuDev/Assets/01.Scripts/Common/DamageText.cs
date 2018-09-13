@@ -104,7 +104,7 @@ public class DamageText : MonoBehaviour {
         }
     }
     // ダメージを表示させる関数
-    void DamageNumDisplay(int num, Vector3 pos)
+    public void DamageNumDisplay(int num, Vector3 pos)
     {
         GameObject _damagetextobj = new GameObject("DamageTextObj");
         _damagetextobj = Instantiate(DamageObject, pos, transform.rotation);
