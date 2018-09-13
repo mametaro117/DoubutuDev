@@ -23,6 +23,8 @@ public class TowerMater : MonoBehaviour {
 
     //  攻撃を受けた時のメーターのアニメーション
     public void TowerDamaged(){
-        TowerBer.transform.parent.transform.DOShakePosition(0.25f, );
+        Vector3 vec3 = TowerBer.transform.parent.transform.position;
+        TowerBer.transform.parent.transform.DOShakePosition(0.25f, 10, 25);
+        TowerBer.transform.parent.transform.position = vec3;
     }
 }
