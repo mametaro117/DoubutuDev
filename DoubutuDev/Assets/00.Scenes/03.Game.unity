@@ -1906,7 +1906,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Debug1: 0
   _Debug2: 0
-  _Debug3: 0
   Text1: {fileID: 0}
   Text2: {fileID: 0}
   Text3: {fileID: 0}
@@ -1934,7 +1933,6 @@ MonoBehaviour:
   - {fileID: 1529121148}
   SelectFrame_ani: {fileID: 1079762269}
   SelectFrame_wep: {fileID: 1992259067}
-  sprite: {fileID: 21300000, guid: 172774604c1bee84185a69041576525b, type: 3}
 --- !u!1 &682676739
 GameObject:
   m_ObjectHideFlags: 0

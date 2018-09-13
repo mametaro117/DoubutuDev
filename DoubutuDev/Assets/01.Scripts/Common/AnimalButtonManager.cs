@@ -17,10 +17,6 @@ public class AnimalButtonManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject SelectFrame_ani, SelectFrame_wep;
-
-    [SerializeField]
-    private Sprite sprite;
-
     void Start () {
         ScaleAnimation();
     }
