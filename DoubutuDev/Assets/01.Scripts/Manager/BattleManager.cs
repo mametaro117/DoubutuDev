@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BattleManager : MonoBehaviour {
+public class BattleManager : MonoBehaviour
+{
 
     #region Singleton
 
@@ -29,13 +31,11 @@ public class BattleManager : MonoBehaviour {
     #endregion Singleton
 
     private List<GameObject> OnFieldUnitsList = new List<GameObject>();
-
     //Inspectorに表示される
     [SerializeField]
     private UnitTable unitTable;
 
     private TimeManager timeManager;
-
     public void Awake()
     {
         if (this != Instance)
@@ -44,9 +44,9 @@ public class BattleManager : MonoBehaviour {
             return;
         }
         DontDestroyOnLoad(this.gameObject);
-        //  タイムをいじる用の参照
-        timeManager = GetComponent<TimeManager>();
-        //  編成情報の反映
+        //タイムをいじる用の参照
+      timeManager = GetComponent<TimeManager>();
+        //編成情報の反映
         GetComponent<AnimalButtonManager>().SetAnimalStatus();
     }
 
@@ -56,7 +56,7 @@ public class BattleManager : MonoBehaviour {
         Debug.Log(obj.name);
     }
 
-    //  ユニットの破棄、タワーだった場合の処理などを書く予定
+    //ユニットの破棄、タワーだった場合の処理などを書く予定
     void DeathUnit(GameObject obj)
     {
         OnFieldUnitsList.Remove(obj);
@@ -73,37 +73,41 @@ public class BattleManager : MonoBehaviour {
             timeManager.GameFaild();
         }
     }
-    
+
     public void Attack(GameObject attacker, GameObject deffender)
     {
-        //  ダメージの計算
+        //ダメージの計算
         float damage = Mathf.Ceil(attacker.GetComponent<Status>().Attack * TypeCheck(attacker, deffender));
-        //  攻撃される側のHPを減らす
+        //攻撃される側のHPを減らす
         deffender.GetComponent<Status>().HitPoint -= damage;
-        //  攻撃エフェクトを表示
+        //攻撃エフェクトを表示
         HitEffect(attacker, deffender);
-        //  ダメージの表示
-        DamageText.Instance.DiplayText(deffender.transform.position, damage);
-        //  ヒット時のサウンド再生
+        //ダメージの表示
+        //DamageText.Instance.DiplayText(deffender.transform.position, damage);
+        DamageText.Instance.DiplayTextSprite(deffender.transform.position, damage);
+        //ヒット時のサウンド再生
         AudioManager.Instance.PlaySe(HitSound(attacker, deffender));
-        //  ゲージの割合変化
+        //ゲージの割合変化
         if (deffender.tag == "Enemy" || deffender.tag == "Animal")
         {
             deffender.GetComponent<Status>().ApplayBer();
         }
+<<<<<<< HEAD
         if (deffender.tag == "AnimalTower" || deffender.tag == "EnemyTower")
         {
             deffender.GetComponent<TowerMater>().TowerDamaged();
         }
         //  HPが「0」以下になったときは削除
+=======
+        //HPが「0」以下になったときは削除
+>>>>>>> origin/iwasaki4
         if (deffender.GetComponent<Status>().HitPoint <= 0)
         {
             attacker.GetComponent<AnimalScript>().ResetEnemyObject();
             DeathUnit(deffender);
         }
     }
-
-    //  ダメージの倍率チェック
+    //ダメージの倍率チェック
     public float TypeCheck(GameObject attacker, GameObject deffender)
     {
         float num = 1;
@@ -148,7 +152,7 @@ public class BattleManager : MonoBehaviour {
         return num;
     }
 
-    //  鳴らす音の判定
+    //鳴らす音の判定
     private int HitSound(GameObject attacker, GameObject deffender)
     {
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Sword && deffender.GetComponent<Status>().weaponType != Status.WeaponType.Tower)

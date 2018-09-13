@@ -169,10 +169,10 @@ public class CostScript : MonoBehaviour {
         {
             if(isCorRunning_AnimalCost)
             {
-                Debug.Log("AnimalCostコルーチンの内容を変更しました");
+              //  Debug.Log("AnimalCostコルーチンの内容を変更しました");
                 Time_AnimalCost = CorTime;
                 Diff_AnimalCost = (AnimalCostInt - Cor_CostPoint_AnimalCost) / Time_AnimalCost;
-                Debug.Log(Diff_AnimalCost);
+              //  Debug.Log(Diff_AnimalCost);
             }
             else
             {
@@ -185,10 +185,10 @@ public class CostScript : MonoBehaviour {
         {
             if (isCorRunning_WeaponCost)
             {
-                Debug.Log("WeaponCostコルーチンの内容を変更しました");
+               // Debug.Log("WeaponCostコルーチンの内容を変更しました");
                 Time_WeaponCost = CorTime;
                 Diff_WeaponCost = (WeaponCostInt - Cor_CostPoint_WeaponCost) / Time_WeaponCost;
-                Debug.Log(Diff_WeaponCost);
+                //Debug.Log(Diff_WeaponCost);
             }
             else
             {
@@ -222,7 +222,7 @@ public class CostScript : MonoBehaviour {
             yield return null;
         }
         StartCoroutine(Cor_ShakeAnimalCost(Diff_AnimalCost));
-        isCorRunning_AnimalCost = false;
+       // isCorRunning_AnimalCost = false;
         //Debug.Log("EndCol_AnimalCost");
         yield break;
     }

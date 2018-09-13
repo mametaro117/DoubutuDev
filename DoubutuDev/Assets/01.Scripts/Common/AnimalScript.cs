@@ -152,7 +152,7 @@ public class AnimalScript : MonoBehaviour {
         {
             if (collision.tag == "Animal" || collision.tag == "AnimalTower")
             {
-                Debug.Log("TriggerEnterヒット");
+               // Debug.Log("TriggerEnterヒット");
                 //  要素が含まれていなかったら追加
                 if (!EnemyObjects.Contains(collision.gameObject) && EnemyObject != collision.gameObject)
                 {
@@ -379,7 +379,7 @@ public class AnimalScript : MonoBehaviour {
             animator.SetTrigger("Attack");
             animator.ResetTrigger("Walk");
             BattleManager.Instance.Attack(gameObject, EnemyObject);
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             yield return new WaitForSeconds(1f);
             animator.SetTrigger("Idle");
             //  攻撃状態を解除
