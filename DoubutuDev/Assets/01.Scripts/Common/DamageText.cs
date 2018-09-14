@@ -45,7 +45,6 @@ public class DamageText : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
-
     /*public void DiplayText(Vector3 pos, float damage)
     {//重なり順の変更
         
