@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using _System = System;
 
 public class DamageText : MonoBehaviour {
 
     [SerializeField]
     private GameObject DamageObject;
+    // 0～9のSprite画像を格納する変数
     [SerializeField]
     private Sprite[] sprites = new Sprite[10];
 
@@ -44,78 +44,62 @@ public class DamageText : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
     }
-    /*public void DiplayText(Vector3 pos, float damage)
-    {//重なり順の変更
-        
-        /os.z = -5;
-        //  文字生成
-        GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
-        obj.GetComponent<TextMesh>().text = damage.ToString();
-        obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
-        StartCoroutine(DestryText(obj));
-    }*/
+
+    // 相性計算されたダメージの数値をSpriteの画像を適用して表示する
     public void DiplayTextSprite(Vector3 pos, float damagenum)
     {
         // 値の切り捨て
         int damagenum_int = (int)_System.Math.Round(damagenum, 0);
+        //　switch文でダメージの値によって画像を表示する
         switch (damagenum_int)
         {
             case 0:
                 DamageNumDisplay(0, pos);
-                Debug.Log("0");
                 break;
             case 1:
                 DamageNumDisplay(1, pos);
-                Debug.Log("1");
                 break;
             case 2:
                 DamageNumDisplay(2, pos);
-                Debug.Log("2");
                 break;
             case 3:
                 DamageNumDisplay(3, pos);
-                Debug.Log("3");
                 break;
             case 4:
                 DamageNumDisplay(4, pos);
-                Debug.Log("4");
                 break;
             case 5:
                 DamageNumDisplay(5, pos);
-                Debug.Log("5");
                 break;
             case 6:
                 DamageNumDisplay(6, pos);
-                Debug.Log("6");
                 break;
             case 7:
                 DamageNumDisplay(7, pos);
-                Debug.Log("7"); 
                 break;
             case 8:
                 DamageNumDisplay(8, pos);
-                Debug.Log("8");
                 break;
             case 9:
                 DamageNumDisplay(9, pos);
-                Debug.Log("9");
                 break;
         }
     }
     // ダメージを表示させる関数
     void DamageNumDisplay(int num, Vector3 pos)
     {
-        //　
+        //　変数に格納
         GameObject _damagetextobj = new GameObject("DamageTextObj");
-        //　
+        //　数値を表示する
         _damagetextobj = Instantiate(DamageObject, pos, transform.rotation);
-        //　
+        //　RigidbodyにAddForceする
         _damagetextobj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
-        //　
+        //　SpriteRendererのSpriteにspritesに格納してある画像を読み込む
         _damagetextobj.GetComponent<SpriteRenderer>().sprite = sprites[num];
         //　一定時間で消すコルーチン開始
         StartCoroutine(DestryText(_damagetextobj));
     }
+
     //　DamageTextを一定の時間で消すコルーチン
     IEnumerator DestryText(GameObject destryObj)
     {
