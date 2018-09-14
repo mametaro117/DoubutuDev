@@ -44,8 +44,6 @@ public class DamageText : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
     }
-
-
     /*public void DiplayText(Vector3 pos, float damage)
     {//重なり順の変更
         
@@ -58,6 +56,7 @@ public class DamageText : MonoBehaviour {
     }*/
     public void DiplayTextSprite(Vector3 pos, float damagenum)
     {
+        // 値の切り捨て
         int damagenum_int = (int)_System.Math.Round(damagenum, 0);
         switch (damagenum_int)
         {
@@ -106,9 +105,13 @@ public class DamageText : MonoBehaviour {
     // ダメージを表示させる関数
     void DamageNumDisplay(int num, Vector3 pos)
     {
+        //　
         GameObject _damagetextobj = new GameObject("DamageTextObj");
+        //　
         _damagetextobj = Instantiate(DamageObject, pos, transform.rotation);
+        //　
         _damagetextobj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
+        //　
         _damagetextobj.GetComponent<SpriteRenderer>().sprite = sprites[num];
         //　一定時間で消すコルーチン開始
         StartCoroutine(DestryText(_damagetextobj));
