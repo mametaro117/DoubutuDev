@@ -4,88 +4,84 @@ using UnityEngine;
 
 public class ShowSelectedAnimalScript : MonoBehaviour {
 
+    // 変数エリア
     [SerializeField]
-    private GameObject[] Animals = new GameObject[5];
+    private GameObject[] animals = new GameObject[5];   // Prefabの動物を入れておく
+    private GameObject _selectedAnimal;                 // 武器選択中の動物
+    private Animator _select_Animator;                  // Animator
+    private Coroutine cor_AnimRoop;                     // ループ用コルーチン
 
-    private GameObject SelectedAnimal;
-    private int AnimalNum;
-    private Animalstate S_Animalstate;
-    private Status S_Status;
-    private AnimalScript S_Animalscript;
-    private CharacterController _Animation;
-    private Animator _Animator;
-    private AnimatorStateInfo _animinfo;
-    Coroutine AnimRoop;
-
-    public void ShowAnimal(GameObject Box)
+    public void ShowAnimal(GameObject box)              // 武器選択中の動物を表示する
     {
-        if(!GetComponent<WindowChangeScript>().Equip_Changing && GetComponent<WindowChangeScript>().WindowStationary)
+        if(!GetComponent<WindowChangeScript>().Equip_Changing && 
+            GetComponent<WindowChangeScript>().WindowStationary)
         {
-            int BoxNum = int.Parse(Box.name.Substring(Box.name.Length - 1));
-            WindowChangeScript _Param = GetComponent<WindowChangeScript>();
-            AnimalNum = _Param.AnimalAndWeaponList[BoxNum - 1, 0];
-            SelectedAnimal = Instantiate(Animals[AnimalNum]) as GameObject;
-            S_Animalstate = SelectedAnimal.GetComponent<Animalstate>();
-            if (S_Animalstate != null)
+            // _selectedAnimalに表示する動物のPrefabを入れる
+            int boxNum = int.Parse(box.name.Substring(box.name.Length - 1));
+            WindowChangeScript param = GetComponent<WindowChangeScript>();
+            int animalNum = param.AnimalAndWeaponList[boxNum - 1, 0];
+            _selectedAnimal = Instantiate(animals[animalNum]) as GameObject;
+
+            // 不必要な物を削除していく
+            Animalstate select_AnimalState = _selectedAnimal.GetComponent<Animalstate>();
+            if (select_AnimalState != null)
             {
-                S_Animalstate.enabled = !S_Animalstate.enabled;
+                select_AnimalState.enabled = !select_AnimalState.enabled;
             }
-            S_Status = SelectedAnimal.GetComponent<Status>();
-            if (S_Status != null)
+            Status select_Status = _selectedAnimal.GetComponent<Status>();
+            if (select_Status != null)
             {
-                S_Status.enabled = !S_Status.enabled;
+                select_Status.enabled = !select_Status.enabled;
             }
-            S_Animalscript = SelectedAnimal.GetComponent<AnimalScript>();
-            if (S_Animalscript != null)
+            AnimalScript serect_Animalscript = _selectedAnimal.GetComponent<AnimalScript>();
+            if (serect_Animalscript != null)
             {
-                S_Animalscript.enabled = !S_Animalscript.enabled;
+                serect_Animalscript.enabled = !serect_Animalscript.enabled;
             }
-            SelectedAnimal.transform.SetParent(GameObject.Find("WeaponSelectWindows2").transform);
-            RectTransform _rect = SelectedAnimal.AddComponent<RectTransform>();
+            if (_selectedAnimal.transform.Find("HPBer") != null)
+            {
+                Destroy(_selectedAnimal.transform.Find("HPBer").gameObject);
+            }
+            if (_selectedAnimal.transform.Find("SkillBer") != null)
+            {
+                Destroy(_selectedAnimal.transform.Find("SkillBer").gameObject);
+            }
+
+            // 表示する時の体裁
+            _selectedAnimal.transform.SetParent(GameObject.Find("WeaponSelectWindows2").transform);
+            RectTransform _rect = _selectedAnimal.AddComponent<RectTransform>();
             _rect.anchoredPosition3D = new Vector3(300, -100, 0);
-            SelectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
-            if (SelectedAnimal.transform.Find("HPBer") != null)
+            _selectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
+
+            // アニメーターのコルーチンを起動
+            if (_selectedAnimal.GetComponent<Animator>() != null)
             {
-                Destroy(SelectedAnimal.transform.Find("HPBer").gameObject);
-            }
-            if (SelectedAnimal.transform.Find("SkillBer") != null)
-            {
-                Destroy(SelectedAnimal.transform.Find("SkillBer").gameObject);
-            }
-            if (SelectedAnimal.GetComponent<Animator>() != null)
-            {
-                _Animator = SelectedAnimal.GetComponent<Animator>();
-                Debug.Log(_Animator);
-                _Animator.SetTrigger("Attack");
-                _animinfo = _Animator.GetCurrentAnimatorStateInfo(0);
-                Debug.Log("<color=red>" + _animinfo.length + "</color>");
-                AnimRoop = StartCoroutine(Cor_Anim());
+                _select_Animator = _selectedAnimal.GetComponent<Animator>();
+                _select_Animator.SetTrigger("Attack");
+                cor_AnimRoop = StartCoroutine(Cor_Anim());
             }
         }
     }
 
-    public void DestroyAnimal()
+    IEnumerator Cor_Anim()          // コルーチンでアニメーションをループさせる
     {
-        Destroy(SelectedAnimal);
-        SelectedAnimal = null;
-        if(AnimRoop != null)
-        {
-            StopCoroutine(AnimRoop);
-            AnimRoop = null;
-        }
-    }
-
-    //アニメーションうんたら
-    IEnumerator Cor_Anim()
-    {
-        Debug.Log("Start");
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(1f);
-            _Animator.SetTrigger("Walk");
+            _select_Animator.SetTrigger("Walk");
             yield return new WaitForSeconds(Random.Range(3f, 5f));
-            _Animator.SetTrigger("Attack");
-            Debug.Log("<Color=green>RoopCor</color>");
+            _select_Animator.SetTrigger("Attack");
+        }
+    }
+
+    public void DestroyAnimal()     // 武器選択終了時に動物を削除する
+    {
+        Destroy(_selectedAnimal);
+        _selectedAnimal = null;
+        if(cor_AnimRoop != null)
+        {
+            StopCoroutine(cor_AnimRoop);
+            cor_AnimRoop = null;
         }
     }
 }

@@ -3673,10 +3673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee380e7c48352e44bace332053cd6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animals:
-  - {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
-  - {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
-  - {fileID: 1583422546418630, guid: 8614bb50c9f84ea43b98ba55b63d7a88, type: 2}
+  animals:
+  - {fileID: 1458457157907598, guid: 425cafb4f3ce2294fab758d9d01dfd1b, type: 2}
+  - {fileID: 1305135397539998, guid: 808044676f899034ebf50a38d347311f, type: 2}
+  - {fileID: 1301893166087958, guid: 41571abb2c0107844ac45b24347336bb, type: 2}
   - {fileID: 1985539877693280, guid: b391e8f4e8131f4488a47109263cb68b, type: 2}
   - {fileID: 0}
 --- !u!114 &1264757838
