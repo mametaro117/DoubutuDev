@@ -128,21 +128,6 @@ public class PinchZoom : MonoBehaviour {
         float _Scale = 20f / camera.orthographicSize;
         _BG.GetComponent<RectTransform>().localScale = new Vector3(_Scale, _Scale, _Scale);
 
-        /*
-        Vector3 _BGPos = _BG.transform.position;
-        _BGPos.x = _Debug2 * 0.5f;
-        _BG.transform.position = _BGPos;
-        //*/
-        /*
-        Vector3 _BGPos = _BG.GetComponent<RectTransform>().anchoredPosition3D;
-        _BGPos.x = _Debug2 * -100;
-        _BG.GetComponent<RectTransform>().anchoredPosition3D = _BGPos;
-        //*/
-        /*
-        Vector3 _BGPos = _BG.transform.position;
-        _BGPos.x = _Debug2;
-        _BG.transform.localPosition = _BGPos;
-        //*/
         _Debug3 = _BG.transform.position.x;
 
         _BG.transform.position = __Pos;

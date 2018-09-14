@@ -40,8 +40,7 @@ public class Status : MonoBehaviour {
             ApplayBer();
         }
     }
-
-    //  
+    
     public void SetAllStatus(float HP,int ATK, float SPD)
     {
         HitPoint = HP;

@@ -8,16 +8,5 @@ public class DebugScript : MonoBehaviour {
     public bool Debug = false;
     
     public UnitTable unitTable;
-
     
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

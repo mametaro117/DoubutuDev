@@ -2,18 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class SpawnManager : MonoBehaviour {
-
+public class SpawnManager : MonoBehaviour
+{
     private CostScript costScript;
 
     [SerializeField]
     private GameObject CostErrorImage;
     [SerializeField]
     private GameObject ChoiceErrorImage;
-
     [SerializeField]
     private GameObject[] units = new GameObject[8];
 
@@ -21,7 +18,6 @@ public class SpawnManager : MonoBehaviour {
     {
         costScript = GameObject.FindObjectOfType<CostScript>();
     }
-
     public void ClickGround()
     {
         //  どうぶつボタンと武器ボタンが押されていれば
@@ -56,14 +52,7 @@ public class SpawnManager : MonoBehaviour {
             StartCoroutine(FadeChoiceErrorImage());
             Debug.Log("ボタン選んでないよ");
         }
-            
     }
-
-    public void DragGround()
-    {
-
-    }
-
     //  選ばれた動物編成で配列にセット
     public void SetAnimalsPrefab(GameObject[] _animals)
     {
@@ -92,7 +81,6 @@ public class SpawnManager : MonoBehaviour {
         }
         yield break;
     }
-
     IEnumerator FadeChoiceErrorImage()
     {
         if (!isFadeChoiceError)

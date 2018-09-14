@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using _System = System;
 
-public class DamageText : MonoBehaviour {
-
+public class DamageText : MonoBehaviour
+{
     [SerializeField]
     private GameObject DamageObject;
     // 0～9のSprite画像を格納する変数
@@ -44,7 +44,6 @@ public class DamageText : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
     }
-
     // 相性計算されたダメージの数値をSpriteの画像を適用して表示する
     public void DiplayTextSprite(Vector3 pos, float damagenum)
     {
@@ -99,7 +98,6 @@ public class DamageText : MonoBehaviour {
         //　一定時間で消すコルーチン開始
         StartCoroutine(DestryText(_damagetextobj));
     }
-
     //　DamageTextを一定の時間で消すコルーチン
     IEnumerator DestryText(GameObject destryObj)
     {

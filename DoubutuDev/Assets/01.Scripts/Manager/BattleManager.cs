@@ -48,13 +48,11 @@ public class BattleManager : MonoBehaviour
         //編成情報の反映
         GetComponent<AnimalButtonManager>().SetAnimalStatus();
     }
-
     public void AddFieldUnit(GameObject obj)
     {
         OnFieldUnitsList.Add(obj);
         Debug.Log(obj.name);
     }
-
     //ユニットの破棄、タワーだった場合の処理などを書く予定
     void DeathUnit(GameObject obj)
     {
@@ -72,7 +70,6 @@ public class BattleManager : MonoBehaviour
             timeManager.GameFaild();
         }
     }
-
     public void Attack(GameObject attacker, GameObject deffender)
     {
         //ダメージの計算
@@ -113,7 +110,6 @@ public class BattleManager : MonoBehaviour
             Debug.Log("効果いまひとつ…");
             return num;
         }
-
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Shield && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Arrow)
         {
             num = 1.5f;
@@ -126,7 +122,6 @@ public class BattleManager : MonoBehaviour
             Debug.Log("効果いまひとつ…");
             return num;
         }
-
         if (attacker.GetComponent<Status>().weaponType == Status.WeaponType.Arrow && deffender.GetComponent<Status>().weaponType == Status.WeaponType.Sword)
         {
             num = 1.5f;
@@ -141,7 +136,6 @@ public class BattleManager : MonoBehaviour
         }
         return num;
     }
-
     //鳴らす音の判定
     private int HitSound(GameObject attacker, GameObject deffender)
     {
@@ -155,7 +149,6 @@ public class BattleManager : MonoBehaviour
             return (int)AudioManager.SelistName.KnockBack;
         return 0;
     }
-
     private void HitEffect(GameObject Attacker, GameObject Deffender)
     {
         switch (Attacker.GetComponent<Status>().weaponType)
@@ -164,19 +157,16 @@ public class BattleManager : MonoBehaviour
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, Deffender.transform.position, 1, Deffender);
                 Debug.Log("剣");
                 break;
-
             case Status.WeaponType.Shield:
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Smoke, Deffender.transform.position, 1, Deffender);
                 Debug.Log("盾");
                 break;
-
             default:
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Hit, Deffender.transform.position, 1, Deffender);
                 Debug.Log("弓");
                 break;
         }
     }
-
     IEnumerator DelayDestry(GameObject deleteObj)
     {
         yield return new WaitForSeconds(0.1f);

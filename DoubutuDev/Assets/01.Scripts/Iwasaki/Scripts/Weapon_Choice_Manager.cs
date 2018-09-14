@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System;
 
 public class Weapon_Choice_Manager : MonoBehaviour
 {
@@ -22,15 +20,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
     {
         WindowChangeScript _Window = GameObject.Find("ClickManager").GetComponent<WindowChangeScript>();
         WeaponListsActive = new bool[10];
-        /*
-        //_ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore;
-        //_ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore;Clone()
-        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponBefore, 0);
-        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponAfter, 0);
-        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponBefore, 3);
-        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponAfter, 3);
-        */
-        //やっぱCloneだね
         _ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore.Clone() as int[];
         _ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore.Clone() as int[];
         for (int i = 0; i < 3; i++)
@@ -61,7 +50,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
             Parent.transform.GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = _sprite;
         }
     }
-
     public void CancelMove()
     {
         for (int i = 0; i < 3; i++)
@@ -69,7 +57,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
             transform.GetChild(_ActiveBoxWeaponAfter[i] + 1).GetChild(0).SetSiblingIndex(1);
         }
     }
-
     public void EraseToolTip()
     {
         GameObject Manager = GameObject.Find("ToolTipsManager");
