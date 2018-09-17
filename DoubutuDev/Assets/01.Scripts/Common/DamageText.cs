@@ -49,25 +49,23 @@ public class DamageText : MonoBehaviour
     {
         // 値の切り捨て
         int damagenum_int = (int)_System.Math.Round(damagenum, 0);
-
-        if (damagenum < 10)
-        {
+        
             //　switch文でダメージの値によって画像を表示する
             switch (damagenum_int)
-            {
-                case 0:
-                    DamageNumDisplay(0, pos);
-                    break;
-                case 1:
-                    DamageNumDisplay(1, pos);
-                    break;
-                case 2:
-                    DamageNumDisplay(2, pos);
-                    break;
-                case 3:
-                    DamageNumDisplay(3, pos);
-                    break;
-                case 4:
+        {
+            case 0:
+                DamageNumDisplay(0, pos);
+                break;
+            case 1:
+                DamageNumDisplay(1, pos);
+                break;
+            case 2:
+                DamageNumDisplay(2, pos);
+                break;
+            case 3:
+                DamageNumDisplay(3, pos);
+                break;
+            case 4:
                     DamageNumDisplay(4, pos);
                     break;
                 case 5:
@@ -85,14 +83,7 @@ public class DamageText : MonoBehaviour
                 case 9:
                     DamageNumDisplay(9, pos);
                     break;
-            }
         }
-        else if (damagenum > 10)
-        {
-            Debug.Log(damagenum);
-
-        }
-        
     }
     // ダメージを表示させる関数
     void DamageNumDisplay(int num, Vector3 pos)
