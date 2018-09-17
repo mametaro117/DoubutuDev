@@ -49,40 +49,50 @@ public class DamageText : MonoBehaviour
     {
         // 値の切り捨て
         int damagenum_int = (int)_System.Math.Round(damagenum, 0);
-        //　switch文でダメージの値によって画像を表示する
-        switch (damagenum_int)
+
+        if (damagenum < 10)
         {
-            case 0:
-                DamageNumDisplay(0, pos);
-                break;
-            case 1:
-                DamageNumDisplay(1, pos);
-                break;
-            case 2:
-                DamageNumDisplay(2, pos);
-                break;
-            case 3:
-                DamageNumDisplay(3, pos);
-                break;
-            case 4:
-                DamageNumDisplay(4, pos);
-                break;
-            case 5:
-                DamageNumDisplay(5, pos);
-                break;
-            case 6:
-                DamageNumDisplay(6, pos);
-                break;
-            case 7:
-                DamageNumDisplay(7, pos);
-                break;
-            case 8:
-                DamageNumDisplay(8, pos);
-                break;
-            case 9:
-                DamageNumDisplay(9, pos);
-                break;
+            //　switch文でダメージの値によって画像を表示する
+            switch (damagenum_int)
+            {
+                case 0:
+                    DamageNumDisplay(0, pos);
+                    break;
+                case 1:
+                    DamageNumDisplay(1, pos);
+                    break;
+                case 2:
+                    DamageNumDisplay(2, pos);
+                    break;
+                case 3:
+                    DamageNumDisplay(3, pos);
+                    break;
+                case 4:
+                    DamageNumDisplay(4, pos);
+                    break;
+                case 5:
+                    DamageNumDisplay(5, pos);
+                    break;
+                case 6:
+                    DamageNumDisplay(6, pos);
+                    break;
+                case 7:
+                    DamageNumDisplay(7, pos);
+                    break;
+                case 8:
+                    DamageNumDisplay(8, pos);
+                    break;
+                case 9:
+                    DamageNumDisplay(9, pos);
+                    break;
+            }
         }
+        else if (damagenum > 10)
+        {
+            Debug.Log(damagenum);
+
+        }
+        
     }
     // ダメージを表示させる関数
     void DamageNumDisplay(int num, Vector3 pos)
