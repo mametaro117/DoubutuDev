@@ -10,16 +10,6 @@ public class ToolTipsManager : MonoBehaviour
     [SerializeField]
     private GameObject AttentionToolTips;
     [SerializeField]
-    private GameObject Animal_Obj_Rabbit;
-    [SerializeField]
-    private GameObject Animal_Obj_Owl;
-    [SerializeField]
-    private GameObject Animal_Obj_Elephant;
-    [SerializeField]
-    private GameObject Animal_Obj_Penguin;
-    [SerializeField]
-    private Transform parent;
-    [SerializeField]
     GameObject _Canvas;
     private GameObject ToolTip = null;
     private GameObject AttentionToolTip = null;
@@ -44,12 +34,7 @@ public class ToolTipsManager : MonoBehaviour
     private string name_Sec = "名前:";
     private string tokusei_Sec = "特性:";
     private string speed_Sec = "スピード:";
-
-    private Vector3 pos;
-    private RaycastHit2D hit;
-
-
-
+    
     //ツールチップを消す
     public void EraseToolTips()
     {
@@ -57,7 +42,6 @@ public class ToolTipsManager : MonoBehaviour
         Destroy(ToolTip);
         //値をnullに戻す
         ToolTip = null;
-        //Debug.Log("<color=red>Erase</color>");
     }
 
     public void ToolTips_Animal(GameObject obj)
@@ -129,8 +113,6 @@ public class ToolTipsManager : MonoBehaviour
             RectTransform _AttentionRect = AttentionToolTip.GetComponent<RectTransform>();
             _AttentionRect.localScale = new Vector3(1, 1, 1);
             _AttentionRect.anchoredPosition3D = new Vector3(0, 0, 0);
-            //テキストいじるならココ
-            //ToolTip.transform.GetChild(0).GetComponent<Text>().text = "Text";
             _alpha = 1;
             _CanvasGroup.alpha = _alpha;
             //コルーチン便利かよ!!!!!
@@ -159,5 +141,4 @@ public class ToolTipsManager : MonoBehaviour
         Destroy(AttentionToolTip);
         AttentionToolTip = null;
     }
-
 }
