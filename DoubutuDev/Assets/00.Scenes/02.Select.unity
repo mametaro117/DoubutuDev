@@ -4051,25 +4051,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _RabbitPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1713626254103234, guid: 1901f465bde1f964a8eaae84ea83b577, type: 2}
+  - {fileID: 1147606725572640, guid: 1d510b0433dce3a4688d9a021422c655, type: 2}
+  - {fileID: 1812357956419578, guid: a44db81812866794ca55c3b1932ebecb, type: 2}
+  - {fileID: 1812357956419578, guid: a44db81812866794ca55c3b1932ebecb, type: 2}
   _OwlPrefabs:
   - {fileID: 1301072040851520, guid: 808044676f899034ebf50a38d347311f, type: 2}
   - {fileID: 1754448479245682, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
   - {fileID: 1355022665996494, guid: 5d14d1340f174d34d93b5972bea41c96, type: 2}
-  - {fileID: 0}
+  - {fileID: 1754448479245682, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
   _ZouPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1925265830046766, guid: 68886a1633e791d44a725cc052004b65, type: 2}
+  - {fileID: 1133782220268598, guid: 990963629a1baed49b309667c783c8f4, type: 2}
+  - {fileID: 1933026484501556, guid: e22bb25c6b8977d4eb8870870ad036d0, type: 2}
+  - {fileID: 1925265830046766, guid: 424df2cd8fd9da54789f5a7738e39672, type: 2}
   _PenguinPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1170524612092956, guid: afbdc312a4781904b94f7379e4518bc0, type: 2}
+  - {fileID: 1672717221959680, guid: 0399532cec3f7514f993b352dd039776, type: 2}
+  - {fileID: 1618180484844922, guid: bdb06d59ccab9524cb80ac00dffbf46d, type: 2}
+  - {fileID: 1618180484844922, guid: bdb06d59ccab9524cb80ac00dffbf46d, type: 2}
   spawnPoint: {fileID: 763370311}
 --- !u!114 &1264757838
 MonoBehaviour:

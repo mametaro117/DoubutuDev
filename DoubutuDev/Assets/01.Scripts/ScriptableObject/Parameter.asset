@@ -83,22 +83,22 @@ MonoBehaviour:
       AttackSpeed: 1
     - Type: 1
       Animal: {fileID: 1133782220268598, guid: 990963629a1baed49b309667c783c8f4, type: 2}
-      HP: 0
-      Power: 0
-      MoveSpeed: 0
-      AttackSpeed: 0
+      HP: 70
+      Power: 2
+      MoveSpeed: 3
+      AttackSpeed: 1
     - Type: 2
       Animal: {fileID: 1933026484501556, guid: e22bb25c6b8977d4eb8870870ad036d0, type: 2}
-      HP: 0
-      Power: 0
-      MoveSpeed: 0
-      AttackSpeed: 0
+      HP: 40
+      Power: 5
+      MoveSpeed: 3
+      AttackSpeed: 1
     - Type: 3
-      Animal: {fileID: 0}
-      HP: 0
-      Power: 0
-      MoveSpeed: 0
-      AttackSpeed: 0
+      Animal: {fileID: 1925265830046766, guid: 424df2cd8fd9da54789f5a7738e39672, type: 2}
+      HP: 40
+      Power: 7
+      MoveSpeed: 2
+      AttackSpeed: 1
   - animalName: 3
     AnimalImage: {fileID: 21300000, guid: db4f7388586a16246894eab278b23e87, type: 3}
     AnimalCost: 1
