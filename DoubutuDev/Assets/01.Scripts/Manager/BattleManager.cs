@@ -87,6 +87,10 @@ public class BattleManager : MonoBehaviour
         {
             deffender.GetComponent<Status>().ApplayBer();
         }
+        if (deffender.tag == "AnimalTower" || deffender.tag == "EnemyTower")
+        {
+            deffender.GetComponent<TowerMater>().TowerDamaged();
+        }
         //HPが「0」以下になったときは削除
         if (deffender.GetComponent<Status>().HitPoint <= 0)
         {
