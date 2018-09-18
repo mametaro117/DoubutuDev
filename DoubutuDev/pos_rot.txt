@@ -1,0 +1,7 @@
+Lpos.x	0.6907312
+Lpos.y	-0.3175764
+Lrot.z	200
+
+Rpos.x	0.7
+Rpos.y	0.3061236
+Rrot.z	155.776
