@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 36556ce0de18ce8409db343ca75c89c7
-timeCreated: 1536294563
+timeCreated: 1537240551
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hukurou02_2_face
+    21300000: hukurou02_face
     21300002: hukurou02_2_L_Leg
-    21300004: hukurou02_2_Body
+    21300004: hukurou02_Body
     21300006: hukurou02_2_3
-    21300008: hukurou02_2_4
+    21300008: hukurou02_4
     21300010: hukurou02_2_R_leg
     21300012: hukurou02_2_L_leg
   serializedVersion: 4
@@ -93,7 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hukurou02_2_face
+      name: hukurou02_face
       rect:
         serializedVersion: 2
         x: 243
@@ -101,7 +101,7 @@ TextureImporter:
         width: 117
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -114,12 +114,12 @@ TextureImporter:
         width: 67
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hukurou02_2_Body
+      name: hukurou02_Body
       rect:
         serializedVersion: 2
         x: 261
@@ -127,7 +127,7 @@ TextureImporter:
         width: 124
         height: 135
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -140,12 +140,12 @@ TextureImporter:
         width: 87
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hukurou02_2_4
+      name: hukurou02_4
       rect:
         serializedVersion: 2
         x: 63
@@ -153,7 +153,7 @@ TextureImporter:
         width: 111
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -166,7 +166,7 @@ TextureImporter:
         width: 41
         height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -179,7 +179,7 @@ TextureImporter:
         width: 45
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

@@ -4,6 +4,4 @@ Lrot.z	200
 
 Rpos.x	0.7
 Rpos.y	0.3061236
-Rrot.x	0
-Rrot.y	0
 Rrot.z	155.776
