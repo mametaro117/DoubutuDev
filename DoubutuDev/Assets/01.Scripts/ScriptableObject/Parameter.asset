@@ -105,23 +105,23 @@ MonoBehaviour:
     Skill: 0
     typeStatuses:
     - Type: 0
-      Animal: {fileID: 0}
-      HP: 0
-      Power: 0
-      MoveSpeed: 0
-      AttackSpeed: 0
+      Animal: {fileID: 1170524612092956, guid: afbdc312a4781904b94f7379e4518bc0, type: 2}
+      HP: 10
+      Power: 10
+      MoveSpeed: 10
+      AttackSpeed: 10
     - Type: 1
-      Animal: {fileID: 0}
-      HP: 0
-      Power: 0
-      MoveSpeed: 0
-      AttackSpeed: 0
+      Animal: {fileID: 1672717221959680, guid: 0399532cec3f7514f993b352dd039776, type: 2}
+      HP: 10
+      Power: 10
+      MoveSpeed: 10
+      AttackSpeed: 10
     - Type: 2
-      Animal: {fileID: 0}
-      HP: 0
-      Power: 0
-      MoveSpeed: 0
-      AttackSpeed: 0
+      Animal: {fileID: 1618180484844922, guid: bdb06d59ccab9524cb80ac00dffbf46d, type: 2}
+      HP: 10
+      Power: 10
+      MoveSpeed: 10
+      AttackSpeed: 10
   WeaponTable:
   - WeaponName: Sword
     Type: 0
