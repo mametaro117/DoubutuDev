@@ -1029,7 +1029,6 @@ MonoBehaviour:
   SkillPoint: 10
   Attack: 5
   Speed: 3
-  IsSky: 0
   isStun: 0
   weaponType: 0
 --- !u!212 &212015308704282348
