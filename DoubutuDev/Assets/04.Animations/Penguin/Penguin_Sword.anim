@@ -23,26 +23,32 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.1
-        value: {x: 0, y: 0, z: 169.04369}
+        time: 0.31666666
+        value: {x: 0, y: 0, z: 166.1612}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.6666667
-        value: {x: 0, y: 0, z: 66.780304}
-        inSlope: {x: 0, y: 0, z: -34.93616}
-        outSlope: {x: 0, y: 0, z: -34.93616}
+        time: 0.55
+        value: {x: 0, y: 0, z: 161.95656}
+        inSlope: {x: 0, y: 0, z: -31.534765}
+        outSlope: {x: 0, y: 0, z: -31.534765}
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.15
-        value: {x: 0, y: 0, z: 57.609554}
+        time: 0.85
+        value: {x: 0, y: 0, z: 103.67627}
+        inSlope: {x: 0, y: 0, z: -40.1837}
+        outSlope: {x: 0, y: 0, z: -40.1837}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1.2333333
+        value: {x: 0, y: 0, z: 96.811554}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 1.4333333
-        value: {x: 0, y: 0, z: 203.0123}
+        time: 1.3833333
+        value: {x: 0, y: 0, z: 219.73079}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -56,43 +62,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Body_bone/Arm_R_bone
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.85
-        value: {x: 0, y: 0, z: 16.770924}
-        inSlope: {x: 0, y: 0, z: -0.8231664}
-        outSlope: {x: 0, y: 0, z: -0.8231664}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.2333333
-        value: {x: 0, y: 0, z: 16.73249}
-        inSlope: {x: 0, y: 0, z: 0.08449252}
-        outSlope: {x: 0, y: 0, z: 0.08449252}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.25
-        value: {x: 0, y: 0, z: 16.71046}
-        inSlope: {x: 0, y: 0, z: -2.7075844}
-        outSlope: {x: 0, y: 0, z: -2.7075844}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 2
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: Body_bone/Arm_R_bone/Weapon
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -106,13 +75,6 @@ AnimationClip:
     genericBindings:
     - serializedVersion: 2
       path: 3356162173
-      attribute: 4
-      script: {fileID: 0}
-      typeID: 4
-      customType: 14
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 4143145391
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -194,26 +156,32 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.1
-        value: 169.04369
+        time: 0.31666666
+        value: 166.1612
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.6666667
-        value: 66.780304
-        inSlope: -34.93616
-        outSlope: -34.93616
+        time: 0.55
+        value: 161.95656
+        inSlope: -31.534765
+        outSlope: -31.534765
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.15
-        value: 57.609554
+        time: 0.85
+        value: 103.67627
+        inSlope: -40.1837
+        outSlope: -40.1837
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.2333333
+        value: 96.811554
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.4333333
-        value: 203.0123
+        time: 1.3833333
+        value: 219.73079
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -228,96 +196,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
     path: Body_bone/Arm_R_bone
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 2
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: Body_bone/Arm_R_bone/Weapon
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 2
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: Body_bone/Arm_R_bone/Weapon
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.85
-        value: 16.770924
-        inSlope: -0.8231664
-        outSlope: -0.8231664
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1.2333333
-        value: 16.73249
-        inSlope: 0.08449252
-        outSlope: 0.08449252
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 2
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: Body_bone/Arm_R_bone/Weapon
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -349,36 +227,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
     path: Body_bone/Arm_R_bone
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Body_bone/Arm_R_bone/Weapon
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Body_bone/Arm_R_bone/Weapon
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Body_bone/Arm_R_bone/Weapon
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
