@@ -45,7 +45,7 @@ public class BattleManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         //タイムをいじる用の参照
-      timeManager = GetComponent<TimeManager>();
+        timeManager = GetComponent<TimeManager>();
         //編成情報の反映
         GetComponent<AnimalButtonManager>().SetAnimalStatus();
     }

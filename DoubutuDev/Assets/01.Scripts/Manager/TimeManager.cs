@@ -88,7 +88,7 @@ public class TimeManager : MonoBehaviour {
         yield return new WaitForSecondsRealtime(2.0f);
         Destroy(gameObject);
         AudioManager.Instance.PlayBgm(0);
-        FadeManager.Instance.LoadScene(0, 2f);
+        FadeManager.Instance.LoadScene(4, 2f);
         yield break;
     }
 
