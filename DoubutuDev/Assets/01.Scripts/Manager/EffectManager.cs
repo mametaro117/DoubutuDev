@@ -136,7 +136,7 @@ public class EffectManager : MonoBehaviour
                 PlayEffect = Instantiate(Effect_Dia) as GameObject;
                 break;
         }
-        Debug.Log(EffectNum);
+       // Debug.Log(EffectNum);
         EffectProcess(PlayEffect, EffectPos, Magnification, Target);
     }
 }

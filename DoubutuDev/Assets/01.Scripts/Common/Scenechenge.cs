@@ -15,10 +15,13 @@ public class Scenechenge : MonoBehaviour
     IEnumerator ChengeSceneCol(int scenenum)
     {
         Debug.Log("Chenge中");
-        isPlay = true;
-        FadeManager.Instance.LoadScene(scenenum, 1f);
-        yield return new WaitForSeconds(1f);
-        isPlay = false;
-        yield break;
+        if (!isPlay)
+        {
+            isPlay = true;
+            FadeManager.Instance.LoadScene(scenenum, 1f);
+            yield return new WaitForSeconds(1f);
+            isPlay = false;
+            yield break;
+        }
     }
 }

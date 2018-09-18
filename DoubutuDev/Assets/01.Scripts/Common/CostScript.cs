@@ -169,10 +169,10 @@ public class CostScript : MonoBehaviour {
         {
             if(isCorRunning_AnimalCost)
             {
-                Debug.Log("AnimalCostコルーチンの内容を変更しました");
+              //  Debug.Log("AnimalCostコルーチンの内容を変更しました");
                 Time_AnimalCost = CorTime;
                 Diff_AnimalCost = (AnimalCostInt - Cor_CostPoint_AnimalCost) / Time_AnimalCost;
-                Debug.Log(Diff_AnimalCost);
+              //  Debug.Log(Diff_AnimalCost);
             }
             else
             {
@@ -185,10 +185,10 @@ public class CostScript : MonoBehaviour {
         {
             if (isCorRunning_WeaponCost)
             {
-                Debug.Log("WeaponCostコルーチンの内容を変更しました");
+               // Debug.Log("WeaponCostコルーチンの内容を変更しました");
                 Time_WeaponCost = CorTime;
                 Diff_WeaponCost = (WeaponCostInt - Cor_CostPoint_WeaponCost) / Time_WeaponCost;
-                Debug.Log(Diff_WeaponCost);
+                //Debug.Log(Diff_WeaponCost);
             }
             else
             {
@@ -206,7 +206,7 @@ public class CostScript : MonoBehaviour {
     //コストバーを指定コストまで持っていくコルーチン
     IEnumerator Cor_AnimalCost(int Change, int OriginAnimalCost)
     {
-        Debug.Log("StartCol_AnimalCost");
+        //Debug.Log("StartCol_AnimalCost");
         isCorRunning_AnimalCost = true;
         Time_AnimalCost = CorTime;
         Diff_AnimalCost = (float)Change / Time_AnimalCost;
@@ -222,14 +222,14 @@ public class CostScript : MonoBehaviour {
             yield return null;
         }
         StartCoroutine(Cor_ShakeAnimalCost(Diff_AnimalCost));
-        isCorRunning_AnimalCost = false;
-        Debug.Log("EndCol_AnimalCost");
+       // isCorRunning_AnimalCost = false;
+        //Debug.Log("EndCol_AnimalCost");
         yield break;
     }
     //コストバーを振るコルーチン
     IEnumerator Cor_ShakeAnimalCost(float speed)
     {
-        Debug.Log("StartCol_AnimalShake");
+        //Debug.Log("StartCol_AnimalShake");
         int Time_ShakeAnimalCost = _Time;
         int TotalTime = _Time;
         while(Time_ShakeAnimalCost > 0)
@@ -255,7 +255,7 @@ public class CostScript : MonoBehaviour {
             }
             yield return null; 
         }
-        Debug.Log("EndCol_AnimalShake");
+        //Debug.Log("EndCol_AnimalShake");
         yield break;
     }
 
@@ -263,7 +263,7 @@ public class CostScript : MonoBehaviour {
     //コストバーを指定コストまで持っていくコルーチン
     IEnumerator Cor_WeaponCost(int Change, int OriginWeaponCost)
     {
-        Debug.Log("StartCol_WeaponCost");
+        //Debug.Log("StartCol_WeaponCost");
         isCorRunning_WeaponCost = true;
         Time_WeaponCost = CorTime;
         Diff_WeaponCost = (float)Change / Time_WeaponCost;
@@ -280,13 +280,13 @@ public class CostScript : MonoBehaviour {
         }
         StartCoroutine(Cor_ShakeWeaponCost(Diff_WeaponCost));
         isCorRunning_WeaponCost = false;
-        Debug.Log("EndCol_WeaponCost");
+        //Debug.Log("EndCol_WeaponCost");
         yield break;
     }
     //コストバーを振るコルーチン
     IEnumerator Cor_ShakeWeaponCost(float speed)
     {
-        Debug.Log("StartCol_WeaponShake");
+        //Debug.Log("StartCol_WeaponShake");
         int Time_ShakeWeaponCost = _Time;
         int TotalTime = _Time;
         while (Time_ShakeWeaponCost > 0)
@@ -312,7 +312,7 @@ public class CostScript : MonoBehaviour {
             }
             yield return null;
         }
-        Debug.Log("EndCol_WeaponShake");
+        //Debug.Log("EndCol_WeaponShake");
         yield break;
     }
 

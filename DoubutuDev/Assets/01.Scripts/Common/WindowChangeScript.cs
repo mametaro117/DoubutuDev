@@ -74,10 +74,8 @@ public class WindowChangeScript : MonoBehaviour
 
     private int time;
     private float speed;
-    [SerializeField]
-    private Vector3 pospos;
-    [SerializeField]
-    private Vector3 rectpospos;
+    //[SerializeField]
+    //private Vector3 rectpospos;
 
     //動物選択の枠を動かすコルーチン
     IEnumerator WindowMove(int MoveDirection, bool gameobjectsDestroy = false)
@@ -96,8 +94,7 @@ public class WindowChangeScript : MonoBehaviour
             yield return null;
         }
         Debug.Log("移動終了");
-        pospos = GameObject.Find("AnimalSelectWindows").transform.position;
-        rectpospos = GameObject.Find("AnimalSelectWindows").GetComponent<RectTransform>().anchoredPosition3D;
+        //rectpospos = GameObject.Find("AnimalSelectWindows").GetComponent<RectTransform>().anchoredPosition3D;
         WindowStationary = true;
         if(gameobjectsDestroy)
         {
