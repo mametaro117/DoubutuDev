@@ -52,6 +52,7 @@ public class AnimalChoiceManager : MonoBehaviour {
 
     public void EndDrag(GameObject obj)
     {
+        AudioManager.Instance.PlaySe(1);
         StartDrag = true;
         GameObject Parent;
         Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
