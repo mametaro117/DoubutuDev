@@ -2611,6 +2611,34 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &763370311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 763370312}
+  m_Layer: 0
+  m_Name: AnimalSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &763370312
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 763370311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 305, y: -1.5, z: -7084.0625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1311601360}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &779359686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,12 +4050,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee380e7c48352e44bace332053cd6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animals:
-  - {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
-  - {fileID: 1754448479245682, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
-  - {fileID: 1925265830046766, guid: 68886a1633e791d44a725cc052004b65, type: 2}
-  - {fileID: 1672717221959680, guid: 0399532cec3f7514f993b352dd039776, type: 2}
+  _RabbitPrefabs:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _OwlPrefabs:
+  - {fileID: 1301072040851520, guid: 808044676f899034ebf50a38d347311f, type: 2}
+  - {fileID: 1754448479245682, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+  - {fileID: 1355022665996494, guid: 5d14d1340f174d34d93b5972bea41c96, type: 2}
+  - {fileID: 0}
+  _ZouPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _PenguinPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnPoint: {fileID: 763370311}
 --- !u!114 &1264757838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,6 +4186,7 @@ Transform:
   - {fileID: 161344330}
   - {fileID: 1366144758}
   - {fileID: 324327743}
+  - {fileID: 763370312}
   m_Father: {fileID: 1719361992}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

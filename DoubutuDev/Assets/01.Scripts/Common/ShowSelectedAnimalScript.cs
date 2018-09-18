@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShowSelectedAnimalScript : MonoBehaviour {
-
-    // 変数エリア
-    [SerializeField]
-    private GameObject[] animals = new GameObject[5];   // Prefabの動物を入れておく
+    
     private GameObject _selectedAnimal;                 // 武器選択中の動物
     private Animator _select_Animator;                  // Animator
     private Coroutine cor_AnimRoop;                     // ループ用コルーチン
+
+    [SerializeField]
+    private GameObject[] _RabbitPrefabs = new GameObject[4];
+    [SerializeField]
+    private GameObject[] _OwlPrefabs = new GameObject[4];
+    [SerializeField]
+    private GameObject[] _ZouPrefabs = new GameObject[4];
+    [SerializeField]
+    private GameObject[] _PenguinPrefabs = new GameObject[4];
+
+    [SerializeField]
+    private GameObject spawnPoint;
 
     public void ShowAnimal(GameObject box)              // 武器選択中の動物を表示する
     {
@@ -20,7 +29,21 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             int boxNum = int.Parse(box.name.Substring(box.name.Length - 1));
             WindowChangeScript param = GetComponent<WindowChangeScript>();
             int animalNum = param.AnimalAndWeaponList[boxNum - 1, 0];
-            _selectedAnimal = Instantiate(animals[animalNum]) as GameObject;
+            switch(animalNum)
+            {
+                case 0:
+                    _selectedAnimal = Instantiate(_RabbitPrefabs[Random.Range(0, 4)]) as GameObject;
+                    break;
+                case 1:
+                    _selectedAnimal = Instantiate(_OwlPrefabs[Random.Range(0, 4)]) as GameObject;
+                    break;
+                case 2:
+                    _selectedAnimal = Instantiate(_ZouPrefabs[Random.Range(0, 4)]) as GameObject;
+                    break;
+                case 3:
+                    _selectedAnimal = Instantiate(_PenguinPrefabs[Random.Range(0, 4)]) as GameObject;
+                    break;
+            }
 
             // 不必要な物を削除していく
             Animalstate select_AnimalState = _selectedAnimal.GetComponent<Animalstate>();
@@ -48,10 +71,9 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
             }
 
             // 表示する時の体裁
-            _selectedAnimal.transform.SetParent(GameObject.Find("WeaponSelectWindows2").transform);
-            RectTransform _rect = _selectedAnimal.AddComponent<RectTransform>();
-            _rect.anchoredPosition3D = new Vector3(300, -100, 0);
-            _selectedAnimal.transform.localScale = new Vector3(100f, 100f, 100f);
+            _selectedAnimal.transform.SetParent(spawnPoint.transform);
+            Debug.Log(_selectedAnimal.transform.parent);
+            _selectedAnimal.transform.localPosition = new Vector3(0f, 0f, 0f);
 
             // アニメーターのコルーチンを起動
             if (_selectedAnimal.GetComponent<Animator>() != null)
