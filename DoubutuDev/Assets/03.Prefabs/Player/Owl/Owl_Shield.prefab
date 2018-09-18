@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 114875154472700212}
   - component: {fileID: 114413275719095900}
   - component: {fileID: 210039004273819410}
+  - component: {fileID: 114374548514994234}
   m_Layer: 0
   m_Name: Owl_Shield
   m_TagString: Animal
@@ -739,9 +740,9 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355022665996494}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 294b499d42331c4409cd03043c76525c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 28c8b3325ccf3e44f94c292aad73f259, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -765,6 +766,17 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!114 &114374548514994234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355022665996494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114413275719095900
 MonoBehaviour:
   m_ObjectHideFlags: 1

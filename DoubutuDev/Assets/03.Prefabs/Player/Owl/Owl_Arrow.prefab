@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 114760545248382498}
   - component: {fileID: 114421613437778914}
   - component: {fileID: 210779783946307660}
+  - component: {fileID: 114657764108339980}
   m_Layer: 0
   m_Name: Owl_Arrow
   m_TagString: Animal
@@ -739,9 +740,9 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1754448479245682}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c6aaf2a0002e9042a2f055565788b8a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 28c8b3325ccf3e44f94c292aad73f259, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -846,6 +847,17 @@ MonoBehaviour:
   Speed: 20
   isStun: 0
   weaponType: 2
+--- !u!114 &114657764108339980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754448479245682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114755121647450708
 MonoBehaviour:
   m_ObjectHideFlags: 1
