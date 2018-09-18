@@ -47,19 +47,19 @@ MonoBehaviour:
     Skill: 0
     typeStatuses:
     - Type: 0
-      Animal: {fileID: 1734168873693030, guid: 808044676f899034ebf50a38d347311f, type: 2}
+      Animal: {fileID: 1301072040851520, guid: 808044676f899034ebf50a38d347311f, type: 2}
       HP: 60
       Power: 5
       MoveSpeed: 10
       AttackSpeed: 1
     - Type: 1
-      Animal: {fileID: 1185824479603828, guid: 5d14d1340f174d34d93b5972bea41c96, type: 2}
+      Animal: {fileID: 1355022665996494, guid: 5d14d1340f174d34d93b5972bea41c96, type: 2}
       HP: 80
       Power: 3
       MoveSpeed: 10
       AttackSpeed: 1.5
     - Type: 2
-      Animal: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+      Animal: {fileID: 1754448479245682, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
       HP: 40
       Power: 4
       MoveSpeed: 10
