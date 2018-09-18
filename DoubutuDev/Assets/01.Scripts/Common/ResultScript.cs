@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using _System = System;
 
 public class ResultScript : MonoBehaviour {
 
     [SerializeField]
     private GameObject text;
-    private int clearTime = 150;
     [SerializeField]
+    private ChoiceParamator choiceparam;
+    private float clearTime;
     private GameObject animal;
     private GameObject _selectedAnimal;
     private Animator _select_Animator;
@@ -17,6 +19,9 @@ public class ResultScript : MonoBehaviour {
     void Start ()
     {
         //ここに追加処理
+        //clearTime = choiceparam.ClearTime;
+        clearTime = (float)_System.Math.Round(choiceparam.ClearTime, 0);
+        animal = choiceparam.FavoAnimal;
 
         text.GetComponent<Text>().text = clearTime.ToString() + "sec";
         _selectedAnimal = Instantiate(animal) as GameObject;

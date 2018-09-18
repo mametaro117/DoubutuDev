@@ -110,6 +110,12 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &43001658 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114066221022818708, guid: 9c85e06c7b878e941b87794e2b2fd54f,
+    type: 2}
+  m_PrefabInternal: {fileID: 129230785}
+  m_Script: {fileID: 11500000, guid: 4ccd50160a2027643bd1d3c00a5308b6, type: 3}
 --- !u!1001 &129230785
 Prefab:
   m_ObjectHideFlags: 0
@@ -148,6 +154,11 @@ Prefab:
     - target: {fileID: 4732724602596136, guid: 9c85e06c7b878e941b87794e2b2fd54f, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066221022818708, guid: 9c85e06c7b878e941b87794e2b2fd54f,
+        type: 2}
+      propertyPath: ClearTime
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c85e06c7b878e941b87794e2b2fd54f, type: 2}
@@ -737,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 554441349}
-  animal: {fileID: 1922962568703402, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+  choiceparam: {fileID: 43001658}
 --- !u!4 &734286186
 Transform:
   m_ObjectHideFlags: 0
