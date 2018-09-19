@@ -18,7 +18,7 @@ MonoBehaviour:
     Skill: 1
     typeStatuses:
     - Type: 0
-      Animal: {fileID: 1713626254103234, guid: 1901f465bde1f964a8eaae84ea83b577, type: 2}
+      Animal: {fileID: 1189016237978548, guid: 6ef958967cb467c4c91060941999c359, type: 2}
       HP: 60
       Power: 5
       MoveSpeed: 10
@@ -36,7 +36,7 @@ MonoBehaviour:
       MoveSpeed: 10
       AttackSpeed: 1
     - Type: 3
-      Animal: {fileID: 1944965641864552, guid: 0a2724195fd876d4ebe787e7f299dbf0, type: 2}
+      Animal: {fileID: 1780920604852284, guid: 41022cf3c0a96354f9b94a9e33074ae8, type: 2}
       HP: 40
       Power: 5
       MoveSpeed: 5
@@ -65,7 +65,7 @@ MonoBehaviour:
       MoveSpeed: 10
       AttackSpeed: 1
     - Type: 3
-      Animal: {fileID: 1865749117168150, guid: 6590a263af5845547a10deebbefa1dc8, type: 2}
+      Animal: {fileID: 1343376253633390, guid: 642235a974439f94a964fb0940c97321, type: 2}
       HP: 40
       Power: 4
       MoveSpeed: 10
@@ -83,22 +83,22 @@ MonoBehaviour:
       AttackSpeed: 1
     - Type: 1
       Animal: {fileID: 1133782220268598, guid: 990963629a1baed49b309667c783c8f4, type: 2}
-      HP: 70
-      Power: 2
-      MoveSpeed: 3
-      AttackSpeed: 1
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
     - Type: 2
       Animal: {fileID: 1933026484501556, guid: e22bb25c6b8977d4eb8870870ad036d0, type: 2}
-      HP: 40
-      Power: 5
-      MoveSpeed: 3
-      AttackSpeed: 1
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
     - Type: 3
       Animal: {fileID: 1925265830046766, guid: 424df2cd8fd9da54789f5a7738e39672, type: 2}
-      HP: 40
-      Power: 7
-      MoveSpeed: 2
-      AttackSpeed: 1
+      HP: 0
+      Power: 0
+      MoveSpeed: 0
+      AttackSpeed: 0
   - animalName: 3
     AnimalImage: {fileID: 21300000, guid: db4f7388586a16246894eab278b23e87, type: 3}
     AnimalCost: 1
@@ -118,6 +118,12 @@ MonoBehaviour:
       AttackSpeed: 10
     - Type: 2
       Animal: {fileID: 1618180484844922, guid: bdb06d59ccab9524cb80ac00dffbf46d, type: 2}
+      HP: 10
+      Power: 10
+      MoveSpeed: 10
+      AttackSpeed: 10
+    - Type: 3
+      Animal: {fileID: 1268933701195364, guid: 0fc54f70719b6454ea11414e1623049d, type: 2}
       HP: 10
       Power: 10
       MoveSpeed: 10
