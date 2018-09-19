@@ -257,7 +257,7 @@ public class CostScript : MonoBehaviour
             }
             yield return null; 
         }
-       //Debug.Log("EndCol_AnimalShake");
+        //Debug.Log("EndCol_AnimalShake");
         yield break;
     }
 
@@ -282,7 +282,7 @@ public class CostScript : MonoBehaviour
         }
         StartCoroutine(Cor_ShakeWeaponCost(Diff_WeaponCost));
         isCorRunning_WeaponCost = false;
-       // Debug.Log("EndCol_WeaponCost");
+        //Debug.Log("EndCol_WeaponCost");
         yield break;
     }
     //コストバーを振るコルーチン

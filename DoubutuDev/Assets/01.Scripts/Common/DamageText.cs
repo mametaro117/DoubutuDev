@@ -43,7 +43,21 @@ public class DamageText : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+<<<<<<< HEAD
     // 相性計算されたダメージの数値をSpriteの画像を適用して表示する
+=======
+
+    /*public void DiplayText(Vector3 pos, float damage)
+    {//重なり順の変更
+        
+        /os.z = -5;
+        //  文字生成
+        GameObject obj = Instantiate(DamageObject, pos, transform.rotation);
+        obj.GetComponent<TextMesh>().text = damage.ToString();
+        obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(-80, 80), Random.Range(100, 180)));
+        StartCoroutine(DestryText(obj));
+    }*/
+>>>>>>> master
     public void DiplayTextSprite(Vector3 pos, float damagenum)
     {
         // 値の切り捨て
@@ -84,7 +98,7 @@ public class DamageText : MonoBehaviour
         }
     }
     // ダメージを表示させる関数
-    void DamageNumDisplay(int num, Vector3 pos)
+    public void DamageNumDisplay(int num, Vector3 pos)
     {
         //　変数に格納
         GameObject _damagetextobj = new GameObject("DamageTextObj");

@@ -13,14 +13,27 @@ public class Weapon_Choice_Manager : MonoBehaviour
     [SerializeField]
     private bool[] WeaponListsActive = new bool[10];
     [SerializeField]
-    private int[] _ActiveBoxWeaponBefore = new int[3];
+    //private int[] _ActiveBoxWeaponBefore = new int[3];
     public int[] _ActiveBoxWeaponAfter = new int[3];
 
     public void AlreadySelected()
     {
         WindowChangeScript _Window = GameObject.Find("ClickManager").GetComponent<WindowChangeScript>();
         WeaponListsActive = new bool[10];
+<<<<<<< HEAD
         _ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore.Clone() as int[];
+=======
+        /*
+        //_ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore;
+        //_ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore;Clone()
+        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponBefore, 0);
+        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponAfter, 0);
+        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponBefore, 3);
+        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponAfter, 3);
+        */
+        //やっぱCloneだね
+        //_ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore.Clone() as int[];
+>>>>>>> master
         _ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore.Clone() as int[];
         for (int i = 0; i < 3; i++)
         {
@@ -95,7 +108,6 @@ public class Weapon_Choice_Manager : MonoBehaviour
             {
                 for (int i = 1; i < 4; i++)
                 {
-                    string str = "SelectColumn" + i;
                     GameObject Target = Parent.transform.GetChild(i - 1).gameObject;
                     Vector2 UiPos = Target.transform.position;
                     float Diff_x = TapPos.x - UiPos.x;
