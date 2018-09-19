@@ -12,10 +12,4 @@ public class SkillScript : MonoBehaviour {
         totalstatus.HitPoint = Mathf.Min(totalstatus.MaxHP, totalstatus.HitPoint + HealValue);
         Debug.Log(HealValue);
     }
-
-    void KnockBackSkill(float Distance)
-    {
-        
-    }
-
 }

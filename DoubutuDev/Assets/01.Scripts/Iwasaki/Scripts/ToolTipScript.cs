@@ -7,22 +7,18 @@ public class ToolTipScript : MonoBehaviour
 
     public void EraseToolTip()
     {
+        //　Managerを呼び出す
         GameObject Manager = GameObject.Find("ToolTipsManager");
+        //　GetComponentする
         ToolTipsManager TT_Manager = Manager.GetComponent<ToolTipsManager>();
+        //　ToolTiosを実行
         TT_Manager.EraseToolTips();
     }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            //EraseToolTipを呼び出す。
             EraseToolTip();
         }
     }

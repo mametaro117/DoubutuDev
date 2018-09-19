@@ -7,8 +7,7 @@ public class ColliderChecker : MonoBehaviour {
 
     float radius;
     Vector3 vec3;
-
-    // Use this for initialization
+    
     void Start () {
         if (GetComponent<CircleCollider2D>() != null)
             radius = GetComponent<CircleCollider2D>().radius;

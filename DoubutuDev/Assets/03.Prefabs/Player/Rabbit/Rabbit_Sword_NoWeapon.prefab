@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitPoint: 60
   SkillPoint: 10
-  Attack: 5
+  Attack: 20
   Speed: 15
   isStun: 0
   weaponType: 0

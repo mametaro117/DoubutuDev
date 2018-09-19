@@ -68,9 +68,7 @@ public class EffectManager : MonoBehaviour
         public const int Hit = 7;
         public const int Magic = 8;
     }
-
-
-
+    
     //やる事を関数でまとめた
     private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification, GameObject Target)
     {

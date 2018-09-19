@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeManager : MonoBehaviour {
-
+public class TimeManager : MonoBehaviour
+{
     [SerializeField]
     private Text TimeText;
     [SerializeField]
@@ -17,8 +17,7 @@ public class TimeManager : MonoBehaviour {
 
     private bool isReady = false;
     private bool isFinish = false;
-
-
+    
     void Start()
     {
         TimeText.text = Timelimit.ToString("F0");
@@ -27,12 +26,10 @@ public class TimeManager : MonoBehaviour {
         spawnManager = FindObjectOfType<SpawnManager>();
         choiceParamator = FindObjectOfType<ChoiceParamator>();
     }
-
     void Update()
     {
         CountDown();
     }
-
     void CountDown()
     {
         //  カウントダウンが終わってバトルが終わってなかったら
@@ -46,7 +43,6 @@ public class TimeManager : MonoBehaviour {
             Mathf.Max(0, Timelimit);
         }
     }
-
     public void GameClear()
     {
         Debug.Log("Gameclear!!");
@@ -54,13 +50,11 @@ public class TimeManager : MonoBehaviour {
         choiceParamator.ClearTime = DefaultTimeLimit - Timelimit;
         StartCoroutine(MissionClear());
     }
-
     public void GameFaild()
     {
         Debug.Log("GameFaild!!");
         StartCoroutine(MissionFaild());
-    }    
-    
+    }
     //  開始時のカウントダウン処理
     IEnumerator ReadyGo()
     {
@@ -78,7 +72,6 @@ public class TimeManager : MonoBehaviour {
         isReady = true;
         yield break;
     }
-
     IEnumerator MissionClear()
     {
         Time.timeScale = 0;
@@ -91,7 +84,6 @@ public class TimeManager : MonoBehaviour {
         FadeManager.Instance.LoadScene(4, 2f);
         yield break;
     }
-
     IEnumerator MissionFaild()
     {
         Time.timeScale = 0;
@@ -104,10 +96,8 @@ public class TimeManager : MonoBehaviour {
         FadeManager.Instance.LoadScene(0, 2f);
         yield break;
     }
-
     public bool GetIsReady()
     {
         return isReady;
     }
-
 }

@@ -22,23 +22,13 @@ public class EnemySpawnManager : MonoBehaviour {
 
     [SerializeField]
     private float DeraySpawnTime = 0.5f;
-
-
-
-
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    
+	void Update ()
+    {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             PowerCheck();
         }
-
         stacktime += Time.deltaTime;
         //Debug.Log(stacktime);
         //Debug.Log(GetComponent<TimeManager>().GetIsReady());
@@ -58,7 +48,6 @@ public class EnemySpawnManager : MonoBehaviour {
                 EnemyInstance();
             }
         }
-        
     }
 
     [SerializeField]
@@ -79,21 +68,6 @@ public class EnemySpawnManager : MonoBehaviour {
         }
         int ran = Random.Range(0, EnemyPrefab.Length);
         Instantiate(EnemyPrefab[ran], new Vector3(SpawnPositions[SpawnPos].position.x, SpawnPositions[SpawnPos].position.y, SpawnPositions[SpawnPos].position.z), SpawnPositions[SpawnPos].rotation);
-        /*
-        //デバッグ用
-        switch(ran)
-        {
-            case 0:
-                //Debug.Log("剣");
-                break;
-            case 1:
-                //Debug.Log("盾");
-                break;
-            case 2:
-                //Debug.Log("弓");
-                break;
-        }
-        //*/
     }
 
     private int SetSpawnPos()
@@ -104,30 +78,7 @@ public class EnemySpawnManager : MonoBehaviour {
         int MinPow = 0;
         int SetRaneResult = 0;
         float MaxFrontPos = 0f;
-
-        /*/[1] 自分のキャラの数で判定
-        //レーン毎に自分のキャラの数を見る
-        for (int i = 0; i < PlayerLanePowers.Length; i++)
-        {
-            //パワーを比較
-            //最大値より大きければリストを初期化してからレーン番号を入れる
-            if(PlayerLanePowers[i] > MaxPow)
-            {
-                MaxPow = PlayerLanePowers[i];
-                PlayerRaneNum = new List<int>();
-                PlayerRaneNum.Add(i);
-            }
-            //最大値と一緒ならレーン番号を追加する
-            else if(PlayerLanePowers[i] == MaxPow)
-            {
-                PlayerRaneNum.Add(i);
-            }
-        }
-        SetRaneResult = PlayerRaneNum[Random.Range(0, PlayerRaneNum.Count)];
-        //*/
-
-        //*/[2] キャラ位置とかを見て、総合的に判断
-        //レーン毎に自分のキャラの数を見る
+        
         for (int i = 0; i < PlayerLanePowers.Length; i++)
         {
             //パワーを比較
@@ -144,7 +95,6 @@ public class EnemySpawnManager : MonoBehaviour {
                 PlayerRaneNum.Add(i);
             }
         }
-
         //もし、対象のレーンが複数存在する場合、自分側のポジションと敵側のキャラ数を見て判断する
         //ここに入る条件は(恐らく)自分のキャラが何もない時なのでランダムで返す
         if(PlayerRaneNum.Count >= 5 && MaxPow == 0)
@@ -224,22 +174,16 @@ public class EnemySpawnManager : MonoBehaviour {
         {
             SetRaneResult = PlayerRaneNum[Random.Range(0, PlayerRaneNum.Count)];
         }
-        //*/
-
-        //*/ デバッグ用
         string str = "Max is_";
         for(int i = 0; i < PlayerRaneNum.Count; i++)
         {
             str = str + i + "_";
         }
         str = str + "同パワー数:" + PlayerRaneNum.Count;
-        //Debug.Log(str);
-        //*/
 
         //複数ある場合はランダムで返す
         return SetRaneResult;
     }
-
     RaycastHit2D[] hit;
 
     [SerializeField]

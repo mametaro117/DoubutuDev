@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class CostScript : MonoBehaviour {
-
+public class CostScript : MonoBehaviour
+{
     //  コストの最大値
     private const float MaxAnimalCost = 900;
     private const float MaxWeaponCost = 900;
@@ -64,7 +64,8 @@ public class CostScript : MonoBehaviour {
     private Sprite CostBar;
     private GameObject _CostLineOriginal;
 
-    void Start () {
+    void Start ()
+    {
         //  バーのサイズ設定
         BarRect = MainAnimalrectObj.GetComponent<RectTransform>().sizeDelta;
         //  コストの初期化
@@ -84,7 +85,8 @@ public class CostScript : MonoBehaviour {
         MakeCostLines();
     }
 	
-	void Update () {
+	void Update ()
+    {
         //  コストが最大じゃなかったら加算
         if (AnimalCostPoint < MaxAnimalCost) AnimalCostPoint += Time.deltaTime * AddAnimalCost;
         if (WeaponCostPoint < MaxWeaponCost) WeaponCostPoint += Time.deltaTime * AddWeaponCost;
@@ -334,7 +336,6 @@ public class CostScript : MonoBehaviour {
         {
             Lines_AnimalCost.Add(Animal_1Line * (i + 1));
         }
-
         for (int i = 0; i < times_Weapon; i++)
         {
             Lines_WeaponCost.Add(Weapon_1Line * (i + 1));
@@ -355,7 +356,6 @@ public class CostScript : MonoBehaviour {
             tgt_rect.localScale = new Vector3(1, 0.8f, 1);
             tgt_rect.anchoredPosition3D = new Vector3(Lines_AnimalCost[i], 0, 0);
         }
-
         for (int i = 0; i < Lines_WeaponCost.Count; i++)
         {
             GameObject tgt = Instantiate(_CostLineOriginal) as GameObject;
@@ -364,11 +364,9 @@ public class CostScript : MonoBehaviour {
             tgt_rect.localScale = new Vector3(1, 0.8f, 1);
             tgt_rect.anchoredPosition3D = new Vector3(Lines_WeaponCost[i], 0, 0);
         }
-
         //ラストの処理に必ず入れる
         Destroy(_CostLineOriginal);
     }
-
     public float GetAnimalCost()
     {
         return AnimalCostPoint;

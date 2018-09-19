@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponButtonScript : MonoBehaviour {
-
+public class WeaponButtonScript : MonoBehaviour
+{
     [SerializeField]
     private CostScript costScript;
 
@@ -14,19 +14,12 @@ public class WeaponButtonScript : MonoBehaviour {
     public int SelectNum;
 
     public GameObject[] WeaponButtons = new GameObject[2];
-
-
-    // Use this for initialization
+    
     void Start()
     {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(TapWeaponButton);
     }
-    void Update()
-    {
-        
-    }
-
     void TapWeaponButton()
     {
         //  武器の選択
