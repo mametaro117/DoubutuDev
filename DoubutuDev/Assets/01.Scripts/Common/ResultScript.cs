@@ -19,6 +19,7 @@ public class ResultScript : MonoBehaviour {
     void Start ()
     {
         //ここに追加処理
+        choiceparam = FindObjectOfType(typeof(ChoiceParamator)) as ChoiceParamator;
         //clearTime = choiceparam.ClearTime;
         clearTime = (float)_System.Math.Round(choiceparam.ClearTime, 0);
         animal = choiceparam.FavoAnimal;

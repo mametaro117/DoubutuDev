@@ -1687,7 +1687,7 @@ MonoBehaviour:
   interval: 4
   TekagenEnemyPowers: 4
   DeraySpawnTime: 2
-  kimagure: 20
+  kimagure: 40
   PlayerLanePowers: 0000000000000000000000000000000000000000
 --- !u!114 &633445038
 MonoBehaviour:
