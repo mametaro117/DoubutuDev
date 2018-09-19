@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 114853177750918744}
   - component: {fileID: 210796296951760328}
   m_Layer: 8
-  m_Name: Rabbit_Shield
+  m_Name: Rabbit_Shield_NoWeapon
   m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
