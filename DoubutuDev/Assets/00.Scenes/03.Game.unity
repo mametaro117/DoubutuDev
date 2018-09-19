@@ -1631,7 +1631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d3f9716fc38984fa1ab909549dcd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageObject: {fileID: 1853937615045822, guid: d7130e517c6c4d744b9ae96e64fa93e7,
+  DamageObject: {fileID: 1271038111307702, guid: 0cbf11f717f653f4fb5dded53d19846f,
     type: 2}
   sprites:
   - {fileID: 21300000, guid: 74da71e173b9a0f4f8a8c21270c36377, type: 3}
@@ -1644,6 +1644,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dd1e74eb550ae6b44892ce5f8ef47fb1, type: 3}
   - {fileID: 21300000, guid: 58a5725ac28fcae40b0e58afc06ebd2e, type: 3}
   - {fileID: 21300000, guid: 4954823d537876b449b5e7a15fb0ad9a, type: 3}
+  _damagetextobj: {fileID: 1271038111307702, guid: 0cbf11f717f653f4fb5dded53d19846f,
+    type: 2}
 --- !u!114 &633445036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5411,7 +5413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1672986413
 MonoBehaviour:
   m_ObjectHideFlags: 0

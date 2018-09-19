@@ -20,20 +20,7 @@ public class Weapon_Choice_Manager : MonoBehaviour
     {
         WindowChangeScript _Window = GameObject.Find("ClickManager").GetComponent<WindowChangeScript>();
         WeaponListsActive = new bool[10];
-<<<<<<< HEAD
-        _ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore.Clone() as int[];
-=======
-        /*
-        //_ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore;
-        //_ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore;Clone()
-        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponBefore, 0);
-        //_Window.ActiveBoxWeaponBefore.CopyTo(_ActiveBoxWeaponAfter, 0);
-        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponBefore, 3);
-        //Array.Copy(_Window.ActiveBoxWeaponBefore, _ActiveBoxWeaponAfter, 3);
-        */
-        //やっぱCloneだね
         //_ActiveBoxWeaponBefore = _Window.ActiveBoxWeaponBefore.Clone() as int[];
->>>>>>> master
         _ActiveBoxWeaponAfter = _Window.ActiveBoxWeaponBefore.Clone() as int[];
         for (int i = 0; i < 3; i++)
         {
