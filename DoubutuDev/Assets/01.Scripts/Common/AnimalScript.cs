@@ -122,10 +122,9 @@ public class AnimalScript : MonoBehaviour {
         gameObject.GetComponent<Rigidbody2D>().velocity = direction;
     }
 
-    //  EnemyObjectが倒されたら
+    //  敵の再検索 
     public void ResetEnemyObject()
     {
-        Debug.Log("敵の再検索");
         if (EnemyObjects.Count != 0)
         {
             //  一番近い敵を標的に再設定

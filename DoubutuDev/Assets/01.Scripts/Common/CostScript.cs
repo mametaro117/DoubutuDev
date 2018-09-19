@@ -224,7 +224,7 @@ public class CostScript : MonoBehaviour
             yield return null;
         }
         StartCoroutine(Cor_ShakeAnimalCost(Diff_AnimalCost));
-       // isCorRunning_AnimalCost = false;
+        isCorRunning_AnimalCost = false;
         //Debug.Log("EndCol_AnimalCost");
         yield break;
     }

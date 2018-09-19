@@ -630,7 +630,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933026484501556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3670926, y: 0.8257519, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4330857321244802}
@@ -831,7 +831,7 @@ Animator:
   m_GameObject: {fileID: 1933026484501556}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af188b57e25de7146bcfc2c1f52a13a5, type: 2}
+  m_Controller: {fileID: 9100000, guid: d7e6560ba8fd53e439e87b51696401b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.11807355
+  m_Length: 0.11807333
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4499225626031160}
   m_AttachedIK: {fileID: 0}
@@ -917,7 +917,7 @@ MonoBehaviour:
   HitPoint: 50
   SkillPoint: 10
   Attack: 8
-  Speed: 3
+  Speed: 4
   isStun: 0
   weaponType: 2
 --- !u!114 &114553781576817736

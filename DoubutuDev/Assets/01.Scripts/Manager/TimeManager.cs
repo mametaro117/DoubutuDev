@@ -9,8 +9,11 @@ public class TimeManager : MonoBehaviour
     private Text TimeText;
     [SerializeField]
     private float Timelimit;
+    private float DefaultTimeLimit;
     [SerializeField]
     private GameObject ReadyImage, GoImage, ClearImage, FailImage;
+    private SpawnManager spawnManager;
+    private ChoiceParamator choiceParamator;
 
     private bool isReady = false;
     private bool isFinish = false;
@@ -18,7 +21,10 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         TimeText.text = Timelimit.ToString("F0");
+        DefaultTimeLimit = Timelimit;
         StartCoroutine(ReadyGo());
+        spawnManager = FindObjectOfType<SpawnManager>();
+        choiceParamator = FindObjectOfType<ChoiceParamator>();
     }
     void Update()
     {
@@ -40,6 +46,8 @@ public class TimeManager : MonoBehaviour
     public void GameClear()
     {
         Debug.Log("Gameclear!!");
+        choiceParamator.FavoAnimal = spawnManager.GetFavanimals();
+        choiceParamator.ClearTime = DefaultTimeLimit - Timelimit;
         StartCoroutine(MissionClear());
     }
     public void GameFaild()
@@ -73,7 +81,7 @@ public class TimeManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(2.0f);
         Destroy(gameObject);
         AudioManager.Instance.PlayBgm(0);
-        FadeManager.Instance.LoadScene(0, 2f);
+        FadeManager.Instance.LoadScene(4, 2f);
         yield break;
     }
     IEnumerator MissionFaild()

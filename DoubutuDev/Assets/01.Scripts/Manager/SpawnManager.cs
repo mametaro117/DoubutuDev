@@ -2,22 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class SpawnManager : MonoBehaviour
-{
+public class SpawnManager : MonoBehaviour {
+
     private CostScript costScript;
 
     [SerializeField]
     private GameObject CostErrorImage;
     [SerializeField]
     private GameObject ChoiceErrorImage;
+
+    private int[] InstanceCount = new int[9];
+
     [SerializeField]
-    private GameObject[] units = new GameObject[8];
+    private GameObject[] units = new GameObject[9];
 
     void Awake()
     {
         costScript = GameObject.FindObjectOfType<CostScript>();
     }
+
     public void ClickGround()
     {
         //  どうぶつボタンと武器ボタンが押されていれば
@@ -34,6 +40,9 @@ public class SpawnManager : MonoBehaviour
                 pos.z = 0;
                 //  インスタンス生成
                 var obj = Instantiate(units[costScript.GetSelectNumber()], new Vector3(pos.x, pos.y, pos.z), units[costScript.GetSelectNumber()].transform.rotation);
+                //  置いた動物の数をカウント
+                InstanceCount[costScript.GetSelectNumber()]++;
+                Debug.Log(InstanceCount[costScript.GetSelectNumber()]);
                 //  エフェクトの表示
                 EffectManager.Instance_Effect.PlayEffect(EffectManager.EffectKind.Magic, obj.transform.position, 1, obj);
                 //  効果音再生
@@ -52,7 +61,27 @@ public class SpawnManager : MonoBehaviour
             StartCoroutine(FadeChoiceErrorImage());
             Debug.Log("ボタン選んでないよ");
         }
+            
     }
+
+    //  一番使っている動物を返す
+    public GameObject GetFavanimals()
+    {
+        int FavanimalNum = 0;
+        int Maxsum = 0;
+        for (int i = 0; i < 9; i++)
+        {
+            if (Maxsum < InstanceCount[i])
+            {
+                Maxsum = InstanceCount[i];
+                FavanimalNum = i;
+                Debug.Log(i);
+            }
+        }
+        return units[FavanimalNum];
+    } 
+
+
     //  選ばれた動物編成で配列にセット
     public void SetAnimalsPrefab(GameObject[] _animals)
     {
@@ -81,6 +110,7 @@ public class SpawnManager : MonoBehaviour
         }
         yield break;
     }
+
     IEnumerator FadeChoiceErrorImage()
     {
         if (!isFadeChoiceError)
