@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 114947872698793530}
   - component: {fileID: 114574536259663016}
   - component: {fileID: 210802685288166522}
-  - component: {fileID: 114904270106431046}
   m_Layer: 0
   m_Name: Owl_Sword
   m_TagString: Animal
@@ -847,17 +846,6 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
---- !u!114 &114904270106431046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1301072040851520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 971950821d0ba1444a4e712a5ee9188c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114947872698793530
 MonoBehaviour:
   m_ObjectHideFlags: 1
