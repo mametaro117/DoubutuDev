@@ -1,231 +1,242 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
 
-public class EnemySpawnManager : MonoBehaviour {
+public class EnemySpawnManager : MonoBehaviour {            //敵キャラを生成する
+
+    //変数エリア
+    [SerializeField]
+    private GameObject[] enemyPrefab = new GameObject[3];   //敵のPrefab入れ
 
     [SerializeField]
-    private GameObject[] EnemyPrefab = new GameObject[3];
+    private Transform[] spawnPositions = new Transform[5];  //敵のスポーン位置入れ
 
     [SerializeField]
-    private Transform[] SpawnPositions = new Transform[5];
+    private float interval = 5f;                                    //敵の生成速度
+    private float stackTime;                                        //最後に敵を生成してからの時間
+    private int enemyPowers;                                        //敵の生成数
 
     [SerializeField]
-    float interval = 5f;
-
-    float stacktime;
-
-    private int EnemyPowers;
+    private int tekagenEnemyPowers = 5;                             //手加減し始める数
+    [SerializeField]
+    private float deraySpawnTime = 0.5f;                            //手加減する時に延ばす時間
 
     [SerializeField]
-    private int TekagenEnemyPowers = 5;
-
-    [SerializeField]
-    private float DeraySpawnTime = 0.5f;
+    private int kimagure = 20;                                      //生成場所をランダムに変える確率
     
-	void Update ()
+    private RaycastHit2D[] hit;                                     //レイキャストでヒットしたオブジェクト入れ
+
+    private int[] playerLanePowers = new int[5];                    //レーン毎のキャラ数、一番前にいるキャラのpos
+    private int[] enemyLanePowers = new int[5];                     
+    private float[] playerCharaFrontPos = new float[5];             
+    private float[] enemyCharaFrontPos = new float[5];              //
+
+    void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        //時間経過
+        stackTime += Time.deltaTime;
+
+        //手加減をする
+        if(enemyPowers - tekagenEnemyPowers >= 1)
         {
-            PowerCheck();
-        }
-        stacktime += Time.deltaTime;
-        //Debug.Log(stacktime);
-        //Debug.Log(GetComponent<TimeManager>().GetIsReady());
-        if(EnemyPowers - TekagenEnemyPowers >= 1)
-        {
-            if (stacktime >= interval + (EnemyPowers - TekagenEnemyPowers) * DeraySpawnTime && GetComponent<TimeManager>().GetIsReady() == true)
+            //手加減の時間を加えて、生成時間になったら/ゲームが開始されていたら
+            if (stackTime >= interval + (enemyPowers - tekagenEnemyPowers) * deraySpawnTime 
+                && GetComponent<TimeManager>().GetIsReady() == true)
             {
-                stacktime = 0;
+                //敵を生成
+                stackTime = 0;
                 EnemyInstance();
             }
         }
+        //手加減していない
         else
         {
-            if (stacktime >= interval && GetComponent<TimeManager>().GetIsReady() == true)
+            //生成時間になったら/ゲームが開始されていたら
+            if (stackTime >= interval && GetComponent<TimeManager>().GetIsReady() == true)
             {
-                stacktime = 0;
+                //敵を生成
+                stackTime = 0;
                 EnemyInstance();
             }
         }
     }
 
-    [SerializeField]
-    private int kimagure = 20;
-
+    //敵を生成する処理
     public void EnemyInstance()
     {
+        //レーン毎の数、前線位置を見る
         PowerCheck();
-        int SpawnPos = SetSpawnPos();
+        //スポーン位置決定
+        int spawnPos = SetSpawnPos();
+        //生成の 法則が 乱れる！
         if(Random.Range(0, 100) <= kimagure)
         {
-            //Debug.Log("気まぐれ");
-            SpawnPos = Random.Range(0, SpawnPositions.Length);
+            spawnPos = Random.Range(0, spawnPositions.Length);
         }
-        if(SpawnPos == -1)
+        //スポーン位置が決まらなかったらランダムで置く
+        if(spawnPos == -1)
         {
-            SpawnPos = Random.Range(0, SpawnPositions.Length);
+            spawnPos = Random.Range(0, spawnPositions.Length);
         }
-        int ran = Random.Range(0, EnemyPrefab.Length);
-        Instantiate(EnemyPrefab[ran], new Vector3(SpawnPositions[SpawnPos].position.x, SpawnPositions[SpawnPos].position.y, SpawnPositions[SpawnPos].position.z), SpawnPositions[SpawnPos].rotation);
+        //置く敵Prefabをランダムで決定
+        int ran = Random.Range(0, enemyPrefab.Length);
+        Instantiate(enemyPrefab[ran], 
+        new Vector3(spawnPositions[spawnPos].position.x, spawnPositions[spawnPos].position.y, 
+        spawnPositions[spawnPos].position.z), spawnPositions[spawnPos].rotation);
     }
 
+    //スポーン位置を決める
     private int SetSpawnPos()
     {
-        List<int> PlayerRaneNum = new List<int>();
-        List<int> EnemyRaneNum = new List<int>();
-        int MaxPow = 0;
-        int MinPow = 0;
-        int SetRaneResult = 0;
-        float MaxFrontPos = 0f;
+        //初期化
+        List<int> playerRaneNum = new List<int>();
+        List<int> enemyRaneNum = new List<int>();
+        int maxPow = 0;
+        int minPow = 0;
+        int setRaneResult = 0;
+        float maxFrontPos = 0f;
         
-        for (int i = 0; i < PlayerLanePowers.Length; i++)
+        for (int i = 0; i < playerLanePowers.Length; i++)
         {
             //パワーを比較
             //最大値より大きければリストを初期化してからレーン番号を入れる
-            if (PlayerLanePowers[i] > MaxPow)
+            if (playerLanePowers[i] > maxPow)
             {
-                MaxPow = PlayerLanePowers[i];
-                PlayerRaneNum = new List<int>();
-                PlayerRaneNum.Add(i);
+                maxPow = playerLanePowers[i];
+                playerRaneNum = new List<int>();
+                playerRaneNum.Add(i);
             }
             //最大値と一緒ならレーン番号を追加する
-            else if (PlayerLanePowers[i] == MaxPow)
+            else if (playerLanePowers[i] == maxPow)
             {
-                PlayerRaneNum.Add(i);
+                playerRaneNum.Add(i);
             }
         }
         //もし、対象のレーンが複数存在する場合、自分側のポジションと敵側のキャラ数を見て判断する
-        //ここに入る条件は(恐らく)自分のキャラが何もない時なのでランダムで返す
-        if(PlayerRaneNum.Count >= 5 && MaxPow == 0)
+        //ここに入る条件は自分のキャラが何もない時なのでランダムで返す
+        if(playerRaneNum.Count >= 5 && maxPow == 0)
         {
-            SetRaneResult = Random.Range(0, PlayerRaneNum.Count);
+            setRaneResult = Random.Range(0, playerRaneNum.Count);
         }
         //複数ある時
-        else if (PlayerRaneNum.Count >= 2)
+        else if (playerRaneNum.Count >= 2)
         {
-            MaxPow = 0;
+            maxPow = 0;
             //敵側キャラのキャラ数を比較
-            for(int i = 0; i < PlayerRaneNum.Count; i++)
+            for(int i = 0; i < playerRaneNum.Count; i++)
             {
-                if(EnemyLanePowers[PlayerRaneNum[i]] > MaxPow)
+                if(enemyLanePowers[playerRaneNum[i]] > maxPow)
                 {
-                    EnemyRaneNum = new List<int>();
-                    EnemyRaneNum.Add(PlayerRaneNum[i]);
-                    MaxPow = EnemyLanePowers[PlayerRaneNum[i]];
+                    enemyRaneNum = new List<int>();
+                    enemyRaneNum.Add(playerRaneNum[i]);
+                    maxPow = enemyLanePowers[playerRaneNum[i]];
                 }
-                else if(EnemyLanePowers[PlayerRaneNum[i]] == MaxPow)
+                else if(enemyLanePowers[playerRaneNum[i]] == maxPow)
                 {
-                    EnemyRaneNum.Add(PlayerRaneNum[i]);
+                    enemyRaneNum.Add(playerRaneNum[i]);
                 }
             }
             //ポジションを見る条件は、敵側キャラが同数いる時
-            if(PlayerRaneNum.Count == EnemyRaneNum.Count)
+            if(playerRaneNum.Count == enemyRaneNum.Count)
             {
-                for(int i = 0; i < EnemyRaneNum.Count; i++)
+                for(int i = 0; i < enemyRaneNum.Count; i++)
                 {
-                    if (MaxFrontPos == 0f)
+                    if (maxFrontPos == 0f)
                     {
-                        MaxFrontPos = PlayerCharaFrontPos[PlayerRaneNum[i]];
-                        SetRaneResult = PlayerRaneNum[i];
+                        maxFrontPos = playerCharaFrontPos[playerRaneNum[i]];
+                        setRaneResult = playerRaneNum[i];
                     }
                     else
                     {
-                        if(PlayerCharaFrontPos[PlayerRaneNum[i]] < MaxFrontPos)
+                        if(playerCharaFrontPos[playerRaneNum[i]] < maxFrontPos)
                         {
-                            MaxFrontPos = PlayerCharaFrontPos[PlayerRaneNum[i]];
-                            SetRaneResult = PlayerRaneNum[i];
+                            maxFrontPos = playerCharaFrontPos[playerRaneNum[i]];
+                            setRaneResult = playerRaneNum[i];
                         }
                     }
                 }
             }
-            //敵側キャラを見て、少ない所に配置
+            //プレイヤー側キャラを見て、少ない所に配置
             else
             {
-                MinPow = 0;
-                for(int i = 0; i < PlayerRaneNum.Count; i++)
+                minPow = 0;
+                for(int i = 0; i < playerRaneNum.Count; i++)
                 {
                     if(i == 0)
                     {
-                        EnemyRaneNum = new List<int>();
-                        MinPow = EnemyLanePowers[PlayerRaneNum[i]];
-                        EnemyRaneNum.Add(PlayerRaneNum[i]);
-                        Debug.Log("hoge");
+                        enemyRaneNum = new List<int>();
+                        minPow = enemyLanePowers[playerRaneNum[i]];
+                        enemyRaneNum.Add(playerRaneNum[i]);
                     }
                     else
                     {
-                        if(MinPow > EnemyLanePowers[PlayerRaneNum[i]])
+                        if(minPow > enemyLanePowers[playerRaneNum[i]])
                         {
-                            MinPow = EnemyLanePowers[PlayerRaneNum[i]];
-                            EnemyRaneNum = new List<int>();
-                            EnemyRaneNum.Add(PlayerRaneNum[i]);
+                            minPow = enemyLanePowers[playerRaneNum[i]];
+                            enemyRaneNum = new List<int>();
+                            enemyRaneNum.Add(playerRaneNum[i]);
                         }
-                        else if(MinPow == EnemyLanePowers[PlayerRaneNum[i]])
+                        else if(minPow == enemyLanePowers[playerRaneNum[i]])
                         {
-                            EnemyRaneNum.Add(PlayerRaneNum[i]);
+                            enemyRaneNum.Add(playerRaneNum[i]);
                         }
                     }
                 }
-                SetRaneResult = EnemyRaneNum[Random.Range(0, EnemyRaneNum.Count)];
+                setRaneResult = enemyRaneNum[Random.Range(0, enemyRaneNum.Count)];
             }
         }
         //そこに配置
         else
         {
-            SetRaneResult = PlayerRaneNum[Random.Range(0, PlayerRaneNum.Count)];
+            setRaneResult = playerRaneNum[Random.Range(0, playerRaneNum.Count)];
         }
-        string str = "Max is_";
-        for(int i = 0; i < PlayerRaneNum.Count; i++)
-        {
-            str = str + i + "_";
-        }
-        str = str + "同パワー数:" + PlayerRaneNum.Count;
 
         //複数ある場合はランダムで返す
-        return SetRaneResult;
+        return setRaneResult;
     }
-    RaycastHit2D[] hit;
 
-    [SerializeField]
-    int[] PlayerLanePowers = new int[5];
-    int[] EnemyLanePowers = new int[5];
-    float[] PlayerCharaFrontPos = new float[5];
-    float[] EnemyCharaFrontPos = new float[5];
-
+    //プレイヤーと敵の、レーン毎の数を見る
     public void PowerCheck()
     {
+        //レーン毎に見る
         for(int i = 0; i < 5; i++)
         {
             //初期化
-            PlayerLanePowers[i] = 0;
-            EnemyLanePowers[i] = 0;
-            PlayerCharaFrontPos[i] = 10f;
-            EnemyCharaFrontPos[i] = -10f;
-            EnemyPowers = 0;
+            playerLanePowers[i] = 0;
+            enemyLanePowers[i] = 0;
+            playerCharaFrontPos[i] = 10f;
+            enemyCharaFrontPos[i] = -10f;
+            enemyPowers = 0;
 
-            hit = Physics2D.BoxCastAll(SpawnPositions[i].position, new Vector2(1, 1.0875f), 0f, Vector2.right, 10f);
-            //Debug.Log("BoxCast:" + hit.Length);
+            //レイキャスト
+            hit = Physics2D.BoxCastAll(spawnPositions[i].position, new Vector2(1, 1.0875f), 0f, Vector2.right, 10f);
+
             for (int k = 0; hit.Length > k; k++)
             {
-                //Debug.Log(k + "番目:"  + hit[k].collider.name);
+                //当たったキャラのタグを見る
                 if (hit[k].collider.tag == "Animal")
                 {
-                    PlayerLanePowers[i]++;
-                    if(hit[k].transform.position.x < PlayerCharaFrontPos[i])
+                    //自キャラパワーに加える
+                    playerLanePowers[i]++;
+                    if(hit[k].transform.position.x < playerCharaFrontPos[i])
                     {
-                        PlayerCharaFrontPos[i] = hit[k].transform.position.x;
+                        //一番敵のタワーに近いキャラポジション
+                        playerCharaFrontPos[i] = hit[k].transform.position.x;
                     }
                 }
                 else if(hit[k].collider.tag == "Enemy")
                 {
-                    EnemyLanePowers[i]++;
-                    EnemyPowers++;
-                    if (hit[k].transform.position.x > EnemyCharaFrontPos[i])
+                    //敵キャラパワーに加える
+                    enemyLanePowers[i]++;
+                    enemyPowers++;
+                    if (hit[k].transform.position.x > enemyCharaFrontPos[i])
                     {
-                        EnemyCharaFrontPos[i] = hit[k].transform.position.x;
+                        //一番プレイヤーのタワーに近いキャラポジション
+                        enemyCharaFrontPos[i] = hit[k].transform.position.x;
                     }
                 }
             }
         }
     }
 }
+

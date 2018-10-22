@@ -22,13 +22,13 @@ public class ShowSelectedAnimalScript : MonoBehaviour {
 
     public void ShowAnimal(GameObject box)              // 武器選択中の動物を表示する
     {
-        if(!GetComponent<WindowChangeScript>().Equip_Changing && 
-            GetComponent<WindowChangeScript>().WindowStationary)
+        if(!GetComponent<WindowChangeScript>().equip_Changing && 
+            GetComponent<WindowChangeScript>().windowStationary)
         {
             // _selectedAnimalに表示する動物のPrefabを入れる
             int boxNum = int.Parse(box.name.Substring(box.name.Length - 1));
             WindowChangeScript param = GetComponent<WindowChangeScript>();
-            int animalNum = param.AnimalAndWeaponList[boxNum - 1, 0];
+            int animalNum = param.animalAndWeaponList[boxNum - 1, 0];
             switch(animalNum)
             {
                 case 0:

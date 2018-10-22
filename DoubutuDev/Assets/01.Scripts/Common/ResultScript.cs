@@ -1,30 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using _System = System;
+using System.Collections;
+
 using UnityEngine;
 using UnityEngine.UI;
-using _System = System;
 
-public class ResultScript : MonoBehaviour {
+public class ResultScript : MonoBehaviour { //リザルト構成用
 
+    //変数エリア
     [SerializeField]
-    private GameObject text;
+    private Text clearTimeText;             //クリアタイムを表示するテキスト
     [SerializeField]
-    private ChoiceParamator choiceparam;
-    private float clearTime;
-    private GameObject animal;
-    private GameObject _selectedAnimal;
-    private Animator _select_Animator;
+    private ChoiceParamator choiceparam;    //メインゲームから情報を持ってくる
+    private float clearTime;                //クリアタイム
+    private GameObject animal;              //一番使った動物
+    private GameObject _selectedAnimal;     //リザルトで実際に表示する動物
+    private Animator _select_Animator;      //リザルトで動物のアニメーションをさせるアニメーター
 
-    // Use this for initialization
     void Start ()
     {
-        //ここに追加処理
+        //メインゲームから情報を持ってくる
         choiceparam = FindObjectOfType(typeof(ChoiceParamator)) as ChoiceParamator;
-        //clearTime = choiceparam.ClearTime;
         clearTime = (float)_System.Math.Round(choiceparam.ClearTime, 0);
         animal = choiceparam.FavoAnimal;
 
-        text.GetComponent<Text>().text = clearTime.ToString() + "sec";
+        //クリアタイムを表示
+        clearTimeText.text = clearTime.ToString() + "sec";
+
+        //一番使った動物を表示
         _selectedAnimal = Instantiate(animal) as GameObject;
 
         // 不必要な物を削除していく
@@ -55,7 +57,7 @@ public class ResultScript : MonoBehaviour {
         //場所指定
         _selectedAnimal.transform.position = new Vector3(0, -3.5f, 0);
 
-        // アニメーターのコルーチンを起動
+        //アニメーターのコルーチンを起動
         if (_selectedAnimal.GetComponent<Animator>() != null)
         {
             _select_Animator = _selectedAnimal.GetComponent<Animator>();
@@ -64,7 +66,8 @@ public class ResultScript : MonoBehaviour {
         }
     }
 
-    IEnumerator Cor_Anim()          // コルーチンでアニメーションをループさせる
+    //コルーチンでアニメーションをループさせる
+    IEnumerator Cor_Anim()          
     {
         while (true)
         {
@@ -75,3 +78,4 @@ public class ResultScript : MonoBehaviour {
         }
     }
 }
+

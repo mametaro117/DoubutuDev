@@ -46,7 +46,7 @@ public class ToolTipsManager : MonoBehaviour
 
     public void ToolTips_Animal(GameObject obj)
     {
-        if(GameObject.Find("ClickManager").GetComponent<WindowChangeScript>().WindowStationary)
+        if(GameObject.Find("ClickManager").GetComponent<WindowChangeScript>().windowStationary)
         {
             //ツールチップの位置を指定する
             int objnum = int.Parse(obj.name.Substring(obj.name.Length - 1));

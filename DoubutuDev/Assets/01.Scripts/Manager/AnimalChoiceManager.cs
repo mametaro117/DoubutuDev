@@ -1,29 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class AnimalChoiceManager : MonoBehaviour {
+public class AnimalChoiceManager : MonoBehaviour {  //動物選択
 
-    bool SelectList1Active;
-    bool SelectList2Active;
-    bool SelectList3Active;
-
-    //動物が追加になったら増やしてね
-    bool[] AnimalListsActive = new bool[10];
-
+    //変数エリア
+    private bool selectList1Active;                         //枠に動物が入っているかどうか
+    private bool selectList2Active;
+    private bool selectList3Active;                         //
+    
+    private bool[] animalListsActive = new bool[4];         //動物が選択済がどうか
+    
+    //動物と武器の選択配列
     // [動物id, 武器id1, 武器id2, 武器id3]
-    public int[,] SelectAnimalList = { { 99, 0, 1, 2 },{ 99, 0, 1, 2 },{ 99, 0, 1, 2 } };
+    public int[,] selectAnimalList = { { 99, 0, 1, 2 },{ 99, 0, 1, 2 },{ 99, 0, 1, 2 } };
 
-    public GameObject[] Animals = new GameObject[3];
+    public GameObject[] animals = new GameObject[3];        //選択済の動物Obj入れ
 
-    enum ChoiceState
-    {
-        Animal,
-        equip,
-    }
+    bool startDrag = true;                                  //ドラッグしているか
 
+    //ツールチップを消す
     public void EraseToolTip()
     {
         GameObject Manager = GameObject.Find("ToolTipsManager");
@@ -31,152 +25,131 @@ public class AnimalChoiceManager : MonoBehaviour {
         TT_Manager.EraseToolTips();
     }
 
-    bool StartDrag = true;
-
+    //ドラッグ開始処理
     public void AnimalDrag(GameObject ChildObj)
     {
-        if(GetComponent<WindowChangeScript>().WindowStationary)
+        if(GetComponent<WindowChangeScript>().windowStationary)
         {
-            if (!AnimalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
+            if (!animalListsActive[int.Parse(ChildObj.name.Substring(ChildObj.name.Length - 1)) - 1])
             {
-                if (StartDrag)
+                if (startDrag)
                 {
                     AudioManager.Instance.PlaySe(1);
-                    StartDrag = false;
+                    startDrag = false;
                 }
-                Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                ChildObj.transform.position = TapPos;
+                Vector2 tapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                ChildObj.transform.position = tapPos;
             }
         }
     }
 
+    //ドラッグ終了処理
     public void EndDrag(GameObject obj)
     {
         AudioManager.Instance.PlaySe(1);
-        StartDrag = true;
-        GameObject Parent;
-        Vector2 TapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //Debug.Log(TapPos);
+        startDrag = true;
+        GameObject parent;
+        Vector2 tapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //ドラッグし終わった時に別の枠内に入っていたら
         for (int i = 1; i < 4; i++)
         {
-            Parent = GameObject.Find("SelectList/SelectColumn" + i + "");
-            //Debug.Log(Parent);
-            Vector2 UiPos = Parent.transform.position;
-            //Debug.Log(UiPos);
-            float Diff_x = TapPos.x - UiPos.x;
-            float Diff_y = TapPos.y - UiPos.y;
-            if(-1f <= Diff_x && Diff_x <= 1f)
+            parent = GameObject.Find("SelectList/SelectColumn" + i + "");
+            Vector2 uiPos = parent.transform.position;
+            float diff_x = tapPos.x - uiPos.x;
+            float diff_y = tapPos.y - uiPos.y;
+            if(-1f <= diff_x && diff_x <= 1f)
             {
-                if(-1f <= Diff_y && Diff_y <= 1f)
+                if(-1f <= diff_y && diff_y <= 1f)
                 {
                     AudioManager.Instance.PlaySe(2);
                     //枠の子孫とする
                     switch (i)
                     {
                         case 1:                            
-                            if(!SelectList1Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
+                            if(!selectList1Active && !animalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
-                                obj.transform.SetParent(Parent.transform);
-                                SelectList1Active = true;
-                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
-                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
-                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                obj.transform.SetParent(parent.transform);
+                                selectList1Active = true;
+                                selectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                                animalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 Debug.Log("1枠に挿入");
-                                Animals[i - 1] = obj;
-                            }
-                            else if(SelectList1Active)
-                            {
-                                Debug.Log("オムライス");
+                                animals[i - 1] = obj;
                             }
                             break;
                         case 2:
-                            if(!SelectList2Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
+                            if(!selectList2Active && !animalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
-                                obj.transform.SetParent(Parent.transform);
-                                SelectList2Active = true;
-                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
-                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
-                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                obj.transform.SetParent(parent.transform);
+                                selectList2Active = true;
+                                selectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                                animalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 Debug.Log("2枠に挿入");
-                                Animals[i - 1] = obj;
-                            }
-                            else if (SelectList2Active)
-                            {
-                                Debug.Log("からあげ");
+                                animals[i - 1] = obj;
                             }
                             break;
                         case 3:
-                            if(!SelectList3Active && !AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
+                            if(!selectList3Active && !animalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1])
                             {
-                                obj.transform.SetParent(Parent.transform);
-                                SelectList3Active = true;
-                                SelectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
-                                AnimalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
-                                //Debug.Log(SelectAnimalList[i - 1, 0]);
+                                obj.transform.SetParent(parent.transform);
+                                selectList3Active = true;
+                                selectAnimalList[i - 1, 0] = int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1;
+                                animalListsActive[int.Parse(obj.name.Substring(obj.name.Length - 1)) - 1] = true;
                                 Debug.Log("3枠に挿入");
-                                Animals[i - 1] = obj;
-                            }
-                            else if (SelectList3Active)
-                            {
-                                Debug.Log("カレーライス");
+                                animals[i - 1] = obj;
                             }
                             break;
                         default:
-                            Debug.Log("何枠やねん");
+                            Debug.Log("何枠か分からない");
                             break;
                     }
                     break;
                 }
             }
         }
+
         //親のboxに戻る
         var RectTransform = obj.GetComponent<RectTransform>();
         Vector2 ResetPos = new Vector2();
         RectTransform.anchoredPosition = ResetPos;
     }
 
+    //入った枠をクリックで、元の枠に戻る
     public void BackHome(GameObject obj)
     {
-        if(GetComponent<WindowChangeScript>().WindowStationary)
+        if(GetComponent<WindowChangeScript>().windowStationary)
         {
             foreach (Transform child in obj.transform)
             {
-                AnimalListsActive[int.Parse(child.name.Substring(child.name.Length - 1)) - 1] = false;
-                //Debug.Log(child.name);
+                animalListsActive[int.Parse(child.name.Substring(child.name.Length - 1)) - 1] = false;
                 int strlength = obj.name.Length;
-                int BoxNum = int.Parse(obj.name.Substring(strlength - 1));
-                //Debug.Log("<color=red>" + BoxNum + "</color>");
-                switch (BoxNum)
+                int boxNum = int.Parse(obj.name.Substring(strlength - 1));
+                switch (boxNum)
                 {
                     case 1:
-                        SelectList1Active = false;
-                        Debug.Log("List1_false");
+                        selectList1Active = false;
                         break;
                     case 2:
-                        SelectList2Active = false;
-                        Debug.Log("List2_false");
+                        selectList2Active = false;
                         break;
                     case 3:
-                        SelectList3Active = false;
-                        Debug.Log("List3_false");
+                        selectList3Active = false;
                         break;
                     default:
-                        Debug.Log("（´・ω・｀）");
                         break;
                 }
-                GameObject Box = GameObject.Find("AnimalList/Column" + int.Parse(child.name.Substring(child.name.Length - 1)) + "");
-                child.transform.SetParent(Box.transform);
-                var RectTransform = child.GetComponent<RectTransform>();
-                Vector2 ResetPos = new Vector2();
-                RectTransform.anchoredPosition = ResetPos;
+                GameObject box = GameObject.Find("AnimalList/Column" + int.Parse(child.name.Substring(child.name.Length - 1)) + "");
+                child.transform.SetParent(box.transform);
+                var rectTransform = child.GetComponent<RectTransform>();
+                Vector2 resetPos = new Vector2();
+                rectTransform.anchoredPosition = resetPos;
             }
         }
     }
 
+    //決定ボタンが押された時に、全部の枠に動物がセットされているかどうか
     public bool AnimalSetCheck()
     {
-        if(SelectList1Active && SelectList2Active && SelectList3Active)
+        if(selectList1Active && selectList2Active && selectList3Active)
         {
             return true;
         }
@@ -188,3 +161,4 @@ public class AnimalChoiceManager : MonoBehaviour {
         }
     }
 }
+

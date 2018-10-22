@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EffectManager : MonoBehaviour
-{
+public class EffectManager : MonoBehaviour{ //エフェクトの再生
 
     #region Singleton
 
@@ -37,8 +33,9 @@ public class EffectManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    //変数エリア
     [SerializeField]
-    private GameObject Effect_Dia;
+    private GameObject Effect_Dia;          //エフェクト入れ
     [SerializeField]
     private GameObject Effect_Heart;
     [SerializeField]
@@ -54,9 +51,9 @@ public class EffectManager : MonoBehaviour
     [SerializeField]
     private GameObject Effect_Hit;
     [SerializeField]
-    private GameObject Effect_Magic;
+    private GameObject Effect_Magic;        //
 
-    public static class EffectKind
+    public static class EffectKind          //エフェクトを呼び出し易いように
     {
         public const int Diamond = 0;
         public const int Heart = 1;
@@ -68,36 +65,8 @@ public class EffectManager : MonoBehaviour
         public const int Hit = 7;
         public const int Magic = 8;
     }
-    
-    //やる事を関数でまとめた
-    private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification, GameObject Target)
-    {
-        PlayEffect.transform.position = EffectPos;
-        PlayEffect.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
-        PlayEffect.transform.SetParent(Target.transform);
-        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
-        var main = particlesystem.main;
-        if (PlayEffect != null)
-            Destroy(PlayEffect, main.duration);
-    }
 
-    //実行する時はコレ↓
-    //EffectManager.Instance_Effect.PlayEffect(0, new Vector2(0, 0), 1.0f);
-
-    /// <summary>
-    /// エフェクトナンバーを指定する方
-    /// 引数:(エフェクトナンバー,ポジション,拡大率)
-    /// 0:Diamond
-    /// 1:Heart
-    /// 2:Star
-    /// 3:Spark
-    /// 4:Light
-    /// 5:Smoke
-    /// 6:Firework
-    /// 7:Hit
-    /// 8:Magic
-    /// </summary>
-    /// <param name="Effect"></param>
+    //エフェクトを再生する
     public void PlayEffect(int EffectNum, Vector2 EffectPos, float Magnification, GameObject Target)
     {
         GameObject PlayEffect = null;
@@ -134,7 +103,24 @@ public class EffectManager : MonoBehaviour
                 PlayEffect = Instantiate(Effect_Dia) as GameObject;
                 break;
         }
-       // Debug.Log(EffectNum);
         EffectProcess(PlayEffect, EffectPos, Magnification, Target);
     }
+
+    //やる事を関数でまとめた
+    private void EffectProcess(GameObject PlayEffect, Vector2 EffectPos, float Magnification, GameObject Target)
+    {
+        //位置、大きさ等を指定
+        PlayEffect.transform.position = EffectPos;
+        PlayEffect.transform.localScale = new Vector3(Magnification, Magnification, Magnification);
+        PlayEffect.transform.SetParent(Target.transform);
+
+        ParticleSystem particlesystem = PlayEffect.GetComponent<ParticleSystem>();
+        var main = particlesystem.main;
+        if (PlayEffect != null)
+        {
+            //エフェクトが再生終了したら削除
+            Destroy(PlayEffect, main.duration);
+        }
+    }
 }
+
